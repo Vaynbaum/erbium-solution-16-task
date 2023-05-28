@@ -698,10 +698,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
           this.profilesFormGroup.get(GITHUB)?.setValue(this.user.intern.github);
         if (this.user.intern.vk)
           this.profilesFormGroup.get(VK)?.setValue(this.user.intern.vk);
-        if (this.user.intern.url_portfolio)
+        if (this.user.intern.portfolio)
           this.profilesFormGroup
             .get(PORTFOLIO)
-            ?.setValue(this.user.intern.url_portfolio);
+            ?.setValue(this.user.intern.portfolio);
       }
     });
     this.profileService.GetProfile();

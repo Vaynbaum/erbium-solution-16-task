@@ -4,6 +4,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
 from common.dependencies import get_db
+from config import settings
 from controllers.user_controller import UserController
 from exceptions.token_exception import TokenException
 from exceptions.user_exception import UserException
@@ -311,12 +312,13 @@ async def get_selections_to_mentor(
 async def get_change_selection(
     selection_id: int,
     stage_id: int,
+    background_tasks: BackgroundTasks,
     credentials: HTTPAuthorizationCredentials = Security(security),
     session: Session = Depends(get_db),
 ):
     try:
         return user_controller.get_change_selection(
-            session, credentials.credentials, selection_id, stage_id
+            session, credentials.credentials, selection_id, stage_id, background_tasks
         )
     except TokenException as e:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=e.message)
@@ -415,6 +417,10 @@ async def get_my_presence(
 async def get_invitation(
     email: str,
     role_id: int,
+    background_tasks: BackgroundTasks,
     session: Session = Depends(get_db),
 ):
-    return True
+    try:
+        return user_controller.get_invitation(session, email, role_id, background_tasks)
+    except UserException as e:
+        raise HTTPException(status_code=400, detail=e.message)

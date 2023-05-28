@@ -6,18 +6,61 @@ from common.phrases import (
     UPDATE_USER_DATA_FAILDE,
 )
 from database.base import Base, Engine
+
+from database.models.branch import Branch
+from database.models.basic_test import BasicTest
+from database.models.basic_test_statuse import BasicTestStatuse
+from database.models.citizenship import Citizenship
+from database.models.championship import Championship
+from database.models.city import City
+from database.models.condition import Condition
+from database.models.presence import Presence
+from database.models.course import Course
+from database.models.curator import Curator
+from database.models.invation import Invation
+from database.models.direction import Direction
+from database.models.duty import Duty
+from database.models.employment_type import EmploymentType
+from database.models.event import Event
+from database.models.history_work_experience import HistoryWorkExperience
+from database.models.hr import HR
+from database.models.selection_basic_test import SelectionBasicTest
+from database.models.intern import Intern
+from database.models.internship_status import InternshipStatus
+from database.models.interview import Interview
+from database.models.language import Language
+from database.models.language_intern import LanguageIntern
+from database.models.mentor import Mentor
+from database.models.metro import Metro
+from database.models.mentor_review import MentorReview
+from database.models.organization_review import OrganizationReview
+from database.models.organization_type import OrganizationType
+from database.models.organization import Organization
+from database.models.task import Task
 from database.models.permission import Permission
 from database.models.recovery import Recovery
-from database.models.role import Role
-from database.models.citizenship import Citizenship
+from database.models.vacancy_status import VacancyStatus
 from database.models.region import Region
-from database.models.course import Course
-from database.models.intern import Intern
-from database.models.direction import Direction
-from database.models.internship_status import InternshipStatus
-from database.models.city import City
+from database.models.requirement import Requirement
+from database.models.response_statuse import ResponseStatuse
+from database.models.response import Response
+from database.models.role import Role
+from database.models.scholl import Scholl
+from database.models.selection import Selection
+from database.models.skill_intern import SkillIntern
+from database.models.skill_vacancy import SkillVacancy
+from database.models.skill import Skill
+from database.models.speaker import Speaker
+from database.models.stage import Stage
+from database.models.training_direction import TrainingDirection
+from database.models.type_basic_test import TypeBasicTest
+from database.models.type_interview import TypeInterview
 from database.models.university import University
 from database.models.user import User
+from database.models.vacancy_review import VacancyReview
+from database.models.vacancy import Vacancy
+from database.models.work_experience import WorkExperience
+from database.models.work_schedule import WorkSchedule
 
 from exceptions.db_exception import DBException
 from models.recovery import RecoveryWithUser
@@ -121,6 +164,14 @@ class DatabaseController:
         except Exception:
             raise DBException(PUT_USER_DATA_FAILDE)
 
+    def put_user(self, session: Session, user):
+        try:
+            session.add(user)
+            session.commit()
+            return self.get_user_by_email(session, user.user.email)
+        except Exception:
+            raise DBException(PUT_USER_DATA_FAILDE)
+    
     def update_user(self, session: Session, user: User):
         try:
             session.add(user)
@@ -140,6 +191,9 @@ class DatabaseController:
     def get_recover_data(self, session: Session, code: str):
         return session.query(Recovery).options(subqueryload(Recovery.user)).get(code)
 
+    def get_inv_data(self, session: Session, code: str):
+        return session.query(Invation).get(code)
+    
     def delete_recover_data(
         self, session: Session, code: str | None = None, user_id: int | None = None
     ):

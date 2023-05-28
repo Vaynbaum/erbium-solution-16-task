@@ -4,6 +4,7 @@ import difflib
 from fastapi import BackgroundTasks
 from sqlalchemy.orm import Session
 import requests
+import secrets
 
 from common.phrases import (
     DATE_FAILED,
@@ -35,6 +36,7 @@ from controllers.auth_controller import AuthController
 from database.db_controller import DatabaseController
 from database.models.basic_test import BasicTest
 from database.models.intern import Intern
+from database.models.invation import Invation
 from database.models.presence import Presence
 from database.models.scholl import Scholl
 from database.models.selection import Selection
@@ -322,11 +324,11 @@ class UserController:
         if len(responses) > 0:
             session.commit()
 
-    def send_mail(self, email: str, url: str):
+    def send_mail(self, email: str, message: str):
         try:
             result = requests.get(
                 f"{settings.URL_MAILER}/any_message",
-                params={"email": email, "url": url},
+                params={"email": email, "message": message},
             )
             print(result)
             if result.status_code != 200:
@@ -369,6 +371,7 @@ class UserController:
                 background_tasks.add_task(
                     self.send_mail, selection.intern.user.email, msg
                 )
+
                 if self.__database_controller.put_response(session, response):
                     if status_id == 2:
                         self.other_responses_accept(
@@ -448,6 +451,7 @@ class UserController:
         token: str,
         selection_id: int,
         stage_id: int,
+        background_tasks: BackgroundTasks,
     ):
         id, role_id = self.__auth_controller.decode_token(token)
         try:
@@ -455,9 +459,12 @@ class UserController:
                 session, selection_id
             )
             selection.stage_id = stage_id
+            msg = f"Вам отказано в стажировке на вакансию {selection.vacancy.name}"
             if stage_id == 3:
                 selection.intern.internship_status_id = 2
+                msg = f"По результатам собеседования вы приняты на вакансию {selection.vacancy.name}"
             session.commit()
+            background_tasks.add_task(self.send_mail, selection.intern.user.email, msg)
             return MessageModel(message=ONBOARD_UPDATE)
         except Exception as e:
             return MessageModel(message=ONBOARD_UPDATE_FAILED)
@@ -517,5 +524,44 @@ class UserController:
         id, role_id = self.__auth_controller.decode_token(token)
         return self.__database_controller.get_my_presence(session, id)
 
-    # def get_my_interns(self, session: Session, organization_id: int):
-    #     return self.__database_controller.get_my_interns(session, organization_id)
+    def send_inv(self, email: str, url: str):
+        try:
+            result = requests.get(
+                f"{settings.URL_MAILER}/inviting",
+                params={"email": email, "url": url},
+            )
+            print(result)
+            if result.status_code != 200:
+                print("письмо не отправлен")
+            else:
+                print(result.text)
+            return result
+        except Exception as e:
+            print(e)
+
+    def get_invitation(
+        self,
+        session: Session,
+        email: str,
+        role_id: int,
+        background_tasks: BackgroundTasks,
+    ):
+        try:
+            code = secrets.token_urlsafe()
+            session.add(
+                Invation(
+                    email=email,
+                    role_id=role_id,
+                    created=datetime.datetime.today(),
+                    code=code,
+                )
+            )
+            session.commit()
+            background_tasks.add_task(
+                self.send_inv,
+                email,
+                f"{settings.URL_INV}/auth/hidden?code={code}&role_id={role_id}",
+            )
+            return MessageModel(message="Приглашение отправлено")
+        except Exception as e:
+            return MessageModel(message="Приглашение не отправлено")

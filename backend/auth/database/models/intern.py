@@ -2,17 +2,19 @@ from sqlalchemy import Integer, Column, ForeignKey, Boolean, String, Text
 from sqlalchemy.orm import relationship
 
 from database.base import Base
+from database.models.basic_test import BasicTest
 from database.models.branch import Branch
 from database.models.course import Course
 from database.models.direction import Direction
 from database.models.internship_status import InternshipStatus
 from database.models.language_intern import LanguageIntern
+from database.models.mentor_review import MentorReview
 from database.models.organization import Organization
 from database.models.organization_review import OrganizationReview
+from database.models.scholl import Scholl
+from database.models.selection import Selection
 from database.models.skill_intern import SkillIntern
-from database.models.training_direction import TrainingDirection
-from database.models.university import University
-from database.models.work_experience import WorkExperience
+from database.models.vacancy_review import VacancyReview
 
 
 class Intern(Base):
@@ -33,19 +35,27 @@ class Intern(Base):
 
     organization_id = Column(Integer, ForeignKey("organizations.id"))
 
-    university = relationship(University)
     course = relationship(Course)
     direction = relationship(Direction)
     internship_status = relationship(InternshipStatus)
-    training_direction = relationship(TrainingDirection)
     branch = relationship(Branch)
-    work_experience = relationship(WorkExperience)
+    presences = relationship("Presence", backref="intern", cascade="all,delete")
+    skills = relationship(SkillIntern, backref="intern", cascade="all,delete")
+    languages = relationship(LanguageIntern, backref="intern", cascade="all,delete")
+    selections = relationship(Selection, backref="intern", cascade="all,delete")
 
-    skills = relationship(SkillIntern, backref="intern")
-    languages = relationship(LanguageIntern, backref="intern")
+    organization_reviews = relationship(
+        OrganizationReview, backref="intern", cascade="all,delete"
+    )
+    vacancy_reviews = relationship(
+        VacancyReview, backref="intern", cascade="all,delete"
+    )
+    mentor_reviews = relationship(MentorReview, backref="intern", cascade="all,delete")
 
     organizations = Column(String(255), nullable=True)
     organization = relationship(Organization)
     organization_reviews = relationship(OrganizationReview)
 
     work_experience_id = Column(Integer, ForeignKey("work_experiences.id"))
+    basic_tests = relationship(BasicTest, cascade="all,delete")
+    school = relationship(Scholl, backref="intern", uselist=False, cascade="all,delete")

@@ -14,6 +14,7 @@ from database.models.condition import Condition
 from database.models.presence import Presence
 from database.models.course import Course
 from database.models.curator import Curator
+from database.models.invation import Invation
 from database.models.direction import Direction
 from database.models.duty import Duty
 from database.models.employment_type import EmploymentType
@@ -333,12 +334,17 @@ class DatabaseController:
     def get_skill_by_ids(self, session: Session, id: int):
         return session.query(SkillIntern).get(id)
 
+    def get_skill_by_ids_copy(self, session: Session, skill_id: int, intern_id: int):
+        return session.query(SkillIntern).filter(
+            SkillIntern.skill_id == skill_id, SkillIntern.intern_id == intern_id
+        ).first()
+
     def delete_my_skill(self, session: Session, id: int, skill_id: int):
-        session.delete(self.get_skill_by_ids(session, id, skill_id))
+        session.delete(self.get_skill_by_ids_copy(session, id, skill_id))
         session.commit()
 
     def get_add_skill(self, session: Session, skill: SkillIntern, id: int):
-        if not self.get_skill_by_ids(session, id, skill.skill_id):
+        if not self.get_skill_by_ids_copy(session, skill.skill_id, id):
             session.add(skill)
             session.commit()
             return True

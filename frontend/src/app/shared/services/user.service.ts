@@ -483,6 +483,12 @@ export class UserService {
   PostTask(task: CreateTask) {
     return this.httpClient.post(`${URL}/task_interview`, task);
   }
+
+  GetInv(email: any, role_id: number) {
+    return this.httpClient.get(`${URL}/invitation`, {
+      params: { email: email, role_id: role_id },
+    });
+  }
   ChangeStatusResponse(id: number, status_id: number) {
     return new Observable((observer) => {
       this.changeStatusResponse(

@@ -95,10 +95,22 @@ export class HeaderComponent implements OnInit {
     return title == 'Школа наставников' || title == 'Табель';
   }
 
-  isDisabled(){
+  isDisabled() {
     return false;
   }
 
-  nots: Notification[]=[{id: 1, user_id: 3, message:'Вы успешно приняты на стажировку!', date: new Date()},
-  {id: 1, user_id: 3, message:'Вы успешно приняты на стажировку!', date: new Date()}]
+  nots: Notification[] = [
+    {
+      id: 1,
+      user_id: 3,
+      message: 'Вы успешно приняты на стажировку!',
+      date: new Date(),
+    },
+    {
+      id: 1,
+      user_id: 3,
+      message: 'Вы успешно приняты на стажировку!',
+      date: new Date(),
+    },
+  ];
 }

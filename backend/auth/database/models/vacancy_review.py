@@ -2,7 +2,6 @@ from sqlalchemy import ForeignKey, Integer, Column, Text
 from sqlalchemy.orm import relationship
 
 from database.base import Base
-from database.models.intern import Intern
 from database.models.vacancy import Vacancy
 
 
@@ -14,6 +13,5 @@ class VacancyReview(Base):
 
     vacancy_id = Column(Integer, ForeignKey("vacancies.id"))
     intern_id = Column(Integer, ForeignKey("interns.id"))
-    
+
     vacancy = relationship(Vacancy)
-    intern = relationship(Intern)

@@ -15,11 +15,11 @@ export class VacancyService {
   GetAllBranchs() {
     return this.http.get(`${URL}/get_all_branchs`);
   }
-  GetAllRoles() : Observable<any> {
+  GetAllRoles(): Observable<any> {
     return of([
-      { name: 'Куратор' },
-      { name: 'Наставник' },
-      { name: 'Кадровый специалист' },
+      { name: 'Куратор', id: 2 },
+      { name: 'Наставник', id: 1 },
+      { name: 'Кадровый специалист', id: 3 },
     ]);
   }
   GetAllTrainingDirections() {

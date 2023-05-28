@@ -34,22 +34,26 @@ import { Сitizenship } from 'src/app/shared/models/citizenship.model';
 import { FullCity } from 'src/app/shared/models/city.model';
 import { University } from 'src/app/shared/models/university.model';
 import { Course } from 'src/app/shared/models/course.model';
-import { SignupModel } from 'src/app/shared/models/user.model';
+import {
+  SignupHiddenModel,
+  SignupModel,
+} from 'src/app/shared/models/user.model';
 import { Direction } from 'src/app/shared/models/direction.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { VacancyService } from 'src/app/shared/services/vacancy.service';
 
 @Component({
   selector: 'app-hidden-password',
   templateUrl: './hidden-password.component.html',
-  styleUrls: ['../auth.component.scss','./hidden-password.component.scss']
+  styleUrls: ['../auth.component.scss', './hidden-password.component.scss'],
 })
-export class HiddenPasswordComponent implements OnInit{
+export class HiddenPasswordComponent implements OnInit {
   constructor(
     private constService: ConstService,
     private authService: AuthService,
+    private route: ActivatedRoute,
     private router: Router,
     private _snackBar: MatSnackBar,
     private vacancyService: VacancyService
@@ -61,6 +65,8 @@ export class HiddenPasswordComponent implements OnInit{
   label_password = 'Повторите пароль';
   type_password = 'password2';
   nameButton = 'Зарегистрироваться';
+  role_id = 0;
+  code = '';
 
   regions: Region[] = [];
   countries: Сitizenship[] = [];
@@ -163,6 +169,12 @@ export class HiddenPasswordComponent implements OnInit{
   regionCityInputs = [this.regionInput, this.cityInput];
 
   ngOnInit() {
+    this.route.queryParams.subscribe((params: Params) => {
+      this.role_id = params['role_id'] ? params['role_id'] : 0;
+      if (this.isCurator())this.instituteInput.formControl.setValue('t')
+      if (this.isMentorHR())this.directionInput.formControl.setValue('t')
+      this.code = params['code'] ? params['code'] : '';
+    });
     this.constService.GetAllRegions().subscribe((regions) => {
       this.regions = regions as Region[];
       this.regionInput.label = 'Регион';
@@ -182,11 +194,14 @@ export class HiddenPasswordComponent implements OnInit{
       this.cityInput.values = this.compile_values(CITY, this.cities);
     });
     this.vacancyService.GetAllTrainingDirections().subscribe((directions) => {
-      this.directions = directions as any[]
+      this.directions = directions as any[];
       this.directionInput.label = 'Направление';
       this.directionInput.icon = 'keyboard_arrow_down';
-      this.directionInput.values = this.compile_values(DIRECTION, this.directions)
-    })
+      this.directionInput.values = this.compile_values(
+        DIRECTION,
+        this.directions
+      );
+    });
     this.vacancyService.GetAllOrganizations().subscribe((institutes) => {
       this.institutes = institutes as University[];
       this.instituteInput.label = 'Организация';
@@ -196,7 +211,6 @@ export class HiddenPasswordComponent implements OnInit{
         this.institutes
       );
     });
-
   }
 
   private _filterValues(value: any, items: any[]) {
@@ -205,11 +219,11 @@ export class HiddenPasswordComponent implements OnInit{
     );
   }
 
-  isCurator(){
-    return true
+  isCurator() {
+    return this.role_id == 2;
   }
-  isMentorHR(){
-    return true
+  isMentorHR() {
+    return this.role_id == 1 || this.role_id == 3;
   }
 
   compile_values(name: string, arr: any[]) {
@@ -253,7 +267,6 @@ export class HiddenPasswordComponent implements OnInit{
       patronymic,
       date_of_birth,
       country,
-      region,
       city,
       phone,
       institute,
@@ -265,9 +278,8 @@ export class HiddenPasswordComponent implements OnInit{
     let cityId = fetch_id(this.cities, city);
     let countryId = fetch_id(this.countries, country);
     let instituteId = fetch_id(this.institutes, institute);
-    let regionId = fetch_id(this.regions, region);
     let directionId = fetch_id(this.directions, direction);
-    const user = new SignupModel(
+    const user = new SignupHiddenModel(
       firstname,
       lastname,
       patronymic,
@@ -275,17 +287,17 @@ export class HiddenPasswordComponent implements OnInit{
       phone,
       password,
       email,
-      cityId ? cityId : city,
-      countryId ? countryId : country,
-      instituteId ? instituteId : institute,
-      regionId ? regionId : region,
-      directionId ? directionId : direction
+      cityId,
+      countryId,
+      this.code,
+      instituteId ? instituteId : undefined,
+      directionId ? directionId : undefined
     );
     showMessage(this._snackBar, 'Происходит регистрация...');
     let sub = this.authService.Authed.subscribe((res) => {
       sub.unsubscribe();
       if (res.res) {
-        this.router.navigate(['/system/main-page'], {
+        this.router.navigate(['/system/profile'], {
           queryParams: {
             auth: true,
           },
@@ -298,6 +310,6 @@ export class HiddenPasswordComponent implements OnInit{
         }
       }
     });
-    this.authService.Signup(user);
+    this.authService.SignupHidden(user);
   }
 }

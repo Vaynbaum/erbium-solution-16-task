@@ -7,9 +7,10 @@ from database.models.condition import Condition
 from database.models.employment_type import EmploymentType
 from database.models.hr import HR
 from database.models.mentor import Mentor
-from database.models.organization import Organization
 from database.models.requirement import Requirement
+from database.models.selection import Selection
 from database.models.skill_vacancy import SkillVacancy
+from database.models.vacancy_status import VacancyStatus
 from database.models.work_experience import WorkExperience
 from database.models.work_schedule import WorkSchedule
 
@@ -31,15 +32,18 @@ class Vacancy(Base):
     hr_creater_id = Column(Integer, ForeignKey("hrs.id"))
     mentor_id = Column(Integer, ForeignKey("mentors.id"))
     work_experience_id = Column(Integer, ForeignKey("work_experiences.id"))
+    status_id = Column(Integer, ForeignKey("vacancy_statuses.id"))
+    cnt_intern = Column(Integer, nullable=True, default=0)
 
     work_schedule = relationship(WorkSchedule)
-    organization = relationship(Organization)
     employment_type = relationship(EmploymentType)
     hr_creater = relationship(HR)
     mentor = relationship(Mentor)
     work_experience = relationship(WorkExperience)
+    status = relationship(VacancyStatus)
 
-    skills = relationship(SkillVacancy, backref="vacancy")
-    requirements = relationship(Requirement)
-    conditions = relationship(Condition)
-    duties = relationship(Duty)
+    skills = relationship(SkillVacancy, backref="vacancy", cascade="all,delete")
+    requirements = relationship(Requirement, backref="vacancy", cascade="all,delete")
+    conditions = relationship(Condition, backref="vacancy", cascade="all,delete")
+    duties = relationship(Duty, backref="vacancy", cascade="all,delete")
+    selections = relationship(Selection, backref="vacancy", cascade="all,delete")

@@ -1,3 +1,4 @@
+import { Organization } from './organization.model';
 import { Сitizenship } from './citizenship.model';
 import { FullCity } from './city.model';
 import { Curator } from './curator.model';
@@ -25,6 +26,22 @@ export class SignupModel {
     private course?: any,
     private region?: any,
     private direction?: any
+  ) {}
+}
+export class SignupHiddenModel {
+  constructor(
+    private firstname: any,
+    private lastname: any,
+    private patronymic: any,
+    private birthdate: any,
+    private phone: any,
+    private password: any,
+    private email: any,
+    private city_id: any,
+    private citizenship_id: any,
+    private code: any,
+    private organization_id?: any,
+    private training_direction_id?: any,
   ) {}
 }
 
@@ -65,6 +82,6 @@ export class FullUser {
     public hr?: HR,
     public curator?: Curator,
     public mentor?: Mentor,
-    public rating?:number
+    public rating?: number
   ) {}
 }

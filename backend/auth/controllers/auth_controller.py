@@ -1,5 +1,6 @@
 import asyncio
 from datetime import datetime, timedelta
+from fastapi import BackgroundTasks
 from jose import jwt
 import requests
 from sqlalchemy.orm import Session
@@ -36,12 +37,16 @@ from common.phrases import (
     URL_SEND_SUCCESS,
 )
 from config import settings
+from controllers.mailer_controller import MailerController
 from database.db_controller import DatabaseController
 from database.models.citizenship import Citizenship
 from database.models.city import City
 from database.models.course import Course
+from database.models.curator import Curator
 from database.models.direction import Direction
+from database.models.hr import HR
 from database.models.intern import Intern
+from database.models.mentor import Mentor
 from database.models.recovery import Recovery
 from database.models.region import Region
 from database.models.university import University
@@ -54,7 +59,7 @@ from exceptions.signup_exception import SignupException
 from exceptions.token_exception import TokenException
 from models.message import MessageModel
 from models.token import Tokens
-from models.user import SigninModel, SignupModel
+from models.user import SigninModel, SignupHiddenModel, SignupModel
 
 
 class AuthController:
@@ -203,6 +208,71 @@ class AuthController:
             self.__database_controller.delete_recover_data(session, code=code)
         except:
             print(RECOVERY_DELETE_FAILED)
+
+    def signup_to_not_intern(
+        self,
+        session: Session,
+        user_details: SignupHiddenModel,
+        background_tasks: BackgroundTasks,
+        mailer_controller: MailerController,
+    ):
+        inv_data = self.__database_controller.get_inv_data(session, user_details.code)
+        if inv_data:
+            if self.__database_controller.get_user_by_email(
+                session, user_details.email
+            ):
+                raise SignupException(ACCOUNT_EXISTS)
+            nickname = requests.post(
+                "https://generatom.com/ajax",
+                {
+                    "type": "generatom",
+                    "foreign_words": "en",
+                    "keys": "slesh",
+                    "register_name": "lc",
+                    "word": user_details.email.split("@")[0],
+                },
+            )
+            password = self.__get_password_hash(user_details.password)
+            role_id = inv_data.role_id
+            user = User(
+                email=user_details.email,
+                phone=user_details.phone,
+                password=password,
+                firstname=user_details.firstname,
+                lastname=user_details.lastname,
+                patronymic=user_details.patronymic,
+                birthdate=user_details.birthdate,
+                city_id=user_details.city_id,
+                nickname=nickname.text,
+                citizenship_id=user_details.citizenship_id,
+                role_id=role_id,
+            )
+            try:
+                if role_id == 1:
+                    user_to_db = Mentor(
+                        user=user,
+                        organization_id=user_details.organization_id,
+                    )
+                elif role_id == 3:
+                    user_to_db = HR(
+                        user=user,
+                        organization_id=user_details.organization_id,
+                    )
+                else:
+                    user_to_db = Curator(
+                        user=user,
+                        training_direction_id=user_details.training_direction_id,
+                    )
+                res = self.__database_controller.put_user(session, user_to_db)
+            except DBException:
+                raise SignupException(FAILED_SIGNUP)
+            background_tasks.add_task(
+                mailer_controller.send_greeting,
+                user_details.email,
+                user_details.firstname,
+            )
+            return self.__generate_tokens(res.id, role_id)
+        raise ResetException(CODE_INVALID)
 
     def __decode_token(self, token: str, scope: str) -> str:
         try:

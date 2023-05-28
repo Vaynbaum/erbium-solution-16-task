@@ -15,7 +15,7 @@ from exceptions.signup_exception import SignupException
 from exceptions.token_exception import TokenException
 from models.message import MessageModel
 from models.token import Tokens
-from models.user import SigninModel, SignupModel
+from models.user import SigninModel, SignupHiddenModel, SignupModel
 
 mailer_controller = MailerController()
 auth_controller = AuthController()
@@ -100,5 +100,19 @@ async def reset_password(
 ):
     try:
         return auth_controller.reset_password(session, code, new_password)
+    except ResetException as e:
+        raise HTTPException(status_code=400, detail=e.message)
+
+
+@app.post("/signup_to_not_intern")
+async def signup_to_not_intern(
+    user: SignupHiddenModel,
+    background_tasks: BackgroundTasks,
+    session: Session = Depends(get_db),
+):
+    try:
+        return auth_controller.signup_to_not_intern(
+            session, user, background_tasks, mailer_controller
+        )
     except ResetException as e:
         raise HTTPException(status_code=400, detail=e.message)

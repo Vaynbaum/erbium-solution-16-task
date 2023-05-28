@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { SigninModel, SignupModel } from '../models/user.model';
+import {
+  SigninModel,
+  SignupHiddenModel,
+  SignupModel,
+} from '../models/user.model';
 import { CookieService } from './cookie.service';
 import { TokensModel } from '../models/tokens.model';
 import { Router } from '@angular/router';
@@ -61,6 +65,20 @@ export class AuthService {
   Signup(signupModel: SignupModel) {
     this.httpClient
       .post(`${environment.BACKEND_URL}/signup_to_intern`, signupModel)
+      .subscribe(
+        (res: any) => {
+          this.SaveTokens(res as TokensModel);
+          this.Authed.emit({ res: true });
+        },
+        (err: any) => {
+          this.Authed.emit({ res: false, msg: err });
+        }
+      );
+  }
+
+  SignupHidden(signupModel: SignupHiddenModel) {
+    this.httpClient
+      .post(`${environment.BACKEND_URL}/signup_to_not_intern`, signupModel)
       .subscribe(
         (res: any) => {
           this.SaveTokens(res as TokensModel);

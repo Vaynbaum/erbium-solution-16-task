@@ -5,7 +5,6 @@ from database.base import Base
 from database.models.branch import Branch
 from database.models.organization_review import OrganizationReview
 from database.models.organization_type import OrganizationType
-from database.models.training_direction import TrainingDirection
 
 
 class Organization(Base):
@@ -24,7 +23,8 @@ class Organization(Base):
     branch_id = Column(Integer, ForeignKey("branchs.id"))
     type_id = Column(Integer, ForeignKey("organization_types.id"))
 
-    training_direction = relationship(TrainingDirection)
     type = relationship(OrganizationType)
     branch = relationship(Branch)
     reviews = relationship(OrganizationReview)
+    mentors = relationship("Mentor", backref="organization")
+    vacancies = relationship("Vacancy", backref="organization", cascade="all,delete")

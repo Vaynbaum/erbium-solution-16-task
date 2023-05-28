@@ -5,7 +5,7 @@
 -- Dumped from database version 14.7
 -- Dumped by pg_dump version 14.1
 
--- Started on 2023-05-28 13:58:34
+-- Started on 2023-05-28 23:35:38
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -52,7 +52,7 @@ CREATE SEQUENCE public.basic_test_statuses_id_seq
 ALTER TABLE public.basic_test_statuses_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3699 (class 0 OID 0)
+-- TOC entry 3707 (class 0 OID 0)
 -- Dependencies: 274
 -- Name: basic_test_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -96,7 +96,7 @@ CREATE SEQUENCE public.basic_tests_id_seq
 ALTER TABLE public.basic_tests_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3700 (class 0 OID 0)
+-- TOC entry 3708 (class 0 OID 0)
 -- Dependencies: 284
 -- Name: basic_tests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -134,7 +134,7 @@ CREATE SEQUENCE public.branchs_id_seq
 ALTER TABLE public.branchs_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3701 (class 0 OID 0)
+-- TOC entry 3709 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: branchs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -175,7 +175,7 @@ CREATE SEQUENCE public.championships_id_seq
 ALTER TABLE public.championships_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3702 (class 0 OID 0)
+-- TOC entry 3710 (class 0 OID 0)
 -- Dependencies: 286
 -- Name: championships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -214,7 +214,7 @@ CREATE SEQUENCE public.cities_id_seq
 ALTER TABLE public.cities_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3703 (class 0 OID 0)
+-- TOC entry 3711 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: cities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -252,7 +252,7 @@ CREATE SEQUENCE public.citizenships_id_seq
 ALTER TABLE public.citizenships_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3704 (class 0 OID 0)
+-- TOC entry 3712 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: citizenships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -291,7 +291,7 @@ CREATE SEQUENCE public.conditions_id_seq
 ALTER TABLE public.conditions_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3705 (class 0 OID 0)
+-- TOC entry 3713 (class 0 OID 0)
 -- Dependencies: 259
 -- Name: conditions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -329,7 +329,7 @@ CREATE SEQUENCE public.courses_id_seq
 ALTER TABLE public.courses_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3706 (class 0 OID 0)
+-- TOC entry 3714 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: courses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -380,7 +380,7 @@ CREATE SEQUENCE public.directions_id_seq
 ALTER TABLE public.directions_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3707 (class 0 OID 0)
+-- TOC entry 3715 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: directions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -419,7 +419,7 @@ CREATE SEQUENCE public.duties_id_seq
 ALTER TABLE public.duties_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3708 (class 0 OID 0)
+-- TOC entry 3716 (class 0 OID 0)
 -- Dependencies: 261
 -- Name: duties_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -457,7 +457,7 @@ CREATE SEQUENCE public.employment_types_id_seq
 ALTER TABLE public.employment_types_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3709 (class 0 OID 0)
+-- TOC entry 3717 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: employment_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -498,7 +498,7 @@ CREATE SEQUENCE public.events_id_seq
 ALTER TABLE public.events_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3710 (class 0 OID 0)
+-- TOC entry 3718 (class 0 OID 0)
 -- Dependencies: 249
 -- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -540,7 +540,7 @@ CREATE SEQUENCE public.history_work_experiences_id_seq
 ALTER TABLE public.history_work_experiences_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3711 (class 0 OID 0)
+-- TOC entry 3719 (class 0 OID 0)
 -- Dependencies: 267
 -- Name: history_work_experiences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -582,8 +582,7 @@ CREATE TABLE public.interns (
     url_portfolio character varying(255),
     organizations character varying(255),
     work_experience_id integer,
-    organization_id integer,
-    is_basic_tests boolean
+    organization_id integer
 );
 
 
@@ -619,7 +618,7 @@ CREATE SEQUENCE public.internship_statuses_id_seq
 ALTER TABLE public.internship_statuses_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3712 (class 0 OID 0)
+-- TOC entry 3720 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: internship_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -665,13 +664,28 @@ CREATE SEQUENCE public.interviews_id_seq
 ALTER TABLE public.interviews_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3713 (class 0 OID 0)
+-- TOC entry 3721 (class 0 OID 0)
 -- Dependencies: 294
 -- Name: interviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
 
 ALTER SEQUENCE public.interviews_id_seq OWNED BY public.interviews.id;
 
+
+--
+-- TOC entry 305 (class 1259 OID 17328)
+-- Name: invations; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+--
+
+CREATE TABLE public.invations (
+    code character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    role_id integer,
+    created timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.invations OWNER TO hack_db_3kwr_user;
 
 --
 -- TOC entry 273 (class 1259 OID 16967)
@@ -716,7 +730,7 @@ CREATE SEQUENCE public.languages_id_seq
 ALTER TABLE public.languages_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3714 (class 0 OID 0)
+-- TOC entry 3722 (class 0 OID 0)
 -- Dependencies: 271
 -- Name: languages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -757,7 +771,7 @@ CREATE SEQUENCE public.mentor_reviews_id_seq
 ALTER TABLE public.mentor_reviews_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3715 (class 0 OID 0)
+-- TOC entry 3723 (class 0 OID 0)
 -- Dependencies: 297
 -- Name: mentor_reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -808,7 +822,7 @@ CREATE SEQUENCE public.metros_id_seq
 ALTER TABLE public.metros_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3716 (class 0 OID 0)
+-- TOC entry 3724 (class 0 OID 0)
 -- Dependencies: 269
 -- Name: metros_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -849,7 +863,7 @@ CREATE SEQUENCE public.organization_reviews_id_seq
 ALTER TABLE public.organization_reviews_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3717 (class 0 OID 0)
+-- TOC entry 3725 (class 0 OID 0)
 -- Dependencies: 254
 -- Name: organization_reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -887,7 +901,7 @@ CREATE SEQUENCE public.organization_types_id_seq
 ALTER TABLE public.organization_types_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3718 (class 0 OID 0)
+-- TOC entry 3726 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: organization_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -935,7 +949,7 @@ CREATE SEQUENCE public.organizations_id_seq
 ALTER TABLE public.organizations_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3719 (class 0 OID 0)
+-- TOC entry 3727 (class 0 OID 0)
 -- Dependencies: 246
 -- Name: organizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -992,7 +1006,7 @@ CREATE SEQUENCE public.presences_id_seq
 ALTER TABLE public.presences_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3720 (class 0 OID 0)
+-- TOC entry 3728 (class 0 OID 0)
 -- Dependencies: 303
 -- Name: presences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1044,7 +1058,7 @@ CREATE SEQUENCE public.regions_id_seq
 ALTER TABLE public.regions_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3721 (class 0 OID 0)
+-- TOC entry 3729 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: regions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1083,7 +1097,7 @@ CREATE SEQUENCE public.requirements_id_seq
 ALTER TABLE public.requirements_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3722 (class 0 OID 0)
+-- TOC entry 3730 (class 0 OID 0)
 -- Dependencies: 263
 -- Name: requirements_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1121,7 +1135,7 @@ CREATE SEQUENCE public.response_statuses_id_seq
 ALTER TABLE public.response_statuses_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3723 (class 0 OID 0)
+-- TOC entry 3731 (class 0 OID 0)
 -- Dependencies: 280
 -- Name: response_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1162,7 +1176,7 @@ CREATE SEQUENCE public.responses_id_seq
 ALTER TABLE public.responses_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3724 (class 0 OID 0)
+-- TOC entry 3732 (class 0 OID 0)
 -- Dependencies: 290
 -- Name: responses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1200,7 +1214,7 @@ CREATE SEQUENCE public.roles_id_seq
 ALTER TABLE public.roles_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3725 (class 0 OID 0)
+-- TOC entry 3733 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1241,7 +1255,7 @@ CREATE SEQUENCE public.scholls_id_seq
 ALTER TABLE public.scholls_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3726 (class 0 OID 0)
+-- TOC entry 3734 (class 0 OID 0)
 -- Dependencies: 288
 -- Name: scholls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1295,7 +1309,7 @@ CREATE SEQUENCE public.selections_id_seq
 ALTER TABLE public.selections_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3727 (class 0 OID 0)
+-- TOC entry 3735 (class 0 OID 0)
 -- Dependencies: 282
 -- Name: selections_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1359,7 +1373,7 @@ CREATE SEQUENCE public.skills_id_seq
 ALTER TABLE public.skills_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3728 (class 0 OID 0)
+-- TOC entry 3736 (class 0 OID 0)
 -- Dependencies: 244
 -- Name: skills_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1402,7 +1416,7 @@ CREATE SEQUENCE public.speakers_id_seq
 ALTER TABLE public.speakers_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3729 (class 0 OID 0)
+-- TOC entry 3737 (class 0 OID 0)
 -- Dependencies: 242
 -- Name: speakers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1440,7 +1454,7 @@ CREATE SEQUENCE public.stages_id_seq
 ALTER TABLE public.stages_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3730 (class 0 OID 0)
+-- TOC entry 3738 (class 0 OID 0)
 -- Dependencies: 278
 -- Name: stages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1481,7 +1495,7 @@ CREATE SEQUENCE public.tasks_id_seq
 ALTER TABLE public.tasks_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3731 (class 0 OID 0)
+-- TOC entry 3739 (class 0 OID 0)
 -- Dependencies: 299
 -- Name: tasks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1519,7 +1533,7 @@ CREATE SEQUENCE public.training_directions_id_seq
 ALTER TABLE public.training_directions_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3732 (class 0 OID 0)
+-- TOC entry 3740 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: training_directions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1557,7 +1571,7 @@ CREATE SEQUENCE public.type_basic_tests_id_seq
 ALTER TABLE public.type_basic_tests_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3733 (class 0 OID 0)
+-- TOC entry 3741 (class 0 OID 0)
 -- Dependencies: 276
 -- Name: type_basic_tests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1595,7 +1609,7 @@ CREATE SEQUENCE public.type_interviews_id_seq
 ALTER TABLE public.type_interviews_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3734 (class 0 OID 0)
+-- TOC entry 3742 (class 0 OID 0)
 -- Dependencies: 292
 -- Name: type_interviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1635,7 +1649,7 @@ CREATE SEQUENCE public.universities_id_seq
 ALTER TABLE public.universities_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3735 (class 0 OID 0)
+-- TOC entry 3743 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: universities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1686,7 +1700,7 @@ CREATE SEQUENCE public.users_id_seq
 ALTER TABLE public.users_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3736 (class 0 OID 0)
+-- TOC entry 3744 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1738,7 +1752,7 @@ CREATE SEQUENCE public.vacancies_id_seq
 ALTER TABLE public.vacancies_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3737 (class 0 OID 0)
+-- TOC entry 3745 (class 0 OID 0)
 -- Dependencies: 256
 -- Name: vacancies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1779,7 +1793,7 @@ CREATE SEQUENCE public.vacancy_reviews_id_seq
 ALTER TABLE public.vacancy_reviews_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3738 (class 0 OID 0)
+-- TOC entry 3746 (class 0 OID 0)
 -- Dependencies: 265
 -- Name: vacancy_reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1817,7 +1831,7 @@ CREATE SEQUENCE public.vacancy_statuses_id_seq
 ALTER TABLE public.vacancy_statuses_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3739 (class 0 OID 0)
+-- TOC entry 3747 (class 0 OID 0)
 -- Dependencies: 301
 -- Name: vacancy_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1855,7 +1869,7 @@ CREATE SEQUENCE public.work_experiences_id_seq
 ALTER TABLE public.work_experiences_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3740 (class 0 OID 0)
+-- TOC entry 3748 (class 0 OID 0)
 -- Dependencies: 238
 -- Name: work_experiences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1893,7 +1907,7 @@ CREATE SEQUENCE public.work_schedules_id_seq
 ALTER TABLE public.work_schedules_id_seq OWNER TO hack_db_3kwr_user;
 
 --
--- TOC entry 3741 (class 0 OID 0)
+-- TOC entry 3749 (class 0 OID 0)
 -- Dependencies: 240
 -- Name: work_schedules_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -1902,7 +1916,7 @@ ALTER SEQUENCE public.work_schedules_id_seq OWNED BY public.work_schedules.id;
 
 
 --
--- TOC entry 3265 (class 2604 OID 17001)
+-- TOC entry 3269 (class 2604 OID 17001)
 -- Name: basic_test_statuses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1910,7 +1924,7 @@ ALTER TABLE ONLY public.basic_test_statuses ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
--- TOC entry 3270 (class 2604 OID 17051)
+-- TOC entry 3274 (class 2604 OID 17051)
 -- Name: basic_tests id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1918,7 +1932,7 @@ ALTER TABLE ONLY public.basic_tests ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 3243 (class 2604 OID 16629)
+-- TOC entry 3247 (class 2604 OID 16629)
 -- Name: branchs id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1926,7 +1940,7 @@ ALTER TABLE ONLY public.branchs ALTER COLUMN id SET DEFAULT nextval('public.bran
 
 
 --
--- TOC entry 3271 (class 2604 OID 17073)
+-- TOC entry 3275 (class 2604 OID 17073)
 -- Name: championships id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1934,7 +1948,7 @@ ALTER TABLE ONLY public.championships ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 3240 (class 2604 OID 16547)
+-- TOC entry 3244 (class 2604 OID 16547)
 -- Name: cities id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1942,7 +1956,7 @@ ALTER TABLE ONLY public.cities ALTER COLUMN id SET DEFAULT nextval('public.citie
 
 
 --
--- TOC entry 3234 (class 2604 OID 16505)
+-- TOC entry 3238 (class 2604 OID 16505)
 -- Name: citizenships id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1950,7 +1964,7 @@ ALTER TABLE ONLY public.citizenships ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
--- TOC entry 3258 (class 2604 OID 16858)
+-- TOC entry 3262 (class 2604 OID 16858)
 -- Name: conditions id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1958,7 +1972,7 @@ ALTER TABLE ONLY public.conditions ALTER COLUMN id SET DEFAULT nextval('public.c
 
 
 --
--- TOC entry 3236 (class 2604 OID 16519)
+-- TOC entry 3240 (class 2604 OID 16519)
 -- Name: courses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1966,7 +1980,7 @@ ALTER TABLE ONLY public.courses ALTER COLUMN id SET DEFAULT nextval('public.cour
 
 
 --
--- TOC entry 3237 (class 2604 OID 16526)
+-- TOC entry 3241 (class 2604 OID 16526)
 -- Name: directions id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1974,7 +1988,7 @@ ALTER TABLE ONLY public.directions ALTER COLUMN id SET DEFAULT nextval('public.d
 
 
 --
--- TOC entry 3259 (class 2604 OID 16870)
+-- TOC entry 3263 (class 2604 OID 16870)
 -- Name: duties id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1982,7 +1996,7 @@ ALTER TABLE ONLY public.duties ALTER COLUMN id SET DEFAULT nextval('public.dutie
 
 
 --
--- TOC entry 3244 (class 2604 OID 16636)
+-- TOC entry 3248 (class 2604 OID 16636)
 -- Name: employment_types id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1990,7 +2004,7 @@ ALTER TABLE ONLY public.employment_types ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 3252 (class 2604 OID 16726)
+-- TOC entry 3256 (class 2604 OID 16726)
 -- Name: events id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -1998,7 +2012,7 @@ ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.event
 
 
 --
--- TOC entry 3262 (class 2604 OID 16921)
+-- TOC entry 3266 (class 2604 OID 16921)
 -- Name: history_work_experiences id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2006,7 +2020,7 @@ ALTER TABLE ONLY public.history_work_experiences ALTER COLUMN id SET DEFAULT nex
 
 
 --
--- TOC entry 3238 (class 2604 OID 16533)
+-- TOC entry 3242 (class 2604 OID 16533)
 -- Name: internship_statuses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2014,7 +2028,7 @@ ALTER TABLE ONLY public.internship_statuses ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
--- TOC entry 3276 (class 2604 OID 17127)
+-- TOC entry 3280 (class 2604 OID 17127)
 -- Name: interviews id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2022,7 +2036,7 @@ ALTER TABLE ONLY public.interviews ALTER COLUMN id SET DEFAULT nextval('public.i
 
 
 --
--- TOC entry 3264 (class 2604 OID 16964)
+-- TOC entry 3268 (class 2604 OID 16964)
 -- Name: languages id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2030,7 +2044,7 @@ ALTER TABLE ONLY public.languages ALTER COLUMN id SET DEFAULT nextval('public.la
 
 
 --
--- TOC entry 3277 (class 2604 OID 17200)
+-- TOC entry 3281 (class 2604 OID 17200)
 -- Name: mentor_reviews id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2038,7 +2052,7 @@ ALTER TABLE ONLY public.mentor_reviews ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 3263 (class 2604 OID 16935)
+-- TOC entry 3267 (class 2604 OID 16935)
 -- Name: metros id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2046,7 +2060,7 @@ ALTER TABLE ONLY public.metros ALTER COLUMN id SET DEFAULT nextval('public.metro
 
 
 --
--- TOC entry 3253 (class 2604 OID 16785)
+-- TOC entry 3257 (class 2604 OID 16785)
 -- Name: organization_reviews id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2054,7 +2068,7 @@ ALTER TABLE ONLY public.organization_reviews ALTER COLUMN id SET DEFAULT nextval
 
 
 --
--- TOC entry 3245 (class 2604 OID 16643)
+-- TOC entry 3249 (class 2604 OID 16643)
 -- Name: organization_types id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2062,7 +2076,7 @@ ALTER TABLE ONLY public.organization_types ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
--- TOC entry 3251 (class 2604 OID 16687)
+-- TOC entry 3255 (class 2604 OID 16687)
 -- Name: organizations id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2070,7 +2084,7 @@ ALTER TABLE ONLY public.organizations ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 3280 (class 2604 OID 17295)
+-- TOC entry 3284 (class 2604 OID 17295)
 -- Name: presences id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2078,7 +2092,7 @@ ALTER TABLE ONLY public.presences ALTER COLUMN id SET DEFAULT nextval('public.pr
 
 
 --
--- TOC entry 3235 (class 2604 OID 16512)
+-- TOC entry 3239 (class 2604 OID 16512)
 -- Name: regions id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2086,7 +2100,7 @@ ALTER TABLE ONLY public.regions ALTER COLUMN id SET DEFAULT nextval('public.regi
 
 
 --
--- TOC entry 3260 (class 2604 OID 16882)
+-- TOC entry 3264 (class 2604 OID 16882)
 -- Name: requirements id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2094,7 +2108,7 @@ ALTER TABLE ONLY public.requirements ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
--- TOC entry 3268 (class 2604 OID 17022)
+-- TOC entry 3272 (class 2604 OID 17022)
 -- Name: response_statuses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2102,7 +2116,7 @@ ALTER TABLE ONLY public.response_statuses ALTER COLUMN id SET DEFAULT nextval('p
 
 
 --
--- TOC entry 3273 (class 2604 OID 17101)
+-- TOC entry 3277 (class 2604 OID 17101)
 -- Name: responses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2110,7 +2124,7 @@ ALTER TABLE ONLY public.responses ALTER COLUMN id SET DEFAULT nextval('public.re
 
 
 --
--- TOC entry 3233 (class 2604 OID 16398)
+-- TOC entry 3237 (class 2604 OID 16398)
 -- Name: roles id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2118,7 +2132,7 @@ ALTER TABLE ONLY public.roles ALTER COLUMN id SET DEFAULT nextval('public.roles_
 
 
 --
--- TOC entry 3272 (class 2604 OID 17087)
+-- TOC entry 3276 (class 2604 OID 17087)
 -- Name: scholls id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2126,7 +2140,7 @@ ALTER TABLE ONLY public.scholls ALTER COLUMN id SET DEFAULT nextval('public.scho
 
 
 --
--- TOC entry 3269 (class 2604 OID 17029)
+-- TOC entry 3273 (class 2604 OID 17029)
 -- Name: selections id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2134,7 +2148,7 @@ ALTER TABLE ONLY public.selections ALTER COLUMN id SET DEFAULT nextval('public.s
 
 
 --
--- TOC entry 3250 (class 2604 OID 16680)
+-- TOC entry 3254 (class 2604 OID 16680)
 -- Name: skills id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2142,7 +2156,7 @@ ALTER TABLE ONLY public.skills ALTER COLUMN id SET DEFAULT nextval('public.skill
 
 
 --
--- TOC entry 3249 (class 2604 OID 16671)
+-- TOC entry 3253 (class 2604 OID 16671)
 -- Name: speakers id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2150,7 +2164,7 @@ ALTER TABLE ONLY public.speakers ALTER COLUMN id SET DEFAULT nextval('public.spe
 
 
 --
--- TOC entry 3267 (class 2604 OID 17015)
+-- TOC entry 3271 (class 2604 OID 17015)
 -- Name: stages id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2158,7 +2172,7 @@ ALTER TABLE ONLY public.stages ALTER COLUMN id SET DEFAULT nextval('public.stage
 
 
 --
--- TOC entry 3278 (class 2604 OID 17221)
+-- TOC entry 3282 (class 2604 OID 17221)
 -- Name: tasks id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2166,7 +2180,7 @@ ALTER TABLE ONLY public.tasks ALTER COLUMN id SET DEFAULT nextval('public.tasks_
 
 
 --
--- TOC entry 3246 (class 2604 OID 16650)
+-- TOC entry 3250 (class 2604 OID 16650)
 -- Name: training_directions id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2174,7 +2188,7 @@ ALTER TABLE ONLY public.training_directions ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
--- TOC entry 3266 (class 2604 OID 17008)
+-- TOC entry 3270 (class 2604 OID 17008)
 -- Name: type_basic_tests id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2182,7 +2196,7 @@ ALTER TABLE ONLY public.type_basic_tests ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 3275 (class 2604 OID 17120)
+-- TOC entry 3279 (class 2604 OID 17120)
 -- Name: type_interviews id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2190,7 +2204,7 @@ ALTER TABLE ONLY public.type_interviews ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
--- TOC entry 3239 (class 2604 OID 16540)
+-- TOC entry 3243 (class 2604 OID 16540)
 -- Name: universities id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2198,7 +2212,7 @@ ALTER TABLE ONLY public.universities ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
--- TOC entry 3241 (class 2604 OID 16559)
+-- TOC entry 3245 (class 2604 OID 16559)
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2206,7 +2220,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
--- TOC entry 3254 (class 2604 OID 16804)
+-- TOC entry 3258 (class 2604 OID 16804)
 -- Name: vacancies id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2214,7 +2228,7 @@ ALTER TABLE ONLY public.vacancies ALTER COLUMN id SET DEFAULT nextval('public.va
 
 
 --
--- TOC entry 3261 (class 2604 OID 16894)
+-- TOC entry 3265 (class 2604 OID 16894)
 -- Name: vacancy_reviews id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2222,7 +2236,7 @@ ALTER TABLE ONLY public.vacancy_reviews ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
--- TOC entry 3279 (class 2604 OID 17243)
+-- TOC entry 3283 (class 2604 OID 17243)
 -- Name: vacancy_statuses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2230,7 +2244,7 @@ ALTER TABLE ONLY public.vacancy_statuses ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 3247 (class 2604 OID 16657)
+-- TOC entry 3251 (class 2604 OID 16657)
 -- Name: work_experiences id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2238,7 +2252,7 @@ ALTER TABLE ONLY public.work_experiences ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 3248 (class 2604 OID 16664)
+-- TOC entry 3252 (class 2604 OID 16664)
 -- Name: work_schedules id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -2246,7 +2260,7 @@ ALTER TABLE ONLY public.work_schedules ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 3663 (class 0 OID 16998)
+-- TOC entry 3670 (class 0 OID 16998)
 -- Dependencies: 275
 -- Data for Name: basic_test_statuses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -2259,7 +2273,7 @@ COPY public.basic_test_statuses (id, name) FROM stdin;
 
 
 --
--- TOC entry 3673 (class 0 OID 17048)
+-- TOC entry 3680 (class 0 OID 17048)
 -- Dependencies: 285
 -- Data for Name: basic_tests; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -2271,11 +2285,17 @@ COPY public.basic_tests (id, basic_test_status_id, type_basic_test_id, passed, v
 25	2	1	t	86	2023-05-27 20:18:34.831897	2023-09-09 20:18:34.831897	13
 26	3	2	f	43	2023-05-27 20:18:34.831897	2023-09-09 20:18:34.831897	13
 27	3	3	f	47	2023-05-27 20:18:34.831897	2023-09-09 20:18:34.831897	13
+30	2	3	t	84	2023-05-28 17:32:04.925324	2023-09-10 17:32:04.925324	14
+29	2	2	t	79	2023-05-28 17:32:04.925324	2023-09-10 17:32:04.925324	14
+28	3	1	f	42	2023-05-28 17:32:04.925324	2023-09-10 17:32:04.925324	14
+31	2	1	t	71	2023-05-28 17:55:40.822649	2023-09-10 17:55:40.822649	19
+32	2	2	t	96	2023-05-28 17:55:40.822649	2023-09-10 17:55:40.822649	19
+33	2	3	t	97	2023-05-28 17:55:40.822649	2023-09-10 17:55:40.822649	19
 \.
 
 
 --
--- TOC entry 3619 (class 0 OID 16626)
+-- TOC entry 3626 (class 0 OID 16626)
 -- Dependencies: 231
 -- Data for Name: branchs; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -2318,7 +2338,7 @@ COPY public.branchs (id, name) FROM stdin;
 
 
 --
--- TOC entry 3675 (class 0 OID 17070)
+-- TOC entry 3682 (class 0 OID 17070)
 -- Dependencies: 287
 -- Data for Name: championships; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -2328,7 +2348,7 @@ COPY public.championships (id, value, comment, selection_id, passed) FROM stdin;
 
 
 --
--- TOC entry 3613 (class 0 OID 16544)
+-- TOC entry 3620 (class 0 OID 16544)
 -- Dependencies: 225
 -- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10476,7 +10496,7 @@ COPY public.cities (id, name, region_id) FROM stdin;
 
 
 --
--- TOC entry 3601 (class 0 OID 16502)
+-- TOC entry 3608 (class 0 OID 16502)
 -- Dependencies: 213
 -- Data for Name: citizenships; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10492,7 +10512,7 @@ COPY public.citizenships (id, name) FROM stdin;
 
 
 --
--- TOC entry 3648 (class 0 OID 16855)
+-- TOC entry 3655 (class 0 OID 16855)
 -- Dependencies: 260
 -- Data for Name: conditions; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10517,7 +10537,7 @@ COPY public.conditions (id, name, vacancy_id) FROM stdin;
 
 
 --
--- TOC entry 3605 (class 0 OID 16516)
+-- TOC entry 3612 (class 0 OID 16516)
 -- Dependencies: 217
 -- Data for Name: courses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10533,7 +10553,7 @@ COPY public.courses (id, name) FROM stdin;
 
 
 --
--- TOC entry 3636 (class 0 OID 16707)
+-- TOC entry 3643 (class 0 OID 16707)
 -- Dependencies: 248
 -- Data for Name: curators; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10544,7 +10564,7 @@ COPY public.curators (id, training_direction_id) FROM stdin;
 
 
 --
--- TOC entry 3607 (class 0 OID 16523)
+-- TOC entry 3614 (class 0 OID 16523)
 -- Dependencies: 219
 -- Data for Name: directions; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10580,7 +10600,7 @@ COPY public.directions (id, name) FROM stdin;
 
 
 --
--- TOC entry 3650 (class 0 OID 16867)
+-- TOC entry 3657 (class 0 OID 16867)
 -- Dependencies: 262
 -- Data for Name: duties; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10597,7 +10617,7 @@ COPY public.duties (id, name, vacancy_id) FROM stdin;
 
 
 --
--- TOC entry 3621 (class 0 OID 16633)
+-- TOC entry 3628 (class 0 OID 16633)
 -- Dependencies: 233
 -- Data for Name: employment_types; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10612,7 +10632,7 @@ COPY public.employment_types (id, name) FROM stdin;
 
 
 --
--- TOC entry 3638 (class 0 OID 16723)
+-- TOC entry 3645 (class 0 OID 16723)
 -- Dependencies: 250
 -- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10622,7 +10642,7 @@ COPY public.events (id, name, description, date, speaker_id) FROM stdin;
 
 
 --
--- TOC entry 3656 (class 0 OID 16918)
+-- TOC entry 3663 (class 0 OID 16918)
 -- Dependencies: 268
 -- Data for Name: history_work_experiences; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10632,7 +10652,7 @@ COPY public.history_work_experiences (id, organization, post, year_begin, year_e
 
 
 --
--- TOC entry 3640 (class 0 OID 16751)
+-- TOC entry 3647 (class 0 OID 16751)
 -- Dependencies: 252
 -- Data for Name: hrs; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10643,20 +10663,26 @@ COPY public.hrs (id, organization_id) FROM stdin;
 
 
 --
--- TOC entry 3617 (class 0 OID 16589)
+-- TOC entry 3624 (class 0 OID 16589)
 -- Dependencies: 229
 -- Data for Name: interns; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
 
-COPY public.interns (id, university_id, course_id, direction_id, internship_status_id, training_direction_id, volunteering, about_me, branch_id, github, vk, portfolio, url_portfolio, organizations, work_experience_id, organization_id, is_basic_tests) FROM stdin;
-5	2	2	69	1	2	t	Городской волонтер, активист в вузе.	4	\N	\N	\N	\N	\N	3	\N	\N
-4	1	3	66	2	1	f	Люблю программировать, занимаюсь робототехникой	2	https://github.com/Vaynbaum	https://vk.com/mr.vaynbaum	\N	B/4_portfolio.pdf	НГТУ	3	2	\N
-13	8	3	66	1	\N	\N		\N				\N		2	\N	\N
+COPY public.interns (id, university_id, course_id, direction_id, internship_status_id, training_direction_id, volunteering, about_me, branch_id, github, vk, portfolio, url_portfolio, organizations, work_experience_id, organization_id) FROM stdin;
+5	2	2	69	1	2	t	Городской волонтер, активист в вузе.	4	\N	\N	\N	\N	\N	3	\N
+4	1	3	66	2	1	f	Люблю программировать, занимаюсь робототехникой	2	https://github.com/Vaynbaum	https://vk.com/mr.vaynbaum	\N	B/4_portfolio.pdf	НГТУ	3	2
+13	8	3	66	1	\N	\N		\N				\N		2	\N
+14	1	4	66	1	1	\N	Занимаюсь на базе института front-end разработкой. Участвовал в конкурсах. Опыт в разработке около двух лет.	2		https://vk.com/e.lipatov		\N	Friend Lee	3	2
+15	2	3	53	1	4	\N		11				\N		2	\N
+16	6	2	76	1	3	\N		4				\N	АНО "Моспром"	3	5
+17	1	3	74	1	1	\N		31				\N	АНО "Цифровая трансформация"	3	\N
+18	8	4	66	1	1	\N		5				\N	АНО "Агентство креативных индустрий"	3	3
+19	1	3	66	1	1	\N	Я макс	31	g	g	d	c/19_portfolio.pdf	Политех	3	2
 \.
 
 
 --
--- TOC entry 3609 (class 0 OID 16530)
+-- TOC entry 3616 (class 0 OID 16530)
 -- Dependencies: 221
 -- Data for Name: internship_statuses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10669,7 +10695,7 @@ COPY public.internship_statuses (id, name) FROM stdin;
 
 
 --
--- TOC entry 3683 (class 0 OID 17124)
+-- TOC entry 3690 (class 0 OID 17124)
 -- Dependencies: 295
 -- Data for Name: interviews; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10679,7 +10705,19 @@ COPY public.interviews (id, comment, name, answer, value, type_interview_id, sel
 
 
 --
--- TOC entry 3661 (class 0 OID 16967)
+-- TOC entry 3700 (class 0 OID 17328)
+-- Dependencies: 305
+-- Data for Name: invations; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+--
+
+COPY public.invations (code, email, role_id, created) FROM stdin;
+KpOQyeewlTmeVmED36jmXjpet4zehIfAhZh0xP7fvVE	maksim228775@gmail.com	2	2023-05-28 22:03:44.625175
+zQRnGU8RjBnQg5HB04tNNaY-kGSsWSNxoWuu1EA66DI	katsumiproo@gmail.com	3	2023-05-28 23:20:12.279153
+\.
+
+
+--
+-- TOC entry 3668 (class 0 OID 16967)
 -- Dependencies: 273
 -- Data for Name: language_interns; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10689,7 +10727,7 @@ COPY public.language_interns (language_id, intern_id) FROM stdin;
 
 
 --
--- TOC entry 3660 (class 0 OID 16961)
+-- TOC entry 3667 (class 0 OID 16961)
 -- Dependencies: 272
 -- Data for Name: languages; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10699,7 +10737,7 @@ COPY public.languages (id, name) FROM stdin;
 
 
 --
--- TOC entry 3686 (class 0 OID 17197)
+-- TOC entry 3693 (class 0 OID 17197)
 -- Dependencies: 298
 -- Data for Name: mentor_reviews; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10709,7 +10747,7 @@ COPY public.mentor_reviews (id, text, value, mentor_id, intern_id) FROM stdin;
 
 
 --
--- TOC entry 3641 (class 0 OID 16766)
+-- TOC entry 3648 (class 0 OID 16766)
 -- Dependencies: 253
 -- Data for Name: mentors; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10720,7 +10758,7 @@ COPY public.mentors (id, organization_id) FROM stdin;
 
 
 --
--- TOC entry 3658 (class 0 OID 16932)
+-- TOC entry 3665 (class 0 OID 16932)
 -- Dependencies: 270
 -- Data for Name: metros; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10751,23 +10789,23 @@ COPY public.metros (id, name) FROM stdin;
 
 
 --
--- TOC entry 3643 (class 0 OID 16782)
+-- TOC entry 3650 (class 0 OID 16782)
 -- Dependencies: 255
 -- Data for Name: organization_reviews; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
 
 COPY public.organization_reviews (id, text, value, organization_id, intern_id) FROM stdin;
-1	чик-чирик	5	1	4
-2	тырыпыры	4	1	5
-3	в	3	2	4
-5	в	4	3	4
-6	п	5	3	5
-4	а	2	2	5
+2	Хорошая организация!	4	1	5
+5	Хорошая организация!	4	3	4
+1	Отличная организация!	5	1	4
+3	Не плохая организация	3	2	4
+4	Плохая организация	2	2	5
+6	Отличная организация!	5	3	5
 \.
 
 
 --
--- TOC entry 3623 (class 0 OID 16640)
+-- TOC entry 3630 (class 0 OID 16640)
 -- Dependencies: 235
 -- Data for Name: organization_types; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10788,7 +10826,7 @@ COPY public.organization_types (id, name) FROM stdin;
 
 
 --
--- TOC entry 3635 (class 0 OID 16684)
+-- TOC entry 3642 (class 0 OID 16684)
 -- Dependencies: 247
 -- Data for Name: organizations; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10804,7 +10842,7 @@ COPY public.organizations (id, name, description, img, address, latitude, longit
 
 
 --
--- TOC entry 3599 (class 0 OID 16469)
+-- TOC entry 3606 (class 0 OID 16469)
 -- Dependencies: 211
 -- Data for Name: permissions; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10814,7 +10852,7 @@ COPY public.permissions (role_id, url, type) FROM stdin;
 
 
 --
--- TOC entry 3692 (class 0 OID 17292)
+-- TOC entry 3699 (class 0 OID 17292)
 -- Dependencies: 304
 -- Data for Name: presences; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10827,7 +10865,7 @@ COPY public.presences (id, intern_id, vacancy_id, mentor_id, status, date, hour)
 
 
 --
--- TOC entry 3616 (class 0 OID 16579)
+-- TOC entry 3623 (class 0 OID 16579)
 -- Dependencies: 228
 -- Data for Name: recoveries; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10837,7 +10875,7 @@ COPY public.recoveries (code, user_id, created) FROM stdin;
 
 
 --
--- TOC entry 3603 (class 0 OID 16509)
+-- TOC entry 3610 (class 0 OID 16509)
 -- Dependencies: 215
 -- Data for Name: regions; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10936,7 +10974,7 @@ COPY public.regions (id, name) FROM stdin;
 
 
 --
--- TOC entry 3652 (class 0 OID 16879)
+-- TOC entry 3659 (class 0 OID 16879)
 -- Dependencies: 264
 -- Data for Name: requirements; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10964,7 +11002,7 @@ COPY public.requirements (id, name, vacancy_id) FROM stdin;
 
 
 --
--- TOC entry 3669 (class 0 OID 17019)
+-- TOC entry 3676 (class 0 OID 17019)
 -- Dependencies: 281
 -- Data for Name: response_statuses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10977,7 +11015,7 @@ COPY public.response_statuses (id, name) FROM stdin;
 
 
 --
--- TOC entry 3679 (class 0 OID 17098)
+-- TOC entry 3686 (class 0 OID 17098)
 -- Dependencies: 291
 -- Data for Name: responses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -10991,6 +11029,8 @@ COPY public.responses (id, comment, response_status_id, selection_id, passed) FR
 75	\N	3	75	t
 76	\N	3	76	t
 77	\N	3	77	t
+79	\N	2	79	t
+80	\N	2	80	t
 69	\N	2	69	t
 67	\N	3	67	t
 68	\N	3	68	t
@@ -10999,7 +11039,7 @@ COPY public.responses (id, comment, response_status_id, selection_id, passed) FR
 
 
 --
--- TOC entry 3598 (class 0 OID 16395)
+-- TOC entry 3605 (class 0 OID 16395)
 -- Dependencies: 210
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11009,12 +11049,11 @@ COPY public.roles (id, name) FROM stdin;
 2	Куратор
 3	Кадровый специалист
 4	Стажер
-5	Администратор
 \.
 
 
 --
--- TOC entry 3677 (class 0 OID 17084)
+-- TOC entry 3684 (class 0 OID 17084)
 -- Dependencies: 289
 -- Data for Name: scholls; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11022,11 +11061,13 @@ COPY public.roles (id, name) FROM stdin;
 COPY public.scholls (id, value, comment, passed, intern_id) FROM stdin;
 4	50	\N	t	4
 5	50	\N	t	13
+6	\N	\N	f	14
+7	50	\N	t	19
 \.
 
 
 --
--- TOC entry 3684 (class 0 OID 17168)
+-- TOC entry 3691 (class 0 OID 17168)
 -- Dependencies: 296
 -- Data for Name: selection_basic_tests; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11038,11 +11079,17 @@ COPY public.selection_basic_tests (basic_test_id, selection_id) FROM stdin;
 25	78
 26	78
 27	78
+28	79
+29	79
+30	79
+31	80
+32	80
+33	80
 \.
 
 
 --
--- TOC entry 3671 (class 0 OID 17026)
+-- TOC entry 3678 (class 0 OID 17026)
 -- Dependencies: 283
 -- Data for Name: selections; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11060,11 +11107,13 @@ COPY public.selections (id, vacancy_id, stage_id, intern_id, school_id) FROM std
 76	4	1	13	\N
 77	1	1	13	\N
 78	3	5	13	5
+79	3	2	14	6
+80	1	5	19	7
 \.
 
 
 --
--- TOC entry 3639 (class 0 OID 16736)
+-- TOC entry 3646 (class 0 OID 16736)
 -- Dependencies: 251
 -- Data for Name: skill_interns; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11078,11 +11127,13 @@ COPY public.skill_interns (skill_id, intern_id) FROM stdin;
 9	4
 8	4
 1	13
+11	4
+59	19
 \.
 
 
 --
--- TOC entry 3646 (class 0 OID 16839)
+-- TOC entry 3653 (class 0 OID 16839)
 -- Dependencies: 258
 -- Data for Name: skill_vacancies; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11103,7 +11154,7 @@ COPY public.skill_vacancies (skill_id, vacancy_id) FROM stdin;
 
 
 --
--- TOC entry 3633 (class 0 OID 16677)
+-- TOC entry 3640 (class 0 OID 16677)
 -- Dependencies: 245
 -- Data for Name: skills; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11168,11 +11219,12 @@ COPY public.skills (id, name) FROM stdin;
 59	AutoCad
 60	Техническая
 61	документация
+62	null
 \.
 
 
 --
--- TOC entry 3631 (class 0 OID 16668)
+-- TOC entry 3638 (class 0 OID 16668)
 -- Dependencies: 243
 -- Data for Name: speakers; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11182,7 +11234,7 @@ COPY public.speakers (id, email, password, firstname, lastname, patronymic, img)
 
 
 --
--- TOC entry 3667 (class 0 OID 17012)
+-- TOC entry 3674 (class 0 OID 17012)
 -- Dependencies: 279
 -- Data for Name: stages; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11198,7 +11250,7 @@ COPY public.stages (id, name) FROM stdin;
 
 
 --
--- TOC entry 3688 (class 0 OID 17218)
+-- TOC entry 3695 (class 0 OID 17218)
 -- Dependencies: 300
 -- Data for Name: tasks; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11210,7 +11262,7 @@ COPY public.tasks (id, vacancy_id, training_direction_id, url_portfolio, mentor_
 
 
 --
--- TOC entry 3625 (class 0 OID 16647)
+-- TOC entry 3632 (class 0 OID 16647)
 -- Dependencies: 237
 -- Data for Name: training_directions; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11227,7 +11279,7 @@ COPY public.training_directions (id, name) FROM stdin;
 
 
 --
--- TOC entry 3665 (class 0 OID 17005)
+-- TOC entry 3672 (class 0 OID 17005)
 -- Dependencies: 277
 -- Data for Name: type_basic_tests; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11240,7 +11292,7 @@ COPY public.type_basic_tests (id, name) FROM stdin;
 
 
 --
--- TOC entry 3681 (class 0 OID 17117)
+-- TOC entry 3688 (class 0 OID 17117)
 -- Dependencies: 293
 -- Data for Name: type_interviews; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11253,7 +11305,7 @@ COPY public.type_interviews (id, name) FROM stdin;
 
 
 --
--- TOC entry 3611 (class 0 OID 16537)
+-- TOC entry 3618 (class 0 OID 16537)
 -- Dependencies: 223
 -- Data for Name: universities; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11274,39 +11326,45 @@ COPY public.universities (id, name, city_id, sub) FROM stdin;
 
 
 --
--- TOC entry 3615 (class 0 OID 16556)
+-- TOC entry 3622 (class 0 OID 16556)
 -- Dependencies: 227
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
 
 COPY public.users (id, email, phone, password, firstname, lastname, patronymic, birthdate, img, role_id, city_id, citizenship_id, nickname, gender, is_verified) FROM stdin;
+15	marina.2000@yandex.ru	+74565875164	$2b$12$hxA7GR.sew2UJdWuDaOANe7AQV0tVjgY483YHMYMNJN1e/J.99/cq	Марина	Фёдорова	Викторовна	2002-07-25 00:00:00	F/15.jpg	4	2	1	marina.2000_tornado	\N	f
 5	romanova@mail.ru	+7 (990) 454-15-16	$2b$12$KGnsjv.UIgRq5qHUr8jb/.zkYGGq13hAzFx5zctZthhyrO4PhuFlW	Ольга	Романова	Ивановна	2000-11-06 00:00:00	\N	4	2	1	Romanova_o	f	f
+17	Sokol.02@mail.ru	+79614752296	$2b$12$8j3BlSu5q2jpUeSeWxNscePTNoddtb/W.3pSXmAhfM4gZR1nzlU/2	Евгений	Соколов	Игоревич	2002-12-12 00:00:00	e/17.jpg	4	1	1	sokol.02_tapir	\N	f
 2	volkov@mail.ru	+7 (959) 653-80-21	$2b$12$KGnsjv.UIgRq5qHUr8jb/.zkYGGq13hAzFx5zctZthhyrO4PhuFlW	Андрей	Волков	Андреевич	1988-11-11 00:00:00	\N	1	2	1	volk	t	t
 1	kurskaya@mail.ru	+7 (948) 818-80-46	$2b$12$KGnsjv.UIgRq5qHUr8jb/.zkYGGq13hAzFx5zctZthhyrO4PhuFlW	Анна	Курская	Васильевна	1998-04-11 00:00:00	\N	2	2	1	A_kursk	f	t
+18	Leo.Var@yandex.ru	+79157462359	$2b$12$LP07JEe1666XolJe94MrQOWIsyvoy6t2lrdDG3nKEoXG9CBKKP.zy	Варвара	Леонтьева	Сергеевна	2001-02-01 00:00:00	W/18.jpg	4	1	1	leo.var_situation	f	f
+14	e.lipatov@mail.ru	+79568475123	$2b$12$lWue23FCzXHntEjqDe8JhOWXszzhpwLiPB1fNpeoT/p0q4xrh7/E2	Евгений	Липатов	Дмитриевич	2001-05-12 00:00:00	m/14.jpg	4	1	1	e.lipatov_dumpling	t	f
+16	vas.lena@gmail.com	+79637518569	$2b$12$.LuL/CvlTlL9U7CsT69Yq.DVEPVermGnXaLkzIv5z00o7pHl2k6wS	Елена	Васнецова	Петровна	2003-08-15 00:00:00	b/16.jpg	4	2	1	vas.lena_politics	\N	f
 3	burova@mail.ru	+7 (916) 802-68-43	$2b$12$KGnsjv.UIgRq5qHUr8jb/.zkYGGq13hAzFx5zctZthhyrO4PhuFlW	Анастасия	Бурова	Андреевна	1995-01-10 00:00:00	\N	3	2	1	burova	f	t
+19	maksim228775@gmail.com	+79290513941	$2b$12$s335G4fZKg8zkzF5fqtHQ.Nb7/JkjkVCPI9OS4CqwJV04dTu0n1Ly	Максим	Исаев	Александрович	2002-02-20 00:00:00	j/19.jpg	4	2	1	maksim228775_family	t	t
 4	mr.vaynbaum@mail.ru	+7 (952) 462-16-55	$2b$12$p2FI4cK4J.2bqi/W2oONEO2M1CQk8CWaJMb1ShkJSpjocIbxUpqbe	Денис	Вайнбаум	Алексеевич	2003-01-16 00:00:00	i/4.jpg	4	144	1	mr.vaynbaum_rabbit	t	t
 13	vaynbaum50@gmail.com	89308165479	$2b$12$PXtX9V7nKNUFxDz2WFb0meJjrbpl2RWobQjmFHN2WcUyF8cRRdTm2	Иван	Иванов	Иванович	1999-07-16 00:00:00	\N	4	144	1	vaynbaum50_dangerous	t	f
 \.
 
 
 --
--- TOC entry 3645 (class 0 OID 16801)
+-- TOC entry 3652 (class 0 OID 16801)
 -- Dependencies: 257
 -- Data for Name: vacancies; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
 
 COPY public.vacancies (id, name, description, min_salary, max_salary, date_begin, date_end, published, work_schedule_id, organization_id, employment_type_id, hr_creater_id, mentor_id, work_experience_id, status_id, cnt_intern) FROM stdin;
+8	Стажер-аналитик	Необходим стажер-аналитик. При положительных результатах стажировки мы предложим должность младшего аналитика и подготовим план индивидуального развития.	10000	30000	2023-09-06 00:00:00	2023-07-17 00:00:00	f	3	2	5	3	\N	3	2	2
 1	Стажер-разработчик по backend-разработке	Если вам интересно заниматься решениями для масштабных проектов, приходите к нам. Здесь вам предстоит работать с высоконагруженными отказоустойчивыми системами и сталкиваться с действительно интересными инженерными задачами.	0	0	2023-06-01 00:00:00	2023-09-13 00:00:00	t	3	2	5	3	2	3	3	1
 2	UX/UI-дизайнер	Необходим дизайнер для разработки макетов сложных веб-приложений. Опыт работы приветствуется.	0	0	2023-06-01 00:00:00	2023-09-13 00:00:00	t	3	1	5	\N	\N	2	3	2
 3	Стажер-разработчик по frotend-разработке	Ищем фротенд-разработчика. Опыт работы и портфолио приветствуются.	0	0	2023-06-01 00:00:00	2023-09-13 00:00:00	t	3	1	5	\N	\N	3	3	2
 4	Стажер по ml-разработке	Ищем ml-разработчика. Предлагаем обучение и карьерный рост.	0	0	2023-06-01 00:00:00	2023-09-13 00:00:00	t	3	3	5	\N	\N	2	3	3
-8	Стажер-аналитик	Необходим стажер-аналитик. При положительных результатах стажировки мы предложим должность младшего аналитика и подготовим план индивидуального развития.	10000	30000	2023-09-06 00:00:00	2023-07-17 00:00:00	f	3	2	5	3	\N	3	1	2
 9	Стажер-экономист	Если вам интересна экономика и вы хотите развиваться в этой сфере, то мы Вас ждем!	12000	30000	2023-05-27 00:00:00	2023-08-25 00:00:00	f	3	2	5	3	\N	2	1	1
 \.
 
 
 --
--- TOC entry 3654 (class 0 OID 16891)
+-- TOC entry 3661 (class 0 OID 16891)
 -- Dependencies: 266
 -- Data for Name: vacancy_reviews; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11316,7 +11374,7 @@ COPY public.vacancy_reviews (id, text, value, vacancy_id, intern_id) FROM stdin;
 
 
 --
--- TOC entry 3690 (class 0 OID 17240)
+-- TOC entry 3697 (class 0 OID 17240)
 -- Dependencies: 302
 -- Data for Name: vacancy_statuses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11330,7 +11388,7 @@ COPY public.vacancy_statuses (id, name) FROM stdin;
 
 
 --
--- TOC entry 3627 (class 0 OID 16654)
+-- TOC entry 3634 (class 0 OID 16654)
 -- Dependencies: 239
 -- Data for Name: work_experiences; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11344,7 +11402,7 @@ COPY public.work_experiences (id, name) FROM stdin;
 
 
 --
--- TOC entry 3629 (class 0 OID 16661)
+-- TOC entry 3636 (class 0 OID 16661)
 -- Dependencies: 241
 -- Data for Name: work_schedules; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11359,7 +11417,7 @@ COPY public.work_schedules (id, name) FROM stdin;
 
 
 --
--- TOC entry 3742 (class 0 OID 0)
+-- TOC entry 3750 (class 0 OID 0)
 -- Dependencies: 274
 -- Name: basic_test_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11368,16 +11426,16 @@ SELECT pg_catalog.setval('public.basic_test_statuses_id_seq', 1, false);
 
 
 --
--- TOC entry 3743 (class 0 OID 0)
+-- TOC entry 3751 (class 0 OID 0)
 -- Dependencies: 284
 -- Name: basic_tests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
 
-SELECT pg_catalog.setval('public.basic_tests_id_seq', 27, true);
+SELECT pg_catalog.setval('public.basic_tests_id_seq', 33, true);
 
 
 --
--- TOC entry 3744 (class 0 OID 0)
+-- TOC entry 3752 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: branchs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11386,7 +11444,7 @@ SELECT pg_catalog.setval('public.branchs_id_seq', 31, true);
 
 
 --
--- TOC entry 3745 (class 0 OID 0)
+-- TOC entry 3753 (class 0 OID 0)
 -- Dependencies: 286
 -- Name: championships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11395,7 +11453,7 @@ SELECT pg_catalog.setval('public.championships_id_seq', 1, false);
 
 
 --
--- TOC entry 3746 (class 0 OID 0)
+-- TOC entry 3754 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: cities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11404,7 +11462,7 @@ SELECT pg_catalog.setval('public.cities_id_seq', 8155, true);
 
 
 --
--- TOC entry 3747 (class 0 OID 0)
+-- TOC entry 3755 (class 0 OID 0)
 -- Dependencies: 212
 -- Name: citizenships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11413,7 +11471,7 @@ SELECT pg_catalog.setval('public.citizenships_id_seq', 8, true);
 
 
 --
--- TOC entry 3748 (class 0 OID 0)
+-- TOC entry 3756 (class 0 OID 0)
 -- Dependencies: 259
 -- Name: conditions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11422,7 +11480,7 @@ SELECT pg_catalog.setval('public.conditions_id_seq', 17, true);
 
 
 --
--- TOC entry 3749 (class 0 OID 0)
+-- TOC entry 3757 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: courses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11431,7 +11489,7 @@ SELECT pg_catalog.setval('public.courses_id_seq', 1, false);
 
 
 --
--- TOC entry 3750 (class 0 OID 0)
+-- TOC entry 3758 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11440,7 +11498,7 @@ SELECT pg_catalog.setval('public.directions_id_seq', 81, true);
 
 
 --
--- TOC entry 3751 (class 0 OID 0)
+-- TOC entry 3759 (class 0 OID 0)
 -- Dependencies: 261
 -- Name: duties_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11449,7 +11507,7 @@ SELECT pg_catalog.setval('public.duties_id_seq', 8, true);
 
 
 --
--- TOC entry 3752 (class 0 OID 0)
+-- TOC entry 3760 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: employment_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11458,7 +11516,7 @@ SELECT pg_catalog.setval('public.employment_types_id_seq', 5, true);
 
 
 --
--- TOC entry 3753 (class 0 OID 0)
+-- TOC entry 3761 (class 0 OID 0)
 -- Dependencies: 249
 -- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11467,7 +11525,7 @@ SELECT pg_catalog.setval('public.events_id_seq', 1, false);
 
 
 --
--- TOC entry 3754 (class 0 OID 0)
+-- TOC entry 3762 (class 0 OID 0)
 -- Dependencies: 267
 -- Name: history_work_experiences_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11476,7 +11534,7 @@ SELECT pg_catalog.setval('public.history_work_experiences_id_seq', 1, false);
 
 
 --
--- TOC entry 3755 (class 0 OID 0)
+-- TOC entry 3763 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: internship_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11485,7 +11543,7 @@ SELECT pg_catalog.setval('public.internship_statuses_id_seq', 1, false);
 
 
 --
--- TOC entry 3756 (class 0 OID 0)
+-- TOC entry 3764 (class 0 OID 0)
 -- Dependencies: 294
 -- Name: interviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11494,7 +11552,7 @@ SELECT pg_catalog.setval('public.interviews_id_seq', 1, false);
 
 
 --
--- TOC entry 3757 (class 0 OID 0)
+-- TOC entry 3765 (class 0 OID 0)
 -- Dependencies: 271
 -- Name: languages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11503,7 +11561,7 @@ SELECT pg_catalog.setval('public.languages_id_seq', 1, false);
 
 
 --
--- TOC entry 3758 (class 0 OID 0)
+-- TOC entry 3766 (class 0 OID 0)
 -- Dependencies: 297
 -- Name: mentor_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11512,7 +11570,7 @@ SELECT pg_catalog.setval('public.mentor_reviews_id_seq', 1, false);
 
 
 --
--- TOC entry 3759 (class 0 OID 0)
+-- TOC entry 3767 (class 0 OID 0)
 -- Dependencies: 269
 -- Name: metros_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11521,7 +11579,7 @@ SELECT pg_catalog.setval('public.metros_id_seq', 21, true);
 
 
 --
--- TOC entry 3760 (class 0 OID 0)
+-- TOC entry 3768 (class 0 OID 0)
 -- Dependencies: 254
 -- Name: organization_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11530,7 +11588,7 @@ SELECT pg_catalog.setval('public.organization_reviews_id_seq', 1, false);
 
 
 --
--- TOC entry 3761 (class 0 OID 0)
+-- TOC entry 3769 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: organization_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11539,7 +11597,7 @@ SELECT pg_catalog.setval('public.organization_types_id_seq', 1, false);
 
 
 --
--- TOC entry 3762 (class 0 OID 0)
+-- TOC entry 3770 (class 0 OID 0)
 -- Dependencies: 246
 -- Name: organizations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11548,7 +11606,7 @@ SELECT pg_catalog.setval('public.organizations_id_seq', 6, true);
 
 
 --
--- TOC entry 3763 (class 0 OID 0)
+-- TOC entry 3771 (class 0 OID 0)
 -- Dependencies: 303
 -- Name: presences_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11557,7 +11615,7 @@ SELECT pg_catalog.setval('public.presences_id_seq', 3, true);
 
 
 --
--- TOC entry 3764 (class 0 OID 0)
+-- TOC entry 3772 (class 0 OID 0)
 -- Dependencies: 214
 -- Name: regions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11566,7 +11624,7 @@ SELECT pg_catalog.setval('public.regions_id_seq', 89, true);
 
 
 --
--- TOC entry 3765 (class 0 OID 0)
+-- TOC entry 3773 (class 0 OID 0)
 -- Dependencies: 263
 -- Name: requirements_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11575,7 +11633,7 @@ SELECT pg_catalog.setval('public.requirements_id_seq', 23, true);
 
 
 --
--- TOC entry 3766 (class 0 OID 0)
+-- TOC entry 3774 (class 0 OID 0)
 -- Dependencies: 280
 -- Name: response_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11584,16 +11642,16 @@ SELECT pg_catalog.setval('public.response_statuses_id_seq', 1, false);
 
 
 --
--- TOC entry 3767 (class 0 OID 0)
+-- TOC entry 3775 (class 0 OID 0)
 -- Dependencies: 290
 -- Name: responses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
 
-SELECT pg_catalog.setval('public.responses_id_seq', 78, true);
+SELECT pg_catalog.setval('public.responses_id_seq', 80, true);
 
 
 --
--- TOC entry 3768 (class 0 OID 0)
+-- TOC entry 3776 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11602,34 +11660,34 @@ SELECT pg_catalog.setval('public.roles_id_seq', 1, false);
 
 
 --
--- TOC entry 3769 (class 0 OID 0)
+-- TOC entry 3777 (class 0 OID 0)
 -- Dependencies: 288
 -- Name: scholls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
 
-SELECT pg_catalog.setval('public.scholls_id_seq', 5, true);
+SELECT pg_catalog.setval('public.scholls_id_seq', 7, true);
 
 
 --
--- TOC entry 3770 (class 0 OID 0)
+-- TOC entry 3778 (class 0 OID 0)
 -- Dependencies: 282
 -- Name: selections_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
 
-SELECT pg_catalog.setval('public.selections_id_seq', 78, true);
+SELECT pg_catalog.setval('public.selections_id_seq', 80, true);
 
 
 --
--- TOC entry 3771 (class 0 OID 0)
+-- TOC entry 3779 (class 0 OID 0)
 -- Dependencies: 244
 -- Name: skills_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
 
-SELECT pg_catalog.setval('public.skills_id_seq', 61, true);
+SELECT pg_catalog.setval('public.skills_id_seq', 62, true);
 
 
 --
--- TOC entry 3772 (class 0 OID 0)
+-- TOC entry 3780 (class 0 OID 0)
 -- Dependencies: 242
 -- Name: speakers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11638,7 +11696,7 @@ SELECT pg_catalog.setval('public.speakers_id_seq', 1, false);
 
 
 --
--- TOC entry 3773 (class 0 OID 0)
+-- TOC entry 3781 (class 0 OID 0)
 -- Dependencies: 278
 -- Name: stages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11647,7 +11705,7 @@ SELECT pg_catalog.setval('public.stages_id_seq', 1, false);
 
 
 --
--- TOC entry 3774 (class 0 OID 0)
+-- TOC entry 3782 (class 0 OID 0)
 -- Dependencies: 299
 -- Name: tasks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11656,7 +11714,7 @@ SELECT pg_catalog.setval('public.tasks_id_seq', 4, true);
 
 
 --
--- TOC entry 3775 (class 0 OID 0)
+-- TOC entry 3783 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: training_directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11665,7 +11723,7 @@ SELECT pg_catalog.setval('public.training_directions_id_seq', 1, false);
 
 
 --
--- TOC entry 3776 (class 0 OID 0)
+-- TOC entry 3784 (class 0 OID 0)
 -- Dependencies: 276
 -- Name: type_basic_tests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11674,7 +11732,7 @@ SELECT pg_catalog.setval('public.type_basic_tests_id_seq', 1, false);
 
 
 --
--- TOC entry 3777 (class 0 OID 0)
+-- TOC entry 3785 (class 0 OID 0)
 -- Dependencies: 292
 -- Name: type_interviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11683,7 +11741,7 @@ SELECT pg_catalog.setval('public.type_interviews_id_seq', 1, false);
 
 
 --
--- TOC entry 3778 (class 0 OID 0)
+-- TOC entry 3786 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: universities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11692,16 +11750,16 @@ SELECT pg_catalog.setval('public.universities_id_seq', 12, true);
 
 
 --
--- TOC entry 3779 (class 0 OID 0)
+-- TOC entry 3787 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 13, true);
+SELECT pg_catalog.setval('public.users_id_seq', 25, true);
 
 
 --
--- TOC entry 3780 (class 0 OID 0)
+-- TOC entry 3788 (class 0 OID 0)
 -- Dependencies: 256
 -- Name: vacancies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11710,7 +11768,7 @@ SELECT pg_catalog.setval('public.vacancies_id_seq', 9, true);
 
 
 --
--- TOC entry 3781 (class 0 OID 0)
+-- TOC entry 3789 (class 0 OID 0)
 -- Dependencies: 265
 -- Name: vacancy_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11719,7 +11777,7 @@ SELECT pg_catalog.setval('public.vacancy_reviews_id_seq', 1, false);
 
 
 --
--- TOC entry 3782 (class 0 OID 0)
+-- TOC entry 3790 (class 0 OID 0)
 -- Dependencies: 301
 -- Name: vacancy_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11728,7 +11786,7 @@ SELECT pg_catalog.setval('public.vacancy_statuses_id_seq', 1, false);
 
 
 --
--- TOC entry 3783 (class 0 OID 0)
+-- TOC entry 3791 (class 0 OID 0)
 -- Dependencies: 238
 -- Name: work_experiences_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11737,7 +11795,7 @@ SELECT pg_catalog.setval('public.work_experiences_id_seq', 5, true);
 
 
 --
--- TOC entry 3784 (class 0 OID 0)
+-- TOC entry 3792 (class 0 OID 0)
 -- Dependencies: 240
 -- Name: work_schedules_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
 --
@@ -11746,7 +11804,7 @@ SELECT pg_catalog.setval('public.work_schedules_id_seq', 5, true);
 
 
 --
--- TOC entry 3356 (class 2606 OID 17003)
+-- TOC entry 3360 (class 2606 OID 17003)
 -- Name: basic_test_statuses basic_test_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11755,7 +11813,7 @@ ALTER TABLE ONLY public.basic_test_statuses
 
 
 --
--- TOC entry 3366 (class 2606 OID 17053)
+-- TOC entry 3370 (class 2606 OID 17053)
 -- Name: basic_tests basic_tests_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11764,7 +11822,7 @@ ALTER TABLE ONLY public.basic_tests
 
 
 --
--- TOC entry 3306 (class 2606 OID 16631)
+-- TOC entry 3310 (class 2606 OID 16631)
 -- Name: branchs branchs_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11773,7 +11831,7 @@ ALTER TABLE ONLY public.branchs
 
 
 --
--- TOC entry 3368 (class 2606 OID 17077)
+-- TOC entry 3372 (class 2606 OID 17077)
 -- Name: championships championships_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11782,7 +11840,7 @@ ALTER TABLE ONLY public.championships
 
 
 --
--- TOC entry 3298 (class 2606 OID 16549)
+-- TOC entry 3302 (class 2606 OID 16549)
 -- Name: cities cities_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11791,7 +11849,7 @@ ALTER TABLE ONLY public.cities
 
 
 --
--- TOC entry 3286 (class 2606 OID 16507)
+-- TOC entry 3290 (class 2606 OID 16507)
 -- Name: citizenships citizenships_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11800,7 +11858,7 @@ ALTER TABLE ONLY public.citizenships
 
 
 --
--- TOC entry 3340 (class 2606 OID 16860)
+-- TOC entry 3344 (class 2606 OID 16860)
 -- Name: conditions conditions_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11809,7 +11867,7 @@ ALTER TABLE ONLY public.conditions
 
 
 --
--- TOC entry 3290 (class 2606 OID 16521)
+-- TOC entry 3294 (class 2606 OID 16521)
 -- Name: courses courses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11818,7 +11876,7 @@ ALTER TABLE ONLY public.courses
 
 
 --
--- TOC entry 3324 (class 2606 OID 16711)
+-- TOC entry 3328 (class 2606 OID 16711)
 -- Name: curators curators_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11827,7 +11885,7 @@ ALTER TABLE ONLY public.curators
 
 
 --
--- TOC entry 3292 (class 2606 OID 16528)
+-- TOC entry 3296 (class 2606 OID 16528)
 -- Name: directions directions_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11836,7 +11894,7 @@ ALTER TABLE ONLY public.directions
 
 
 --
--- TOC entry 3342 (class 2606 OID 16872)
+-- TOC entry 3346 (class 2606 OID 16872)
 -- Name: duties duties_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11845,7 +11903,7 @@ ALTER TABLE ONLY public.duties
 
 
 --
--- TOC entry 3308 (class 2606 OID 16638)
+-- TOC entry 3312 (class 2606 OID 16638)
 -- Name: employment_types employment_types_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11854,7 +11912,7 @@ ALTER TABLE ONLY public.employment_types
 
 
 --
--- TOC entry 3326 (class 2606 OID 16730)
+-- TOC entry 3330 (class 2606 OID 16730)
 -- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11863,7 +11921,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- TOC entry 3348 (class 2606 OID 16925)
+-- TOC entry 3352 (class 2606 OID 16925)
 -- Name: history_work_experiences history_work_experiences_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11872,7 +11930,7 @@ ALTER TABLE ONLY public.history_work_experiences
 
 
 --
--- TOC entry 3330 (class 2606 OID 16755)
+-- TOC entry 3334 (class 2606 OID 16755)
 -- Name: hrs hrs_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11881,7 +11939,7 @@ ALTER TABLE ONLY public.hrs
 
 
 --
--- TOC entry 3304 (class 2606 OID 16593)
+-- TOC entry 3308 (class 2606 OID 16593)
 -- Name: interns interns_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11890,7 +11948,7 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3294 (class 2606 OID 16535)
+-- TOC entry 3298 (class 2606 OID 16535)
 -- Name: internship_statuses internship_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11899,7 +11957,7 @@ ALTER TABLE ONLY public.internship_statuses
 
 
 --
--- TOC entry 3376 (class 2606 OID 17131)
+-- TOC entry 3380 (class 2606 OID 17131)
 -- Name: interviews interviews_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11908,7 +11966,16 @@ ALTER TABLE ONLY public.interviews
 
 
 --
--- TOC entry 3354 (class 2606 OID 16971)
+-- TOC entry 3392 (class 2606 OID 17334)
+-- Name: invations invations_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+--
+
+ALTER TABLE ONLY public.invations
+    ADD CONSTRAINT invations_pkey PRIMARY KEY (code);
+
+
+--
+-- TOC entry 3358 (class 2606 OID 16971)
 -- Name: language_interns language_interns_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11917,7 +11984,7 @@ ALTER TABLE ONLY public.language_interns
 
 
 --
--- TOC entry 3352 (class 2606 OID 16966)
+-- TOC entry 3356 (class 2606 OID 16966)
 -- Name: languages languages_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11926,7 +11993,7 @@ ALTER TABLE ONLY public.languages
 
 
 --
--- TOC entry 3380 (class 2606 OID 17204)
+-- TOC entry 3384 (class 2606 OID 17204)
 -- Name: mentor_reviews mentor_reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11935,7 +12002,7 @@ ALTER TABLE ONLY public.mentor_reviews
 
 
 --
--- TOC entry 3332 (class 2606 OID 16770)
+-- TOC entry 3336 (class 2606 OID 16770)
 -- Name: mentors mentors_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11944,7 +12011,7 @@ ALTER TABLE ONLY public.mentors
 
 
 --
--- TOC entry 3350 (class 2606 OID 16937)
+-- TOC entry 3354 (class 2606 OID 16937)
 -- Name: metros metros_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11953,7 +12020,7 @@ ALTER TABLE ONLY public.metros
 
 
 --
--- TOC entry 3334 (class 2606 OID 16789)
+-- TOC entry 3338 (class 2606 OID 16789)
 -- Name: organization_reviews organization_reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11962,7 +12029,7 @@ ALTER TABLE ONLY public.organization_reviews
 
 
 --
--- TOC entry 3310 (class 2606 OID 16645)
+-- TOC entry 3314 (class 2606 OID 16645)
 -- Name: organization_types organization_types_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11971,7 +12038,7 @@ ALTER TABLE ONLY public.organization_types
 
 
 --
--- TOC entry 3322 (class 2606 OID 16691)
+-- TOC entry 3326 (class 2606 OID 16691)
 -- Name: organizations organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11980,7 +12047,7 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- TOC entry 3284 (class 2606 OID 16473)
+-- TOC entry 3288 (class 2606 OID 16473)
 -- Name: permissions permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11989,7 +12056,7 @@ ALTER TABLE ONLY public.permissions
 
 
 --
--- TOC entry 3386 (class 2606 OID 17297)
+-- TOC entry 3390 (class 2606 OID 17297)
 -- Name: presences presences_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -11998,7 +12065,7 @@ ALTER TABLE ONLY public.presences
 
 
 --
--- TOC entry 3302 (class 2606 OID 16583)
+-- TOC entry 3306 (class 2606 OID 16583)
 -- Name: recoveries recoveries_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12007,7 +12074,7 @@ ALTER TABLE ONLY public.recoveries
 
 
 --
--- TOC entry 3288 (class 2606 OID 16514)
+-- TOC entry 3292 (class 2606 OID 16514)
 -- Name: regions regions_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12016,7 +12083,7 @@ ALTER TABLE ONLY public.regions
 
 
 --
--- TOC entry 3344 (class 2606 OID 16884)
+-- TOC entry 3348 (class 2606 OID 16884)
 -- Name: requirements requirements_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12025,7 +12092,7 @@ ALTER TABLE ONLY public.requirements
 
 
 --
--- TOC entry 3362 (class 2606 OID 17024)
+-- TOC entry 3366 (class 2606 OID 17024)
 -- Name: response_statuses response_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12034,7 +12101,7 @@ ALTER TABLE ONLY public.response_statuses
 
 
 --
--- TOC entry 3372 (class 2606 OID 17105)
+-- TOC entry 3376 (class 2606 OID 17105)
 -- Name: responses responses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12043,7 +12110,7 @@ ALTER TABLE ONLY public.responses
 
 
 --
--- TOC entry 3282 (class 2606 OID 16400)
+-- TOC entry 3286 (class 2606 OID 16400)
 -- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12052,7 +12119,7 @@ ALTER TABLE ONLY public.roles
 
 
 --
--- TOC entry 3370 (class 2606 OID 17091)
+-- TOC entry 3374 (class 2606 OID 17091)
 -- Name: scholls scholls_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12061,7 +12128,7 @@ ALTER TABLE ONLY public.scholls
 
 
 --
--- TOC entry 3378 (class 2606 OID 17172)
+-- TOC entry 3382 (class 2606 OID 17172)
 -- Name: selection_basic_tests selection_basic_tests_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12070,7 +12137,7 @@ ALTER TABLE ONLY public.selection_basic_tests
 
 
 --
--- TOC entry 3364 (class 2606 OID 17031)
+-- TOC entry 3368 (class 2606 OID 17031)
 -- Name: selections selections_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12079,7 +12146,7 @@ ALTER TABLE ONLY public.selections
 
 
 --
--- TOC entry 3328 (class 2606 OID 16740)
+-- TOC entry 3332 (class 2606 OID 16740)
 -- Name: skill_interns skill_interns_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12088,7 +12155,7 @@ ALTER TABLE ONLY public.skill_interns
 
 
 --
--- TOC entry 3338 (class 2606 OID 16843)
+-- TOC entry 3342 (class 2606 OID 16843)
 -- Name: skill_vacancies skill_vacancies_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12097,7 +12164,7 @@ ALTER TABLE ONLY public.skill_vacancies
 
 
 --
--- TOC entry 3320 (class 2606 OID 16682)
+-- TOC entry 3324 (class 2606 OID 16682)
 -- Name: skills skills_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12106,7 +12173,7 @@ ALTER TABLE ONLY public.skills
 
 
 --
--- TOC entry 3318 (class 2606 OID 16675)
+-- TOC entry 3322 (class 2606 OID 16675)
 -- Name: speakers speakers_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12115,7 +12182,7 @@ ALTER TABLE ONLY public.speakers
 
 
 --
--- TOC entry 3360 (class 2606 OID 17017)
+-- TOC entry 3364 (class 2606 OID 17017)
 -- Name: stages stages_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12124,7 +12191,7 @@ ALTER TABLE ONLY public.stages
 
 
 --
--- TOC entry 3382 (class 2606 OID 17223)
+-- TOC entry 3386 (class 2606 OID 17223)
 -- Name: tasks tasks_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12133,7 +12200,7 @@ ALTER TABLE ONLY public.tasks
 
 
 --
--- TOC entry 3312 (class 2606 OID 16652)
+-- TOC entry 3316 (class 2606 OID 16652)
 -- Name: training_directions training_directions_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12142,7 +12209,7 @@ ALTER TABLE ONLY public.training_directions
 
 
 --
--- TOC entry 3358 (class 2606 OID 17010)
+-- TOC entry 3362 (class 2606 OID 17010)
 -- Name: type_basic_tests type_basic_tests_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12151,7 +12218,7 @@ ALTER TABLE ONLY public.type_basic_tests
 
 
 --
--- TOC entry 3374 (class 2606 OID 17122)
+-- TOC entry 3378 (class 2606 OID 17122)
 -- Name: type_interviews type_interviews_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12160,7 +12227,7 @@ ALTER TABLE ONLY public.type_interviews
 
 
 --
--- TOC entry 3296 (class 2606 OID 16542)
+-- TOC entry 3300 (class 2606 OID 16542)
 -- Name: universities universities_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12169,7 +12236,7 @@ ALTER TABLE ONLY public.universities
 
 
 --
--- TOC entry 3300 (class 2606 OID 16563)
+-- TOC entry 3304 (class 2606 OID 16563)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12178,7 +12245,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3336 (class 2606 OID 16808)
+-- TOC entry 3340 (class 2606 OID 16808)
 -- Name: vacancies vacancies_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12187,7 +12254,7 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3346 (class 2606 OID 16898)
+-- TOC entry 3350 (class 2606 OID 16898)
 -- Name: vacancy_reviews vacancy_reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12196,7 +12263,7 @@ ALTER TABLE ONLY public.vacancy_reviews
 
 
 --
--- TOC entry 3384 (class 2606 OID 17245)
+-- TOC entry 3388 (class 2606 OID 17245)
 -- Name: vacancy_statuses vacancy_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12205,7 +12272,7 @@ ALTER TABLE ONLY public.vacancy_statuses
 
 
 --
--- TOC entry 3314 (class 2606 OID 16659)
+-- TOC entry 3318 (class 2606 OID 16659)
 -- Name: work_experiences work_experiences_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12214,7 +12281,7 @@ ALTER TABLE ONLY public.work_experiences
 
 
 --
--- TOC entry 3316 (class 2606 OID 16666)
+-- TOC entry 3320 (class 2606 OID 16666)
 -- Name: work_schedules work_schedules_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12223,7 +12290,7 @@ ALTER TABLE ONLY public.work_schedules
 
 
 --
--- TOC entry 3438 (class 2606 OID 17054)
+-- TOC entry 3444 (class 2606 OID 17054)
 -- Name: basic_tests basic_tests_basic_test_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12232,7 +12299,7 @@ ALTER TABLE ONLY public.basic_tests
 
 
 --
--- TOC entry 3439 (class 2606 OID 17163)
+-- TOC entry 3445 (class 2606 OID 17163)
 -- Name: basic_tests basic_tests_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12241,7 +12308,7 @@ ALTER TABLE ONLY public.basic_tests
 
 
 --
--- TOC entry 3440 (class 2606 OID 17059)
+-- TOC entry 3446 (class 2606 OID 17059)
 -- Name: basic_tests basic_tests_type_basic_test_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12250,7 +12317,7 @@ ALTER TABLE ONLY public.basic_tests
 
 
 --
--- TOC entry 3441 (class 2606 OID 17078)
+-- TOC entry 3447 (class 2606 OID 17078)
 -- Name: championships championships_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12259,7 +12326,7 @@ ALTER TABLE ONLY public.championships
 
 
 --
--- TOC entry 3389 (class 2606 OID 16550)
+-- TOC entry 3395 (class 2606 OID 16550)
 -- Name: cities cities_region_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12268,7 +12335,7 @@ ALTER TABLE ONLY public.cities
 
 
 --
--- TOC entry 3426 (class 2606 OID 16861)
+-- TOC entry 3432 (class 2606 OID 16861)
 -- Name: conditions conditions_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12277,7 +12344,7 @@ ALTER TABLE ONLY public.conditions
 
 
 --
--- TOC entry 3406 (class 2606 OID 16712)
+-- TOC entry 3412 (class 2606 OID 16712)
 -- Name: curators curators_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12286,7 +12353,7 @@ ALTER TABLE ONLY public.curators
 
 
 --
--- TOC entry 3407 (class 2606 OID 16717)
+-- TOC entry 3413 (class 2606 OID 16717)
 -- Name: curators curators_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12295,7 +12362,7 @@ ALTER TABLE ONLY public.curators
 
 
 --
--- TOC entry 3427 (class 2606 OID 16873)
+-- TOC entry 3433 (class 2606 OID 16873)
 -- Name: duties duties_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12304,7 +12371,7 @@ ALTER TABLE ONLY public.duties
 
 
 --
--- TOC entry 3408 (class 2606 OID 16731)
+-- TOC entry 3414 (class 2606 OID 16731)
 -- Name: events events_speaker_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12313,7 +12380,7 @@ ALTER TABLE ONLY public.events
 
 
 --
--- TOC entry 3431 (class 2606 OID 16926)
+-- TOC entry 3437 (class 2606 OID 16926)
 -- Name: history_work_experiences history_work_experiences_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12322,7 +12389,7 @@ ALTER TABLE ONLY public.history_work_experiences
 
 
 --
--- TOC entry 3411 (class 2606 OID 16756)
+-- TOC entry 3417 (class 2606 OID 16756)
 -- Name: hrs hrs_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12331,7 +12398,7 @@ ALTER TABLE ONLY public.hrs
 
 
 --
--- TOC entry 3412 (class 2606 OID 16761)
+-- TOC entry 3418 (class 2606 OID 16761)
 -- Name: hrs hrs_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12340,7 +12407,7 @@ ALTER TABLE ONLY public.hrs
 
 
 --
--- TOC entry 3394 (class 2606 OID 16949)
+-- TOC entry 3400 (class 2606 OID 16949)
 -- Name: interns interns_branch_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12349,7 +12416,7 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3395 (class 2606 OID 16604)
+-- TOC entry 3401 (class 2606 OID 16604)
 -- Name: interns interns_course_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12358,7 +12425,7 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3396 (class 2606 OID 16609)
+-- TOC entry 3402 (class 2606 OID 16609)
 -- Name: interns interns_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12367,7 +12434,7 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3397 (class 2606 OID 16594)
+-- TOC entry 3403 (class 2606 OID 16594)
 -- Name: interns interns_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12376,7 +12443,7 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3398 (class 2606 OID 16614)
+-- TOC entry 3404 (class 2606 OID 16614)
 -- Name: interns interns_internship_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12385,7 +12452,7 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3399 (class 2606 OID 16992)
+-- TOC entry 3405 (class 2606 OID 16992)
 -- Name: interns interns_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12394,7 +12461,7 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3400 (class 2606 OID 16910)
+-- TOC entry 3406 (class 2606 OID 16910)
 -- Name: interns interns_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12403,7 +12470,7 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3401 (class 2606 OID 16599)
+-- TOC entry 3407 (class 2606 OID 16599)
 -- Name: interns interns_university_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12412,7 +12479,7 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3402 (class 2606 OID 16987)
+-- TOC entry 3408 (class 2606 OID 16987)
 -- Name: interns interns_work_experience_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12421,7 +12488,7 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3445 (class 2606 OID 17142)
+-- TOC entry 3451 (class 2606 OID 17142)
 -- Name: interviews interviews_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12430,7 +12497,7 @@ ALTER TABLE ONLY public.interviews
 
 
 --
--- TOC entry 3446 (class 2606 OID 17137)
+-- TOC entry 3452 (class 2606 OID 17137)
 -- Name: interviews interviews_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12439,7 +12506,7 @@ ALTER TABLE ONLY public.interviews
 
 
 --
--- TOC entry 3447 (class 2606 OID 17132)
+-- TOC entry 3453 (class 2606 OID 17132)
 -- Name: interviews interviews_type_interview_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12448,7 +12515,16 @@ ALTER TABLE ONLY public.interviews
 
 
 --
--- TOC entry 3432 (class 2606 OID 16977)
+-- TOC entry 3464 (class 2606 OID 17335)
+-- Name: invations invations_role_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+--
+
+ALTER TABLE ONLY public.invations
+    ADD CONSTRAINT invations_role_id_fkey FOREIGN KEY (role_id) REFERENCES public.roles(id);
+
+
+--
+-- TOC entry 3438 (class 2606 OID 16977)
 -- Name: language_interns language_interns_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12457,7 +12533,7 @@ ALTER TABLE ONLY public.language_interns
 
 
 --
--- TOC entry 3433 (class 2606 OID 16972)
+-- TOC entry 3439 (class 2606 OID 16972)
 -- Name: language_interns language_interns_language_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12466,7 +12542,7 @@ ALTER TABLE ONLY public.language_interns
 
 
 --
--- TOC entry 3450 (class 2606 OID 17210)
+-- TOC entry 3456 (class 2606 OID 17210)
 -- Name: mentor_reviews mentor_reviews_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12475,7 +12551,7 @@ ALTER TABLE ONLY public.mentor_reviews
 
 
 --
--- TOC entry 3451 (class 2606 OID 17205)
+-- TOC entry 3457 (class 2606 OID 17205)
 -- Name: mentor_reviews mentor_reviews_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12484,7 +12560,7 @@ ALTER TABLE ONLY public.mentor_reviews
 
 
 --
--- TOC entry 3413 (class 2606 OID 16771)
+-- TOC entry 3419 (class 2606 OID 16771)
 -- Name: mentors mentors_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12493,7 +12569,7 @@ ALTER TABLE ONLY public.mentors
 
 
 --
--- TOC entry 3414 (class 2606 OID 16776)
+-- TOC entry 3420 (class 2606 OID 16776)
 -- Name: mentors mentors_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12502,7 +12578,7 @@ ALTER TABLE ONLY public.mentors
 
 
 --
--- TOC entry 3415 (class 2606 OID 16795)
+-- TOC entry 3421 (class 2606 OID 16795)
 -- Name: organization_reviews organization_reviews_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12511,7 +12587,7 @@ ALTER TABLE ONLY public.organization_reviews
 
 
 --
--- TOC entry 3416 (class 2606 OID 16790)
+-- TOC entry 3422 (class 2606 OID 16790)
 -- Name: organization_reviews organization_reviews_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12520,7 +12596,7 @@ ALTER TABLE ONLY public.organization_reviews
 
 
 --
--- TOC entry 3403 (class 2606 OID 16697)
+-- TOC entry 3409 (class 2606 OID 16697)
 -- Name: organizations organizations_branch_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12529,7 +12605,7 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- TOC entry 3404 (class 2606 OID 16692)
+-- TOC entry 3410 (class 2606 OID 16692)
 -- Name: organizations organizations_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12538,7 +12614,7 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- TOC entry 3405 (class 2606 OID 16702)
+-- TOC entry 3411 (class 2606 OID 16702)
 -- Name: organizations organizations_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12547,7 +12623,7 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- TOC entry 3387 (class 2606 OID 16474)
+-- TOC entry 3393 (class 2606 OID 16474)
 -- Name: permissions permissions_role_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12556,7 +12632,7 @@ ALTER TABLE ONLY public.permissions
 
 
 --
--- TOC entry 3455 (class 2606 OID 17298)
+-- TOC entry 3461 (class 2606 OID 17298)
 -- Name: presences presences_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12565,7 +12641,7 @@ ALTER TABLE ONLY public.presences
 
 
 --
--- TOC entry 3456 (class 2606 OID 17308)
+-- TOC entry 3462 (class 2606 OID 17308)
 -- Name: presences presences_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12574,7 +12650,7 @@ ALTER TABLE ONLY public.presences
 
 
 --
--- TOC entry 3457 (class 2606 OID 17303)
+-- TOC entry 3463 (class 2606 OID 17303)
 -- Name: presences presences_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12583,7 +12659,7 @@ ALTER TABLE ONLY public.presences
 
 
 --
--- TOC entry 3393 (class 2606 OID 16584)
+-- TOC entry 3399 (class 2606 OID 16584)
 -- Name: recoveries recoveries_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12592,7 +12668,7 @@ ALTER TABLE ONLY public.recoveries
 
 
 --
--- TOC entry 3428 (class 2606 OID 16885)
+-- TOC entry 3434 (class 2606 OID 16885)
 -- Name: requirements requirements_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12601,7 +12677,7 @@ ALTER TABLE ONLY public.requirements
 
 
 --
--- TOC entry 3443 (class 2606 OID 17106)
+-- TOC entry 3449 (class 2606 OID 17106)
 -- Name: responses responses_response_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12610,7 +12686,7 @@ ALTER TABLE ONLY public.responses
 
 
 --
--- TOC entry 3444 (class 2606 OID 17111)
+-- TOC entry 3450 (class 2606 OID 17111)
 -- Name: responses responses_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12619,7 +12695,7 @@ ALTER TABLE ONLY public.responses
 
 
 --
--- TOC entry 3442 (class 2606 OID 17191)
+-- TOC entry 3448 (class 2606 OID 17191)
 -- Name: scholls scholls_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12628,7 +12704,7 @@ ALTER TABLE ONLY public.scholls
 
 
 --
--- TOC entry 3448 (class 2606 OID 17173)
+-- TOC entry 3454 (class 2606 OID 17173)
 -- Name: selection_basic_tests selection_basic_tests_basic_test_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12637,7 +12713,7 @@ ALTER TABLE ONLY public.selection_basic_tests
 
 
 --
--- TOC entry 3449 (class 2606 OID 17178)
+-- TOC entry 3455 (class 2606 OID 17178)
 -- Name: selection_basic_tests selection_basic_tests_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12646,7 +12722,7 @@ ALTER TABLE ONLY public.selection_basic_tests
 
 
 --
--- TOC entry 3434 (class 2606 OID 17042)
+-- TOC entry 3440 (class 2606 OID 17042)
 -- Name: selections selections_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12655,7 +12731,7 @@ ALTER TABLE ONLY public.selections
 
 
 --
--- TOC entry 3435 (class 2606 OID 17186)
+-- TOC entry 3441 (class 2606 OID 17186)
 -- Name: selections selections_school_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12664,7 +12740,7 @@ ALTER TABLE ONLY public.selections
 
 
 --
--- TOC entry 3436 (class 2606 OID 17037)
+-- TOC entry 3442 (class 2606 OID 17037)
 -- Name: selections selections_stage_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12673,7 +12749,7 @@ ALTER TABLE ONLY public.selections
 
 
 --
--- TOC entry 3437 (class 2606 OID 17032)
+-- TOC entry 3443 (class 2606 OID 17032)
 -- Name: selections selections_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12682,7 +12758,7 @@ ALTER TABLE ONLY public.selections
 
 
 --
--- TOC entry 3409 (class 2606 OID 16746)
+-- TOC entry 3415 (class 2606 OID 16746)
 -- Name: skill_interns skill_interns_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12691,7 +12767,7 @@ ALTER TABLE ONLY public.skill_interns
 
 
 --
--- TOC entry 3410 (class 2606 OID 16741)
+-- TOC entry 3416 (class 2606 OID 16741)
 -- Name: skill_interns skill_interns_skill_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12700,7 +12776,7 @@ ALTER TABLE ONLY public.skill_interns
 
 
 --
--- TOC entry 3424 (class 2606 OID 16844)
+-- TOC entry 3430 (class 2606 OID 16844)
 -- Name: skill_vacancies skill_vacancies_skill_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12709,7 +12785,7 @@ ALTER TABLE ONLY public.skill_vacancies
 
 
 --
--- TOC entry 3425 (class 2606 OID 16849)
+-- TOC entry 3431 (class 2606 OID 16849)
 -- Name: skill_vacancies skill_vacancies_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12718,7 +12794,7 @@ ALTER TABLE ONLY public.skill_vacancies
 
 
 --
--- TOC entry 3452 (class 2606 OID 17234)
+-- TOC entry 3458 (class 2606 OID 17234)
 -- Name: tasks tasks_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12727,7 +12803,7 @@ ALTER TABLE ONLY public.tasks
 
 
 --
--- TOC entry 3453 (class 2606 OID 17229)
+-- TOC entry 3459 (class 2606 OID 17229)
 -- Name: tasks tasks_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12736,7 +12812,7 @@ ALTER TABLE ONLY public.tasks
 
 
 --
--- TOC entry 3454 (class 2606 OID 17224)
+-- TOC entry 3460 (class 2606 OID 17224)
 -- Name: tasks tasks_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12745,7 +12821,7 @@ ALTER TABLE ONLY public.tasks
 
 
 --
--- TOC entry 3388 (class 2606 OID 16620)
+-- TOC entry 3394 (class 2606 OID 16620)
 -- Name: universities universities_city_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12754,7 +12830,7 @@ ALTER TABLE ONLY public.universities
 
 
 --
--- TOC entry 3390 (class 2606 OID 16574)
+-- TOC entry 3396 (class 2606 OID 16574)
 -- Name: users users_citizenship_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12763,7 +12839,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3391 (class 2606 OID 16569)
+-- TOC entry 3397 (class 2606 OID 16569)
 -- Name: users users_city_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12772,7 +12848,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3392 (class 2606 OID 16564)
+-- TOC entry 3398 (class 2606 OID 16564)
 -- Name: users users_role_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12781,7 +12857,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3417 (class 2606 OID 16819)
+-- TOC entry 3423 (class 2606 OID 16819)
 -- Name: vacancies vacancies_employment_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12790,7 +12866,7 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3418 (class 2606 OID 16824)
+-- TOC entry 3424 (class 2606 OID 16824)
 -- Name: vacancies vacancies_hr_creater_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12799,7 +12875,7 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3419 (class 2606 OID 16829)
+-- TOC entry 3425 (class 2606 OID 16829)
 -- Name: vacancies vacancies_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12808,7 +12884,7 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3420 (class 2606 OID 16814)
+-- TOC entry 3426 (class 2606 OID 16814)
 -- Name: vacancies vacancies_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12817,7 +12893,7 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3421 (class 2606 OID 17246)
+-- TOC entry 3427 (class 2606 OID 17246)
 -- Name: vacancies vacancies_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12826,7 +12902,7 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3422 (class 2606 OID 16834)
+-- TOC entry 3428 (class 2606 OID 16834)
 -- Name: vacancies vacancies_work_experience_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12835,7 +12911,7 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3423 (class 2606 OID 16809)
+-- TOC entry 3429 (class 2606 OID 16809)
 -- Name: vacancies vacancies_work_schedule_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12844,7 +12920,7 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3429 (class 2606 OID 16904)
+-- TOC entry 3435 (class 2606 OID 16904)
 -- Name: vacancy_reviews vacancy_reviews_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12853,7 +12929,7 @@ ALTER TABLE ONLY public.vacancy_reviews
 
 
 --
--- TOC entry 3430 (class 2606 OID 16899)
+-- TOC entry 3436 (class 2606 OID 16899)
 -- Name: vacancy_reviews vacancy_reviews_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
 --
 
@@ -12862,7 +12938,7 @@ ALTER TABLE ONLY public.vacancy_reviews
 
 
 --
--- TOC entry 3698 (class 0 OID 0)
+-- TOC entry 3706 (class 0 OID 0)
 -- Dependencies: 3
 -- Name: SCHEMA public; Type: ACL; Schema: -; Owner: hack_db_3kwr_user
 --
@@ -12874,7 +12950,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
--- TOC entry 2276 (class 826 OID 16391)
+-- TOC entry 2280 (class 826 OID 16391)
 -- Name: DEFAULT PRIVILEGES FOR SEQUENCES; Type: DEFAULT ACL; Schema: -; Owner: postgres
 --
 
@@ -12882,7 +12958,7 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON SEQUENCES  TO hack_db_3k
 
 
 --
--- TOC entry 2278 (class 826 OID 16393)
+-- TOC entry 2282 (class 826 OID 16393)
 -- Name: DEFAULT PRIVILEGES FOR TYPES; Type: DEFAULT ACL; Schema: -; Owner: postgres
 --
 
@@ -12890,7 +12966,7 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON TYPES  TO hack_db_3kwr_u
 
 
 --
--- TOC entry 2277 (class 826 OID 16392)
+-- TOC entry 2281 (class 826 OID 16392)
 -- Name: DEFAULT PRIVILEGES FOR FUNCTIONS; Type: DEFAULT ACL; Schema: -; Owner: postgres
 --
 
@@ -12898,14 +12974,14 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON FUNCTIONS  TO hack_db_3k
 
 
 --
--- TOC entry 2275 (class 826 OID 16390)
+-- TOC entry 2279 (class 826 OID 16390)
 -- Name: DEFAULT PRIVILEGES FOR TABLES; Type: DEFAULT ACL; Schema: -; Owner: postgres
 --
 
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON TABLES  TO hack_db_3kwr_user;
 
 
--- Completed on 2023-05-28 13:59:17
+-- Completed on 2023-05-28 23:36:16
 
 --
 -- PostgreSQL database dump complete

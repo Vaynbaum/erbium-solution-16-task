@@ -23,7 +23,7 @@ class MailerController:
         try:
             result = requests.get(
                 f"{settings.URL_MAILER}/greeting",
-                params={"email": email, "fullname": fullname},
+                params={"email": email, "name": fullname},
             )
             print(result)
             if result.status_code != 200:

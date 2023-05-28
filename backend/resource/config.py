@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     SECRET_STRING: str
     ALGORITHM: str
     URL_MAILER: str
+    URL_INV: str
     CORS_URL: List[str]
 
     class Config:

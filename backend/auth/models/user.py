@@ -27,6 +27,21 @@ class SignupModel(BaseModel):
     direction: int | str
 
 
+class SignupHiddenModel(BaseModel):
+    firstname: str
+    lastname: str
+    patronymic: str | None = None
+    birthdate: datetime.date
+    phone: str
+    password: str
+    email: EmailStr
+    city_id: int
+    citizenship_id: int
+    code: str
+    organization_id: int | None = None
+    training_direction_id: int | None = None
+
+
 PydanticUserInDB = sqlalchemy_to_pydantic(User)
 
 

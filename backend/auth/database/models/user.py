@@ -30,10 +30,10 @@ class User(Base):
     city_id = Column(Integer, ForeignKey("cities.id"))
     citizenship_id = Column(Integer, ForeignKey("citizenships.id"))
 
-    intern = relationship(Intern, backref="user", uselist=False)
-    hr = relationship(HR, backref="user", uselist=False)
-    curator = relationship(Curator, backref="user", uselist=False)
-    mentor = relationship(Mentor, backref="user", uselist=False)
+    intern = relationship(Intern, backref="user", uselist=False, cascade="all,delete")
+    hr = relationship(HR, backref="user", uselist=False, cascade="all,delete")
+    curator = relationship(Curator, backref="user", uselist=False, cascade="all,delete")
+    mentor = relationship(Mentor, backref="user", uselist=False, cascade="all,delete")
 
     role = relationship(Role)
     city = relationship(City)

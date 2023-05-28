@@ -297,7 +297,7 @@ export class RegistrationComponent implements OnInit {
     let sub = this.authService.Authed.subscribe((res) => {
       sub.unsubscribe();
       if (res.res) {
-        this.router.navigate(['/system/main-page'], {
+        this.router.navigate(['/system/profile'], {
           queryParams: {
             auth: true,
           },
