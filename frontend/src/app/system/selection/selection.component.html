@@ -1,0 +1,88 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop" *ngIf="current_role == 'Стажер'">
+  <mat-drawer #drawer [mode]="mode" class="drawer">
+    <div class="left_container">
+      <h1>Рейтинг: {{rating}}</h1>
+      <mat-divider></mat-divider>
+      <a [ngClass]="{'active':isClicked['testing']}" (click)="clickTest()">
+        <div class="inside_a">Тестирование<mat-icon>keyboard_arrow_right</mat-icon>
+        </div>
+      </a>
+      <a [ngClass]="{'active':isClicked['school']}" (click)="clickSchool()">
+        <div class="inside_a">Карьерная школа<mat-icon>keyboard_arrow_right</mat-icon>
+        </div>
+      </a>
+      <a [ngClass]="{'active':isClicked['case']}">
+        <div class="inside_a">Кейс-чемпионат<mat-icon>keyboard_arrow_right</mat-icon>
+        </div>
+      </a>
+      <a [ngClass]="{'active':isClicked['interview']}" (click)="clickInter()">
+        <div class="inside_a">Собеседование<mat-icon>keyboard_arrow_right</mat-icon>
+        </div>
+      </a>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content fullscreen class="drawer_content">
+    <button mat-button (click)="drawer.toggle()" class="side_button">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <div class="container">
+      <div class="left_container">
+        <h1>Рейтинг: {{rating}}</h1>
+        <mat-divider></mat-divider>
+        <a [ngClass]="{'active':isClicked['testing']}" (click)="clickTest()">
+          <div class="inside_a">Тестирование<mat-icon>keyboard_arrow_right</mat-icon>
+          </div>
+        </a>
+        <a [ngClass]="{'active':isClicked['school']}" (click)="clickSchool()">
+          <div class="inside_a">Карьерная школа<mat-icon>keyboard_arrow_right</mat-icon>
+          </div>
+        </a>
+        <a [ngClass]="{'active':isClicked['case']}">
+          <div class="inside_a">Кейс-чемпионат<mat-icon>keyboard_arrow_right</mat-icon>
+          </div>
+        </a>
+        <a [ngClass]="{'active':isClicked['interview']}" (click)="clickInter()">
+          <div class="inside_a">Собеседование<mat-icon>keyboard_arrow_right</mat-icon>
+          </div>
+        </a>
+      </div>
+      <div class="right_container">
+        <app-testing (onPassed)="getRating()" *ngIf="isClicked['testing']"></app-testing>
+        <app-school (onPassed)="getRating()" *ngIf="isClicked['school']"></app-school>
+        <app-interview *ngIf="isClicked['interview']"></app-interview>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<mat-drawer-container class="example-container example-container_curator" [hasBackdrop]="hasBackdrop"
+  *ngIf="current_role == 'Куратор'">
+  <mat-drawer #drawer [mode]="mode" class="drawer">
+    <div class="left_container">
+      <h2>Вакансии</h2>
+      <a [ngStyle]="inter && {'color':color, 'font-weight':600} || null" (click)="clickFilter(1)">На стажировку</a>
+      <a [ngStyle]="work && {'color':color, 'font-weight':600} || null" (click)="clickFilter(2)">На работу</a>
+      <a [ngStyle]="project && {'color':color, 'font-weight':600} || null" (click)="clickFilter(3)">По проектам</a>
+      <button mat-stroked-button class="filter_button" [ngStyle]="{'border-color':color}"
+        (click)="clickFilter()">Сбросить</button>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content fullscreen class="drawer_content">
+    <button mat-button (click)="drawer.toggle()" class="side_button">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <div class="container">
+      <div class="left_container">
+        <h2>Вакансии</h2>
+        <a [ngStyle]="inter && {'color':color, 'font-weight':600} || null" (click)="clickFilter(1)">На стажировку</a>
+        <a [ngStyle]="work && {'color':color, 'font-weight':600} || null" (click)="clickFilter(2)">На работу</a>
+        <a [ngStyle]="project && {'color':color, 'font-weight':600} || null" (click)="clickFilter(3)">По проектам</a>
+        <button mat-stroked-button class="filter_button" [ngStyle]="{'border-color':color}"
+          (click)="clickFilter()">Сбросить</button>
+      </div>
+      <div class="right_container">
+        <app-selection-curator></app-selection-curator>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,43 @@
+<div class="header_block">
+    <h2 mat-dialog-title>Рассылка</h2>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="short_block">
+        <form [formGroup]="form">
+    <div class="one_2_one">
+        <input class="input_option_type" [type]="weekInput.type" [placeholder]="weekInput.label" matInput
+        [formControl]="weekInput.formControl" [matAutocomplete]="autoweek">
+      <mat-autocomplete autoActiveFirstOption #autoweek="matAutocomplete">
+        <ng-container *ngFor="let option of weekInput.values | async">
+          <mat-option [value]="option.name">
+            {{option.name}}
+          </mat-option>
+          <mat-divider></mat-divider>
+        </ng-container>
+      </mat-autocomplete>
+      <mat-icon class="option_icon">{{weekInput.icon}}</mat-icon>
+    </div>
+    <div class="one_2_one">
+            <ng-container *ngIf="statusInput">
+                <input class="input_option_type" [type]="statusInput.type" [placeholder]="statusInput.label" matInput
+                [formControl]="statusInput.formControl" [matAutocomplete]="autostat"
+                >
+                <mat-autocomplete autoActiveFirstOption #autostat="matAutocomplete">
+                <ng-container *ngFor="let option of statusInput.values | async">
+                    <mat-option [value]="option.name">
+                    {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{statusInput.icon}}</mat-icon>
+            </ng-container>
+    </div>
+</form>
+<div class="block_buttons">
+<button (click)="add()" [disabled]="form.invalid"
+    mat-stroked-button cdkFocusInitial [ngClass]="{'disabled_button': form.invalid}" [ngStyle]="{'color':'white', 'background-color': '#B11747', 'border': 'none'}">Отправить</button>
+    <button (click)="close()" 
+    mat-stroked-button cdkFocusInitial [ngStyle]="{'color':'white', 'background-color': '#B11747', 'border': 'none'}">Закрыть</button>
+</div>
+</div>

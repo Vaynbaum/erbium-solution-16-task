@@ -1,0 +1,105 @@
+<!-- ////////////////////////////////////////////////////////////////
+////////////////////////КУРАТОР/////////////////////////////
+//////////////////////////////////////////////////////////////// -->
+
+<div class="example-container">
+  <div class="right_container">
+    <div class="filter_block_curator">
+      <div class="search_panel" [ngStyle]="border()">
+        <ng-container *ngIf="directionInput">
+          <input class="input_option_type" [type]="directionInput.type" [placeholder]="directionInput.label" matInput
+            [formControl]="directionInput.formControl" [matAutocomplete]="autodir" [ngStyle]="{'border-color':color}">
+          <mat-autocomplete autoActiveFirstOption #autodir="matAutocomplete">
+            <ng-container *ngFor="let option of directionInput.values | async">
+              <mat-option [value]="option.name">
+                {{option.name}}
+              </mat-option>
+              <mat-divider></mat-divider>
+            </ng-container>
+          </mat-autocomplete>
+          <mat-icon class="option_icon">{{directionInput.icon}}</mat-icon>
+        </ng-container>
+      </div>
+      <div class="search_panel" [ngStyle]="border()">
+        <ng-container *ngIf="industryInput">
+          <input class="input_option_type" [type]="industryInput.type" [placeholder]="industryInput.label" matInput
+            [formControl]="industryInput.formControl" [matAutocomplete]="autoind" [ngStyle]="{'border-color':color}">
+          <mat-autocomplete autoActiveFirstOption #autoind="matAutocomplete">
+            <ng-container *ngFor="let option of industryInput.values | async">
+              <mat-option [value]="option.name">
+                {{option.name}}
+              </mat-option>
+              <mat-divider></mat-divider>
+            </ng-container>
+          </mat-autocomplete>
+          <mat-icon class="option_icon">{{industryInput.icon}}</mat-icon>
+        </ng-container>
+      </div>
+      <div class="search_panel" [ngStyle]="border()">
+        <ng-container *ngIf="organizationInput">
+          <input class="input_option_type" [type]="organizationInput.type" [placeholder]="organizationInput.label"
+            matInput [formControl]="organizationInput.formControl" [matAutocomplete]="autoorg"
+            [ngStyle]="{'border-color':color}">
+          <mat-autocomplete autoActiveFirstOption #autoorg="matAutocomplete">
+            <ng-container *ngFor="let option of organizationInput.values | async">
+              <mat-option [value]="option.name">
+                {{option.name}}
+              </mat-option>
+              <mat-divider></mat-divider>
+            </ng-container>
+          </mat-autocomplete>
+          <mat-icon class="option_icon">{{organizationInput.icon}}</mat-icon>
+        </ng-container>
+      </div>
+      <div class="search_panel" [ngStyle]="border()">
+        <ng-container *ngIf="cityInput">
+          <input class="input_option_type" [type]="cityInput.type" [placeholder]="cityInput.label" matInput
+            [formControl]="cityInput.formControl" [matAutocomplete]="autocity" [ngStyle]="{'border-color':color}" (keyup)="onKeyup(cityInput.field, cityInput.formControl)">
+          <mat-autocomplete autoActiveFirstOption #autocity="matAutocomplete">
+            <ng-container *ngFor="let option of cityInput.values | async">
+              <mat-option [value]="option.name">
+                {{option.name}}
+              </mat-option>
+              <mat-divider></mat-divider>
+            </ng-container>
+          </mat-autocomplete>
+          <mat-icon class="option_icon">{{cityInput.icon}}</mat-icon>
+        </ng-container>
+      </div>
+      <div class="search_panel" [ngStyle]="border()">
+        <ng-container *ngIf="ratingInput">
+          <input class="input_option_type" [type]="ratingInput.type" [placeholder]="ratingInput.label" matInput
+            [formControl]="ratingInput.formControl" [ngStyle]="{'border-color':color}">
+          <mat-icon class="option_icon">{{ratingInput.icon}}</mat-icon>
+        </ng-container>
+      </div>
+    </div>
+    <mat-progress-spinner *ngIf="!loaded" mode="indeterminate">
+    </mat-progress-spinner>
+    <div *ngIf="loaded && empty">Здесь ничего нет...</div>
+    <div class="cards cards_curator">
+      <mat-card *ngFor="let user of mentors| filterMentors:directionInput.formControl.value:industryInput.formControl.value:organizationInput.formControl.value:cityInput.formControl.value:ratingInput.formControl.value" class="card">
+        <div class="card_header">
+          <img [src]="getImg(user.img)" height="110" width="110">
+          <mat-card-subtitle>{{user?.lastname}} {{user?.firstname}} {{user?.patronymic}}
+          </mat-card-subtitle>
+          <mat-card-subtitle [ngStyle]="{'font-size':'14px', 'margin-bottom':'5px'}">
+            {{user?.mentor?.organization?.name}}</mat-card-subtitle>
+        </div>
+        <div class="main_card_body">
+          <div class="card_body">
+            <mat-card-subtitle class="smooth">г. {{user?.city?.name}}</mat-card-subtitle>
+            <mat-card-subtitle>{{user?.mentor?.organization?.training_direction?.name}}</mat-card-subtitle>
+            <mat-card-subtitle>Рейтинг: {{user?.rating}}</mat-card-subtitle>
+          </div>
+          <div class="card_buttons">
+            <button mat-button [ngClass]="{'default': true}" class="default filter_button"
+              color="success">Отзывы</button>
+            <button mat-button [ngClass]="{'default': true}" class="default filter_button"
+              color="success">Профиль</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,138 @@
+@import "../../../styles.scss";
+
+$gap-20: 20px;
+$gap-10: 10px;
+$width-card: min(90%, 1060px);
+.group-position-field,
+.group-education-field {
+  position: relative;
+}
+.inp_btn {
+  width: 100%;
+  display: flex;
+  column-gap: $gap-10;
+  align-items: center;
+
+  button {
+    min-height: 42px;
+  }
+
+  .group-field-inp_btn {
+    flex-grow: 1;
+  }
+}
+
+.inp-flat-file {
+  display: flex;
+  column-gap: $gap-10;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid $color-green;
+}
+
+.form-help-text {
+  position: absolute;
+  bottom: -20px;
+  font-size: $form-help-text-font-size;
+  padding-left: $padding-20;
+  text-align: left;
+}
+
+.has-error {
+  .form-help-text {
+    span {
+      color: $warn-color;
+    }
+  }
+
+  textarea,
+  input {
+    border-color: $warn-color !important;
+    color: $warn-color;
+  }
+}
+
+@media (min-width: 0px) {
+  .inp_btn {
+    .small {
+      display: block;
+    }
+    .long {
+      display: none;
+    }
+  }
+  .group {
+    display: flex;
+    flex-direction: column;
+    row-gap: $gap-20;
+  }
+  .block {
+    flex-direction: column;
+    align-items: center;
+    row-gap: $gap-20;
+
+    .user-info {
+      width: 100%;
+    }
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+    row-gap: $gap-10;
+
+    .btn {
+      min-width: 255px;
+      min-height: 40px;
+      font-size: 14px !important;
+      line-height: 16px !important;
+    }
+  }
+}
+
+@media (min-width: 550px) {
+  .inp_btn {
+    .small {
+      display: none;
+    }
+    .long {
+      display: block;
+    }
+  }
+  .block {
+    align-items: flex-start;
+    flex-direction: row;
+    column-gap: $gap-20;
+  }
+}
+@media (min-width: 800px) {
+  .group {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    column-gap: $gap-10;
+  }
+}
+@media (min-width: 768px) {
+  .button-group {
+    flex-direction: row;
+    column-gap: 30px;
+    justify-content: center;
+
+    .accordion-panel-content {
+      row-gap: $gap-20;
+    }
+
+    .btn {
+      min-width: 200px;
+      min-height: 40px;
+      font-size: 16px !important;
+      line-height: 19px !important;
+    }
+  }
+}
+button[disabled] {
+  border: 1px solid $color-secondary !important;
+  background-color: #ffffff !important;
+  color: $color-secondary !important;
+}

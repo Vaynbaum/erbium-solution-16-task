@@ -1,0 +1,31 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop">
+    <mat-drawer #drawer [mode]="mode" class="drawer">
+        <div class="left_container">
+            <h1>Рейтинг: 56</h1>
+            <mat-divider></mat-divider>
+            <a [ngClass]="{'active':isClicked['testing']}" (click)="clickTest()"><div class="inside_a">Информация по <br>стажировке<mat-icon>keyboard_arrow_right</mat-icon></div></a>
+            <a [ngClass]="{'active':isClicked['school']}"><div class="inside_a">Расписание<mat-icon>keyboard_arrow_right</mat-icon></div></a>
+            <a [ngClass]="{'active':isClicked['case']}"><div class="inside_a">Мероприятия<mat-icon>keyboard_arrow_right</mat-icon></div></a>
+            <a [ngClass]="{'active':isClicked['interview']}"><div class="inside_a">Заявления<mat-icon>keyboard_arrow_right</mat-icon></div></a>
+            <a [ngClass]="{'active':isClicked['request']}"><div class="inside_a">Запросы<mat-icon>keyboard_arrow_right</mat-icon></div></a>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content fullscreen class="drawer_content">
+      <button mat-button (click)="drawer.toggle()" class="side_button"><mat-icon>navigate_next</mat-icon></button>
+      <div class="container">
+        <div class="left_container">
+            <h1>Рейтинг: 56</h1>
+            <mat-divider></mat-divider>
+            <a [ngClass]="{'active':isClicked['testing']}" (click)="clickTest()"><div class="inside_a">Информация по <br>стажировке<mat-icon>keyboard_arrow_right</mat-icon></div></a>
+            <a [ngClass]="{'active':isClicked['school']}"><div class="inside_a">Расписание<mat-icon>keyboard_arrow_right</mat-icon></div></a>
+            <a [ngClass]="{'active':isClicked['case']}"><div class="inside_a">Мероприятия<mat-icon>keyboard_arrow_right</mat-icon></div></a>
+            <a [ngClass]="{'active':isClicked['interview']}"><div class="inside_a">Заявления<mat-icon>keyboard_arrow_right</mat-icon></div></a>
+            <a [ngClass]="{'active':isClicked['request']}"><div class="inside_a">Запросы<mat-icon>keyboard_arrow_right</mat-icon></div></a>
+        </div>
+        <div class="right_container">
+            <app-info-intership *ngIf="isClicked['testing']"></app-info-intership>
+            <app-timetable *ngIf="isClicked['school']"></app-timetable>
+        </div>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>

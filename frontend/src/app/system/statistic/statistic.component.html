@@ -1,0 +1,28 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop">
+    <mat-drawer #drawer [mode]="mode" class="drawer">
+            <h2>Статистика</h2>
+            <a [ngStyle]="inter && {'color':color, 'font-weight':600} || null" (click)="clickFilter(1)">Отбор</a>
+            <a [ngStyle]="work && {'color':color, 'font-weight':600} || null" (click)="clickFilter(2)">Стажеры</a>
+            <a [ngStyle]="project && {'color':color, 'font-weight':600} || null">Наставники</a>
+            <a [ngStyle]="vacan && {'color':color, 'font-weight':600} || null">Вакансии</a>
+    </mat-drawer>
+    <mat-drawer-content fullscreen class="drawer_content">
+      <button mat-button (click)="drawer.toggle()" class="side_button"><mat-icon>navigate_next</mat-icon></button>
+      <div class="container">
+        <div class="left_container">
+            <h2>Статистика</h2>
+            <a [ngStyle]="inter && {'color':color, 'font-weight':600} || null" (click)="clickFilter(1)">Отбор</a>
+            <a [ngStyle]="work && {'color':color, 'font-weight':600} || null" (click)="clickFilter(2)">Стажеры</a>
+            <a [ngStyle]="project && {'color':color, 'font-weight':600} || null">Наставники</a>
+            <a [ngStyle]="vacan && {'color':color, 'font-weight':600} || null">Вакансии</a>
+        </div>
+
+        <div class="right_container">
+            <app-ment *ngIf="(current_role == 'Куратор') && (project == true)"></app-ment>
+            <app-select *ngIf="(current_role == 'Куратор') && (inter == true)"></app-select>
+            <app-trainee *ngIf="(current_role == 'Куратор') && (work == true)"></app-trainee>
+            <app-vacan *ngIf="(current_role == 'Куратор') && (vacan == true)"></app-vacan>
+        </div>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>

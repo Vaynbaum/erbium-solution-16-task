@@ -1,0 +1,156 @@
+<div class="filter_block_hr">
+    <div class="search_panel" [ngStyle]="border()">
+        <ng-container *ngIf="directionInput">
+            <input class="input_option_type" [type]="directionInput.type" [placeholder]="directionInput.label" matInput
+            [formControl]="directionInput.formControl" [matAutocomplete]="autodir"
+            [ngStyle]="{'border-color':color}">
+            <mat-autocomplete autoActiveFirstOption #autodir="matAutocomplete">
+            <ng-container *ngFor="let option of directionInput.values | async">
+                <mat-option [value]="option.name">
+                {{option.name}}
+                </mat-option>
+                <mat-divider></mat-divider>
+            </ng-container>
+            </mat-autocomplete>
+            <mat-icon class="option_icon">{{directionInput.icon}}</mat-icon>
+        </ng-container>
+    </div>
+    <div class="search_panel" [ngStyle]="border()">
+        <ng-container *ngIf="organizationInput">
+            <input class="input_option_type" [type]="organizationInput.type" [placeholder]="organizationInput.label" matInput
+            [formControl]="organizationInput.formControl" [matAutocomplete]="autoorg"
+            [ngStyle]="{'border-color':color}">
+            <mat-autocomplete autoActiveFirstOption #autoorg="matAutocomplete">
+            <ng-container *ngFor="let option of organizationInput.values | async">
+                <mat-option [value]="option.name">
+                {{option.name}}
+                </mat-option>
+                <mat-divider></mat-divider>
+            </ng-container>
+            </mat-autocomplete>
+            <mat-icon class="option_icon">{{organizationInput.icon}}</mat-icon>
+        </ng-container>
+    </div>
+    <div class="search_panel" [ngStyle]="border()">
+        <ng-container *ngIf="vacancyInput">
+            <input class="input_option_type" [type]="vacancyInput.type" [placeholder]="vacancyInput.label" matInput
+            [formControl]="vacancyInput.formControl" [matAutocomplete]="autovac"
+            [ngStyle]="{'border-color':color}">
+            <mat-autocomplete autoActiveFirstOption #autovac="matAutocomplete">
+            <ng-container *ngFor="let option of vacancyInput.values | async">
+                <mat-option [value]="option.name">
+                {{option.name}}
+                </mat-option>
+                <mat-divider></mat-divider>
+            </ng-container>
+            </mat-autocomplete>
+            <mat-icon class="option_icon">{{vacancyInput.icon}}</mat-icon>
+        </ng-container>
+    </div>
+    <div class="search_panel" [ngStyle]="border()">
+        <ng-container *ngIf="statusInput">
+            <input class="input_option_type" [type]="statusInput.type" [placeholder]="statusInput.label" matInput
+            [formControl]="statusInput.formControl" [matAutocomplete]="autostat"
+            [ngStyle]="{'border-color':color}">
+            <mat-autocomplete autoActiveFirstOption #autostat="matAutocomplete">
+            <ng-container *ngFor="let option of statusInput.values | async">
+                <mat-option [value]="option.name">
+                {{option.name}}
+                </mat-option>
+                <mat-divider></mat-divider>
+            </ng-container>
+            </mat-autocomplete>
+            <mat-icon class="option_icon">{{statusInput.icon}}</mat-icon>
+        </ng-container>
+    </div>
+    <div class="search_panel" [ngStyle]="border()">
+        <ng-container *ngIf="all_timeInput">
+            <input class="input_option_type" [type]="all_timeInput.type" [placeholder]="all_timeInput.label" matInput
+            [formControl]="all_timeInput.formControl" [matAutocomplete]="autotime"
+            [ngStyle]="{'border-color':color}">
+            <mat-autocomplete autoActiveFirstOption #autotime="matAutocomplete">
+            <ng-container *ngFor="let option of all_timeInput.values | async">
+                <mat-option [value]="option.name">
+                {{option.name}}
+                </mat-option>
+                <mat-divider></mat-divider>
+            </ng-container>
+            </mat-autocomplete>
+            <mat-icon class="option_icon">{{all_timeInput.icon}}</mat-icon>
+        </ng-container>
+    </div>
+    <div class="search_panel" [ngStyle]="border()">
+        <ng-container *ngIf="criteriaInput">
+            <input class="input_option_type" [type]="criteriaInput.type" [placeholder]="criteriaInput.label" matInput
+            [formControl]="criteriaInput.formControl" [matAutocomplete]="autocrit"
+            [ngStyle]="{'border-color':color}">
+            <mat-autocomplete autoActiveFirstOption #autocrit="matAutocomplete">
+            <ng-container *ngFor="let option of criteriaInput.values | async">
+                <mat-option [value]="option.name">
+                {{option.name}}
+                </mat-option>
+                <mat-divider></mat-divider>
+            </ng-container>
+            </mat-autocomplete>
+            <mat-icon class="option_icon">{{criteriaInput.icon}}</mat-icon>
+        </ng-container>
+    </div>
+</div>
+<div class="cards cards_hr">
+    <mat-card *ngFor="let card of responses" class="card">
+        <div class="card_header">
+            <mat-card-subtitle>dsadasdasdasda</mat-card-subtitle>
+            <div class="card_label" [ngClass]="{'yellow':'true'}">
+                <div class="inner_card_text">На рассмотрении</div>
+            </div>
+        </div>
+        <div class="main_card_body">
+            <div class="one_block">
+                <div class="card_block_with_image">
+                    <div class="card_block_with_image_left">
+                        <div class="card_body card_body_first">
+                            <div class="card_body_inner">
+                                <mat-card-subtitle>Возраст: 22 года</mat-card-subtitle>
+                                <mat-card-subtitle>Контакты: 8 888 509 59 50</mat-card-subtitle>
+                            </div>
+                            <div class="card_body_inner">
+                                <mat-card-subtitle>Курс: 4 курc</mat-card-subtitle>
+                                <mat-card-subtitle>Вуз: МИФИ</mat-card-subtitle>
+                            </div>
+                            <div class="card_body_inner">
+                                <mat-card-subtitle>Город: Москва</mat-card-subtitle>
+                                <mat-card-subtitle>Гражданство: РФ</mat-card-subtitle>
+                            </div>
+                            <div class="card_body_inner">
+                                <mat-card-subtitle>Опыт работы: нет</mat-card-subtitle>
+                                <mat-card-subtitle>Волонтерство: да</mat-card-subtitle>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inner_card_label">
+                        <img src="https://uraremont.ru/upload/iblock/62f/ut_00015888.jpg" height="100" width="100">
+                        <button mat-button [ngClass]="{'resume_button': true}" class="filter_button" color="success">Резюме</button>
+                    </div>
+                </div>
+                <div class="second_block">
+                    <div class="card_body">
+                        <mat-card-subtitle>Вакансия: <strong>Специалист службы технической поддержки пользователей</strong></mat-card-subtitle>
+                        <mat-card-subtitle>Направление: <strong>IT - город</strong></mat-card-subtitle>
+                        <mat-card-subtitle>Организация: ГКУ Горфинтехсервис, Москва</mat-card-subtitle>
+                    </div>
+                    <div class="new_block_donw_image">
+                        <div class="text_under_image"><strong>Общий рейтинг: 145</strong></div>
+                        <div class="text_under_image">Тестирование: 78</div>
+                        <div class="text_under_image">Кейс-чемпионат: 50</div>
+                        <div class="text_under_image">Собеседование: 17</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card_buttons">
+                <button mat-button [ngClass]="{'default': true}" class="filter_button" color="success">Одобрить</button>
+                <button mat-button [ngClass]="{'red': true}" class="filter_button" color="success">Отказать</button>
+                <button mat-button [ngClass]="{'neutral': true}" class="filter_button" color="success">Этап: собеседование</button>
+            </div>
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,216 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop">
+  <mat-drawer #drawer [mode]="mode" class="drawer" [ngClass]="{mobile:!isMobile}">
+    <div class="filters">
+      <mat-accordion class="example-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{title_type}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-container *ngIf="b_t">
+            <section *ngFor="let ing of types; let i = index" class="example-section">
+              <mat-checkbox [(ngModel)]="ing.checked">
+                {{ing.name}}
+              </mat-checkbox>
+            </section>
+          </ng-container>
+          <mat-progress-spinner diameter="30" *ngIf="!b_t" mode="indeterminate">
+          </mat-progress-spinner>
+
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{title_direction}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-container *ngIf="b_d">
+            <section *ngFor="let ing of directions; let i = index" class="example-section">
+              <mat-checkbox [(ngModel)]="ing.checked">
+                {{ing.name}}
+              </mat-checkbox>
+            </section>
+          </ng-container>
+          <mat-progress-spinner diameter="30" *ngIf="!b_d" mode="indeterminate">
+          </mat-progress-spinner>
+
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{title_branch}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-container *ngIf="b_l">
+            <section *ngFor="let ing of branchs; let i = index" class="example-section">
+              <mat-checkbox [(ngModel)]="ing.checked">
+                {{ing.name}}
+              </mat-checkbox>
+            </section>
+          </ng-container>
+          <mat-progress-spinner diameter="30" *ngIf="!b_l" mode="indeterminate">
+          </mat-progress-spinner>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{title_metro}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-container *ngIf="b_m">
+            <section *ngFor="let ing of metros; let i = index" class="example-section">
+              <mat-checkbox [(ngModel)]="ing.checked">
+                {{ing.name}}
+              </mat-checkbox>
+            </section>
+          </ng-container>
+          <mat-progress-spinner diameter="30" *ngIf="!b_m" mode="indeterminate">
+          </mat-progress-spinner>
+
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{title_score}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-slider min="1" max="5" step="1" showTickMarks discrete [displayWith]="formatLabel">
+            <input matSliderThumb [(ngModel)]="value_score">
+          </mat-slider>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <div class="filter_buttons">
+        <button mat-stroked-button class="filter_button" (click)="submit()">Применить</button>
+        <button mat-stroked-button class="filter_button" (click)="drop()">Сброс</button>
+      </div>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content fullscreen class="drawer_content">
+    <button mat-button (click)="drawer.toggle()" class="side_button">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <div class="container">
+      <div class="filter_content">
+        <h1>Фильтр</h1>
+        <div class="filters">
+          <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{title_type}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ng-container *ngIf="b_t">
+                <section *ngFor="let ing of types; let i = index" class="example-section">
+                  <mat-checkbox [(ngModel)]="ing.checked">
+                    {{ing.name}}
+                  </mat-checkbox>
+                </section>
+              </ng-container>
+              <mat-progress-spinner diameter="30" *ngIf="!b_t" mode="indeterminate">
+              </mat-progress-spinner>
+
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{title_direction}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ng-container *ngIf="b_d">
+                <section *ngFor="let ing of directions; let i = index" class="example-section">
+                  <mat-checkbox [(ngModel)]="ing.checked">
+                    {{ing.name}}
+                  </mat-checkbox>
+                </section>
+              </ng-container>
+              <mat-progress-spinner diameter="30" *ngIf="!b_d" mode="indeterminate">
+              </mat-progress-spinner>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{title_branch}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ng-container *ngIf="b_l">
+                <section *ngFor="let ing of branchs; let i = index" class="example-section">
+                  <mat-checkbox [(ngModel)]="ing.checked">
+                    {{ing.name}}
+                  </mat-checkbox>
+                </section>
+              </ng-container>
+              <mat-progress-spinner diameter="30" *ngIf="!b_l" mode="indeterminate">
+              </mat-progress-spinner>
+
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{title_metro}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ng-container *ngIf="b_m">
+                <section *ngFor="let ing of metros; let i = index" class="example-section">
+                  <mat-checkbox [(ngModel)]="ing.checked">
+                    {{ing.name}}
+                  </mat-checkbox>
+                </section>
+              </ng-container>
+              <mat-progress-spinner diameter="30" *ngIf="!b_m" mode="indeterminate">
+              </mat-progress-spinner>
+
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{title_score}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-slider min="1" max="5" step="1" showTickMarks discrete [displayWith]="formatLabel">
+                <input matSliderThumb [(ngModel)]="value_score">
+              </mat-slider>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <div class="filter_buttons">
+            <button mat-stroked-button class="filter_button" (click)="submit()">Применить</button>
+            <button mat-stroked-button class="filter_button" (click)="drop()">Сброс</button>
+          </div>
+        </div>
+      </div>
+      <div class="main_content">
+        <div class="search_panel">
+          <app-form-field (keyup)="onKeyup()" class="search_type" colorBorder="#079368" [type]="search_type.type"
+            [placeholder]="search_type.placeholder" [formConrol]="search_type.formControl" [icon]="search_type.icon"
+            [messageErorFunc]="search_type.messageError">
+          </app-form-field>
+        </div>
+        <mat-progress-spinner *ngIf="!loadedOrg" mode="indeterminate">
+        </mat-progress-spinner>
+        <div *ngIf="loadedOrg && empty">Здесь ничего нет...</div>
+        <div *ngIf="loadedOrg" class="cards">
+          <mat-card *ngFor="let card of organization_cards" class="card">
+            <div class="inner_card_header">
+              <mat-card-subtitle class="inner_card_header_left">{{card.name}}</mat-card-subtitle>
+              <div class="inner_card_header_right">
+                <mat-card-subtitle>Рейтинг: {{card.average_score}}</mat-card-subtitle>
+                <mat-card-subtitle>Отзывы: {{card.review_count}}</mat-card-subtitle>
+              </div>
+            </div>
+            <div class="inner_card">
+              <mat-card-subtitle>Основной вид деятельности: {{card.description}}</mat-card-subtitle>
+              <mat-card-subtitle>Направление: {{card.training_direction.name}}</mat-card-subtitle>
+              <mat-card-subtitle>Юридический адрес: {{card.address}}</mat-card-subtitle>
+              <mat-card-subtitle>Телефон для связи: {{card.phone}}</mat-card-subtitle>
+              <mat-card-subtitle><button (click)="openVacs(card.id)" mat-stroked-button class="filter_button">
+                  <a>Посмотреть вакансии</a>
+                </button></mat-card-subtitle>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+  </mat-drawer-content>
+</mat-drawer-container>

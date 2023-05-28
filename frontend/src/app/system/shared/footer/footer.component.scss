@@ -1,0 +1,12 @@
+@import "../../../../styles.scss";
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  border-radius: 20px 20px 0px 0px;
+  padding-top: 10px;
+  color: $color-light;
+  min-width: 320px;
+}

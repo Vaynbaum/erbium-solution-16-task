@@ -1,0 +1,62 @@
+<div class="header_block">
+    <h2 mat-dialog-title>Организации</h2>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div class="short_block">
+        <form [formGroup]="form">
+            <app-form-field *ngFor="let input of inputs1" [type]="input.type" [placeholder]="input.placeholder"
+        [formConrol]="input.formControl" [icon]="input.icon" [messageErorFunc]="input.messageError"></app-form-field>
+        <div class="one_2_one">
+            <input class="input_option_type" [type]="industryInput.type" [placeholder]="industryInput.label" matInput
+              [formControl]="industryInput.formControl" [matAutocomplete]="autoind">
+            <mat-autocomplete autoActiveFirstOption #autoind="matAutocomplete">
+              <ng-container *ngFor="let option of industryInput.values | async">
+                <mat-option [value]="option.name">
+                  {{option.name}}
+                </mat-option>
+                <mat-divider></mat-divider>
+              </ng-container>
+            </mat-autocomplete>
+            <mat-icon class="option_icon">{{industryInput.icon}}</mat-icon>
+          </div>
+          <div class="one_2_one">
+            <input class="input_option_type" [type]="typeInput.type" [placeholder]="typeInput.label" matInput
+              [formControl]="typeInput.formControl" [matAutocomplete]="autotype">
+            <mat-autocomplete autoActiveFirstOption #autotype="matAutocomplete">
+              <ng-container *ngFor="let option of typeInput.values | async">
+                <mat-option [value]="option.name">
+                  {{option.name}}
+                </mat-option>
+                <mat-divider></mat-divider>
+              </ng-container>
+            </mat-autocomplete>
+            <mat-icon class="option_icon">{{typeInput.icon}}</mat-icon>
+          </div>
+        <div class="one_2_one">
+            <input class="input_option_type" [type]="directionInput.type" [placeholder]="directionInput.label" matInput
+              [formControl]="directionInput.formControl" [matAutocomplete]="autodir">
+            <mat-autocomplete autoActiveFirstOption #autodir="matAutocomplete">
+              <ng-container *ngFor="let option of directionInput.values | async">
+                <mat-option [value]="option.name">
+                  {{option.name}}
+                </mat-option>
+                <mat-divider></mat-divider>
+              </ng-container>
+            </mat-autocomplete>
+            <mat-icon class="option_icon">{{directionInput.icon}}</mat-icon>
+          </div>
+          <app-form-field class="group-interning-field" [type]="aboutme_inp.type"
+              [label]="aboutme_inp.label" [placeholder]="aboutme_inp.placeholder" [formConrol]="aboutme_inp.formControl"
+              [icon]="aboutme_inp.icon" [messageErorFunc]="aboutme_inp.messageError" borderRadius="5px">
+            </app-form-field>
+        <app-form-field *ngFor="let input of inputs2" [type]="input.type" [placeholder]="input.placeholder"
+        [formConrol]="input.formControl" [icon]="input.icon" [messageErorFunc]="input.messageError"></app-form-field>
+        </form>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="start">
+    <button (click)="add()" 
+    mat-stroked-button cdkFocusInitial [ngStyle]="{'color':'white', 'background-color': '#B11747', 'border': 'none'}">Добавить</button>
+    <button (click)="close()" 
+    mat-stroked-button cdkFocusInitial [ngStyle]="{'color':'white', 'background-color': '#B11747', 'border': 'none'}">Закрыть</button>
+  </mat-dialog-actions>

@@ -1,0 +1,47 @@
+@import "../../../../styles.scss";
+
+.input_option_type {
+  padding: 17px 0;
+  height: 100%;
+  width: 100%;
+  flex: auto;
+  border: none;
+}
+
+.container {
+  flex-grow: 1;
+  background: $color-light;
+  display: flex;
+  justify-content: space-between;
+  border-radius: $input-group-border-radius;
+  transition: $input-transition;
+  padding: 0 $padding-20;
+  align-items: center;
+  input {
+    transition: $input-transition;
+    background: $color-light;
+  }
+}
+.input_option_type:focus-visible {
+  outline: none;
+}
+
+.container:hover {
+  background: $input-group-hover-background;
+  input {
+    background: $input-group-hover-background;
+  }
+}
+
+.container:focus-within {
+  background: $input-group-focus-within-background;
+  input {
+    background: $input-group-focus-within-background;
+  }
+}
+
+.container {
+  input::placeholder {
+    color: $color-secondary;
+  }
+}

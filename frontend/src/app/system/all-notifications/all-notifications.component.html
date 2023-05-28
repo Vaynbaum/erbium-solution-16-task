@@ -1,0 +1,10 @@
+<div class="container">
+    <mat-card class="message" *ngFor="let not of nots">
+        <mat-card-header>
+          <mat-card-subtitle>{{not.message}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+          {{not.date| date: 'dd.MM.yyyy'}}
+        </mat-card-actions>
+      </mat-card>
+</div>

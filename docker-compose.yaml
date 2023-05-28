@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+###################################
+#  set up database container
+###################################
+  postgres:
+      image: postgres:14
+      env_file: .env
+      volumes:
+        - .:/docker-entrypoint-initdb.d
+      ports:
+        - 5432:5432
+      expose:
+        - 5432
+      networks:
+      - microservices
+
+
+###################################
+#  set up backend container
+###################################  
+  backend:
+    build: .
+    restart: always
+    ports:
+      - 8000:8000
+    expose:
+      - 8000
+    depends_on:
+      - postgres
+    networks:
+      - microservices
+
+###################################
+#  set up frontend container
+###################################  
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - 4200:4200
+    expose:
+      - 4200
+    depends_on:
+      - backend
+    networks:
+      - microservices
+
+networks:
+    microservices:

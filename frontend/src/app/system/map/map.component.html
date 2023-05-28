@@ -1,0 +1,10 @@
+<div class="container">
+    <ya-map [center]="[55.751952, 37.600739]" [zoom]="12">
+      <ya-placemark
+        *ngFor="let placemark of placemarks"
+        [geometry]="placemark.geometry"
+        [properties]="placemark.properties"
+        [options]="placemark.options"
+      ></ya-placemark>
+    </ya-map>
+  </div>

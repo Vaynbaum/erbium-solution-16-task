@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+}
+
+.mat-table__wrapper .mat-table {
+    min-width: auto !important;
+    width: 100% !important;
+}
+
+.mat-header-row {
+    width: 100%;
+}
+
+.mat-row {
+    width: 100%;
+}
+.mat-column-direction {
+    flex: 0 0 50% !important;
+    min-width: 104px !important;
+}
+.mat-column-number_vac, .mat-column-number_votes, .mat-column-number_recs, .mat-column-number_recs, .mat-column-number_success {
+    flex: 0 0 10% !important;
+    min-width: 52px !important;
+}

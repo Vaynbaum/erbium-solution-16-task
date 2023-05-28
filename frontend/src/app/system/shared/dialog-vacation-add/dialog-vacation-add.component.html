@@ -1,0 +1,85 @@
+<div class="header_block">
+  <h2 mat-dialog-title>Вакансия</h2>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="short_block">
+    <form [formGroup]="form">
+      <app-form-field *ngFor="let input of inputs1" [type]="input.type" [placeholder]="input.placeholder"
+        [formConrol]="input.formControl" [icon]="input.icon" [messageErorFunc]="input.messageError"></app-form-field>
+      <div class="one_2_one">
+        <input class="input_option_type" [type]="workScheduleInput.type" [placeholder]="workScheduleInput.label"
+          matInput [formControl]="workScheduleInput.formControl" [matAutocomplete]="autows">
+        <mat-autocomplete autoActiveFirstOption #autows="matAutocomplete">
+          <ng-container *ngFor="let option of workScheduleInput.values | async">
+            <mat-option [value]="option.name">
+              {{option.name}}
+            </mat-option>
+            <mat-divider></mat-divider>
+          </ng-container>
+        </mat-autocomplete>
+        <mat-icon class="option_icon">{{workScheduleInput.icon}}</mat-icon>
+      </div>
+
+      <div class="one_2_one">
+        <input class="input_option_type" [type]="employmentTypeInput.type" [placeholder]="employmentTypeInput.label"
+          matInput [formControl]="employmentTypeInput.formControl" [matAutocomplete]="autoet">
+        <mat-autocomplete autoActiveFirstOption #autoet="matAutocomplete">
+          <ng-container *ngFor="let option of employmentTypeInput.values | async">
+            <mat-option [value]="option.name">
+              {{option.name}}
+            </mat-option>
+            <mat-divider></mat-divider>
+          </ng-container>
+        </mat-autocomplete>
+        <mat-icon class="option_icon">{{employmentTypeInput.icon}}</mat-icon>
+      </div>
+      <div class="one_2_one">
+        <input class="input_option_type" [type]="workExpInput.type" [placeholder]="workExpInput.label" matInput
+          [formControl]="workExpInput.formControl" [matAutocomplete]="autowe">
+        <mat-autocomplete autoActiveFirstOption #autowe="matAutocomplete">
+          <ng-container *ngFor="let option of workExpInput.values | async">
+            <mat-option [value]="option.name">
+              {{option.name}}
+            </mat-option>
+            <mat-divider></mat-divider>
+          </ng-container>
+        </mat-autocomplete>
+        <mat-icon class="option_icon">{{workExpInput.icon}}</mat-icon>
+      </div>
+      <app-form-field *ngFor="let aboutme_inp of textareas" [type]="aboutme_inp.type" [label]="aboutme_inp.label"
+        [placeholder]="aboutme_inp.placeholder" [formConrol]="aboutme_inp.formControl" [icon]="aboutme_inp.icon"
+        [messageErorFunc]="aboutme_inp.messageError" borderRadius="5px">
+      </app-form-field>
+      <app-form-field *ngFor="let input of inputs2" [type]="input.type" [placeholder]="input.placeholder"
+        [formConrol]="input.formControl" [icon]="input.icon" [messageErorFunc]="input.messageError"></app-form-field>
+      <app-form-field date_cls="date_begin_0" [type]="inputDate1.type" [label]="inputDate1.label"
+        [placeholder]="inputDate1.placeholder" [formConrol]="inputDate1.formControl" [icon]="inputDate1.icon"
+        [messageErorFunc]="inputDate1.messageError" borderRadius="50px">
+      </app-form-field>
+      <app-form-field date_cls="date_end_1" [type]="inputDate2.type" [label]="inputDate2.label"
+        [placeholder]="inputDate2.placeholder" [formConrol]="inputDate2.formControl" [icon]="inputDate2.icon"
+        [messageErorFunc]="inputDate2.messageError" borderRadius="50px">
+      </app-form-field>
+      <div *ngIf="!empty" class="block-skill">
+        <div class="block-skill-label">Подходящие навыки:</div>
+        <mat-chip-listbox class="block-skill-chip-list">
+          <mat-chip class="block-skill-chip-list-item" [ngStyle]="{ 'background-color': '#7407FF', 'color': '#fff' }"
+            *ngFor="let skill of skills" (removed)="removeSkill(skill)">
+            {{skill}}
+            <button class="block-skill-chip-list-btn" matChipRemove>
+              <mat-icon [ngStyle]="{'color':'#fff'}">cancel</mat-icon>
+            </button>
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="start">
+  <button [disabled]="form.invalid" (click)="add()" mat-stroked-button cdkFocusInitial
+    [ngStyle]="{'color':'white', 'background-color': '#6E00F4', 'border': 'none'}">Добавить</button>
+  <button (click)="close()" mat-stroked-button cdkFocusInitial
+    [ngStyle]="{'color':'white', 'background-color': '#6E00F4', 'border': 'none'}">Закрыть</button>
+  <button [disabled]="form.get('aboutmeControl')?.invalid" (click)="predict()" mat-stroked-button cdkFocusInitial
+    [ngStyle]="{'color':'white', 'background-color': '#6E00F4', 'border': 'none'}">Подобрать навыки</button>
+</mat-dialog-actions>

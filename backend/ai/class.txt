@@ -1,0 +1,41 @@
+Figma, Adobe Photoshop, Adobe Illustrator, Креативность
+UX/UI, Figma, Adobe Photoshop
+Figma, UX/UI, Adobe Photoshop, Креативность
+Adobe Photoshop, Креативность
+Figma, Adobe Photoshop, Креативность
+Adobe Illustrator, Figma, Adobe Photoshop, Креативность, Векторная графика
+Adobe Photoshop, Adobe Illustrator, Креативность, Грамотная речь
+Angular, HTML, CSS, JavaScript, Json, Git
+Python, Docker, Техническая документация, PostgreSQL, Программирование, Тестирование
+Python, Docker, PostgreSQL, JavaScript, Agile, MySQL, Программирование, Git
+Python, C++, Java, Go, PHP, C#, NodeJS, Программирование, Backend, Git
+Техническая документация, Agile, Аналитика, Баг-трекинги, Тестирование
+Agile, Аналитика, Математика, Английский язык, Анализ рисков
+Agile, Аналитика, Анализ рисков, Стратегическое планирование, Реклама, Продвижение бренда
+Agile, Аналитика, Анализ рисков, Стратегическое планирование, Английский язык, PR, Грамотная речь, SMM, Креативность, Реклама
+Аналитика, Стратегическое планирование, Английский язык, PR, Грамотная речь, SMM, Креативность
+Анализ рисков, Стратегическое планирование, Финансовая модель, Английский язык, Юнит-экономика, Математика, Аналитика, Пользователь ПК
+Linux, Windows, Техническая поддержка, Настройка ПО
+Linux, Docker, Python, Go, PostgreSQL, MySQL
+PostgreSQL, Docker, Аналитика
+ML, Linux, Docker, Python, Математика
+DataScients, ML, Python, Математика, Agile, Техническая документация
+android, Kotlin, Java, Техническая документация, Git
+android, Kotlin, Java, Json, Настройка ПО, Git
+android, Kotlin, Git
+MatLab, Английский язык, Техническая документация
+MatLab, C++, Python, Техническая документация
+Информационная безопасность, Linux, DevSecOps, Английский язык
+Информационная безопасность, Английский язык, Техническая документация, Антивирусная защита, Тестирование
+DevSecOps, Docker, Python, PostgreSQL, Linux, Windows, Техническая документация
+Информационная безопасность, Linux, DevSecOps, Английский язык, Docker, Python
+NodeJS, PostgreSQL, Docker, Git
+HTML, CSS, JavaScript, NodeJS, Docker, Angular, Frontend, Git
+HTML, CSS, JavaScript, Angular, Figma, Frontend, Git
+NodeJS, MySQL, PHP, Git
+Настройка ПО, Антивирусная защита, Информационная безопасность, Техническая поддержка, Английский язык, Техническая документация, Проектирование сетей
+Английский язык, Техническая документация, Пользователь ПК, AutoCad
+Английский язык, Техническая документация, Adobe Photoshop, AutoCad, Пользователь ПК
+Agile, Аналитика, Стратегическое планирование, Грамотная речь, Пользователь ПК
+Python, MySQL, Agile
+C++, Linux, Windows, Английский язык, Git

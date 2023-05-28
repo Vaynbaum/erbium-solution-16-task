@@ -1,0 +1,184 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop">
+  <mat-drawer #drawer [mode]="mode" class="drawer">
+    <h2>Посещаемость</h2>
+    <a [ngStyle]="inter && {'color':color, 'font-weight':600} || null" (click)="clickFilter(1)">
+      <div class="inside_a">Расписание<mat-icon>keyboard_arrow_right</mat-icon>
+      </div>
+    </a>
+    <a [ngStyle]="work && {'color':color, 'font-weight':600} || null">
+      <div class="inside_a">Мероприятия<mat-icon>keyboard_arrow_right</mat-icon>
+      </div>
+    </a>
+    <a [ngStyle]="project && {'color':color, 'font-weight':600} || null">
+      <div class="inside_a">Отпуска<mat-icon>keyboard_arrow_right</mat-icon>
+      </div>
+    </a>
+    <a [ngStyle]="project && {'color':color, 'font-weight':600} || null">
+      <div class="inside_a">Заявления<mat-icon>keyboard_arrow_right</mat-icon>
+      </div>
+    </a>
+  </mat-drawer>
+  <mat-drawer-content fullscreen class="drawer_content">
+    <button mat-button (click)="drawer.toggle()" class="side_button">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <div class="container">
+      <div class="left_container">
+        <h2>Посещаемость</h2>
+        <a [ngStyle]="inter && {'color':color, 'font-weight':600} || null" (click)="clickFilter(1)">
+          <div class="inside_a">Расписание<mat-icon>keyboard_arrow_right</mat-icon>
+          </div>
+        </a>
+        <a [ngStyle]="work && {'color':color, 'font-weight':600} || null">
+          <div class="inside_a">Мероприятия<mat-icon>keyboard_arrow_right</mat-icon>
+          </div>
+        </a>
+        <a [ngStyle]="project && {'color':color, 'font-weight':600} || null">
+          <div class="inside_a">Отпуска<mat-icon>keyboard_arrow_right</mat-icon>
+          </div>
+        </a>
+        <a [ngStyle]="project && {'color':color, 'font-weight':600} || null">
+          <div class="inside_a">Заявления<mat-icon>keyboard_arrow_right</mat-icon>
+          </div>
+        </a>
+      </div>
+      <!-- ///////////////////////////////////////////////////////////////////////////// -->
+      <!-- //////////////БЛОК НАСТАВНИКА///////////////////// -->
+      <!-- ///////////////////////////////////////////////////////////////////////////// -->
+
+      <div class="right_container" *ngIf="(current_role == 'Наставник') && (inter == true)">
+        <div class="filter_block_nast">
+          <div class="group_label_search">
+            <div class="label">&emsp;Вакансия</div>
+            <div class="search_panel" [ngStyle]="border()">
+              <ng-container *ngIf="vacancyInput">
+                <input class="input_option_type" [type]="vacancyInput.type" [placeholder]="vacancyInput.label" matInput
+                  [formControl]="vacancyInput.formControl" [matAutocomplete]="autovac"
+                  [ngStyle]="{'border-color':color}">
+                <mat-autocomplete autoActiveFirstOption #autovac="matAutocomplete">
+                  <ng-container *ngFor="let option of vacancyInput.values | async">
+                    <mat-option [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{vacancyInput.icon}}</mat-icon>
+              </ng-container>
+            </div>
+          </div>
+          <div class="group_label_search">
+            <div class="label">&emsp;Стажер</div>
+            <div class="search_panel" [ngStyle]="border()">
+              <ng-container *ngIf="internInput">
+                <input class="input_option_type" [type]="internInput.type" [placeholder]="internInput.label" matInput
+                  [formControl]="internInput.formControl" [matAutocomplete]="autoint"
+                  [ngStyle]="{'border-color':color}">
+                <mat-autocomplete autoActiveFirstOption #autoint="matAutocomplete">
+                  <ng-container *ngFor="let option of internInput.values | async">
+                    <mat-option (click)="selectIntern(option)" [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{internInput.icon}}</mat-icon>
+              </ng-container>
+            </div>
+          </div>
+          <div class="group_label_search">
+            <div class="label">&emsp;Дата</div>
+            <app-form-field class="search_panel search_panel_date" [ngStyle]="border()" date_cls="date_begin_0"
+              [type]="inputDate.type" [label]="inputDate.label" [placeholder]="inputDate.placeholder"
+              [formConrol]="inputDate.formControl" [icon]="inputDate.icon" [messageErorFunc]="inputDate.messageError"
+              borderRadius="50px">
+            </app-form-field>
+          </div>
+          <div class="group_label_search">
+            <div class="label">&emsp;Кол-во часов</div>
+            <div class="search_panel" [ngStyle]="border()">
+              <ng-container *ngIf="hourInput">
+                <input class="input_option_type" [type]="hourInput.type" [placeholder]="hourInput.label" matInput
+                  [formControl]="hourInput.formControl" [ngStyle]="{'border-color':color}">
+                <mat-icon class="option_icon">{{hourInput.icon}}</mat-icon>
+              </ng-container>
+            </div>
+          </div>
+          <div class="group_label_search">
+            <div class="label">&emsp;Статус</div>
+            <div class="search_panel" [ngStyle]="border()">
+              <ng-container *ngIf="statusInput">
+                <input class="input_option_type" [type]="statusInput.type" [placeholder]="statusInput.label" matInput
+                  [formControl]="statusInput.formControl" [matAutocomplete]="autostat"
+                  [ngStyle]="{'border-color':color}">
+                <mat-autocomplete autoActiveFirstOption #autostat="matAutocomplete">
+                  <ng-container *ngFor="let option of statusInput.values | async">
+                    <mat-option [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{statusInput.icon}}</mat-icon>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="right_container nast">
+          <div class="right_container_first">
+            <button (click)="addPresence()" mat-button [ngClass]="{'default': true}" class="filter_button"
+              color="success">Отметить</button>
+          </div>
+          <div class="right_container_second">
+            <div>Посмотреть табель:</div>
+            <button mat-button [ngClass]="{'blue': true}" class="filter_button" color="success">Скачать</button>
+          </div>
+        </div>
+        <div class="table_inner">
+          <mat-form-field>
+            <mat-label>Фильтр</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Введите значение любого поля" #input>
+          </mat-form-field>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+            <ng-container matColumnDef="vacancy">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Вакансия </th>
+              <td mat-cell *matCellDef="let element"> {{element.vacancy}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="intern">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Стажер </th>
+              <td mat-cell *matCellDef="let element"> {{element.intern}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="week">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Дата </th>
+              <td mat-cell *matCellDef="let element"> {{element.day | date:"dd.MM.yyyy"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="day">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Кол-во часов </th>
+              <td mat-cell *matCellDef="let element"> {{element.week}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Статус </th>
+              <td mat-cell *matCellDef="let element">
+                <div *ngIf="element.status == 'Был'" [ngStyle]="{'color':'green'}">Был</div>
+                <div *ngIf="element.status == 'Отпуск'" [ngStyle]="{'color':'tomato'}">Отпуск</div>
+                <div *ngIf="element.status=='Не был'" [ngStyle]="{'color':'red'}">Не был</div>
+              </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">Нет совпадений по запросу "{{input.value}}"</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

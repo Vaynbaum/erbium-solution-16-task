@@ -1,0 +1,5 @@
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
+from database.models.employment_type import EmploymentType
+
+
+PydanticEmploymentTypeInDB = sqlalchemy_to_pydantic(EmploymentType)

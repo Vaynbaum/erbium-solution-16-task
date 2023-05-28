@@ -1,0 +1,187 @@
+@import "../../../styles.scss";
+
+//---------------------------------------------------------------------------------
+//ЗДЕСЬ ВСЕ ВИДЫ КНОПОК ДЛЯ NGCLASS
+.default{
+  border-color: #FD0C50 !important;
+}
+//---------------------------------------------------------------------------------
+.mat-success {
+  border-radius: 65px;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 5px 20px;
+}
+@media screen and (max-width: 740px) {
+  .example-container {
+    margin-left: 10px;
+  }
+  .card_header {
+    display: flex;
+    flex-direction: column-reverse;
+    .card_label {
+      border-radius: 0;
+      position: static;
+
+        margin-left: 40%;
+        min-width: 0px;
+        flex-grow: 0;
+
+    }
+  }
+  .card_buttons {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    .filter_button {
+      flex-grow: 1;
+      min-width: 200px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px){
+  .cards_curator{
+    .filter_button{
+      min-width: 100px;
+    }
+  }
+}
+
+
+
+
+
+//БЛОК HR-------------------------------------------------------
+
+.filter_block_hr{
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 30px;
+  .search_panel{
+    flex-basis: auto;
+    min-width: 250px !important;
+    flex-grow: 0 !important;
+  }
+  @media screen and (max-width: 400px){
+    .search_panel{
+      min-width: 100px !important;
+    }
+  }
+}
+
+.cards_hr{
+  .card_label{
+    text-align: left !important;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
+  .filter_button{
+    padding: 0 40px;
+  }
+  .card{
+    .card_header{
+      text-align: center;
+      margin-bottom: 10px !important;
+    }
+    .card_body{
+      .card_body_inner{
+        display: flex;
+        flex-direction: column;
+        mat-card-subtitle{
+          font-size: 14px !important
+        }
+      }
+    }
+  }
+  .card_body_first{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: row !important;
+    column-gap: 30px !important;
+    row-gap: 5px !important;
+  }
+  .fail_criteria{
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+  }
+  .card_body{
+    flex-grow: 1;
+    flex-basis: auto;
+  }
+  .card_block_with_image{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 30px;
+    .inner_card_label{
+      padding: 25px 10px;
+      border: 1px solid black;
+      flex-basis: 20%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      align-items: center;
+      .text_under_image{
+        text-align: center;
+        font-size: 14px !important;
+      }
+      strong{
+        font-size: 16px !important;
+      }
+    }
+    .card_block_with_image_left{
+      display: flex;
+      flex-direction: column;
+      row-gap: 30px;
+    }
+  }
+  @media screen and (max-width: 1050px){
+    .card_body_first{
+      justify-content: space-between;
+    }
+    .card_body_inner{
+      flex-basis: 40%;
+      flex-grow: 1;
+    }
+  }
+  @media screen and (max-width: 650px){
+    .card_block_with_image{
+      flex-direction: column-reverse;
+      row-gap: 20px;
+      .inner_card_label{
+        .filter_button{
+          padding: 0 100px;
+        }
+        img{
+          width: 200px;
+          height: 200px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 500px){
+    .card_body_first{
+      .card_body_inner{
+        display: flex;
+        align-items: center;
+        flex-basis: 100%;
+      }
+    }
+  }
+  @media screen and (max-width: 400px){
+    .card_body_first{
+      align-items: left;
+    }
+    .card_label{
+      margin-left: 20% !important;
+    }
+  }
+}

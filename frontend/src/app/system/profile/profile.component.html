@@ -1,0 +1,370 @@
+<div class="container">
+  <mat-progress-spinner *ngIf="!user" mode="indeterminate">
+  </mat-progress-spinner>
+  <div *ngIf="user" class="block">
+    <img class="user-image" (click)="onOpenFileDialog('file-input')" [src]="displayImg()">
+    <input [ngStyle]="{'display':'none'}" (change)="fileImgChange($event)" id="file-input"
+      accept=".jpg, .jpeg, .png, .gif, .bmp" type="file" />
+
+    <div *ngIf="user" class="user-info">
+      <div class="user-info-fullname">
+        <b>{{user.lastname}} {{user.firstname}} {{user.patronymic}} </b>
+      </div>
+      <div class="user-info-detail">
+        <div class="nick"> Ник: <span>{{user.nickname}}</span>
+          <mat-icon *ngIf="user.is_verified">verified
+          </mat-icon>
+        </div>
+        <div *ngIf="user.role.name=='Стажер'||user.role.name=='Наставник'"> Рейтинг: <span>{{rating}}</span> </div>
+        <div> Возраст: <span>{{calcAge(user.birthdate)}}</span> </div>
+      </div>
+      <div *ngIf="isIntern()" class="user-info-skills">
+        <div class="user-info-skills-label"><b>Навыки:</b></div>
+        <mat-chip-listbox *ngIf="user.intern" class="user-info-skills-chip-list">
+          <mat-chip class="user-info-skills-chip-list-item" [ngStyle]="whiteWithColor()"
+            *ngFor="let skill of user.intern.skills" (removed)="removeSkill(skill)">
+            {{skill.skill.name}}
+            <button *ngIf="isMyAccount" class="user-info-skills-chip-list-btn" matChipRemove
+              [ngStyle]="{'color':'#fff'}">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="user" class="accordions">
+    <mat-accordion class="full-info accordion" multi>
+      <mat-expansion-panel class="accordion-panel">
+        <mat-expansion-panel-header class="accordion-panel-header" [ngStyle]="colorLight()">
+          <mat-panel-title>
+            Основная информация
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="accordion-panel-content">
+          <form class="group" [formGroup]="mainInfoFormGroup">
+            <app-form-field [disable]="!isMyAccount" class="group-fullname-field" [colorBorder]="color"
+              *ngFor="let input of inputs" [type]="input.type" [label]="input.label" [placeholder]="input.placeholder"
+              [formConrol]="input.formControl" [icon]="input.icon" [messageErorFunc]="input.messageError"
+              borderRadius="5px">
+            </app-form-field>
+          </form>
+
+          <form class="group" [formGroup]="mainInfoFormGroup">
+            <app-form-field [disable]="!isMyAccount" class="group-fullname-field" [colorBorder]="color"
+              [type]="inputDate.type" [label]="inputDate.label" [placeholder]="inputDate.placeholder"
+              [formConrol]="inputDate.formControl" [icon]="inputDate.icon" [messageErorFunc]="inputDate.messageError"
+              borderRadius="5px">
+            </app-form-field>
+
+            <div class="inp-filed common-inp-filed">
+              <div class="label">Пол</div>
+              <div class="inp-filed-gender">
+                <button *ngIf="(!isMyAccount && genderFlag) || isMyAccount" mat-flat-button (click)="toggle(true)"
+                  [ngStyle]="colorToggle(genderFlag!=null && genderFlag)">М</button>
+                <button *ngIf="(!isMyAccount && genderFlag) || isMyAccount" mat-flat-button (click)="toggle(false)"
+                  [ngStyle]="colorToggle(genderFlag!=null && !genderFlag)">Ж</button>
+              </div>
+            </div>
+          </form>
+
+          <form class="group-position group" [formGroup]="positionFormGroup">
+            <div [ngClass]="{
+              'has-error': inp.formControl?.invalid && inp.formControl?.touched
+            }" class="common-inp-filed group-position-field" *ngFor="let inp of selectInputs">
+              <div class="label">{{inp.label}}</div>
+              <div class="group-field" [ngStyle]="colorBorder()">
+                <input [disabled]="!isMyAccount" class="input_option_type" (keyup)="onKeyup(inp.field, inp.formControl)"
+                  [type]="inp.type" [placeholder]="inp.placeholder" matInput [formControl]="inp.formControl"
+                  [matAutocomplete]="autocoP">
+                <mat-autocomplete autoActiveFirstOption #autocoP="matAutocomplete">
+                  <ng-container *ngFor="let option of inp.values | async">
+                    <mat-option (click)="inp?.onClick(option)" [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{inp.icon}}</mat-icon>
+              </div>
+              <div class="form-help-text" *ngIf="inp.formControl?.invalid && inp.formControl?.touched">
+                <span>{{ inp?.messageError() }}</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion class="contact accordion" multi>
+      <mat-expansion-panel class="accordion-panel">
+        <mat-expansion-panel-header class="accordion-panel-header" [ngStyle]="colorLight()">
+          <mat-panel-title>
+            Контакты
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form class="group " [formGroup]="contactFormGroup">
+          <app-form-field [disable]="!isMyAccount" class="group-contact-field" [colorBorder]="color"
+            *ngFor="let input of contacts" [type]="input.type" [label]="input.label" [placeholder]="input.placeholder"
+            [formConrol]="input.formControl" [icon]="input.icon" [messageErorFunc]="input.messageError"
+            borderRadius="5px">
+          </app-form-field>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion *ngIf="user && isIntern()" class="accordion" multi>
+      <mat-expansion-panel class="accordion-panel">
+        <mat-expansion-panel-header class="accordion-panel-header" [ngStyle]="colorLight()">
+          <mat-panel-title>
+            Образование
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="accordion-panel-content">
+          <form class="group-education group" [formGroup]="educationFormGroup">
+            <div [ngClass]="{
+            'has-error': inp.formControl?.invalid && inp.formControl?.touched
+          }" class="common-inp-filed group-education-field" *ngFor="let inp of educations">
+              <div class="label">{{inp.label}}</div>
+              <div class="group-field" [ngStyle]="colorBorder()">
+                <input [disabled]="!isMyAccount" class="input_option_type" [type]="inp.type"
+                  [placeholder]="inp.placeholder" matInput [formControl]="inp.formControl" [matAutocomplete]="autocoE">
+                <mat-autocomplete autoActiveFirstOption #autocoE="matAutocomplete">
+                  <ng-container *ngFor="let option of inp.values | async">
+                    <mat-option (click)="inp?.onClick(option)" [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{inp.icon}}</mat-icon>
+              </div>
+              <div class="form-help-text" *ngIf="inp.formControl?.invalid && inp.formControl?.touched">
+                <span>{{ inp?.messageError() }}</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion *ngIf="user && isMentHR()" class="accordion" multi>
+      <mat-expansion-panel class="accordion-panel">
+        <mat-expansion-panel-header class="accordion-panel-header" [ngStyle]="colorLight()">
+          <mat-panel-title>
+            Организация
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="accordion-panel-content">
+          <form class="group-education group" [formGroup]="orgInpNotIntern">
+            <div [ngClass]="{
+            'has-error': organizationInp.formControl?.invalid && organizationInp.formControl?.touched
+          }" class="common-inp-filed group-education-field">
+              <div class="label">{{organizationInp.label}}</div>
+              <div class="group-field" [ngStyle]="colorBorder()">
+                <input [disabled]="!isMyAccount" class="input_option_type" [type]="organizationInp.type"
+                  [placeholder]="organizationInp.placeholder" matInput [formControl]="organizationInp.formControl" [matAutocomplete]="autoorgan">
+                <mat-autocomplete autoActiveFirstOption #autoorgan="matAutocomplete">
+                  <ng-container *ngFor="let option of organizationInp.values | async">
+                    <mat-option (click)="organizationInp?.onClick(option)" [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{organizationInp.icon}}</mat-icon>
+              </div>
+              <div class="form-help-text" *ngIf="organizationInp.formControl?.invalid && organizationInp.formControl?.touched">
+                <span>{{ organizationInp?.messageError() }}</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion *ngIf="user && isIntern()" class="accordion" multi>
+      <mat-expansion-panel class="accordion-panel">
+        <mat-expansion-panel-header class="accordion-panel-header" [ngStyle]="colorLight()">
+          <mat-panel-title>
+            Стажировка
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="accordion-panel-content">
+          <form class="group-interning group" [formGroup]="interningFormGroup">
+            <div class="common-inp-filed group-interning-field">
+              <div class="label">{{training_direction_inp.label}}</div>
+              <div class="group-field" [ngStyle]="colorBorder()">
+                <input [disabled]="!isMyAccount" class="input_option_type" [type]="training_direction_inp.type"
+                  [placeholder]="training_direction_inp.placeholder" matInput
+                  [formControl]="training_direction_inp.formControl" [matAutocomplete]="autocoI">
+                <mat-autocomplete autoActiveFirstOption #autocoI="matAutocomplete">
+                  <ng-container *ngFor="let option of training_direction_inp.values | async">
+                    <mat-option [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{training_direction_inp.icon}}</mat-icon>
+              </div>
+            </div>
+
+            <app-form-field class="group-interning-field" [colorBorder]="color" [type]="internship_status_inp.type"
+              [label]="internship_status_inp.label" [placeholder]="internship_status_inp.placeholder"
+              [formConrol]="internship_status_inp.formControl" [icon]="internship_status_inp.icon" borderRadius="5px"
+              [disable]="true">
+            </app-form-field>
+          </form>
+
+          <form class="group-interning group" [formGroup]="favoriteFormGroup">
+            <div class="common-inp-filed group-interning-fav-field" *ngFor="let inp of favorite_inps">
+              <div class="label">{{inp.label}}</div>
+              <div class="group-field" [ngStyle]="colorBorder()">
+                <input [disabled]="!isMyAccount" class="input_option_type" [type]="inp.type"
+                  [placeholder]="inp.placeholder" matInput [formControl]="inp.formControl" [matAutocomplete]="autocoF">
+                <mat-autocomplete autoActiveFirstOption #autocoF="matAutocomplete">
+                  <ng-container *ngFor="let option of inp.values | async">
+                    <mat-option [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{inp.icon}}</mat-icon>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion *ngIf="user && isIntern()" class="accordion" multi>
+      <mat-expansion-panel class="accordion-panel">
+        <mat-expansion-panel-header class="accordion-panel-header" [ngStyle]="colorLight()">
+          <mat-panel-title>
+            О себе
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="accordion-panel-content">
+          <form *ngIf="user.intern" class="user-info-skills">
+            <div class='common-inp-filed'>
+              <div class="label">Укажите Ваши основные навыки</div>
+              <div class="inp_btn">
+                <div class="group-field group-field-inp_btn" [ngStyle]="colorBorder()">
+                  <input [disabled]="!isMyAccount" class="input_option_type" [type]="skill_inp.type"
+                    [placeholder]="skill_inp.placeholder" matInput [formControl]="skill_inp.formControl"
+                    [matAutocomplete]="autocoA">
+                  <mat-autocomplete autoActiveFirstOption #autocoA="matAutocomplete">
+                    <ng-container *ngFor="let option of skill_inp.values | async">
+                      <mat-option [value]="option.name">
+                        {{option.name}}
+                      </mat-option>
+                      <mat-divider></mat-divider>
+                    </ng-container>
+                  </mat-autocomplete>
+                  <mat-icon class="option_icon">{{skill_inp.icon}}</mat-icon>
+                </div>
+                <div class="inp_btn-b">
+                  <button (click)="selectedSkill()" class="long" [ngStyle]="whiteWithColor()" mat-button>
+                    Добавить
+                    <mat-icon>add</mat-icon>
+                  </button>
+                  <button class="small" [ngStyle]="whiteWithColor()" mat-icon-button>
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <form class="group-exp group" [formGroup]="experFormGroup">
+            <div class="common-inp-filed group-exp-field">
+              <div class="label">{{exp_inp.label}}</div>
+              <div class="group-field" [ngStyle]="colorBorder()">
+                <input [disabled]="!isMyAccount" class="input_option_type" [type]="exp_inp.type"
+                  [placeholder]="exp_inp.placeholder" matInput [formControl]="exp_inp.formControl"
+                  [matAutocomplete]="autocoI">
+                <mat-autocomplete autoActiveFirstOption #autocoI="matAutocomplete">
+                  <ng-container *ngFor="let option of exp_inp.values | async">
+                    <mat-option [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{exp_inp.icon}}</mat-icon>
+              </div>
+            </div>
+
+            <app-form-field class="group-exp-field" [colorBorder]="color" [type]="org_inp.type" [label]="org_inp.label"
+              [placeholder]="org_inp.placeholder" [formConrol]="org_inp.formControl" [icon]="org_inp.icon"
+              borderRadius="5px" [disable]="true">
+            </app-form-field>
+          </form>
+
+          <div class="group-interning group">
+            <app-form-field [disable]="!isMyAccount" class="group-interning-field" [colorBorder]="color"
+              [type]="aboutme_inp.type" [label]="aboutme_inp.label" [placeholder]="aboutme_inp.placeholder"
+              [formConrol]="aboutme_inp.formControl" [icon]="aboutme_inp.icon"
+              [messageErorFunc]="aboutme_inp.messageError" borderRadius="5px">
+            </app-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion *ngIf="user && isIntern()" class="accordion" multi>
+      <mat-expansion-panel class="accordion-panel">
+        <mat-expansion-panel-header class="accordion-panel-header" [ngStyle]="colorLight()">
+          <mat-panel-title>
+            Портфолио
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="accordion-panel-content">
+          <form class=" group" [formGroup]="profilesFormGroup">
+            <app-form-field *ngFor="let inp of profile_inps" class="group-profile-field" [colorBorder]="color"
+              [type]="inp.type" [label]="inp.label" [placeholder]="inp.placeholder" [formConrol]="inp.formControl"
+              [icon]="inp.icon" [messageErorFunc]="inp.messageError" borderRadius="5px" [disable]="true">
+            </app-form-field>
+          </form>
+
+          <div class="inp-filed common-inp-filed">
+            <div class="label">Прикрепить файл резюме/портфолио</div>
+            <div class="inp-flat-file">
+              <button *ngIf="isMyAccount" (click)="onOpenFileDialog('portfolio-input')" [ngStyle]="whiteWithColor()"
+                mat-button>
+                Выбрать файл...
+                <mat-icon>description</mat-icon>
+              </button>
+              <button *ngIf="user?.intern?.url_portfolio" (click)="downloadFile(user.intern?.url_portfolio)"
+                [ngStyle]="whiteWithColor()" mat-button>
+                Портфолио
+                <mat-icon>picture_as_pdf</mat-icon>
+              </button>
+              <input [ngStyle]="{'display':'none'}" (change)="filePortChange($event)" id="portfolio-input" accept=".pdf"
+                type="file" />
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div *ngIf="user" class="button-group">
+    <button *ngIf="!user?.is_verified && isMyAccount" (click)="verifing()" class="btn"
+      [ngStyle]="{'background-color':'#0067B8', 'color':'#FFFFFF'}" mat-raised-button>
+      Подтверждение личности
+    </button>
+    <button *ngIf="isMyAccount" class="btn" (click)="saveChange()" [disabled]="isInvalid()" mat-raised-button
+      [ngStyle]="{'background-color':'#079368', 'color':'#FFFFFF'}">Сохранить изменения </button>
+    <button *ngIf="isMyAccount" (click)="deleteProfile()" class="btn" mat-raised-button
+      [ngStyle]="{'background-color':'#D70A3F', 'color':'#FFFFFF'}">Удалить профиль
+    </button>
+  </div>
+</div>

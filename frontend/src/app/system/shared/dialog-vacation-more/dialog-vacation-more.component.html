@@ -1,0 +1,37 @@
+<div class="header_block">
+  <h2 mat-dialog-title>{{data.vacancy.name}}</h2>
+  <button class="button_without_adaptiv" mat-button mat-dialog-close (click)="submit()"><mat-icon>cancel</mat-icon></button>
+  <button class="button_adaptiv" mat-button mat-dialog-close (click)="submit()">Закрыть</button>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="short_block">
+    <div>{{data.vacancy.organization.name}}, {{data.vacancy.organization.address}}</div>
+    <div>Телефон для связи: <strong>{{data.vacancy.organization.phone}}</strong></div>
+  </div>
+  <div class="short_block">
+    <div>{{data.vacancy.work_experience.name}}</div>
+    <div>{{data.vacancy.work_schedule.name}}</div>
+  </div>
+  <div class="short_block_skills">
+    <div>Теги:</div>
+    <div class="skills" *ngFor="let skill of data.vacancy.skills">{{skill.skill.name}}</div>
+  </div>
+  <div class="main_block">
+    <div class="large_block">
+      <h3>Обязанности:</h3>
+      <ul><li *ngFor="let duti of data.vacancy.duties">{{duti.name}}</li></ul>
+    </div>
+    <div class="large_block">
+      <h3>Требования:</h3>
+      <ul><li *ngFor="let requir of data.vacancy.requirements">{{requir.name}}</li></ul>
+    </div>
+    <div class="large_block">
+      <h3>Условия:</h3>
+      <ul><li *ngFor="let cond of data.vacancy.conditions">{{cond.name}}</li></ul>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="start">
+  <button (click)="postRenspone(data.vacancy)" mat-stroked-button cdkFocusInitial>Откликнуться</button>
+  <button (click)="gotoTesting()" mat-stroked-button cdkFocusInitial>Пройти тестирование</button>
+</mat-dialog-actions>

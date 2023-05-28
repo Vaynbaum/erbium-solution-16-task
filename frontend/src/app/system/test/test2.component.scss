@@ -1,0 +1,133 @@
+@import "../../../styles.scss";
+
+//---------------------------------------------------------------------------------
+//ЗДЕСЬ ВСЕ ВИДЫ КНОПОК ДЛЯ NGCLASS
+.default{
+  background-color: #063CFA !important;
+  color: white !important; 
+}
+.blue{
+  border: 1px solid #063CFA !important;
+}
+.file{
+    border: 1px solid #063CFA !important
+}
+//---------------------------------------------------------------------------------
+.active {
+  color: $color-green !important;
+  font-weight: 600 !important;
+}
+.mat-success {
+  border-radius: 65px;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 5px 20px;
+}
+//БЛОК НАСТАВНИКА------------------------------------------------------
+.table_inner{
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  .table{
+    overflow: scroll;
+  }
+}
+
+.nast{
+    div{
+      font-size: 16px;
+    }
+    .right_container_first{
+      margin-bottom: 50px;
+    }
+    .right_container_second{
+      display: flex;
+      flex-direction: column;
+      .filter_button{
+        margin-top: 15px;
+        max-width: 200px;
+      }
+    }
+}
+
+.mat-table__wrapper .mat-table {
+  min-width: auto !important;
+  width: 100% !important;
+}
+
+.mat-header-row {
+  width: 100%;
+}
+
+.mat-row {
+  width: 100%;
+}
+.mat-column-candidate_fio {
+  flex: 0 0 50% !important;
+  min-width: 104px !important;
+}
+.mat-column-ball, .mat-column-status{
+  flex: 0 0 25% !important;
+  min-width: 52px !important;
+}
+//------------------------------------------------------------------------
+@media screen and (max-width: 840px) {
+  .label{
+    text-align: center;
+  }
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    mat-radio-button {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px 0;
+    }
+  }
+  .search_panel {
+    margin-left: 50px;
+  }
+  .left_container {
+    display: none !important;
+  }
+  .side_button {
+    display: block;
+    position: absolute;
+    top: 35px;
+    max-width: 20px;
+    max-height: 60px;
+  }
+  .drawer {
+    min-width: 200px;
+    padding-top: 10px;
+    padding-left: 10px;
+    a {
+      display: block;
+      margin: 30px 15px;
+      text-decoration: none;
+      color: $color-dark;
+      font-weight: 500;
+    }
+    .active {
+      color: $color-green;
+    }
+  }
+  .filter_block_nast{
+    justify-content: flex-start;
+    .search_panel{
+      min-width: 250px !important;
+    }
+  }
+  .nast{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .example-container {
+    margin-left: 10px;
+  }
+}

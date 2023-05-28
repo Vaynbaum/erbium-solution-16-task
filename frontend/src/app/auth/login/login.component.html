@@ -1,0 +1,40 @@
+<div class="main">
+  <div class="card">
+    <h1 class="card-title">{{title}}</h1>
+    <h2 class="card-subtitle">{{subtitle}}</h2>
+    <form [formGroup]="form">
+      <app-form-field
+        *ngFor="let input of inputs"
+        [type]="input.type"
+        [placeholder]="input.placeholder"
+        [formConrol]="input.formControl"
+        [icon]="input.icon"
+        [messageErorFunc]="input.messageError"
+      >
+      </app-form-field>
+      <div class="form-element">
+        <a
+          [routerLink]="['/auth/recover_password']"
+          class="link-secondary text-links">
+          Забыли пароль?
+        </a>
+      </div>
+    </form>
+    <button
+      class="button-action"
+      [disabled]="form.invalid"
+      (click)="signin()"
+      mat-flat-button
+      color="primary">
+      {{nameButton}}
+    </button>
+    <div class="text-links">
+      У Вас нет аккаунта?
+      <a
+        [routerLink]="['/auth/registration']"
+        class="link-primary">
+        Зарегистрируйтесь
+      </a>
+    </div>
+  </div>
+</div>

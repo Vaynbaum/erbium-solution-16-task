@@ -1,0 +1,10 @@
+deta
+fastapi
+uvicorn[standard]
+email-validator
+python-jose[cryptography]
+gunicorn
+flower
+python-multipart
+Jinja2
+requests

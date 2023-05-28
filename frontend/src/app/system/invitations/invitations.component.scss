@@ -1,0 +1,69 @@
+@import "../../../styles.scss";
+.inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-buttons {
+  display: flex;
+  align-items: center;
+  background: $color-ligtn-green;
+  border-radius: 65px;
+  height: 40px;
+}
+.mat-success {
+  background-color: $color-green;
+  color: $color-light;
+  border-radius: 65px;
+  flex-grow: 1;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 5px 20px;
+}
+
+.container {
+  margin-top: 35px;
+  margin-right: 100px;
+  margin-left: 50px;
+}
+
+.default {
+  background-color: #dff4f1;
+  color: $color-dark !important;
+}
+
+.active {
+  background-color: $color-green;
+  color: $color-light !important;
+}
+
+@media screen and (max-width: 740px) {
+  .inner {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-left: -30px;
+    margin-right: -70px;
+    row-gap: 10px;
+  }
+  .left-buttons,
+  .right-button {
+    display: flex;
+    flex-basis: 100%;
+
+    button {
+      flex-basis: 100%;
+    }
+  }
+  .right-button {
+    min-width: 287px;
+  }
+  .mat-success {
+    padding: 0 10px;
+  }
+  .inner_container {
+    flex-basis: 100%;
+    margin-left: -30px;
+    margin-right: -70px;
+  }
+}

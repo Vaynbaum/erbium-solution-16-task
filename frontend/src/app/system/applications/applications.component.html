@@ -1,0 +1,562 @@
+<!-- ///////////////////////////////////////////////////////////////////////////// -->
+<!-- //////////////БЛОК СТАЖЕРА///////////////////// -->
+<!-- ///////////////////////////////////////////////////////////////////////////// -->
+
+
+<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop">
+  <mat-drawer #drawer [mode]="mode" class="drawer">
+    <h2>Вакансии</h2>
+    <a [ngStyle]="inter && {'color':color, 'font-weight':600} || null" (click)="clickFilter(1)">На стажировку</a>
+    <a [ngStyle]="work && {'color':color, 'font-weight':600} || null" (click)="clickFilter(2)">На работу</a>
+    <a [ngStyle]="project && {'color':color, 'font-weight':600} || null" (click)="clickFilter(3)">По проектам</a>
+    <button mat-stroked-button class="filter_button reset-btn" [ngStyle]="{'border-color':color}"
+      (click)="clickFilter()">Сбросить</button>
+  </mat-drawer>
+  <mat-drawer-content fullscreen class="drawer_content">
+    <button mat-button (click)="drawer.toggle()" class="side_button">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <div class="container">
+      <div class="left_container">
+        <h2>Вакансии</h2>
+        <a [ngStyle]="inter && {'color':color, 'font-weight':600} || null" (click)="clickFilter(1)">На стажировку</a>
+        <a [ngStyle]="work && {'color':color, 'font-weight':600} || null" (click)="clickFilter(2)">На работу</a>
+        <a [ngStyle]="project && {'color':color, 'font-weight':600} || null" (click)="clickFilter(3)">По проектам</a>
+        <button mat-stroked-button class="filter_button reset-btn" [ngStyle]="{'border-color':color}"
+          (click)="clickFilter()">Сбросить</button>
+      </div>
+      <div class="right_container" *ngIf="current_role == 'Стажер'">
+        <div class="search_panel" [ngStyle]="border()">
+          <ng-container *ngIf="statusInput">
+            <input class="input_option_type" [type]="statusInput.type" [placeholder]="statusInput.label" matInput
+              [formControl]="statusInput.formControl" [matAutocomplete]="autoinst">
+            <mat-autocomplete autoActiveFirstOption #autoinst="matAutocomplete">
+              <ng-container *ngFor="let option of statusInput.values | async">
+                <mat-option [value]="option.name">
+                  {{option.name}}
+                </mat-option>
+                <mat-divider></mat-divider>
+              </ng-container>
+            </mat-autocomplete>
+            <mat-icon class="option_icon">{{statusInput.icon}}</mat-icon>
+          </ng-container>
+        </div>
+        <mat-progress-spinner *ngIf="!loaded" mode="indeterminate">
+        </mat-progress-spinner>
+        <div *ngIf="loaded && empty">Здесь ничего нет...</div>
+        <div class="cards">
+          <mat-card *ngFor="let card of responses | filterResponsesByFileds:statusInput.formControl.value" class="card">
+            <div class="card_header">
+              <mat-card-subtitle>{{card.selection.vacancy.name}}</mat-card-subtitle>
+              <div class="card_label" [ngClass]="selectColor(card.response_status)">{{card.response_status.name}}</div>
+            </div>
+            <div class="main_card_body">
+              <div class="card_body">
+                <mat-card-subtitle>Дата проведения стажировки:
+                  <strong>{{card.selection.vacancy.date_begin | date:"dd.MM.yyyy"}} -
+                    {{card.selection.vacancy.date_end | date:"dd.MM.yyyy"}}</strong></mat-card-subtitle>
+                <mat-card-subtitle>Направление:
+                  <strong>{{card.selection.vacancy.organization.training_direction.name}}</strong>
+                </mat-card-subtitle>
+              </div>
+              <div class="card_body">
+                <mat-card-subtitle>{{card.selection.vacancy.organization.name}},
+                  {{card.selection.vacancy.organization.address}}</mat-card-subtitle>
+                <mat-card-subtitle>Телефон для связи: <strong>{{card.selection.vacancy.organization.phone}}</strong>
+                </mat-card-subtitle>
+              </div>
+              <div class="card_buttons">
+                <button (click)="openDialog(card.selection.vacancy)" mat-stroked-button
+                  class="filter_button">Подробнее...</button>
+                <button *ngIf="!isFailedStatus(card.response_status)" (click)="deleteResponse(card)" mat-stroked-button
+                  class="red filter_button">Отозвать</button>
+                <button (click)="gotoTesting()" *ngIf="card.response_status.id==2" mat-button
+                  [ngClass]="{'passed': true}" class="green filter_button" color="success">Пройти тестирование</button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+
+
+      <!-- ///////////////////////////////////////////////////////////////////////////// -->
+      <!-- //////////////БЛОК КУРАТОРА///////////////////// -->
+      <!-- ///////////////////////////////////////////////////////////////////////////// -->
+
+      <div class="right_container" *ngIf="current_role == 'Куратор'">
+        <div class="filter_block_curator">
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="directionInput">
+              <input class="input_option_type" [type]="directionInput.type" [placeholder]="directionInput.label"
+                matInput [formControl]="directionInput.formControl" [matAutocomplete]="autodir"
+                [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autodir="matAutocomplete">
+                <ng-container *ngFor="let option of directionInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{directionInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="organizationInput">
+              <input class="input_option_type" [type]="organizationInput.type" [placeholder]="organizationInput.label"
+                matInput [formControl]="organizationInput.formControl" [matAutocomplete]="autoorg"
+                [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autoorg="matAutocomplete">
+                <ng-container *ngFor="let option of organizationInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{organizationInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="vacancyInput">
+              <input class="input_option_type" [type]="vacancyInput.type" [placeholder]="vacancyInput.label" matInput
+                [formControl]="vacancyInput.formControl" [matAutocomplete]="autovac" [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autovac="matAutocomplete">
+                <ng-container *ngFor="let option of vacancyInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{vacancyInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="all_timeInput">
+              <input class="input_option_type" [type]="all_timeInput.type" [placeholder]="all_timeInput.label" matInput
+                [formControl]="all_timeInput.formControl" [matAutocomplete]="autotime"
+                [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autotime="matAutocomplete">
+                <ng-container *ngFor="let option of all_timeInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{all_timeInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="criteriaInput">
+              <input class="input_option_type" [type]="criteriaInput.type" [placeholder]="criteriaInput.label" matInput
+                [formControl]="criteriaInput.formControl" [matAutocomplete]="autocrit"
+                [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autocrit="matAutocomplete">
+                <ng-container *ngFor="let option of criteriaInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{statusInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="statusInput">
+              <input class="input_option_type" [type]="statusInput.type" [placeholder]="statusInput.label" matInput
+                [formControl]="statusInput.formControl" [matAutocomplete]="autostat" [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autostat="matAutocomplete">
+                <ng-container *ngFor="let option of statusInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{statusInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+        </div>
+        <mat-progress-spinner *ngIf="!loaded" mode="indeterminate">
+        </mat-progress-spinner>
+        <div *ngIf="loaded && empty">Здесь ничего нет...</div>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{title_direction}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-container>
+            <section (click)="updateValue()" *ngFor="let ing of reqs; let i = index" class="example-section">
+              <mat-checkbox [(ngModel)]="ing.checked">
+                {{ing.name}}
+              </mat-checkbox>
+            </section>
+          </ng-container>
+        </mat-expansion-panel>
+        <div class="cards cards_curator">
+          <mat-card
+            *ngFor="let card of responses| filterResponsesByFileds:statusInput.formControl.value:organizationInput.formControl.value:directionInput.formControl.value:vacancyInput.formControl.value:reqs:changeFlag:all_timeInput.formControl.value"
+            class="card" [ngClass]="{'failed':'true'}">
+            <div class="card_header">
+              <mat-card-subtitle>{{card.selection.intern.user.lastname}} {{card.selection.intern.user.firstname}}
+                {{card.selection.intern.user.patronymic}}
+              </mat-card-subtitle>
+              <div class="card_label" [ngClass]="selectColor(card.response_status)">
+                <div class="inner_card_text">{{card.response_status.name}}</div>
+              </div>
+            </div>
+            <div class="main_card_body">
+              <div class="card_block_with_image">
+                <div class="card_block_with_image_left">
+                  <div class="card_body card_body_first">
+                    <div class="card_body_inner">
+                      <mat-card-subtitle [ngClass]="{'failed_criteria': checkAge(card.selection.intern)}">Возраст:
+                        {{calcAge(card.selection.intern.user.birthdate)}}</mat-card-subtitle>
+                      <mat-card-subtitle>Контакты: {{card.selection.intern.user.phone}}</mat-card-subtitle>
+                    </div>
+                    <div class="card_body_inner">
+                      <mat-card-subtitle [ngClass]="{'failed_criteria': checkCourse(card.selection.intern)}">Курс:
+                        {{card.selection.intern.course.name}}</mat-card-subtitle>
+                      <mat-card-subtitle>Вуз:
+                        {{card.selection.intern.university.sub}}</mat-card-subtitle>
+                    </div>
+                    <div class="card_body_inner">
+                      <mat-card-subtitle>Город: {{card.selection.intern.user.city.name}}</mat-card-subtitle>
+                      <mat-card-subtitle [ngClass]="{'failed_criteria': checkCountry(card.selection.intern)}">
+                        Гражданство: {{card.selection.intern.user.citizenship.name}}
+                      </mat-card-subtitle>
+                    </div>
+                    <div class="card_body_inner">
+                      <mat-card-subtitle [ngClass]="{'failed_criteria': checkExp(card.selection.intern)}">Опыт работы:
+                        {{!checkExp(card.selection.intern) ?'да':'нет'}}
+                      </mat-card-subtitle>
+                      <mat-card-subtitle>Волонтерство: {{card.selection.intern.volunteering?'да':'нет'}}
+                      </mat-card-subtitle>
+                    </div>
+                  </div>
+
+                  <div class="card_body">
+                    <mat-card-subtitle>Вакансия: <strong>{{card.selection.vacancy.name}}</strong>
+                    </mat-card-subtitle>
+                    <mat-card-subtitle>Направление:
+                      <strong>{{card.selection.vacancy.organization.training_direction.name}}</strong>
+                    </mat-card-subtitle>
+                    <mat-card-subtitle>Организация: {{card.selection.vacancy.organization.name}},
+                      {{card.selection.vacancy.organization.address}}
+                    </mat-card-subtitle>
+                  </div>
+                </div>
+                <div class="inner_card_label">
+                  <img [src]="getImg(card.selection.intern.user.img)" height="100" width="100">
+                  <button (click)="downloadFile(card.selection.intern)" mat-button [ngClass]="{'resume_button': true}"
+                    class="filter_button" color="success">Резюме</button>
+                </div>
+              </div>
+              <div class="card_buttons">
+                <button mat-button [ngClass]="{'default': true}" class="filter_button" (click)="greenLight(card.id)"
+                  color="success">Одобрить</button>
+                <button *ngIf="card.response_status.id!=3" mat-button [ngClass]="{'red': true}" class="filter_button"
+                  color="success" (click)="redLight(card.id)">Отказать</button>
+                <button mat-button [ngClass]="{'neutral': true}" class="filter_button" color="success">Этап:
+                  {{card.selection.stage.name}}</button>
+              </div>
+              <mat-card-subtitle class="fail_criteria" *ngIf="aggregCheck(card.selection.intern)">Нарушение
+                критери{{aggregCheck(card.selection.intern)}}!
+              </mat-card-subtitle>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+
+      <!-- ///////////////////////////////////////////////////////////////////////////// -->
+      <!-- //////////////БЛОК НАСТАВНИКА///////////////////// -->
+      <!-- ///////////////////////////////////////////////////////////////////////////// -->
+
+      <div class="right_container" *ngIf="current_role == 'Наставник'">
+        <div class="filter_block_nast">
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="directionInput">
+              <input class="input_option_type" [type]="directionInput.type" [placeholder]="directionInput.label"
+                matInput [formControl]="directionInput.formControl" [matAutocomplete]="autodir"
+                [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autodir="matAutocomplete">
+                <ng-container *ngFor="let option of directionInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{directionInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="vacancyInput">
+              <input class="input_option_type" [type]="vacancyInput.type" [placeholder]="vacancyInput.label" matInput
+                [formControl]="vacancyInput.formControl" [matAutocomplete]="autovac" [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autovac="matAutocomplete">
+                <ng-container *ngFor="let option of vacancyInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{vacancyInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="statusInput">
+              <input class="input_option_type" [type]="statusInput.type" [placeholder]="statusInput.label" matInput
+                [formControl]="statusInput.formControl" [matAutocomplete]="autostat" [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autostat="matAutocomplete">
+                <ng-container *ngFor="let option of statusInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{statusInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="all_timeInput">
+              <input class="input_option_type" [type]="all_timeInput.type" [placeholder]="all_timeInput.label" matInput
+                [formControl]="all_timeInput.formControl" [matAutocomplete]="autotime"
+                [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autotime="matAutocomplete">
+                <ng-container *ngFor="let option of all_timeInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{all_timeInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+        </div>
+        <mat-progress-spinner *ngIf="!loaded" mode="indeterminate">
+        </mat-progress-spinner>
+        <div *ngIf="loaded && empty">Здесь ничего нет...</div>
+        <div class="cards cards_nast">
+          <mat-card
+            *ngFor="let selection of selections| filterSelections:directionInput.formControl.value:vacancyInput.formControl.value:all_timeInput.formControl.value"
+            class="card">
+            <div class="card_header">
+              <mat-card-subtitle>{{selection.intern?.user?.lastname}} {{selection.intern?.user?.firstname}}
+                {{selection.intern?.user?.patronymic}}</mat-card-subtitle>
+              <div class="card_label" [ngClass]="{'yellow':'true'}">
+                <div class="inner_card_text">На рассмотрении</div>
+              </div>
+            </div>
+            <div class="main_card_body">
+              <div class="card_block_with_image">
+                <div class="card_block_with_image_left">
+                  <div class="card_body card_body_first">
+                    <div class="card_body_inner">
+                      <mat-card-subtitle>Возраст: {{calcAge(selection.intern?.user?.birthdate)}}</mat-card-subtitle>
+                      <mat-card-subtitle>Контакты: {{selection.intern?.user?.phone}}</mat-card-subtitle>
+                    </div>
+                    <div class="card_body_inner">
+                      <mat-card-subtitle>Курс: {{selection.intern?.course?.name}}</mat-card-subtitle>
+                      <mat-card-subtitle>Вуз: {{selection.intern?.university?.sub}}</mat-card-subtitle>
+                    </div>
+                    <div class="card_body_inner">
+                      <mat-card-subtitle>Город: {{selection.intern?.user?.city?.name}}</mat-card-subtitle>
+                      <mat-card-subtitle>Гражданство: {{selection.intern?.user?.citizenship?.name}}</mat-card-subtitle>
+                    </div>
+                    <div class="card_body_inner">
+                      <mat-card-subtitle>Опыт работы: {{!checkExp(selection?.intern) ?'да':'нет'}}</mat-card-subtitle>
+                      <mat-card-subtitle>Волонтерство: {{selection?.intern?.volunteering?'да':'нет'}}
+                      </mat-card-subtitle>
+                    </div>
+                  </div>
+
+                  <div class="card_body">
+                    <mat-card-subtitle>Вакансия: <strong>{{selection.vacancy.name}}</strong>
+                    </mat-card-subtitle>
+                    <mat-card-subtitle>Направление:
+                      <strong>{{selection.vacancy.organization.training_direction.name}}</strong></mat-card-subtitle>
+                    <mat-card-subtitle>Организация: {{selection.vacancy.organization.name}},
+                      {{selection.vacancy.organization.address}}</mat-card-subtitle>
+                  </div>
+                </div>
+                <div class="inner_card_label">
+                  <img [src]="getImg(selection.intern?.user?.img)" height="100" width="100">
+                  <button (click)="downloadFile(selection?.intern)" mat-button [ngClass]="{'resume_button': true}"
+                    class="filter_button" color="success">Резюме</button>
+                  <div class="text_under_image"><strong>Общий рейтинг:
+                      {{calcBall(selection)}}</strong></div>
+                  <div class="text_under_image">Тестирование: {{selection?.basic_val ? selection?.basic_val : 0}}</div>
+                  <div class="text_under_image">Кейс-чемпионат: 45</div>
+                  <div class="text_under_image">Собеседовани: 50</div>
+                  <div class="text_under_image">Карьерная школа: {{selection?.school_val ? selection?.school_val : 0}}
+                  </div>
+                </div>
+              </div>
+              <div class="card_buttons">
+                <button (click)="greenLight(selection.id)" mat-button [ngClass]="{'default': true}"
+                  class="filter_button" color="success">Подтвердить</button>
+                <button (click)="redLight(selection.id)" mat-button [ngClass]="{'red': true}" class="filter_button"
+                  color="success">Отказать</button>
+                <button mat-button [ngClass]="{'neutral': true}" class="filter_button" color="success">Этап:
+                  собеседование</button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+      <!-- ///////////////////////////////////////////////////////////////////////////// -->
+      <!-- //////////////БЛОК HR///////////////////// -->
+      <!-- ///////////////////////////////////////////////////////////////////////////// -->
+      <div class="right_container" *ngIf="current_role == 'Кадровый специалист'">
+        <div class="filter_block_hr">
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="directionInput">
+              <input class="input_option_type" [type]="directionInput.type" [placeholder]="directionInput.label"
+                matInput [formControl]="directionInput.formControl" [matAutocomplete]="autodir"
+                [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autodir="matAutocomplete">
+                <ng-container *ngFor="let option of directionInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{directionInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="vacancyInput">
+              <input class="input_option_type" [type]="vacancyInput.type" [placeholder]="vacancyInput.label" matInput
+                [formControl]="vacancyInput.formControl" [matAutocomplete]="autovac" [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autovac="matAutocomplete">
+                <ng-container *ngFor="let option of vacancyInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{vacancyInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="statusInput">
+              <input class="input_option_type" [type]="statusInput.type" [placeholder]="statusInput.label" matInput
+                [formControl]="statusInput.formControl" [matAutocomplete]="autostat" [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autostat="matAutocomplete">
+                <ng-container *ngFor="let option of statusInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{statusInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+          <div class="search_panel" [ngStyle]="border()">
+            <ng-container *ngIf="all_timeInput">
+              <input class="input_option_type" [type]="all_timeInput.type" [placeholder]="all_timeInput.label" matInput
+                [formControl]="all_timeInput.formControl" [matAutocomplete]="autotime"
+                [ngStyle]="{'border-color':color}">
+              <mat-autocomplete autoActiveFirstOption #autotime="matAutocomplete">
+                <ng-container *ngFor="let option of all_timeInput.values | async">
+                  <mat-option [value]="option.name">
+                    {{option.name}}
+                  </mat-option>
+                  <mat-divider></mat-divider>
+                </ng-container>
+              </mat-autocomplete>
+              <mat-icon class="option_icon">{{all_timeInput.icon}}</mat-icon>
+            </ng-container>
+          </div>
+        </div>
+        <div class="cards cards_hr">
+          <mat-card
+            *ngFor="let card of responses| filterResponsesByFileds:statusInput.formControl.value:null:directionInput.formControl.value:vacancyInput.formControl.value:[]:false:all_timeInput.formControl.value"
+            class="card">
+            <div class="card_header">
+              <mat-card-subtitle>{{card.selection.intern?.user?.lastname}} {{card.selection.intern?.user?.firstname}}
+                {{card.selection.intern?.user?.patronymic}}</mat-card-subtitle>
+              <div class="card_label" [ngClass]="selectColor(card.response_status)">
+                <div class="inner_card_text">{{card.response_status.name}}</div>
+              </div>
+            </div>
+            <div class="main_card_body">
+              <div class="one_block">
+                <div class="card_block_with_image">
+                  <div class="card_block_with_image_left">
+                    <div class="card_body card_body_first">
+                      <div class="card_body_inner">
+                        <mat-card-subtitle>Возраст: {{calcAge(card.selection.intern?.user?.birthdate)}}
+                        </mat-card-subtitle>
+                        <mat-card-subtitle>Контакты: {{card.selection.intern?.user?.phone}}</mat-card-subtitle>
+                      </div>
+                      <div class="card_body_inner">
+                        <mat-card-subtitle>Курс: {{card.selection.intern?.course?.name}}</mat-card-subtitle>
+                        <mat-card-subtitle>Вуз: {{card.selection.intern?.university?.sub}}</mat-card-subtitle>
+                      </div>
+                      <div class="card_body_inner">
+                        <mat-card-subtitle>Город: {{card.selection.intern?.user?.city?.name}}</mat-card-subtitle>
+                        <mat-card-subtitle>Гражданство: {{card.selection.intern?.user?.citizenship?.name}}
+                        </mat-card-subtitle>
+                      </div>
+                      <div class="card_body_inner">
+                        <mat-card-subtitle>Опыт работы: {{!checkExp(card.selection?.intern) ?'да':'нет'}}
+                        </mat-card-subtitle>
+                        <mat-card-subtitle>Волонтерство: {{card.selection?.intern?.volunteering?'да':'нет'}}
+                        </mat-card-subtitle>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="inner_card_label">
+                    <img [src]="getImg(card.selection.intern?.user?.img)" height="100" width="100">
+                    <button mat-button [ngClass]="{'resume_button': true}" class="filter_button"
+                      color="success">Резюме</button>
+                  </div>
+                </div>
+                <div class="second_block">
+                  <div class="card_body">
+                    <mat-card-subtitle>Вакансия: <strong>{{card.selection.vacancy.name}}</strong>
+                    </mat-card-subtitle>
+                    <mat-card-subtitle>Направление:
+                      <strong>{{card.selection.vacancy.organization.training_direction.name}}</strong>
+                    </mat-card-subtitle>
+                    <mat-card-subtitle>Организация: {{card.selection.vacancy.organization.name}},
+                      {{card.selection.vacancy.organization.address}}</mat-card-subtitle>
+                  </div>
+                  <div class="new_block_donw_image">
+                    <div class="text_under_image"><strong>Общий рейтинг: {{calcBall(card.selection)}}</strong></div>
+                    <div class="text_under_image">Тестирование:
+                      {{card.selection?.basic_val ? card.selection?.basic_val : 0}}</div>
+                    <div class="text_under_image">Кейс-чемпионат: 50</div>
+                    <div class="text_under_image">Собеседование: 17</div>
+                    <div class="text_under_image">Карьерная школа:
+                      {{card.selection?.school_val ? card.selection?.school_val : 0}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card_buttons">
+                <button mat-button [ngClass]="{'default': true}" class="filter_button"
+                  color="success">Подтвердить</button>
+                <button mat-button [ngClass]="{'red': true}" class="filter_button" color="success">Отказать</button>
+                <button mat-button [ngClass]="{'neutral': true}" class="filter_button" color="success">Этап:
+                  {{card.selection.stage.name=='Подтверждено'|| card.selection.stage.name=='Отказано'?'Собеседование':card.selection.stage.name}}</button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,117 @@
+@import "./../../styles.scss";
+$row-gap: 25px;
+
+$card-width: min(95%, 650px);
+$card-vert-padding: 30px;
+$card-background: rgba(255, 255, 255, 0.3);
+$card-border-radius: 23px;
+$card-shadow: 0px 10px 20px rgba(80, 80, 80, 0.2),
+  inset 0px 0px 20px 5px rgba(255, 255, 255, 0.3);
+
+$card-title-font-size: 32px;
+$card-title-line-height: 38px;
+
+$card-text-font-size: 14px;
+$card-text-line-height: 16px;
+
+$button-disabled-background-color: var(
+  --mdc-protected-button-disabled-container-color,
+  rgba(0, 0, 0, 0.12)
+) !important;
+$button-disabled-color: var(
+  --mdc-filled-button-disabled-label-text-color,
+  rgba(0, 0, 0, 0.38)
+) !important;
+$button-margin-top: 15px;
+$button-min-width: 180px;
+$button-font-size: 18px;
+$button-line-height: 21px;
+$button-background: #d70a3f !important;
+$button-border-radius: 30px;
+
+.main,
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  padding: $padding-20 0;
+  min-height: 100vh;
+  background: url("/assets/images/background.png") no-repeat center/ cover;
+}
+
+.card {
+  flex-direction: column;
+  row-gap: $row-gap;
+  width: $card-width;
+  padding: $card-vert-padding $padding-20;
+  border-radius: $card-border-radius;
+  background: $card-background;
+  box-shadow: $card-shadow;
+  text-align: center;
+}
+.card-title,
+.card-subtitle {
+  padding: 0;
+  margin: 0;
+}
+.card-title {
+  font-weight: $text-font-weight-500;
+  font-size: $card-title-font-size;
+  line-height: $card-title-line-height;
+  color: $color-primary;
+}
+
+.card-subtitle {
+  color: $color-dark;
+}
+
+.card-subtitle,
+.text-links {
+  font-weight: $text-font-weight-400;
+  font-size: $card-text-font-size;
+  line-height: $card-text-line-height;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: $row-gap;
+  .form-field,
+  .form-element {
+    width: 100%;
+  }
+
+  .form-element {
+    text-align: right;
+  }
+}
+
+.link-secondary {
+  text-decoration-line: underline;
+  color: $color-secondary;
+}
+
+.link-primary {
+  color: $color-primary;
+  text-decoration: none;
+}
+
+.button-action:disabled {
+  background-color: $button-disabled-background-color;
+  color: $button-disabled-color;
+}
+
+.button-action {
+  margin-top: $button-margin-top;
+  min-width: $button-min-width;
+  color: $color-light;
+  font-weight: $text-font-weight-500;
+  font-size: $button-font-size;
+  line-height: $button-line-height;
+  background: $button-background;
+  border-radius: $button-border-radius;
+}

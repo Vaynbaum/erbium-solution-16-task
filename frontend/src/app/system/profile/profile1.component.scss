@@ -1,0 +1,231 @@
+@import "../../../styles.scss";
+$gap-20: 20px;
+$gap-10: 10px;
+$width-card: min(90%, 1060px);
+
+.common-inp-filed {
+  display: flex;
+  flex-direction: column;
+  row-gap: $gap-10;
+
+  .label {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+  }
+}
+.group {
+  margin-bottom: 10px;
+}
+.inp-filed {
+  .inp-filed-gender {
+    display: flex;
+    column-gap: $gap-10;
+    min-height: 40px !important;
+    min-width: 40px !important;
+    height: 100% !important;
+
+    button {
+      min-height: 40px;
+      height: 100% !important;
+    }
+  }
+}
+
+.input_option_type {
+  padding: $input-group-vert-padding 0;
+  height: 100%;
+  width: 100%;
+  flex: auto;
+  border: none;
+}
+
+.group-exp-field:first-child {
+  flex-grow: 2;
+}
+.group-exp-field:last-child {
+  flex-grow: 3;
+}
+
+.group-interning-field:first-child {
+  flex-grow: 4;
+}
+.group-interning-field:last-child {
+  flex-grow: 1;
+}
+.group-interning-fav-field:first-child {
+  flex-grow: 3;
+}
+.group-interning-fav-field:last-child {
+  flex-grow: 2;
+}
+.group-education-field {
+  flex-grow: 3;
+}
+.group-education-field:last-child {
+  flex-grow: 1;
+}
+.group-profile-field,
+.group-contact-field,
+.group-position-field,
+.group-fullname-field {
+  flex-grow: 1;
+}
+
+.group-field {
+  background: $color-light;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  transition: $input-transition;
+  padding: 0 $padding-20;
+  align-items: center;
+  input {
+    // height: 16px;
+    transition: $input-transition;
+    background: $color-light;
+    font-weight: $text-font-weight-400;
+    font-size: $input-font-size;
+    line-height: $input-line-height;
+  }
+}
+.input_option_type:focus-visible {
+  outline: none;
+}
+
+.group-field:hover {
+  background: $input-group-hover-background;
+  input {
+    background: $input-group-hover-background;
+  }
+}
+
+.group-field:focus-within {
+  background: $input-group-focus-within-background;
+  input {
+    background: $input-group-focus-within-background;
+  }
+}
+
+.group-field {
+  input::placeholder {
+    color: $color-secondary;
+  }
+}
+
+.container {
+  .button-group {
+    display: flex;
+  }
+
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  display: flex;
+  row-gap: 90px;
+  flex-direction: column;
+  align-items: center;
+
+  .accordions,
+  .block,
+  .button-group {
+    width: $width-card;
+  }
+
+  .button-group {
+    .btn {
+      // color: $color-light !important;
+      font-weight: 500 !important;
+    }
+  }
+
+  .accordions {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+
+  .accordion {
+    width: 100%;
+
+    .accordion-panel {
+      // box-shadow: none;
+      border-radius: 5px;
+
+      .accordion-panel-content {
+        display: flex;
+        flex-direction: column;
+        row-gap: $gap-20;
+      }
+
+      .accordion-panel-header {
+        font-weight: 500 !important;
+        font-size: 18px !important;
+        line-height: 22px !important;
+      }
+    }
+  }
+
+  .nick {
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+  }
+
+  .block {
+    width: $width-card;
+
+    display: flex;
+
+    .user-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      row-gap: $gap-20;
+
+      .user-info-skills {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: $gap-10;
+        .user-info-skills-label {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 19px;
+        }
+
+        .user-info-skills-chip-list {
+          width: 100%;
+
+          .user-info-skills-chip-list-item {
+            .user-info-skills-chip-list-btn {
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+
+      .user-info-fullname {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+      }
+
+      .user-info-detail {
+        display: flex;
+        flex-direction: column;
+        row-gap: $gap-10;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+  }
+}

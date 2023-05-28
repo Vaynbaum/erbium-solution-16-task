@@ -1,0 +1,265 @@
+@import "../../../styles.scss";
+
+//---------------------------------------------------------------------------------
+//ЗДЕСЬ ВСЕ ВИДЫ КНОПОК ДЛЯ NGCLASS
+.default{
+
+}
+.green {
+  background-color: #4BFB7C;
+  color: white !important;
+  *{color: white !important;}
+  border: none !important;
+}
+
+.yellow {
+  background-color: #fbd14b;
+  color: rgb(0, 0, 0) !important;
+  *{color: rgb(0, 0, 0) !important;}
+  border: none !important;
+}
+
+.red {
+  background-color: #b30a3f;
+  color: white !important;
+  *{color: white !important;}
+  border: none !important;
+}
+
+.neutral {
+  background-color: #ece6e8;
+  color: black !important;
+  *{color: black !important;}
+  border-color:#000000;
+}
+//КУРАТОР
+.publish{
+  border-color: #B00AB3;
+}
+.published{
+  border-color: #00F043;
+}
+//НАСТАВНИК
+.add_hr{
+  background-color: #7407FF !important;
+  color: white !important;
+  *{color: white !important;}
+  border-color: #6E00F4 !important;
+}
+.correct_hr{
+  background-color: #FB4B56 !important;
+  color: white !important;
+  *{color: white !important;}
+}
+.default_hr{
+  border-color: #B00AB3 !important;
+}
+.commentary_hr{
+  background-color: #F9C3C6 !important;
+  border-color: #FB4B56 !important;
+}
+//---------------------------------------------------------------------------------
+.active {
+  color: $color-green !important;
+  font-weight: 600 !important;
+}
+.mat-success {
+  border-radius: 65px;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 5px 20px;
+}
+
+@media screen and (max-width: 840px) {
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    mat-radio-button {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px 0;
+    }
+  }
+  .search_panel {
+    margin-left: 50px;
+  }
+  .left_container {
+    display: none !important;
+  }
+  .side_button {
+    display: block;
+    position: absolute;
+    top: 35px;
+    max-width: 20px;
+    max-height: 60px;
+  }
+  .drawer {
+    min-width: 200px;
+    padding-top: 10px;
+    padding-left: 10px;
+    a {
+      display: block;
+      margin: 30px 15px;
+      text-decoration: none;
+      color: $color-dark;
+      font-weight: 500;
+    }
+    .active {
+      color: $color-green;
+    }
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .example-container {
+    margin-left: 10px;
+  }
+  .card {
+    width: 100px;
+  }
+  .card_header {
+    display: flex;
+    flex-direction: column-reverse;
+    .card_label {
+      border-radius: 0;
+      position: static;
+
+        margin-left: 40%;
+        min-width: 0px;
+        flex-grow: 0;
+
+    }
+  }
+  .card_buttons {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    .filter_button {
+      flex-grow: 1;
+      min-width: 200px;
+    }
+  }
+}
+
+
+//БЛОК КУРАТОРА-------------------------------------------------------
+
+.filter_block_curator{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px 30px;
+  .search_panel{
+    flex-basis: 100%;
+    min-width: 250px !important;
+    flex-grow: 1 !important;
+  }
+  @media screen and (max-width: 400px){
+    .search_panel{
+      min-width: 100px !important;
+    }
+  }
+}
+.cards_curator{
+  .card_label{
+    text-align: left !important;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
+  .filter_button{
+    padding: 0 40px;
+  }
+  .card{
+    border: 1px solid #FFBED4;
+    .card_header{
+      margin-bottom: 10px !important;
+    }
+    .card_body{
+      .card_body_inner{
+        display: flex;
+        flex-direction: column;
+        mat-card-subtitle{
+          font-size: 14px !important
+        }
+      }
+    }
+  }
+  .card_body_first{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: row !important;
+    column-gap: 30px !important;
+    row-gap: 5px !important;
+  }
+  .card_buttons{
+    margin-top: 0px !important;
+  }
+  .fail_criteria{
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+  }
+  .card_body{
+    flex-grow: 1;
+    flex-basis: auto;
+  }
+  .card_block_with_image{
+    display: flex;
+    column-gap: 30px;
+    .card_body_first{
+      flex-grow: 3;
+    }
+  }
+  @media screen and (max-width: 650px){
+    .card_block_with_image{
+      flex-direction: column-reverse;
+      row-gap: 20px;
+    }
+  }
+  @media screen and (max-width: 400px){
+    .card_body_first{
+      align-items: left;
+    }
+    .card_label{
+      margin-left: 20% !important;
+    }
+  }
+}
+
+
+//БЛОК КУРАТОРА-------------------------------------------------------
+
+
+
+
+//БЛОК НАСТАВНИКА----------------------------------------------------------
+.filter_block_hr{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 30px;
+}
+@media screen and (max-width: 990px){
+  .filter_block_hr{
+    justify-content: center;
+  }
+}
+.cards_hr{
+  .card{
+    background-color: #FDF9FF !important;
+    .card_body_inner{
+      display: flex;
+      column-gap: 50px;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+
+
+
+//БЛОК НАСТАВНИКА----------------------------------------------------------

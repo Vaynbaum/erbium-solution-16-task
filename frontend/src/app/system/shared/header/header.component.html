@@ -1,0 +1,52 @@
+<div class="header" [ngStyle]="matchColor()">
+  <div class="inner_header">
+    <nav>
+      <ng-container *ngFor="let link of links">
+        <a [ngClass]="{'disabled': acc(link.title)}" *ngIf="isAccess(link.link)" routerLinkActive
+          #rla="routerLinkActive" [ngStyle]="drawer(rla.isActive)" [routerLink]="['/system',link.link]">
+          {{link.title}}
+        </a>
+      </ng-container>
+    </nav>
+    <div *ngIf="isUser()" class="account_block">
+      <button [matMenuTriggerFor]="menu2" mat-icon-button class="notification_button">
+        <mat-icon [matBadge]="value_badge" matBadgeColor="warn">notifications_none</mat-icon>
+      </button>
+      <mat-menu #menu2="matMenu">
+        <ng-container *ngFor="let not of nots">
+          <button [disabled]="isDisabled()" mat-menu-item>{{not.message}}<br> <span class="notification_date">{{not.date| date: 'dd.MM.yyyy'}}</span></button>
+          <mat-divider></mat-divider>
+        </ng-container>
+        <button mat-menu-item class="button_notification_all"><a [routerLink]="['/system/all_nots']">Посмотреть все сообщения</a></button>
+      </mat-menu>
+      <img [src]="getIcon()" class="avatar cover">
+      <div class="name_role">
+        <div class="name">
+          {{isUser()?.firstname}}
+        </div>
+        <div class="role">
+          {{isUser()?.role?.name}}
+        </div>
+      </div>
+      <div class="button_account">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button (click)="goToProfile()" mat-menu-item>
+            <mat-icon>account_circle</mat-icon>
+            <span>Профиль</span>
+          </button>
+          <button mat-menu-item (click)="openDialog()" *ngIf="role == 'Куратор'">
+            <mat-icon>textsms</mat-icon>
+            <span>Рассылка</span>
+          </button>
+          <button (click)="logout()" mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Выход</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Карьерная школа</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
+
+    .item {
+      background: #de9d11;
+      color: #fff;
+      max-width: 100px;
+      text-align: center;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    * {
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 400;
+
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Карьерная школа</h1>
+  {% for v in vebinars %}
+  <div class="item">{{ v.name }}</div>
+  {% endfor %}
+</body>
+
+</html>

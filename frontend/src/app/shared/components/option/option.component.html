@@ -1,0 +1,13 @@
+<div class="container" [ngStyle]="style()">
+  <input class="input_option_type" [type]="type" [placeholder]="label" matInput [formControl]="formConrol"
+    [matAutocomplete]="autoco">
+  <mat-autocomplete autoActiveFirstOption #autoco="matAutocomplete">
+    <ng-container *ngFor="let option of values | async">
+      <mat-option (click)="onClick(option)" [value]="option.name">
+        {{option.name}}
+      </mat-option>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-autocomplete>
+  <mat-icon class="option_icon">{{icon}}</mat-icon>
+</div>

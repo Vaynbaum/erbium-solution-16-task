@@ -1,0 +1,6 @@
+from pydantic_sqlalchemy import sqlalchemy_to_pydantic
+
+from database.models.internship_status import InternshipStatus
+
+
+PydanticInternshipStatusInDB = sqlalchemy_to_pydantic(InternshipStatus)

@@ -1,0 +1,63 @@
+@import "../../../styles.scss";
+.container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    margin: 0 auto;
+    flex: auto;
+    flex-basis: 100%;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.filter_button {
+    max-width: 200px !important;
+    border-radius: 50px;
+    border: 1px solid $color-green;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 0;
+    margin-top: 30px;
+  }
+  .mat-success {
+    border-radius: 65px;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 5px 20px;
+  }
+  .default{
+    background-color: #B11747 !important;
+    color: white !important;
+    border: none !important;
+  }
+.mat-table__wrapper .mat-table {
+    min-width: auto !important;
+    width: 100% !important;
+}
+
+.mat-header-row {
+    width: 100%;
+}
+
+.mat-row {
+    width: 100%;
+}
+.mat-column-name {
+    flex: 0 0 40% !important;
+    min-width: 104px !important;
+}
+.mat-column-contacts, .mat-column-number_mentor, .mat-column-number_intern{
+    flex: 0 0 20% !important;
+    min-width: 52px !important;
+}
+.container_table{
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    overflow: scroll;
+}
+
+@media screen and (max-width: 980px){
+    .container{
+        margin-left: 10px;
+    }
+}

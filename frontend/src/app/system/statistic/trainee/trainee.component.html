@@ -1,0 +1,26 @@
+    <div class="label_under_chart">Направления стажеров</div>
+   <canvas  baseChart
+        [datasets]="barChartDatasets1"
+        [labels]="barChartLabels1"
+        [options]="barChartOptions1"
+        [legend]="barChartLegend1"
+        [type]="'bar'"
+        >
+    </canvas>
+    <div  class="label_under_chart">Вузы стажеров</div>
+    <canvas style="width: 100% !important;" baseChart
+      [type]="'doughnut'"
+      [datasets]="pieChartDatasets2"
+      [labels]="pieChartLabels2"
+      [options]="pieChartOptions2"
+      [legend]="pieChartLegend2">
+    </canvas>
+
+    <div class="label_under_chart">Опыт работы</div>
+    <canvas baseChart
+        [type]="'doughnut'"
+        [datasets]="pieChartDatasets"
+        [labels]="pieChartLabels"
+        [options]="pieChartOptions"
+        [legend]="pieChartLegend">
+    </canvas>

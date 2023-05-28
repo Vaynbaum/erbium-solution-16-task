@@ -1,0 +1,144 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop">
+  <mat-drawer #drawer [mode]="mode" class="drawer">
+    <h2>Тестирование</h2>
+    <a [ngStyle]="inter && {'color':color, 'font-weight':600} || null" (click)="clickFilter(1)">Загрузка</a>
+    <a [ngStyle]="work && {'color':color, 'font-weight':600} || null" (click)="clickFilter(2)">Результаты</a>
+    <a [ngStyle]="project && {'color':color, 'font-weight':600} || null">Аналитика</a>
+  </mat-drawer>
+  <mat-drawer-content fullscreen class="drawer_content">
+    <button mat-button (click)="drawer.toggle()" class="side_button">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <div class="container">
+      <div class="left_container">
+        <h2>Тестирование</h2>
+        <a [ngStyle]="inter && {'color':color, 'font-weight':600} || null" (click)="clickFilter(1)">Загрузка</a>
+        <a [ngStyle]="work && {'color':color, 'font-weight':600} || null" (click)="clickFilter(2)">Результаты</a>
+        <a [ngStyle]="project && {'color':color, 'font-weight':600} || null">Аналитика</a>
+      </div>
+      <!-- ///////////////////////////////////////////////////////////////////////////// -->
+      <!-- //////////////БЛОК НАСТАВНИКА///////////////////// -->
+      <!-- ///////////////////////////////////////////////////////////////////////////// -->
+
+      <div class="right_container" *ngIf="(current_role == 'Наставник') && (inter == true)">
+        <div class="filter_block_nast">
+          <div class="group_label_search">
+            <div class="search_panel" [ngStyle]="border()">
+              <ng-container *ngIf="vacancyInput">
+                <input class="input_option_type" [type]="vacancyInput.type" [placeholder]="vacancyInput.label" matInput
+                  [formControl]="vacancyInput.formControl" [matAutocomplete]="autovac"
+                  [ngStyle]="{'border-color':color}">
+                <mat-autocomplete autoActiveFirstOption #autovac="matAutocomplete">
+                  <ng-container *ngFor="let option of vacancyInput.values | async">
+                    <mat-option [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{vacancyInput.icon}}</mat-icon>
+              </ng-container>
+            </div>
+          </div>
+          <div class="group_label_search">
+            <div class="search_panel" [ngStyle]="border()">
+              <ng-container *ngIf="directionInput">
+                <input class="input_option_type" [type]="directionInput.type" [placeholder]="directionInput.label"
+                  matInput [formControl]="directionInput.formControl" [matAutocomplete]="autodir"
+                  [ngStyle]="{'border-color':color}">
+                <mat-autocomplete autoActiveFirstOption #autodir="matAutocomplete">
+                  <ng-container *ngFor="let option of directionInput.values | async">
+                    <mat-option [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{directionInput.icon}}</mat-icon>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="right_container nast">
+          <div class="right_container_first">
+
+          </div>
+          <div class="right_container_first">
+            <div>Загрузить тестовое задание</div>
+            <button (click)="onOpenFileDialog('portfolio-input')" mat-button extended [ngClass]="{'file': true}"
+              class="filter_button" color="success">
+              Прикрепить файл
+              <mat-icon> attach_file</mat-icon>
+            </button>
+          </div>
+          <div class="right_container_second">
+            <button (click)="addTest()" mat-button [ngClass]="{'default': true}" class="filter_button"
+              color="success">Сохранить</button>
+            <input [ngStyle]="{'display':'none'}" (change)="filePortChange($event)" id="portfolio-input"
+              accept=".pdf, .txt, .doc, .docx" type="file" />
+          </div>
+        </div>
+      </div>
+      <!-- РЕЗУЛЬТАТЫ -->
+      <!-- РЕЗУЛЬТАТЫ -->
+      <!-- РЕЗУЛЬТАТЫ -->
+      <div class="right_container" *ngIf="(current_role == 'Наставник') && (work == true)">
+        <div class="filter_block_nast">
+          <div class="group_label_search">
+            <div class="label">&emsp;Вакансия</div>
+            <div class="search_panel" [ngStyle]="border()">
+              <ng-container *ngIf="vacancyInput">
+                <input class="input_option_type" [type]="vacancyInput.type" [placeholder]="vacancyInput.label" matInput
+                  [formControl]="vacancyInput.formControl" [matAutocomplete]="autovac"
+                  [ngStyle]="{'border-color':color}">
+                <mat-autocomplete autoActiveFirstOption #autovac="matAutocomplete">
+                  <ng-container *ngFor="let option of vacancyInput.values | async">
+                    <mat-option (click)="filterByVac()" [value]="option.name">
+                      {{option.name}}
+                    </mat-option>
+                    <mat-divider></mat-divider>
+                  </ng-container>
+                </mat-autocomplete>
+                <mat-icon class="option_icon">{{vacancyInput.icon}}</mat-icon>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <div class="right_container nast">
+          <div class="table_inner">
+            <mat-form-field>
+              <mat-label>Фильтр</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Введите значение любого поля" #input>
+            </mat-form-field>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+              <ng-container matColumnDef="candidate_fio">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Кандидат(ФИО) </th>
+                <td mat-cell *matCellDef="let element"> {{element.candidate_fio}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="ball">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Балл </th>
+                <td mat-cell *matCellDef="let element"> {{element.ball}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Статус (Принят/Не принят)</th>
+                <td mat-cell *matCellDef="let element">
+                  <div *ngIf="element.stage_id==3" [ngStyle]="{'color':'green'}">Принят</div>
+                  <div *ngIf="element.stage_id==6" [ngStyle]="{'color':'red'}">Не принят</div>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">Нет совпадений по запросу "{{input.value}}"</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

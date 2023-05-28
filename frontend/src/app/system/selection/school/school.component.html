@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="cards">
+    <mat-card class="card">
+      <div class="card_header">
+        <mat-card-subtitle>Карьерная школа</mat-card-subtitle>
+      </div>
+      <div *ngIf="school" class="main_card_body">
+        <div class="card_label">Балл: {{school.value?school.value:'-'}}</div>
+        <div class="card_buttons">
+          <button (click)="goToSchool()" [ngClass]="{pass_the:true}" mat-button class="filter_button"
+            color="success">Перейти на сайт
+          </button>
+        </div>
+      </div>
+      <div *ngIf="!school">
+        Карьерная школа пока вам не доступна
+      </div>
+    </mat-card>
+  </div>
+</div>

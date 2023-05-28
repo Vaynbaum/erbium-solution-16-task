@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="inner">
+    <div class="left-buttons">
+      <button mat-button color="success" (click)='clickVac()'
+        [ngClass]="{'default': isClicked, 'active': !isClicked}">{{nameVac}}</button>
+      <button mat-button color="success" (click)='clickOrg()'
+        [ngClass]="{'default': !isClicked, 'active': isClicked}">{{nameOrg}}</button>
+    </div>
+    <div class="right-button">
+      <button mat-button color="success" (click)='recommend()' [ngClass]="{'active': true}">Рекомендовать</button>
+    </div>
+  </div>
+  <div class="inner_container">
+    <app-organizations *ngIf="isClicked"></app-organizations>
+    <app-vacansions [organization_id]="organization_id" *ngIf="!isClicked"></app-vacansions>
+  </div>
+</div>

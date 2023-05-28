@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{test_name}}</title>
+  <style>
+    * {
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 400;
+    }
+
+    #end {
+      display: none;
+    }
+
+    button {
+      background: #de9d11;
+      color: #fff;
+      padding: 10px;
+      border: 0;
+      border-radius: 5px;
+    }
+
+    span {
+      padding: 0;
+      margin: 0;
+      color: #de9d11;
+      font-size: 500;
+    }
+
+    .begin {
+      margin-bottom: 10px;
+    }
+  </style>
+  <script>
+    let display = false
+
+    function pass() {
+      let elem = document.getElementById('begin');
+      elem.style.display = 'none'
+      elem = document.getElementById('end');
+      elem.style.display = 'block'
+      elem = document.getElementById('btn');
+      elem.style.display = 'none'
+    }
+  </script>
+</head>
+
+<body>
+  <div id="end">Вы {{status}} тест <span>"{{test_name}}".</span> Результат: <span>{{value}}</span></div>
+  <div class="begin" id="begin">Тест <span>"{{test_name}}".</span></div>
+  <button onclick="pass()" id="btn">Пройти</button>
+</body>
+
+</html>

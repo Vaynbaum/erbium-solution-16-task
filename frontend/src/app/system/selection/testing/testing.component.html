@@ -1,0 +1,24 @@
+<div class="container">
+  <mat-progress-spinner *ngIf="!loaded" mode="indeterminate">
+  </mat-progress-spinner>
+  <div *ngIf="loaded && empty">Здесь ничего нет...</div>
+  <div *ngIf="loaded" class="cards">
+    <mat-card *ngFor="let card of basic_tests" class="card">
+      <div class="card_header">
+        <mat-card-subtitle>{{card.type_basic_test.name}}</mat-card-subtitle>
+        <div class="card_label" [ngClass]="mathClass(card)">Балл: {{valueDisplay(card)}} </div>
+      </div>
+      <div class="main_card_body">
+        <div class="card_body">
+          <mat-card-subtitle>Дата прохождения тестирования: <strong>{{card.begin | date:"dd.MM.yyyy"}} -
+              {{card.end | date:"dd.MM.yyyy"}}</strong></mat-card-subtitle>
+        </div>
+        <div class="card_buttons">
+          <button (click)="toPass(card)"  mat-button [ngClass]="mathClass(card)"
+            class="filter_button" color="success">{{card.basic_test_status.name}}</button>
+        </div>
+      </div>
+    </mat-card>
+
+  </div>
+</div>

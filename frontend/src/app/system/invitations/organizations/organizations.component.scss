@@ -1,0 +1,259 @@
+@import '../../../../styles.scss';
+.container{
+    display: flex;
+    margin-bottom: 50px;
+    column-gap: 30px;
+
+}
+
+.main_content{
+    flex-grow: 3;
+    flex-basis: 100%;
+}
+.filter_content{
+    flex-grow: 1;
+}
+
+.mobile {
+  display: none;
+}
+
+h1{
+    padding-top: 30px;
+    padding-left: 20px;
+}
+
+.filters{
+    margin-right: 50px;
+}
+  .example-headers-align .mat-expansion-panel-header-title,
+  .example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .example-headers-align .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+
+  .mat-expansion-panel:not([class*='mat-elevation-z']) {
+    box-shadow: none;
+    background-color: #fafafa;
+}
+
+.filter_button{
+    border-radius: 50px;
+    border: 1px solid $color-green;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0 30px;
+}
+
+.filter_buttons{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-top: 20px;
+}
+
+
+.mat-expansion-panel-header{
+    min-width: 250px;
+    width: 100%;
+    text-align: left;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    row-gap: 20px;
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 700px;
+}
+.card{
+    background: #F9FFFD;
+    border: 2px solid $color-green;
+    border-radius: 30px;
+    box-shadow: none;
+    padding: 30px;
+    flex-grow: 1;
+    flex-basis: 100%;
+    a{
+        text-decoration: none;
+        color: black
+    }
+}
+
+.card:nth-child(2n){
+    border: 1px solid $color-green;
+}
+
+.example-full-width{
+    width: 100%;
+}
+
+.search_type{
+    padding: 0 10px;
+}
+
+.button_inside_filter{
+    font-size: 12px;
+    width: 100%;
+    text-align: left;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+mat-slider{
+    width: 100%
+}
+
+.filter_button{
+  border-radius: 50px;
+  border: 1px solid $color-green;
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: 0;
+}
+
+.side_button{
+  display: none;
+}
+
+.card{
+    row-gap: 30px;
+    min-height: 300px;
+    *{
+        color: black;
+        font-weight: 400;
+        font-size: 14px;
+    }
+    .inner_card_header{
+        display: flex;
+        column-gap: 20px;
+        justify-content: space-between;
+        .inner_card_header_right{
+            display: flex;
+            flex-grow: 1;
+            flex-shrink: 0;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+        .inner_card_header_left{
+            flex-basis: 100%;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            flex-wrap: wrap;
+            flex-grow: 3;
+        }
+    }
+    .inner_card{
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .card{
+
+        *{
+            font-size: 16px;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .filters{
+        margin-top: 50px;
+        width: 100%;
+        background-color: #fafafa;
+    }
+    .drawer{
+        max-width: 250px;
+    }
+    .search_panel{
+        padding-left: 50px;
+    }
+    .side_button{
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 28px;
+        max-width: 10px;
+        max-height: 60px;
+      }
+    .filter_content{
+        display: none;
+    }
+    .main_content{
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .example-container{
+        width: 100%;
+    }
+    .inner-container{
+        flex-basis: 100%;
+    }
+    .card{
+
+        *{
+            font-size: 14px;
+        }
+    }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1030px) {
+    .inner_card_header{
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 10px;
+        .inner_card_header_right{
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-shrink: 1;
+            flex-grow: 0;
+            mat-card-subtitle{
+                
+                flex-basis: 50%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:600px){
+    .inner_card_header{
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 10px;
+        .inner_card_header_right{
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-shrink: 1;
+            flex-grow: 0;
+            mat-card-subtitle{
+                
+                flex-basis: 50%;
+            }
+        }
+    }
+    .card{
+        button{
+            min-width: 100px;
+        }
+    }
+    
+}
