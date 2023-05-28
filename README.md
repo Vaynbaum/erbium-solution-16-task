@@ -7,6 +7,7 @@
 > docker build -t NAME_SERVICE .
 > 
 где NAME_SERVICE название сервиса
+
 Для запуска фронтенда
 1. npm i
 2. npm run start
