@@ -42,6 +42,7 @@ from database.models.requirement import Requirement
 from database.models.response_statuse import ResponseStatuse
 from database.models.response import Response
 from database.models.role import Role
+from database.models.note import Note
 from database.models.scholl import Scholl
 from database.models.selection import Selection
 from database.models.skill_intern import SkillIntern
@@ -190,7 +191,7 @@ class DatabaseController:
         return FullVacancy.from_orm(vac)
 
     def get_all_skills(self, session: Session):
-        skills = session.query(Skill).all()
+        skills = session.query(Skill).order_by(Skill.name).all()
         return [PydanticSkillInDB.from_orm(s) for s in skills]
 
     def get_all_vacancies(
@@ -331,20 +332,47 @@ class DatabaseController:
         user = query.get(id)
         return FullUser.from_orm(user)
 
+    def get_profile_by_nick(self, session: Session, nick: str):
+        query = session.query(User).options(
+            subqueryload(User.role),
+            subqueryload(User.citizenship),
+            subqueryload(User.intern).subqueryload(Intern.university),
+            subqueryload(User.intern).subqueryload(Intern.branch),
+            subqueryload(User.intern).subqueryload(Intern.course),
+            subqueryload(User.intern).subqueryload(Intern.direction),
+            subqueryload(User.intern).subqueryload(Intern.internship_status),
+            subqueryload(User.intern).subqueryload(Intern.training_direction),
+            subqueryload(User.intern).subqueryload(Intern.organization),
+            subqueryload(User.intern)
+            .subqueryload(Intern.skills)
+            .subqueryload(SkillIntern.skill),
+            subqueryload(User.city).subqueryload(City.region),
+            subqueryload(User.hr).subqueryload(HR.organization),
+            subqueryload(User.curator),
+            subqueryload(User.mentor).subqueryload(Mentor.organization),
+        )
+
+        user = query.filter(User.nickname == nick).first()
+        return FullUser.from_orm(user)
+
     def get_skill_by_ids(self, session: Session, id: int):
         return session.query(SkillIntern).get(id)
 
-    def get_skill_by_ids_copy(self, session: Session, skill_id: int, intern_id: int):
-        return session.query(SkillIntern).filter(
-            SkillIntern.skill_id == skill_id, SkillIntern.intern_id == intern_id
-        ).first()
+    def get_skill_by_ids_copy(self, session: Session, intern_id: int, skill_id: int):
+        return (
+            session.query(SkillIntern)
+            .filter(
+                SkillIntern.skill_id == skill_id, SkillIntern.intern_id == intern_id
+            )
+            .first()
+        )
 
     def delete_my_skill(self, session: Session, id: int, skill_id: int):
         session.delete(self.get_skill_by_ids_copy(session, id, skill_id))
         session.commit()
 
     def get_add_skill(self, session: Session, skill: SkillIntern, id: int):
-        if not self.get_skill_by_ids_copy(session, skill.skill_id, id):
+        if not self.get_skill_by_ids_copy(session, id, skill.skill_id):
             session.add(skill)
             session.commit()
             return True
@@ -384,11 +412,22 @@ class DatabaseController:
     def get_school_value(self, session: Session, id: int):
         return session.query(Scholl).filter(Scholl.intern_id == id).first()
 
+    def get_interview_value(self, session: Session, id: int):
+        return (
+            session.query(Interview)
+            .join(Selection)
+            .filter(Selection.intern_id == id)
+            .first()
+        )
+
     def get_rating_intern(self, session: Session, id: int):
         tests_val = self.get_test_value(session, id)
         scholl = self.get_school_value(session, id)
-        return (tests_val if tests_val else 0) + (
-            scholl.value if scholl and scholl.value else 0
+        interview = self.get_interview_value(session, id)
+        return (
+            (tests_val if tests_val else 0)
+            + (scholl.value if scholl and scholl.value else 0)
+            + (interview.value if interview and interview.value else 0)
         )
 
     def get_rating_mentor(self, session: Session, id: int):
@@ -540,8 +579,17 @@ class DatabaseController:
                 .subqueryload(Intern.university),
             )
         query = query.order_by(Response.response_status_id)
+        res = []
+        for r in query.all():
+            i = FullResponse.from_orm(r)
+            scholl = self.get_school_value(session, i.selection.intern_id)
+            i.selection.school_val = scholl.value if scholl else 0
+            i.selection.basic_val = self.get_test_value(session, i.selection.intern_id)
 
-        return [FullResponse.from_orm(r) for r in query.all()]
+            interview = self.get_interview_value(session, i.selection.intern_id)
+            i.selection.interview_val = interview.value if interview else 0
+            res.append(i)
+        return res
 
     def get_selection_by_ids(self, session: Session, id: int, selection_id: int):
         return (
@@ -556,7 +604,27 @@ class DatabaseController:
         )
 
     def get_selection_by_id(self, session: Session, selection_id: int):
-        return session.query(Selection).filter(Selection.id == selection_id).first()
+        return session.query(Selection).get(selection_id)
+
+    def get_internings(self, session: Session, user_id: int):
+        return (
+            session.query(Selection)
+            .options(
+                subqueryload(Selection.intern).subqueryload(Intern.user),
+                subqueryload(Selection.vacancy)
+                .subqueryload(Vacancy.organization)
+                .subqueryload(Organization.training_direction),
+                subqueryload(Selection.stage),
+                subqueryload(Selection.vacancy)
+                .subqueryload(Vacancy.mentor)
+                .subqueryload(Mentor.user),
+            )
+            .filter(
+                or_(Selection.stage_id == 3, Selection.stage_id == 7),
+                Selection.intern_id == user_id,
+            )
+            .first()
+        )
 
     def get_selection(self, session: Session, school_id: int):
         return (
@@ -569,13 +637,18 @@ class DatabaseController:
     def get_full_selections(self, session: Session, id: int, organization_id: int):
         selections = (
             session.query(Selection)
+            .join(Interview)
             .options(
                 subqueryload(Selection.vacancy),
                 subqueryload(Selection.stage),
                 subqueryload(Selection.intern),
             )
             .join(Vacancy, Vacancy.id == Selection.vacancy_id)
-            .filter(Selection.stage_id == 5, Vacancy.organization_id == organization_id)
+            .filter(
+                Interview.passed,
+                Selection.stage_id == 5,
+                Vacancy.organization_id == organization_id,
+            )
             .all()
         )
         res = []
@@ -584,6 +657,8 @@ class DatabaseController:
             scholl = self.get_school_value(session, i.intern_id)
             i.school_val = scholl.value if scholl else 0
             i.basic_val = self.get_test_value(session, i.intern_id)
+            interview = self.get_interview_value(session, i.intern_id)
+            i.interview_val = interview.value if interview else 0
             res.append(i)
         return res
 
@@ -731,4 +806,49 @@ class DatabaseController:
             .filter(Presence.mentor_id == id)
             .order_by(Presence.date.desc())
             .all()
+        )
+
+    def get_my_interview(self, session: Session, id: int):
+        return (
+            session.query(Interview)
+            .join(Selection)
+            .options(
+                subqueryload(Interview.selection)
+                .subqueryload(Selection.vacancy)
+                .subqueryload(Vacancy.tasks),
+                subqueryload(Interview.selection)
+                .subqueryload(Selection.vacancy)
+                .subqueryload(Vacancy.organization),
+                subqueryload(Interview.selection)
+                .subqueryload(Selection.vacancy)
+                .subqueryload(Vacancy.mentor)
+                .subqueryload(Mentor.user),
+            )
+            .filter(Selection.intern_id == id)
+            .first()
+        )
+
+    def get_my_notes(self, session: Session, user_id: int, limit: int | None):
+        query = (
+            session.query(Note)
+            .filter(Note.user_id == user_id)
+            .order_by(Note.created.desc())
+        )
+        if limit:
+            query = query.limit(limit)
+        return query.all()
+
+    def post_note(self, session: Session, note: Note):
+        session.add(note)
+        session.commit()
+
+    def add_notes(self, session: Session, notes: list[Note]):
+        session.add_all(notes)
+        session.commit()
+
+    def get_cnt_note_not_read(self, session: Session, user_id: int):
+        return (
+            session.query(func.count(Note.id))
+            .filter(Note.user_id == user_id, Note.is_readed == False)
+            .scalar()
         )

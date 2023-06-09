@@ -1,3 +1,4 @@
+
 .container{
     display: flex;
     flex-direction: column;
@@ -7,19 +8,30 @@
     max-height: 700px;
     overflow: scroll;
     overflow-x: hidden;
+    margin-bottom: 50px;
 }
-.message{
-    display: flex;
-    flex-wrap: wrap;
-    width: 500px;
-    border-radius: 10px;
-    border: 1px solid black;
+
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  width: 500px;
+  border-radius: 10px;
+  border: 1px solid black;
 }
-mat-card-subtitle{
-    color: black;
+mat-card-subtitle {
+  color: black;
 }
-@media screen and (max-width: 600px){
-    .message{
-        width: 300px;
-    }
+span{
+  min-width: 100%;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 10px 10px 0 0;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+}
+@media screen and (max-width: 600px) {
+  .message {
+    width: 300px;
+  }
 }

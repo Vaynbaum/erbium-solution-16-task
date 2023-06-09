@@ -114,5 +114,5 @@ async def signup_to_not_intern(
         return auth_controller.signup_to_not_intern(
             session, user, background_tasks, mailer_controller
         )
-    except ResetException as e:
+    except SignupException as e:
         raise HTTPException(status_code=400, detail=e.message)

@@ -1,15 +1,15 @@
+import { UserService } from 'src/app/shared/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { WHITE_COLOR } from './../../../shared/consts';
 import { ImageService } from './../../../shared/services/image.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LINKS, MATCH_COLOR, TABLE_ACCESS_ROUTE } from 'src/app/shared/consts';
-import { FullUser } from 'src/app/shared/models/user.model';
 import { ProfileService } from 'src/app/shared/services/profile.service';
 import { environment } from 'src/environments/environment';
 import { DialogMailerAddComponent } from '../dialog-mailer-add/dialog-mailer-add.component';
-import { Notification } from 'src/app/shared/models/notification.model';
 export interface DialogData {}
+const INTERVAL_UPDATE_DATA = 10000;
 
 @Component({
   selector: 'app-header',
@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private profileService: ProfileService,
     private imageService: ImageService,
+    private userService: UserService,
     private router: Router,
     public dialog: MatDialog
   ) {}
@@ -33,16 +34,25 @@ export class HeaderComponent implements OnInit {
   }
 
   role: string = '';
+  timer: any;
 
   color: any = WHITE_COLOR;
   links = LINKS;
+
   ngOnInit() {
     let sub = this.profileService.ProfileLoaded.subscribe((profile) => {
       sub.unsubscribe();
       if (profile.role) this.color = MATCH_COLOR[profile.role.name];
       this.role = profile.role.name;
+      this.checkNotReadNote();
+      this.getNotes();
     });
     this.profileService.GetProfile();
+
+    this.timer = setInterval(() => {
+      this.checkNotReadNote();
+      this.getNotes();
+    }, INTERVAL_UPDATE_DATA);
   }
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some((h) =>
     h.test(window.location.host)
@@ -89,7 +99,32 @@ export class HeaderComponent implements OnInit {
   CompileURLImg(url?: string) {
     return this.imageService.CompileURLImg(url);
   }
-  value_badge: string = '10';
+  value_badge: any = null;
+
+  checkNotReadNote() {
+    if (this.profileService.profile) {
+      this.userService
+        .CntNotRead(this.profileService.profile.id)
+        .subscribe((res) => {
+          this.value_badge = res != 0 ? res : null;
+        });
+    }
+  }
+  readNotes() {
+    if (this.profileService.profile) {
+      this.value_badge = null;
+      this.userService.ReadNotes(this.profileService.profile.id).subscribe();
+    }
+  }
+  getNotes() {
+    if (this.profileService.profile) {
+      this.userService
+        .GetMyNotes(this.profileService.profile.id, 5)
+        .subscribe((res) => {
+          this.nots = res;
+        });
+    }
+  }
 
   acc(title: string) {
     return title == 'Школа наставников' || title == 'Табель';
@@ -99,18 +134,5 @@ export class HeaderComponent implements OnInit {
     return false;
   }
 
-  nots: Notification[] = [
-    {
-      id: 1,
-      user_id: 3,
-      message: 'Вы успешно приняты на стажировку!',
-      date: new Date(),
-    },
-    {
-      id: 1,
-      user_id: 3,
-      message: 'Вы успешно приняты на стажировку!',
-      date: new Date(),
-    },
-  ];
+  nots: any = [];
 }

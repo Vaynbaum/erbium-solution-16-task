@@ -90,12 +90,12 @@
           <div class="card_body">
             <mat-card-subtitle class="smooth">г. {{user?.city?.name}}</mat-card-subtitle>
             <mat-card-subtitle>{{user?.mentor?.organization?.training_direction?.name}}</mat-card-subtitle>
-            <mat-card-subtitle>Рейтинг: {{user?.rating}}</mat-card-subtitle>
+            <mat-card-subtitle>Рейтинг: {{user?.rating | number:'1.1-2'}}</mat-card-subtitle>
           </div>
           <div class="card_buttons">
             <button mat-button [ngClass]="{'default': true}" class="default filter_button"
               color="success">Отзывы</button>
-            <button mat-button [ngClass]="{'default': true}" class="default filter_button"
+            <button (click)="goToProfile(user)" mat-button [ngClass]="{'default': true}" class="default filter_button"
               color="success">Профиль</button>
           </div>
         </div>

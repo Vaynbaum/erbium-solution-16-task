@@ -30,7 +30,7 @@ export class MapComponent implements OnInit {
                 '<br/>',
                 `<img src="${item.img}">`,
                 '<br/>',
-                `Подробнее: <a href="http://localhost:4200/system/invitations?vacansions=true&organization_id=${item.id}">Вакансии</a>`,
+                `Подробнее: <a href="/system/invitations?vacansions=true&organization_id=${item.id}">Вакансии</a>`,
                 '</address>'
             ].join('')},
               {preset: 'islands#dotIcon', iconColor:`${this.randomColor()}`}

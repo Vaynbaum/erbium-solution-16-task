@@ -1,0 +1,184 @@
+.request{
+    .filter_button{
+        min-width: 0 !important;
+    }
+    .redborder{
+        border-color: #B30A3F !important;
+    }
+    .bluefill{
+        background-color: #063CFA !important;
+        border: none !important;
+    }
+    .greenfill{
+        background-color: #079368 !important;
+        border: none !important
+    }
+    .redfill{
+        background-color: #B30A3F !important;
+        border: none !important;
+        color: white !important
+    }
+    .lightpurple{
+        background-color: #E8DAFF !important;
+    }
+    .lightblue{
+        background-color: #D3EFFF !important;
+    }
+    .lightorange{
+        background-color: #FFE3D1 !important;
+    }
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        row-gap: 20px;
+        overflow: scroll;
+        overflow-x: hidden;
+        max-height: 700px;
+        .card {
+          background: #F8F9FF;;
+          box-shadow: 0px 0px 20px 3px rgba(82, 86, 85, 0.05);
+          border-radius: 30px;
+          padding: 30px;
+          flex-grow: 1;
+          flex-basis: 100%;
+          * {
+            color: black;
+            font-size: 14px;
+            font-weight: 400;
+          }
+          strong {
+            font-weight: 500;
+          }
+          .main_card_body {
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;
+          }
+          .card_body {
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+          }
+          .card_header {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            mat-card-subtitle {
+              font-weight: 500;
+              font-size: 20px;
+              flex-grow: 3;
+              flex-basis: 70%;
+            }
+            .card_label {
+              position: relative;
+              flex-grow: 1;
+              padding: 10px;
+              bottom: 30px;
+              left: 30px;
+              padding-left: 15px;
+              color: black;
+              min-width: 160px;
+              max-height: 40px;
+              border-radius: 0px 30px 0px 10px;
+            }
+          }
+          .card_buttons {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 20px;
+            margin-top: 0px;
+          }
+        }
+      }
+    .header_container{
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        div{
+            font-size: 24px;
+        }
+    }
+    .mat-success {
+        border-radius: 65px;
+        font-size: 16px;
+        font-weight: 400;
+        background-color: #079368;
+        color: white !important;
+      }
+    button{
+        padding: 0 20px !important;
+    }
+    .phone{
+        position: absolute;
+        display: flex;
+        flex-wrap: nowrap;
+        top: 90%;
+        right: 5%;
+    }
+    @media screen and (max-width: 960px) and (min-width: 840px){
+        .card_label{
+            min-height: 60px;
+        }
+    }
+    @media screen and (max-width: 850px){
+        .container{
+            width: 90%;
+            margin: 0 auto;
+        }
+        .card_buttons{
+            margin-bottom: 20px;
+        }
+    }
+    @media screen and (max-width: 840px){
+        .header_container{
+            margin-top: 50px;
+        }
+    }
+    @media screen and (max-width: 740px) {
+        .card {
+          width: 100px;
+        }
+        .card_header {
+          display: flex;
+          flex-direction: column-reverse;
+          .card_label {
+            border-radius: 0;
+            position: static;
+      
+              margin-left: 40%;
+              min-width: 0px;
+              flex-grow: 0;
+      
+          }
+        }
+        .card_buttons {
+          flex-direction: column;
+          align-items: center;
+          row-gap: 0px;
+          
+        }
+        button{
+            width: 200px !important
+        }
+      }
+    @media screen and (max-width: 600px){
+        .phone{
+            top: 94% !important;
+        }
+    }
+    @media screen and (max-width: 550px){
+        .header_container{
+            flex-direction: column;
+            align-items: center;
+            row-gap: 25px;
+        }
+    }
+    @media screen and (max-width: 360px){
+        .card_label{
+            margin-left: 0 !important;
+        }
+    }
+}

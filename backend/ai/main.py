@@ -1,4 +1,4 @@
-import fastapi, uvicorn, Model
+import fastapi, Model
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -37,7 +37,3 @@ def checker():
 def tager(target: packet):
     result = model.predict_tag(target.text)
     return {"tag": result}
-
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8005)

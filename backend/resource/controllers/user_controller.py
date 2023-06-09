@@ -36,7 +36,11 @@ from controllers.auth_controller import AuthController
 from database.db_controller import DatabaseController
 from database.models.basic_test import BasicTest
 from database.models.intern import Intern
+from database.models.interview import Interview
 from database.models.invation import Invation
+from database.models.mentor_review import MentorReview
+from database.models.note import Note
+from database.models.organization_review import OrganizationReview
 from database.models.presence import Presence
 from database.models.scholl import Scholl
 from database.models.selection import Selection
@@ -47,9 +51,9 @@ from database.models.skill_intern import SkillIntern
 from database.models.task import Task
 from database.models.user import User
 from database.models.vacancy import Vacancy
-from exceptions.token_exception import TokenException
 
 from models.intern import UpdateInternModel
+from models.interview import CreateInterview
 from models.message import MessageModel
 from models.presence import CreatePresence
 from models.school import UpdateScholl
@@ -78,6 +82,12 @@ class UserController:
         id, role_id = self.__auth_controller.decode_token(token)
         try:
             return self.__database_controller.get_my_profile(session, id)
+        except:
+            return MessageModel(message=USER_GET_FAILED)
+
+    def get_profile_by_nick(self, session: Session, nick: str):
+        try:
+            return self.__database_controller.get_profile_by_nick(session, nick)
         except:
             return MessageModel(message=USER_GET_FAILED)
 
@@ -208,12 +218,66 @@ class UserController:
         except Exception as e:
             return MessageModel(message=FILE_UPDATE_FAILED)
 
-    def get_rating_intern(self, session: Session, token: str, to_mentor: bool):
+    def get_my_interview(self, session: Session, token: str):
         id, role_id = self.__auth_controller.decode_token(token)
+        return self.__database_controller.get_my_interview(session, id)
+
+    def get_rating_intern(
+        self,
+        session: Session,
+        token: str | None,
+        to_mentor: bool | None,
+        user_id: int | None,
+    ):
+        if not user_id:
+            id, role_id = self.__auth_controller.decode_token(token)
         if to_mentor:
-            return self.__database_controller.get_rating_mentor(session, id)
+            return self.__database_controller.get_rating_mentor(
+                session, user_id if user_id else id
+            )
         else:
-            return self.__database_controller.get_rating_intern(session, id)
+            return self.__database_controller.get_rating_intern(
+                session, user_id if user_id else id
+            )
+
+    def get_end_interning(self, session: Session, selection_id: int):
+        try:
+            selection = self.__database_controller.get_selection_by_id(
+                session, selection_id
+            )
+            selection.stage_id = 7
+            selection.intern.internship_status_id = 3
+            session.commit()
+            return MessageModel(message="Стажировка завершилась успешно")
+        except Exception as e:
+            return MessageModel(message="Стажировка не завершилась")
+
+    def get_internings(self, session: Session, user_id: int):
+        return self.__database_controller.get_internings(session, user_id)
+
+    def post_add_interview(
+        self, session: Session, interview: CreateInterview, token: str
+    ):
+        id, role_id = self.__auth_controller.decode_token(token)
+        try:
+            org_rev = OrganizationReview(
+                text=interview.text,
+                value=interview.mark,
+                organization_id=interview.organization_id,
+                intern_id=id,
+            )
+            mentor_rev = MentorReview(
+                text=interview.text,
+                value=interview.mark,
+                mentor_id=interview.mentor_id,
+                intern_id=id,
+            )
+            session.add(org_rev)
+            session.add(mentor_rev)
+            session.commit()
+            return MessageModel(message="Отзыв добавлен")
+        except Exception as e:
+            return MessageModel(message="Отзыв не добавлен")
 
     def change_base_test(self, session: Session, token: str, test_up: UpdateTest):
         id, role_id = self.__auth_controller.decode_token(token)
@@ -368,8 +432,9 @@ class UserController:
                             selection.basic_tests.append(st)
                 response.passed = True
                 response.response_status_id = status_id
+
                 background_tasks.add_task(
-                    self.send_mail, selection.intern.user.email, msg
+                    self.send_mail, response.selection.intern.user.email, msg
                 )
 
                 if self.__database_controller.put_response(session, response):
@@ -377,6 +442,16 @@ class UserController:
                         self.other_responses_accept(
                             session, response_id, response.selection.intern_id
                         )
+                    self.__database_controller.post_note(
+                        session,
+                        Note(
+                            text=msg,
+                            is_readed=False,
+                            created=datetime.datetime.today(),
+                            user_id=response.selection.intern.id,
+                        ),
+                    )
+
                     return MessageModel(message=RESPONSE_CHANGE_STATUS)
             return MessageModel(message=RESPONSE_NOT)
         except Exception as e:
@@ -389,7 +464,13 @@ class UserController:
         school = Scholl(intern_id=id, passed=False)
         return self.__database_controller.add_school(session, school)
 
-    def put_response(self, session: Session, token: str, vacancy_id: int):
+    def put_response(
+        self,
+        session: Session,
+        token: str,
+        vacancy_id: int,
+        background_tasks: BackgroundTasks,
+    ):
         id, role_id = self.__auth_controller.decode_token(token)
         vacancy = self.__database_controller.get_vacancy_by_id(session, vacancy_id)
         if vacancy is None:
@@ -404,8 +485,20 @@ class UserController:
             response_status_id, passed = self.status_to_check_criteria(intern, vacancy)
             selection = Selection(vacancy_id=vacancy_id, intern_id=id, stage_id=1)
             if passed:
+                msg = f"Заявка на вакансию {vacancy.name} подтверждена. Вам открыт доступ к модулям 'Базовое тестирование' и 'Карьерная школа'"
+                background_tasks.add_task(self.send_mail, intern.user.email, msg)
+                self.__database_controller.post_note(
+                    session,
+                    Note(
+                        text=msg,
+                        is_readed=False,
+                        created=datetime.datetime.today(),
+                        user_id=id,
+                    ),
+                )
                 tests = self.add_test(session, id)
                 school = self.add_school(session, id)
+
                 for t in tests:
                     st = SelectionBasicTest(basic_test=t)
                     selection.basic_tests.append(st)
@@ -432,6 +525,14 @@ class UserController:
             selection.school.passed = school_up.passed
             selection.school.value = school_up.value
             selection.stage_id = 5
+            date_inter = datetime.datetime.today() + datetime.timedelta(days=5)
+            selection.interview = Interview(
+                name="Тестирование по профилю",
+                date=date_inter,
+                passed=False,
+                type_interview_id=1,
+                value=0,
+            )
             session.commit()
             return MessageModel(message=SCHOOL_UPDATE)
         except Exception as e:
@@ -444,6 +545,15 @@ class UserController:
         return self.__database_controller.get_full_selections(
             session, id, organization_id
         )
+
+    def get_pass_interview(self, session: Session, interview_id: int):
+        try:
+            interview = session.query(Interview).get(interview_id)
+            interview.passed = True
+            session.commit()
+            return MessageModel(message="Данные прохождения тестирования сохранены")
+        except Exception as e:
+            return MessageModel(message="Данные прохождения тестирования не сохранены")
 
     def get_change_selection(
         self,
@@ -463,8 +573,18 @@ class UserController:
             if stage_id == 3:
                 selection.intern.internship_status_id = 2
                 msg = f"По результатам собеседования вы приняты на вакансию {selection.vacancy.name}"
+            selection.interview.value = 50 if stage_id == 3 else 0
             session.commit()
             background_tasks.add_task(self.send_mail, selection.intern.user.email, msg)
+            self.__database_controller.post_note(
+                session,
+                Note(
+                    text=msg,
+                    is_readed=False,
+                    created=datetime.datetime.today(),
+                    user_id=selection.intern.id,
+                ),
+            )
             return MessageModel(message=ONBOARD_UPDATE)
         except Exception as e:
             return MessageModel(message=ONBOARD_UPDATE_FAILED)

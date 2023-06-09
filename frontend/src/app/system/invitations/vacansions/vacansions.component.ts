@@ -15,6 +15,8 @@ import { VacancyService } from 'src/app/shared/services/vacancy.service';
 import { DialogVacationMoreComponent } from '../../shared/dialog-vacation-more/dialog-vacation-more.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/shared/services/user.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { filterInvitations } from 'src/app/shared/pipes/filterInvitations.pipe';
 
 @Component({
   selector: 'app-vacansions',
@@ -27,7 +29,9 @@ export class VacansionsComponent implements OnInit {
     private profileService: ProfileService,
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
-    private userService: UserService
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
   empty = false;
   vacancy_cards: any[] = [];
@@ -72,20 +76,33 @@ export class VacansionsComponent implements OnInit {
       }
     );
   }
-
-  ngOnInit(): void {
-    this.isMobile = window.innerWidth < 768;
-
+  copy_vacancy_card: any[] = [];
+  loadVacs() {
     this.vacancyService
       .GetAllVacanciesWithFilters(
         this.organization_id ? [this.organization_id] : []
       )
       .subscribe((response: any) => {
         this.vacancy_cards = response;
+        this.copy_vacancy_card = this.vacancy_cards;
         this.loadedVac = true;
         if (this.vacancy_cards.length == 0) this.empty = true;
         else this.empty = false;
       });
+  }
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['recommend']) {
+        let intern_skills = this.profileService.profile?.intern?.skills;
+        this.vacancy_cards = new filterInvitations().transform(
+          this.vacancy_cards,
+          intern_skills
+        );
+      }
+    });
+    this.isMobile = window.innerWidth < 768;
+    this.loadVacs();
+
     this.vacancyService.GetAllBranchs().subscribe((branchs: any) => {
       this.branchs = branchs;
       let res = this.branchs.filter((b: any) => {
@@ -231,6 +248,15 @@ export class VacansionsComponent implements OnInit {
     this.dr(this.branchs);
     this.dr(this.directions);
     this.dr(this.organizations);
+    this.empty = false;
+    this.organization_id = null;
+    this.vacancy_cards = this.copy_vacancy_card;
+    this.router.navigate(['/system/invitations'], {
+      queryParams: {
+        vacansions: true,
+      },
+    });
+    this.loadVacs();
   }
 
   openDialog(index: any) {

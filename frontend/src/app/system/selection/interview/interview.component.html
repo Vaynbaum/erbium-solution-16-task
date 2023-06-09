@@ -1,23 +1,28 @@
 <div class="container">
-    <div class="cards">
-        <mat-card class="card">
-            <div class="card_header">
-                <mat-card-subtitle>Тестирование по профилю</mat-card-subtitle>
-                <div class="card_label">Балл: - </div>
-            </div>
-            <div class="main_card_body">
-                <div class="card_body">
-                    <mat-card-subtitle>Дата прохождения тестирования: <strong>27.05.2023-28.05.2023</strong></mat-card-subtitle>
-                </div>
-                <div class="card_body">
-                    <mat-card-subtitle> Организация: Агентство стратегических инициатив</mat-card-subtitle>
-                    <mat-card-subtitle>Вакансия: Тестировщик</mat-card-subtitle>
-                    <mat-card-subtitle> Наставник: Кощеев И.И.</mat-card-subtitle>
-                </div>
-                <div class="card_buttons">
-                    <button mat-button [ngClass]="{'default': true}" class="filter_button" color="success">Пройти</button>
-                </div>
-            </div>
-        </mat-card>
-    </div>
+
+  <div class="cards">
+    <mat-card class="card">
+      <div *ngIf="interview" class="card_header">
+        <mat-card-subtitle>{{interview.name}}</mat-card-subtitle>
+        <div class="card_label">Балл: {{interview?interview.value:'-'}}</div>
+      </div>
+      <div *ngIf="interview" class="main_card_body">
+        <div class="card_body">
+          <mat-card-subtitle>Дата прохождения тестирования: <strong>{{interview.date| date:"dd.MM.yyyy"}}</strong>
+          </mat-card-subtitle>
+        </div>
+        <div class="card_body">
+          <mat-card-subtitle> Организация: {{interview.selection.vacancy.organization.name}}</mat-card-subtitle>
+          <mat-card-subtitle>Вакансия: {{interview.selection.vacancy.name}}</mat-card-subtitle>
+          <mat-card-subtitle> Наставник: {{getFullName(interview.selection.vacancy)}}</mat-card-subtitle>
+        </div>
+        <div *ngIf="!interview.passed" class="card_buttons">
+          <button (click)="passInterview()" mat-button [ngClass]="{'default': true}" class="filter_button" color="success">Пройти</button>
+        </div>
+      </div>
+      <div *ngIf="!interview">
+        Собеседование пока вам не доступно
+      </div>
+    </mat-card>
+  </div>
 </div>

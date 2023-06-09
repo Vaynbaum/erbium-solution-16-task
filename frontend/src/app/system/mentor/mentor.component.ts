@@ -130,7 +130,7 @@ export class MentorComponent implements OnInit {
       this.cities = cities as any[];
       this.cityInput.values = this.compile_values('city', this.cities)
     })
-    
+
     this.userService.GetAllInterns(true).subscribe((mentors: any) => {
       this.mentors = mentors;
       this.loaded=true
@@ -165,6 +165,14 @@ export class MentorComponent implements OnInit {
   }
   drop() {
     this.vacancies_selected = null;
+  }
+  goToProfile(user:any) {
+    console.log(user)
+    this.router.navigate(['/system/profile'], {
+      queryParams: {
+        nick: user.nickname,
+      },
+    });
   }
   border() {
     return { border: `1px solid ${this.color}` };

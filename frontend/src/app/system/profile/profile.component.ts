@@ -67,7 +67,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { SkillIntern } from 'src/app/shared/models/skill_intern.model';
 import { UpdateInternModel } from 'src/app/shared/models/intern.model';
 import { NgxCroppedEvent, NgxPhotoEditorService } from 'ngx-photo-editor';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 const APPLY_BTN_TEXT = 'Сохранить и продолжить';
 const CLOSEB_BTN_TEXT = 'Вернуться назад';
@@ -103,7 +103,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private imageService: ImageService,
     private photoEditorService: NgxPhotoEditorService,
     private _snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   user: FullUser | null = null;
@@ -480,231 +481,347 @@ export class ProfileComponent implements OnInit, OnDestroy {
     return get_current_age(birthday);
   }
 
-  getRating() {
-    this.userService
-      .GetRating(this.user?.role_id == 1)
-      .subscribe((rating: any) => {
+  getRating(to_mentor: boolean, user_id?: number) {
+    if (user_id)
+      this.userService
+        .getOtherRating(to_mentor, user_id)
+        .subscribe((rating: any) => {
+          this.rating = rating;
+        });
+    else
+      this.userService.GetRating(to_mentor).subscribe((rating: any) => {
         this.rating = rating;
       });
   }
 
   ngOnInit() {
-    this.vacancyService
-      .GetAllOrganizations()
-      .subscribe((organizations_notfor_intern) => {
-        this.organizations_notfor_intern = organizations_notfor_intern as any[];
-        this.organizationInp.icon = 'keyboard_arrow_down';
-        this.organizationInp.placeholder = 'Организация';
-        this.organizationInp.values = this.compile_values(
-          'organization',
-          this.organizations_notfor_intern,
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['nick']) {
+        this.sub = this.userService
+          .getProfileByNick(params['nick'])
+          .subscribe((profile: any) => {
+            if (this.profileService.profile) {
+              this.color = MATCH_COLOR[this.profileService.profile.role.name];
+              this.lightColor =
+                MATCH_LIGHT_COLOR[this.profileService.profile.role.name];
+            }
+
+            this.user = profile;
+            this.isMyAccount = false;
+            this.getRating(profile.role_id == 1, profile.id);
+            this.mainInfoFormGroup
+              .get(FIRSTNAME)
+              ?.setValue(this.user?.firstname);
+            this.mainInfoFormGroup.get(LASTNAME)?.setValue(this.user?.lastname);
+            this.mainInfoFormGroup
+              .get(PATRONYMIC)
+              ?.setValue(this.user?.patronymic);
+            this.mainInfoFormGroup
+              .get(DATEBIRTH)
+              ?.setValue(this.user?.birthdate);
+
+            this.contactFormGroup.get(PHONE)?.setValue(this.user?.phone);
+            this.contactFormGroup.get(EMAIL)?.setValue(this.user?.email);
+
+            this.orgInpNotIntern
+              .get(ORGANIZATION)
+              ?.setValue(
+                this.user?.role.name == MENTOR
+                  ? this.user?.mentor?.organization?.name
+                  : this.user?.hr?.organization?.name
+              );
+            this.genderFlag = this.user?.gender;
+
+            this.positionFormGroup
+              .get(REGION)
+              ?.setValue(this.user?.city?.region?.name);
+            this.positionFormGroup
+              .get(COUNTRY)
+              ?.setValue(this.user?.citizenship.name);
+            this.positionFormGroup.get(CITY)?.setValue(this.user?.city.name);
+
+            this.interningFormGroup
+              .get(INTERNSHIP_STATUS)
+              ?.setValue(this.user?.intern?.internship_status.name);
+
+            if (this.user && this.user.intern) {
+              this.educationFormGroup
+                .get(INSTITUTE)
+                ?.setValue(this.user?.intern?.university.name);
+              this.educationFormGroup
+                .get(DIRECTION)
+                ?.setValue(this.user?.intern?.direction.name);
+              this.educationFormGroup
+                .get(COURSE)
+                ?.setValue(this.user?.intern?.course.name);
+
+              if (this.user.intern.training_direction)
+                this.interningFormGroup
+                  .get(TRAINING_DIRECTION)
+                  ?.setValue(this.user.intern.training_direction.name);
+
+              if (this.user.intern.branch)
+                this.favoriteFormGroup
+                  .get(BRANCH)
+                  ?.setValue(this.user.intern.branch.name);
+
+              if (this.user.intern.organization)
+                this.favoriteFormGroup
+                  .get(ORGANIZATION)
+                  ?.setValue(this.user.intern.organization.name);
+
+              if (this.user.intern.organizations)
+                this.experFormGroup
+                  .get(ORGANIZATIONS)
+                  ?.setValue(this.user.intern.organizations);
+
+              if (this.user.intern.work_experience)
+                this.experFormGroup
+                  .get(EXPERIENS)
+                  ?.setValue(this.user.intern.work_experience.name);
+
+              if (this.user.intern.about_me)
+                this.aboutmeControl.setValue(this.user.intern.about_me);
+              if (this.user.intern.github)
+                this.profilesFormGroup
+                  .get(GITHUB)
+                  ?.setValue(this.user.intern.github);
+              if (this.user.intern.vk)
+                this.profilesFormGroup.get(VK)?.setValue(this.user.intern.vk);
+              if (this.user.intern.portfolio)
+                this.profilesFormGroup
+                  .get(PORTFOLIO)
+                  ?.setValue(this.user.intern.portfolio);
+            }
+          });
+      } else {
+        this.vacancyService
+          .GetAllOrganizations()
+          .subscribe((organizations_notfor_intern) => {
+            this.organizations_notfor_intern =
+              organizations_notfor_intern as any[];
+            this.organizationInp.icon = 'keyboard_arrow_down';
+            this.organizationInp.placeholder = 'Организация';
+            this.organizationInp.values = this.compile_values(
+              'organization',
+              this.organizations_notfor_intern,
+              this.orgInpNotIntern
+            );
+          });
+
+        this.constService.GetAllRegions().subscribe((regions) => {
+          this.regions = regions as Region[];
+          this.selectInputs[inp.REGION].placeholder = 'Регион';
+          this.selectInputs[inp.REGION].icon = 'keyboard_arrow_down';
+          this.selectInputs[inp.REGION].values = this.compile_values(
+            REGION,
+            this.regions,
+            this.positionFormGroup
+          );
+        });
+        this.constService.GetAllСitizenships().subscribe((countries) => {
+          this.countries = countries as Сitizenship[];
+          this.selectInputs[inp.COUNTRY].placeholder = 'Гражданство';
+          this.selectInputs[inp.COUNTRY].icon = 'keyboard_arrow_down';
+          this.selectInputs[inp.COUNTRY].values = this.compile_values(
+            COUNTRY,
+            this.countries,
+            this.positionFormGroup
+          );
+        });
+        this.constService.GetAllCities().subscribe((cities) => {
+          this.cities = cities as FullCity[];
+
+          this.selectInputs[inp.CITY].placeholder = 'Город';
+          this.selectInputs[inp.CITY].icon = 'keyboard_arrow_down';
+          this.selectInputs[inp.CITY].values = this.compile_values(
+            CITY,
+            this.cities,
+            this.positionFormGroup
+          );
+        });
+        this.constService.GetAllUniversities().subscribe((institutes) => {
+          this.institutes = institutes as University[];
+          this.educations[inpE.INSTITUTE].placeholder =
+            'В каком ВУЗе Вы обучаетесь?';
+          this.educations[inpE.INSTITUTE].icon = 'keyboard_arrow_down';
+          this.educations[inpE.INSTITUTE].values = this.compile_values(
+            INSTITUTE,
+            this.institutes,
+            this.educationFormGroup
+          );
+        });
+        this.constService.GetAllDirections().subscribe((directions) => {
+          this.directions = directions as Direction[];
+          this.educations[inpE.DIRECTION].placeholder =
+            'Направление подготовки';
+          this.educations[inpE.DIRECTION].icon = 'keyboard_arrow_down';
+          this.educations[inpE.DIRECTION].values = this.compile_values(
+            DIRECTION,
+            this.directions,
+            this.educationFormGroup
+          );
+        });
+        this.constService.GetAllCourses().subscribe((courses) => {
+          this.courses = courses as Course[];
+          this.educations[inpE.COURSE].placeholder = 'Курс';
+          this.educations[inpE.COURSE].icon = 'keyboard_arrow_down';
+          this.educations[inpE.COURSE].values = this.compile_values(
+            COURSE,
+            this.courses,
+            this.educationFormGroup
+          );
+        });
+        this.vacancyService.GetAllOrganizations().subscribe((organizations) => {
+          this.organizations = organizations as Organization[];
+          this.favorite_inps[inpF.ORGANIZATION].placeholder = 'Организация';
+          this.favorite_inps[inpF.ORGANIZATION].icon = 'keyboard_arrow_down';
+          this.favorite_inps[inpF.ORGANIZATION].values = this.compile_values(
+            ORGANIZATION,
+            this.organizations,
+            this.favoriteFormGroup
+          );
+        });
+        this.vacancyService.GetAllBranchs().subscribe((branchs) => {
+          this.branchs = branchs as Branch[];
+          this.favorite_inps[inpF.BRANCH].placeholder = 'Отрасль';
+          this.favorite_inps[inpF.BRANCH].icon = 'keyboard_arrow_down';
+          this.favorite_inps[inpF.BRANCH].values = this.compile_values(
+            BRANCH,
+            this.branchs,
+            this.favoriteFormGroup
+          );
+        });
+        this.constService.GetAllSkills().subscribe((skills) => {
+          this.allSkills = skills as Skill[];
+
+          this.skill_inp.placeholder = 'Навык';
+          this.skill_inp.icon = 'keyboard_arrow_down';
+          this.skill_inp.values = this.compile_values(
+            SKILL,
+            this.allSkills,
+            this.skillFormGroup
+          );
+        });
+        this.vacancyService
+          .GetAllTrainingDirections()
+          .subscribe((ditections) => {
+            this.training_directions = ditections as TrainingDirection[];
+            this.training_direction_inp.placeholder = 'Направление';
+            this.training_direction_inp.icon = 'keyboard_arrow_down';
+            this.training_direction_inp.values = this.compile_values(
+              TRAINING_DIRECTION,
+              this.training_directions,
+              this.interningFormGroup
+            );
+          });
+        this.vacancyService
+          .GetAllWorkExperiencies()
+          .subscribe((work_experiences) => {
+            this.experines = work_experiences as WorkExperience[];
+            this.exp_inp.placeholder = 'Опыт работы';
+            this.exp_inp.icon = 'keyboard_arrow_down';
+            this.exp_inp.values = this.compile_values(
+              EXPERIENS,
+              this.experines,
+              this.experFormGroup
+            );
+          });
+        this.sub = this.profileService.ProfileLoaded.subscribe((profile) => {
+          this.getRating(profile.role_id == 1);
+          if (this.profileService.profile) {
+            this.color = MATCH_COLOR[this.profileService.profile.role.name];
+            this.lightColor =
+              MATCH_LIGHT_COLOR[this.profileService.profile.role.name];
+          }
+
+          this.user = profile;
+          this.isMyAccount = true;
+
+          this.mainInfoFormGroup.get(FIRSTNAME)?.setValue(this.user?.firstname);
+          this.mainInfoFormGroup.get(LASTNAME)?.setValue(this.user?.lastname);
+          this.mainInfoFormGroup
+            .get(PATRONYMIC)
+            ?.setValue(this.user?.patronymic);
+          this.mainInfoFormGroup.get(DATEBIRTH)?.setValue(this.user?.birthdate);
+
+          this.contactFormGroup.get(PHONE)?.setValue(this.user?.phone);
+          this.contactFormGroup.get(EMAIL)?.setValue(this.user?.email);
+
           this.orgInpNotIntern
-        );
-      });
-    this.getRating();
-    this.constService.GetAllRegions().subscribe((regions) => {
-      this.regions = regions as Region[];
-      this.selectInputs[inp.REGION].placeholder = 'Регион';
-      this.selectInputs[inp.REGION].icon = 'keyboard_arrow_down';
-      this.selectInputs[inp.REGION].values = this.compile_values(
-        REGION,
-        this.regions,
-        this.positionFormGroup
-      );
-    });
-    this.constService.GetAllСitizenships().subscribe((countries) => {
-      this.countries = countries as Сitizenship[];
-      this.selectInputs[inp.COUNTRY].placeholder = 'Гражданство';
-      this.selectInputs[inp.COUNTRY].icon = 'keyboard_arrow_down';
-      this.selectInputs[inp.COUNTRY].values = this.compile_values(
-        COUNTRY,
-        this.countries,
-        this.positionFormGroup
-      );
-    });
-    this.constService.GetAllCities().subscribe((cities) => {
-      this.cities = cities as FullCity[];
-
-      this.selectInputs[inp.CITY].placeholder = 'Город';
-      this.selectInputs[inp.CITY].icon = 'keyboard_arrow_down';
-      this.selectInputs[inp.CITY].values = this.compile_values(
-        CITY,
-        this.cities,
-        this.positionFormGroup
-      );
-    });
-    this.constService.GetAllUniversities().subscribe((institutes) => {
-      this.institutes = institutes as University[];
-      this.educations[inpE.INSTITUTE].placeholder =
-        'В каком ВУЗе Вы обучаетесь?';
-      this.educations[inpE.INSTITUTE].icon = 'keyboard_arrow_down';
-      this.educations[inpE.INSTITUTE].values = this.compile_values(
-        INSTITUTE,
-        this.institutes,
-        this.educationFormGroup
-      );
-    });
-    this.constService.GetAllDirections().subscribe((directions) => {
-      this.directions = directions as Direction[];
-      this.educations[inpE.DIRECTION].placeholder = 'Направление подготовки';
-      this.educations[inpE.DIRECTION].icon = 'keyboard_arrow_down';
-      this.educations[inpE.DIRECTION].values = this.compile_values(
-        DIRECTION,
-        this.directions,
-        this.educationFormGroup
-      );
-    });
-    this.constService.GetAllCourses().subscribe((courses) => {
-      this.courses = courses as Course[];
-      this.educations[inpE.COURSE].placeholder = 'Курс';
-      this.educations[inpE.COURSE].icon = 'keyboard_arrow_down';
-      this.educations[inpE.COURSE].values = this.compile_values(
-        COURSE,
-        this.courses,
-        this.educationFormGroup
-      );
-    });
-    this.vacancyService.GetAllOrganizations().subscribe((organizations) => {
-      this.organizations = organizations as Organization[];
-      this.favorite_inps[inpF.ORGANIZATION].placeholder = 'Организация';
-      this.favorite_inps[inpF.ORGANIZATION].icon = 'keyboard_arrow_down';
-      this.favorite_inps[inpF.ORGANIZATION].values = this.compile_values(
-        ORGANIZATION,
-        this.organizations,
-        this.favoriteFormGroup
-      );
-    });
-    this.vacancyService.GetAllBranchs().subscribe((branchs) => {
-      this.branchs = branchs as Branch[];
-      this.favorite_inps[inpF.BRANCH].placeholder = 'Отрасль';
-      this.favorite_inps[inpF.BRANCH].icon = 'keyboard_arrow_down';
-      this.favorite_inps[inpF.BRANCH].values = this.compile_values(
-        BRANCH,
-        this.branchs,
-        this.favoriteFormGroup
-      );
-    });
-    this.constService.GetAllSkills().subscribe((skills) => {
-      this.allSkills = skills as Skill[];
-
-      this.skill_inp.placeholder = 'Навык';
-      this.skill_inp.icon = 'keyboard_arrow_down';
-      this.skill_inp.values = this.compile_values(
-        SKILL,
-        this.allSkills,
-        this.skillFormGroup
-      );
-    });
-    this.vacancyService.GetAllTrainingDirections().subscribe((ditections) => {
-      this.training_directions = ditections as TrainingDirection[];
-      this.training_direction_inp.placeholder = 'Направление';
-      this.training_direction_inp.icon = 'keyboard_arrow_down';
-      this.training_direction_inp.values = this.compile_values(
-        TRAINING_DIRECTION,
-        this.training_directions,
-        this.interningFormGroup
-      );
-    });
-    this.vacancyService
-      .GetAllWorkExperiencies()
-      .subscribe((work_experiences) => {
-        this.experines = work_experiences as WorkExperience[];
-        this.exp_inp.placeholder = 'Опыт работы';
-        this.exp_inp.icon = 'keyboard_arrow_down';
-        this.exp_inp.values = this.compile_values(
-          EXPERIENS,
-          this.experines,
-          this.experFormGroup
-        );
-      });
-    this.sub = this.profileService.ProfileLoaded.subscribe((profile) => {
-      if (this.profileService.profile) {
-        this.color = MATCH_COLOR[this.profileService.profile.role.name];
-        this.lightColor =
-          MATCH_LIGHT_COLOR[this.profileService.profile.role.name];
-      }
-
-      this.user = profile;
-      this.isMyAccount = true;
-
-      this.mainInfoFormGroup.get(FIRSTNAME)?.setValue(this.user?.firstname);
-      this.mainInfoFormGroup.get(LASTNAME)?.setValue(this.user?.lastname);
-      this.mainInfoFormGroup.get(PATRONYMIC)?.setValue(this.user?.patronymic);
-      this.mainInfoFormGroup.get(DATEBIRTH)?.setValue(this.user?.birthdate);
-
-      this.contactFormGroup.get(PHONE)?.setValue(this.user?.phone);
-      this.contactFormGroup.get(EMAIL)?.setValue(this.user?.email);
-
-      this.orgInpNotIntern
-        .get(ORGANIZATION)
-        ?.setValue(
-          this.user?.role.name == MENTOR
-            ? this.user?.mentor?.organization?.name
-            : this.user?.hr?.organization?.name
-        );
-      this.genderFlag = this.user?.gender;
-
-      this.positionFormGroup
-        .get(REGION)
-        ?.setValue(this.user?.city?.region?.name);
-      this.positionFormGroup
-        .get(COUNTRY)
-        ?.setValue(this.user?.citizenship.name);
-      this.positionFormGroup.get(CITY)?.setValue(this.user?.city.name);
-
-      this.interningFormGroup
-        .get(INTERNSHIP_STATUS)
-        ?.setValue(this.user?.intern?.internship_status.name);
-
-      if (this.user && this.user.intern) {
-        this.educationFormGroup
-          .get(INSTITUTE)
-          ?.setValue(this.user?.intern?.university.name);
-        this.educationFormGroup
-          .get(DIRECTION)
-          ?.setValue(this.user?.intern?.direction.name);
-        this.educationFormGroup
-          .get(COURSE)
-          ?.setValue(this.user?.intern?.course.name);
-
-        if (this.user.intern.training_direction)
-          this.interningFormGroup
-            .get(TRAINING_DIRECTION)
-            ?.setValue(this.user.intern.training_direction.name);
-
-        if (this.user.intern.branch)
-          this.favoriteFormGroup
-            .get(BRANCH)
-            ?.setValue(this.user.intern.branch.name);
-
-        if (this.user.intern.organization)
-          this.favoriteFormGroup
             .get(ORGANIZATION)
-            ?.setValue(this.user.intern.organization.name);
+            ?.setValue(
+              this.user?.role.name == MENTOR
+                ? this.user?.mentor?.organization?.name
+                : this.user?.hr?.organization?.name
+            );
+          this.genderFlag = this.user?.gender;
 
-        if (this.user.intern.organizations)
-          this.experFormGroup
-            .get(ORGANIZATIONS)
-            ?.setValue(this.user.intern.organizations);
+          this.positionFormGroup
+            .get(REGION)
+            ?.setValue(this.user?.city?.region?.name);
+          this.positionFormGroup
+            .get(COUNTRY)
+            ?.setValue(this.user?.citizenship.name);
+          this.positionFormGroup.get(CITY)?.setValue(this.user?.city.name);
 
-        if (this.user.intern.work_experience)
-          this.experFormGroup
-            .get(EXPERIENS)
-            ?.setValue(this.user.intern.work_experience.name);
+          this.interningFormGroup
+            .get(INTERNSHIP_STATUS)
+            ?.setValue(this.user?.intern?.internship_status.name);
 
-        if (this.user.intern.about_me)
-          this.aboutmeControl.setValue(this.user.intern.about_me);
-        if (this.user.intern.github)
-          this.profilesFormGroup.get(GITHUB)?.setValue(this.user.intern.github);
-        if (this.user.intern.vk)
-          this.profilesFormGroup.get(VK)?.setValue(this.user.intern.vk);
-        if (this.user.intern.portfolio)
-          this.profilesFormGroup
-            .get(PORTFOLIO)
-            ?.setValue(this.user.intern.portfolio);
+          if (this.user && this.user.intern) {
+            this.educationFormGroup
+              .get(INSTITUTE)
+              ?.setValue(this.user?.intern?.university.name);
+            this.educationFormGroup
+              .get(DIRECTION)
+              ?.setValue(this.user?.intern?.direction.name);
+            this.educationFormGroup
+              .get(COURSE)
+              ?.setValue(this.user?.intern?.course.name);
+
+            if (this.user.intern.training_direction)
+              this.interningFormGroup
+                .get(TRAINING_DIRECTION)
+                ?.setValue(this.user.intern.training_direction.name);
+
+            if (this.user.intern.branch)
+              this.favoriteFormGroup
+                .get(BRANCH)
+                ?.setValue(this.user.intern.branch.name);
+
+            if (this.user.intern.organization)
+              this.favoriteFormGroup
+                .get(ORGANIZATION)
+                ?.setValue(this.user.intern.organization.name);
+
+            if (this.user.intern.organizations)
+              this.experFormGroup
+                .get(ORGANIZATIONS)
+                ?.setValue(this.user.intern.organizations);
+
+            if (this.user.intern.work_experience)
+              this.experFormGroup
+                .get(EXPERIENS)
+                ?.setValue(this.user.intern.work_experience.name);
+
+            if (this.user.intern.about_me)
+              this.aboutmeControl.setValue(this.user.intern.about_me);
+            if (this.user.intern.github)
+              this.profilesFormGroup
+                .get(GITHUB)
+                ?.setValue(this.user.intern.github);
+            if (this.user.intern.vk)
+              this.profilesFormGroup.get(VK)?.setValue(this.user.intern.vk);
+            if (this.user.intern.portfolio)
+              this.profilesFormGroup
+                .get(PORTFOLIO)
+                ?.setValue(this.user.intern.portfolio);
+          }
+        });
+        this.profileService.GetProfile();
       }
     });
-    this.profileService.GetProfile();
   }
 
   ngOnDestroy(): void {
@@ -874,9 +991,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   deleteProfile() {
     this.userService.DeleteProfile().subscribe(() => {
-      // this.webSocketService.Close();
-      if (this.user?.img)
-        this.imageService.DeleteOldImage().subscribe((res) => {});
+      // if (this.user?.img)
+      //   this.imageService.DeleteOldImage().subscribe((res) => {});
       this.profileService.Logout();
       redirect('/auth/login', this.router, {
         queryParams: {

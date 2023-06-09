@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.7
+-- Dumped from database version 14.7 (Debian 14.7-1.pgdg110+1)
 -- Dumped by pg_dump version 14.1
 
--- Started on 2023-05-28 23:35:38
+-- Started on 2023-06-09 22:36:21
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,8 +23,8 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 275 (class 1259 OID 16998)
--- Name: basic_test_statuses; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 209 (class 1259 OID 16385)
+-- Name: basic_test_statuses; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.basic_test_statuses (
@@ -33,11 +33,11 @@ CREATE TABLE public.basic_test_statuses (
 );
 
 
-ALTER TABLE public.basic_test_statuses OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.basic_test_statuses OWNER TO postgres;
 
 --
--- TOC entry 274 (class 1259 OID 16997)
--- Name: basic_test_statuses_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 210 (class 1259 OID 16388)
+-- Name: basic_test_statuses_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.basic_test_statuses_id_seq
@@ -49,20 +49,20 @@ CREATE SEQUENCE public.basic_test_statuses_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.basic_test_statuses_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.basic_test_statuses_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3707 (class 0 OID 0)
--- Dependencies: 274
--- Name: basic_test_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3901 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: basic_test_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.basic_test_statuses_id_seq OWNED BY public.basic_test_statuses.id;
 
 
 --
--- TOC entry 285 (class 1259 OID 17048)
--- Name: basic_tests; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 211 (class 1259 OID 16389)
+-- Name: basic_tests; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.basic_tests (
@@ -77,11 +77,11 @@ CREATE TABLE public.basic_tests (
 );
 
 
-ALTER TABLE public.basic_tests OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.basic_tests OWNER TO postgres;
 
 --
--- TOC entry 284 (class 1259 OID 17047)
--- Name: basic_tests_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 212 (class 1259 OID 16392)
+-- Name: basic_tests_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.basic_tests_id_seq
@@ -93,20 +93,20 @@ CREATE SEQUENCE public.basic_tests_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.basic_tests_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.basic_tests_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3708 (class 0 OID 0)
--- Dependencies: 284
--- Name: basic_tests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3902 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: basic_tests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.basic_tests_id_seq OWNED BY public.basic_tests.id;
 
 
 --
--- TOC entry 231 (class 1259 OID 16626)
--- Name: branchs; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 213 (class 1259 OID 16393)
+-- Name: branchs; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.branchs (
@@ -115,11 +115,11 @@ CREATE TABLE public.branchs (
 );
 
 
-ALTER TABLE public.branchs OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.branchs OWNER TO postgres;
 
 --
--- TOC entry 230 (class 1259 OID 16625)
--- Name: branchs_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 214 (class 1259 OID 16396)
+-- Name: branchs_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.branchs_id_seq
@@ -131,20 +131,20 @@ CREATE SEQUENCE public.branchs_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.branchs_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.branchs_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3709 (class 0 OID 0)
--- Dependencies: 230
--- Name: branchs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3903 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: branchs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.branchs_id_seq OWNED BY public.branchs.id;
 
 
 --
--- TOC entry 287 (class 1259 OID 17070)
--- Name: championships; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 215 (class 1259 OID 16397)
+-- Name: championships; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.championships (
@@ -156,11 +156,11 @@ CREATE TABLE public.championships (
 );
 
 
-ALTER TABLE public.championships OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.championships OWNER TO postgres;
 
 --
--- TOC entry 286 (class 1259 OID 17069)
--- Name: championships_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 216 (class 1259 OID 16402)
+-- Name: championships_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.championships_id_seq
@@ -172,20 +172,20 @@ CREATE SEQUENCE public.championships_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.championships_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.championships_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3710 (class 0 OID 0)
--- Dependencies: 286
--- Name: championships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3904 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: championships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.championships_id_seq OWNED BY public.championships.id;
 
 
 --
--- TOC entry 225 (class 1259 OID 16544)
--- Name: cities; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 217 (class 1259 OID 16403)
+-- Name: cities; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.cities (
@@ -195,11 +195,11 @@ CREATE TABLE public.cities (
 );
 
 
-ALTER TABLE public.cities OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.cities OWNER TO postgres;
 
 --
--- TOC entry 224 (class 1259 OID 16543)
--- Name: cities_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 218 (class 1259 OID 16406)
+-- Name: cities_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.cities_id_seq
@@ -211,20 +211,20 @@ CREATE SEQUENCE public.cities_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.cities_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.cities_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3711 (class 0 OID 0)
--- Dependencies: 224
--- Name: cities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3905 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: cities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.cities_id_seq OWNED BY public.cities.id;
 
 
 --
--- TOC entry 213 (class 1259 OID 16502)
--- Name: citizenships; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 219 (class 1259 OID 16407)
+-- Name: citizenships; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.citizenships (
@@ -233,11 +233,11 @@ CREATE TABLE public.citizenships (
 );
 
 
-ALTER TABLE public.citizenships OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.citizenships OWNER TO postgres;
 
 --
--- TOC entry 212 (class 1259 OID 16501)
--- Name: citizenships_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 220 (class 1259 OID 16410)
+-- Name: citizenships_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.citizenships_id_seq
@@ -249,20 +249,20 @@ CREATE SEQUENCE public.citizenships_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.citizenships_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.citizenships_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3712 (class 0 OID 0)
--- Dependencies: 212
--- Name: citizenships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3906 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: citizenships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.citizenships_id_seq OWNED BY public.citizenships.id;
 
 
 --
--- TOC entry 260 (class 1259 OID 16855)
--- Name: conditions; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 221 (class 1259 OID 16411)
+-- Name: conditions; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.conditions (
@@ -272,11 +272,11 @@ CREATE TABLE public.conditions (
 );
 
 
-ALTER TABLE public.conditions OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.conditions OWNER TO postgres;
 
 --
--- TOC entry 259 (class 1259 OID 16854)
--- Name: conditions_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 222 (class 1259 OID 16414)
+-- Name: conditions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.conditions_id_seq
@@ -288,20 +288,20 @@ CREATE SEQUENCE public.conditions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.conditions_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.conditions_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3713 (class 0 OID 0)
--- Dependencies: 259
--- Name: conditions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3907 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: conditions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.conditions_id_seq OWNED BY public.conditions.id;
 
 
 --
--- TOC entry 217 (class 1259 OID 16516)
--- Name: courses; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 223 (class 1259 OID 16415)
+-- Name: courses; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.courses (
@@ -310,11 +310,11 @@ CREATE TABLE public.courses (
 );
 
 
-ALTER TABLE public.courses OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.courses OWNER TO postgres;
 
 --
--- TOC entry 216 (class 1259 OID 16515)
--- Name: courses_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 224 (class 1259 OID 16418)
+-- Name: courses_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.courses_id_seq
@@ -326,20 +326,20 @@ CREATE SEQUENCE public.courses_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.courses_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.courses_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3714 (class 0 OID 0)
--- Dependencies: 216
--- Name: courses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3908 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: courses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.courses_id_seq OWNED BY public.courses.id;
 
 
 --
--- TOC entry 248 (class 1259 OID 16707)
--- Name: curators; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 225 (class 1259 OID 16419)
+-- Name: curators; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.curators (
@@ -348,11 +348,11 @@ CREATE TABLE public.curators (
 );
 
 
-ALTER TABLE public.curators OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.curators OWNER TO postgres;
 
 --
--- TOC entry 219 (class 1259 OID 16523)
--- Name: directions; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 226 (class 1259 OID 16422)
+-- Name: directions; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.directions (
@@ -361,11 +361,11 @@ CREATE TABLE public.directions (
 );
 
 
-ALTER TABLE public.directions OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.directions OWNER TO postgres;
 
 --
--- TOC entry 218 (class 1259 OID 16522)
--- Name: directions_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 227 (class 1259 OID 16425)
+-- Name: directions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.directions_id_seq
@@ -377,20 +377,20 @@ CREATE SEQUENCE public.directions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.directions_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.directions_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3715 (class 0 OID 0)
--- Dependencies: 218
--- Name: directions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3909 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: directions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.directions_id_seq OWNED BY public.directions.id;
 
 
 --
--- TOC entry 262 (class 1259 OID 16867)
--- Name: duties; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 228 (class 1259 OID 16426)
+-- Name: duties; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.duties (
@@ -400,11 +400,11 @@ CREATE TABLE public.duties (
 );
 
 
-ALTER TABLE public.duties OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.duties OWNER TO postgres;
 
 --
--- TOC entry 261 (class 1259 OID 16866)
--- Name: duties_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 229 (class 1259 OID 16429)
+-- Name: duties_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.duties_id_seq
@@ -416,20 +416,20 @@ CREATE SEQUENCE public.duties_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.duties_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.duties_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3716 (class 0 OID 0)
--- Dependencies: 261
--- Name: duties_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3910 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: duties_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.duties_id_seq OWNED BY public.duties.id;
 
 
 --
--- TOC entry 233 (class 1259 OID 16633)
--- Name: employment_types; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 230 (class 1259 OID 16430)
+-- Name: employment_types; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.employment_types (
@@ -438,11 +438,11 @@ CREATE TABLE public.employment_types (
 );
 
 
-ALTER TABLE public.employment_types OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.employment_types OWNER TO postgres;
 
 --
--- TOC entry 232 (class 1259 OID 16632)
--- Name: employment_types_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 231 (class 1259 OID 16433)
+-- Name: employment_types_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.employment_types_id_seq
@@ -454,20 +454,20 @@ CREATE SEQUENCE public.employment_types_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.employment_types_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.employment_types_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3717 (class 0 OID 0)
--- Dependencies: 232
--- Name: employment_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3911 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: employment_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.employment_types_id_seq OWNED BY public.employment_types.id;
 
 
 --
--- TOC entry 250 (class 1259 OID 16723)
--- Name: events; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 232 (class 1259 OID 16434)
+-- Name: events; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.events (
@@ -479,11 +479,11 @@ CREATE TABLE public.events (
 );
 
 
-ALTER TABLE public.events OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.events OWNER TO postgres;
 
 --
--- TOC entry 249 (class 1259 OID 16722)
--- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 233 (class 1259 OID 16439)
+-- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.events_id_seq
@@ -495,20 +495,20 @@ CREATE SEQUENCE public.events_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.events_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.events_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3718 (class 0 OID 0)
--- Dependencies: 249
--- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3912 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
 
 
 --
--- TOC entry 268 (class 1259 OID 16918)
--- Name: history_work_experiences; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 234 (class 1259 OID 16440)
+-- Name: history_work_experiences; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.history_work_experiences (
@@ -521,11 +521,11 @@ CREATE TABLE public.history_work_experiences (
 );
 
 
-ALTER TABLE public.history_work_experiences OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.history_work_experiences OWNER TO postgres;
 
 --
--- TOC entry 267 (class 1259 OID 16917)
--- Name: history_work_experiences_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 235 (class 1259 OID 16445)
+-- Name: history_work_experiences_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.history_work_experiences_id_seq
@@ -537,20 +537,20 @@ CREATE SEQUENCE public.history_work_experiences_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.history_work_experiences_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.history_work_experiences_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3719 (class 0 OID 0)
--- Dependencies: 267
--- Name: history_work_experiences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3913 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: history_work_experiences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.history_work_experiences_id_seq OWNED BY public.history_work_experiences.id;
 
 
 --
--- TOC entry 252 (class 1259 OID 16751)
--- Name: hrs; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 236 (class 1259 OID 16446)
+-- Name: hrs; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.hrs (
@@ -559,11 +559,11 @@ CREATE TABLE public.hrs (
 );
 
 
-ALTER TABLE public.hrs OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.hrs OWNER TO postgres;
 
 --
--- TOC entry 229 (class 1259 OID 16589)
--- Name: interns; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 237 (class 1259 OID 16449)
+-- Name: interns; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.interns (
@@ -586,11 +586,11 @@ CREATE TABLE public.interns (
 );
 
 
-ALTER TABLE public.interns OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.interns OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 16530)
--- Name: internship_statuses; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 238 (class 1259 OID 16454)
+-- Name: internship_statuses; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.internship_statuses (
@@ -599,11 +599,11 @@ CREATE TABLE public.internship_statuses (
 );
 
 
-ALTER TABLE public.internship_statuses OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.internship_statuses OWNER TO postgres;
 
 --
--- TOC entry 220 (class 1259 OID 16529)
--- Name: internship_statuses_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 239 (class 1259 OID 16457)
+-- Name: internship_statuses_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.internship_statuses_id_seq
@@ -615,20 +615,20 @@ CREATE SEQUENCE public.internship_statuses_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.internship_statuses_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.internship_statuses_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3720 (class 0 OID 0)
--- Dependencies: 220
--- Name: internship_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3914 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: internship_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.internship_statuses_id_seq OWNED BY public.internship_statuses.id;
 
 
 --
--- TOC entry 295 (class 1259 OID 17124)
--- Name: interviews; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 240 (class 1259 OID 16458)
+-- Name: interviews; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.interviews (
@@ -645,11 +645,11 @@ CREATE TABLE public.interviews (
 );
 
 
-ALTER TABLE public.interviews OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.interviews OWNER TO postgres;
 
 --
--- TOC entry 294 (class 1259 OID 17123)
--- Name: interviews_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 241 (class 1259 OID 16463)
+-- Name: interviews_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.interviews_id_seq
@@ -661,20 +661,20 @@ CREATE SEQUENCE public.interviews_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.interviews_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.interviews_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3721 (class 0 OID 0)
--- Dependencies: 294
--- Name: interviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3915 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: interviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.interviews_id_seq OWNED BY public.interviews.id;
 
 
 --
--- TOC entry 305 (class 1259 OID 17328)
--- Name: invations; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 242 (class 1259 OID 16464)
+-- Name: invations; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.invations (
@@ -685,11 +685,11 @@ CREATE TABLE public.invations (
 );
 
 
-ALTER TABLE public.invations OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.invations OWNER TO postgres;
 
 --
--- TOC entry 273 (class 1259 OID 16967)
--- Name: language_interns; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 243 (class 1259 OID 16469)
+-- Name: language_interns; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.language_interns (
@@ -698,11 +698,11 @@ CREATE TABLE public.language_interns (
 );
 
 
-ALTER TABLE public.language_interns OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.language_interns OWNER TO postgres;
 
 --
--- TOC entry 272 (class 1259 OID 16961)
--- Name: languages; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 244 (class 1259 OID 16472)
+-- Name: languages; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.languages (
@@ -711,11 +711,11 @@ CREATE TABLE public.languages (
 );
 
 
-ALTER TABLE public.languages OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.languages OWNER TO postgres;
 
 --
--- TOC entry 271 (class 1259 OID 16960)
--- Name: languages_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 245 (class 1259 OID 16475)
+-- Name: languages_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.languages_id_seq
@@ -727,20 +727,20 @@ CREATE SEQUENCE public.languages_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.languages_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.languages_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3722 (class 0 OID 0)
--- Dependencies: 271
--- Name: languages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3916 (class 0 OID 0)
+-- Dependencies: 245
+-- Name: languages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.languages_id_seq OWNED BY public.languages.id;
 
 
 --
--- TOC entry 298 (class 1259 OID 17197)
--- Name: mentor_reviews; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 246 (class 1259 OID 16476)
+-- Name: mentor_reviews; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.mentor_reviews (
@@ -752,11 +752,11 @@ CREATE TABLE public.mentor_reviews (
 );
 
 
-ALTER TABLE public.mentor_reviews OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.mentor_reviews OWNER TO postgres;
 
 --
--- TOC entry 297 (class 1259 OID 17196)
--- Name: mentor_reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 247 (class 1259 OID 16481)
+-- Name: mentor_reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.mentor_reviews_id_seq
@@ -768,20 +768,20 @@ CREATE SEQUENCE public.mentor_reviews_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.mentor_reviews_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.mentor_reviews_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3723 (class 0 OID 0)
--- Dependencies: 297
--- Name: mentor_reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3917 (class 0 OID 0)
+-- Dependencies: 247
+-- Name: mentor_reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.mentor_reviews_id_seq OWNED BY public.mentor_reviews.id;
 
 
 --
--- TOC entry 253 (class 1259 OID 16766)
--- Name: mentors; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 248 (class 1259 OID 16482)
+-- Name: mentors; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.mentors (
@@ -790,11 +790,11 @@ CREATE TABLE public.mentors (
 );
 
 
-ALTER TABLE public.mentors OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.mentors OWNER TO postgres;
 
 --
--- TOC entry 270 (class 1259 OID 16932)
--- Name: metros; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 249 (class 1259 OID 16485)
+-- Name: metros; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.metros (
@@ -803,11 +803,11 @@ CREATE TABLE public.metros (
 );
 
 
-ALTER TABLE public.metros OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.metros OWNER TO postgres;
 
 --
--- TOC entry 269 (class 1259 OID 16931)
--- Name: metros_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 250 (class 1259 OID 16488)
+-- Name: metros_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.metros_id_seq
@@ -819,20 +819,61 @@ CREATE SEQUENCE public.metros_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.metros_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.metros_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3724 (class 0 OID 0)
--- Dependencies: 269
--- Name: metros_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3918 (class 0 OID 0)
+-- Dependencies: 250
+-- Name: metros_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.metros_id_seq OWNED BY public.metros.id;
 
 
 --
--- TOC entry 255 (class 1259 OID 16782)
--- Name: organization_reviews; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 251 (class 1259 OID 16489)
+-- Name: notes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.notes (
+    id integer NOT NULL,
+    text text NOT NULL,
+    created timestamp without time zone NOT NULL,
+    user_id integer,
+    is_readed boolean
+);
+
+
+ALTER TABLE public.notes OWNER TO postgres;
+
+--
+-- TOC entry 252 (class 1259 OID 16494)
+-- Name: notes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.notes_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.notes_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3919 (class 0 OID 0)
+-- Dependencies: 252
+-- Name: notes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.notes_id_seq OWNED BY public.notes.id;
+
+
+--
+-- TOC entry 253 (class 1259 OID 16495)
+-- Name: organization_reviews; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.organization_reviews (
@@ -844,11 +885,11 @@ CREATE TABLE public.organization_reviews (
 );
 
 
-ALTER TABLE public.organization_reviews OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.organization_reviews OWNER TO postgres;
 
 --
--- TOC entry 254 (class 1259 OID 16781)
--- Name: organization_reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 254 (class 1259 OID 16500)
+-- Name: organization_reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.organization_reviews_id_seq
@@ -860,20 +901,20 @@ CREATE SEQUENCE public.organization_reviews_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.organization_reviews_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.organization_reviews_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3725 (class 0 OID 0)
+-- TOC entry 3920 (class 0 OID 0)
 -- Dependencies: 254
--- Name: organization_reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- Name: organization_reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.organization_reviews_id_seq OWNED BY public.organization_reviews.id;
 
 
 --
--- TOC entry 235 (class 1259 OID 16640)
--- Name: organization_types; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 255 (class 1259 OID 16501)
+-- Name: organization_types; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.organization_types (
@@ -882,11 +923,11 @@ CREATE TABLE public.organization_types (
 );
 
 
-ALTER TABLE public.organization_types OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.organization_types OWNER TO postgres;
 
 --
--- TOC entry 234 (class 1259 OID 16639)
--- Name: organization_types_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 256 (class 1259 OID 16504)
+-- Name: organization_types_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.organization_types_id_seq
@@ -898,20 +939,20 @@ CREATE SEQUENCE public.organization_types_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.organization_types_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.organization_types_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3726 (class 0 OID 0)
--- Dependencies: 234
--- Name: organization_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3921 (class 0 OID 0)
+-- Dependencies: 256
+-- Name: organization_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.organization_types_id_seq OWNED BY public.organization_types.id;
 
 
 --
--- TOC entry 247 (class 1259 OID 16684)
--- Name: organizations; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 257 (class 1259 OID 16505)
+-- Name: organizations; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.organizations (
@@ -930,11 +971,11 @@ CREATE TABLE public.organizations (
 );
 
 
-ALTER TABLE public.organizations OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.organizations OWNER TO postgres;
 
 --
--- TOC entry 246 (class 1259 OID 16683)
--- Name: organizations_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 258 (class 1259 OID 16510)
+-- Name: organizations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.organizations_id_seq
@@ -946,20 +987,20 @@ CREATE SEQUENCE public.organizations_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.organizations_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.organizations_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3727 (class 0 OID 0)
--- Dependencies: 246
--- Name: organizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3922 (class 0 OID 0)
+-- Dependencies: 258
+-- Name: organizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.organizations_id_seq OWNED BY public.organizations.id;
 
 
 --
--- TOC entry 211 (class 1259 OID 16469)
--- Name: permissions; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 259 (class 1259 OID 16511)
+-- Name: permissions; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.permissions (
@@ -969,11 +1010,11 @@ CREATE TABLE public.permissions (
 );
 
 
-ALTER TABLE public.permissions OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.permissions OWNER TO postgres;
 
 --
--- TOC entry 304 (class 1259 OID 17292)
--- Name: presences; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 260 (class 1259 OID 16514)
+-- Name: presences; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.presences (
@@ -987,11 +1028,11 @@ CREATE TABLE public.presences (
 );
 
 
-ALTER TABLE public.presences OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.presences OWNER TO postgres;
 
 --
--- TOC entry 303 (class 1259 OID 17291)
--- Name: presences_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 261 (class 1259 OID 16517)
+-- Name: presences_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.presences_id_seq
@@ -1003,20 +1044,20 @@ CREATE SEQUENCE public.presences_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.presences_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.presences_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3728 (class 0 OID 0)
--- Dependencies: 303
--- Name: presences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3923 (class 0 OID 0)
+-- Dependencies: 261
+-- Name: presences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.presences_id_seq OWNED BY public.presences.id;
 
 
 --
--- TOC entry 228 (class 1259 OID 16579)
--- Name: recoveries; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 262 (class 1259 OID 16518)
+-- Name: recoveries; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.recoveries (
@@ -1026,11 +1067,11 @@ CREATE TABLE public.recoveries (
 );
 
 
-ALTER TABLE public.recoveries OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.recoveries OWNER TO postgres;
 
 --
--- TOC entry 215 (class 1259 OID 16509)
--- Name: regions; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 263 (class 1259 OID 16521)
+-- Name: regions; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.regions (
@@ -1039,11 +1080,11 @@ CREATE TABLE public.regions (
 );
 
 
-ALTER TABLE public.regions OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.regions OWNER TO postgres;
 
 --
--- TOC entry 214 (class 1259 OID 16508)
--- Name: regions_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 264 (class 1259 OID 16524)
+-- Name: regions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.regions_id_seq
@@ -1055,20 +1096,20 @@ CREATE SEQUENCE public.regions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.regions_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.regions_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3729 (class 0 OID 0)
--- Dependencies: 214
--- Name: regions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3924 (class 0 OID 0)
+-- Dependencies: 264
+-- Name: regions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.regions_id_seq OWNED BY public.regions.id;
 
 
 --
--- TOC entry 264 (class 1259 OID 16879)
--- Name: requirements; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 265 (class 1259 OID 16525)
+-- Name: requirements; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.requirements (
@@ -1078,11 +1119,11 @@ CREATE TABLE public.requirements (
 );
 
 
-ALTER TABLE public.requirements OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.requirements OWNER TO postgres;
 
 --
--- TOC entry 263 (class 1259 OID 16878)
--- Name: requirements_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 266 (class 1259 OID 16528)
+-- Name: requirements_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.requirements_id_seq
@@ -1094,20 +1135,20 @@ CREATE SEQUENCE public.requirements_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.requirements_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.requirements_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3730 (class 0 OID 0)
--- Dependencies: 263
--- Name: requirements_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3925 (class 0 OID 0)
+-- Dependencies: 266
+-- Name: requirements_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.requirements_id_seq OWNED BY public.requirements.id;
 
 
 --
--- TOC entry 281 (class 1259 OID 17019)
--- Name: response_statuses; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 267 (class 1259 OID 16529)
+-- Name: response_statuses; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.response_statuses (
@@ -1116,11 +1157,11 @@ CREATE TABLE public.response_statuses (
 );
 
 
-ALTER TABLE public.response_statuses OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.response_statuses OWNER TO postgres;
 
 --
--- TOC entry 280 (class 1259 OID 17018)
--- Name: response_statuses_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 268 (class 1259 OID 16532)
+-- Name: response_statuses_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.response_statuses_id_seq
@@ -1132,20 +1173,20 @@ CREATE SEQUENCE public.response_statuses_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.response_statuses_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.response_statuses_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3731 (class 0 OID 0)
--- Dependencies: 280
--- Name: response_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3926 (class 0 OID 0)
+-- Dependencies: 268
+-- Name: response_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.response_statuses_id_seq OWNED BY public.response_statuses.id;
 
 
 --
--- TOC entry 291 (class 1259 OID 17098)
--- Name: responses; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 269 (class 1259 OID 16533)
+-- Name: responses; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.responses (
@@ -1157,11 +1198,11 @@ CREATE TABLE public.responses (
 );
 
 
-ALTER TABLE public.responses OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.responses OWNER TO postgres;
 
 --
--- TOC entry 290 (class 1259 OID 17097)
--- Name: responses_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 270 (class 1259 OID 16539)
+-- Name: responses_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.responses_id_seq
@@ -1173,20 +1214,20 @@ CREATE SEQUENCE public.responses_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.responses_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.responses_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3732 (class 0 OID 0)
--- Dependencies: 290
--- Name: responses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3927 (class 0 OID 0)
+-- Dependencies: 270
+-- Name: responses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.responses_id_seq OWNED BY public.responses.id;
 
 
 --
--- TOC entry 210 (class 1259 OID 16395)
--- Name: roles; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 271 (class 1259 OID 16540)
+-- Name: roles; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.roles (
@@ -1195,11 +1236,11 @@ CREATE TABLE public.roles (
 );
 
 
-ALTER TABLE public.roles OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.roles OWNER TO postgres;
 
 --
--- TOC entry 209 (class 1259 OID 16394)
--- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 272 (class 1259 OID 16543)
+-- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.roles_id_seq
@@ -1211,20 +1252,20 @@ CREATE SEQUENCE public.roles_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.roles_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.roles_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3733 (class 0 OID 0)
--- Dependencies: 209
--- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3928 (class 0 OID 0)
+-- Dependencies: 272
+-- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.roles_id_seq OWNED BY public.roles.id;
 
 
 --
--- TOC entry 289 (class 1259 OID 17084)
--- Name: scholls; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 273 (class 1259 OID 16544)
+-- Name: scholls; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.scholls (
@@ -1236,11 +1277,11 @@ CREATE TABLE public.scholls (
 );
 
 
-ALTER TABLE public.scholls OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.scholls OWNER TO postgres;
 
 --
--- TOC entry 288 (class 1259 OID 17083)
--- Name: scholls_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 274 (class 1259 OID 16549)
+-- Name: scholls_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.scholls_id_seq
@@ -1252,20 +1293,20 @@ CREATE SEQUENCE public.scholls_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.scholls_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.scholls_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3734 (class 0 OID 0)
--- Dependencies: 288
--- Name: scholls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3929 (class 0 OID 0)
+-- Dependencies: 274
+-- Name: scholls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.scholls_id_seq OWNED BY public.scholls.id;
 
 
 --
--- TOC entry 296 (class 1259 OID 17168)
--- Name: selection_basic_tests; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 275 (class 1259 OID 16550)
+-- Name: selection_basic_tests; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.selection_basic_tests (
@@ -1274,11 +1315,11 @@ CREATE TABLE public.selection_basic_tests (
 );
 
 
-ALTER TABLE public.selection_basic_tests OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.selection_basic_tests OWNER TO postgres;
 
 --
--- TOC entry 283 (class 1259 OID 17026)
--- Name: selections; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 276 (class 1259 OID 16553)
+-- Name: selections; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.selections (
@@ -1290,11 +1331,11 @@ CREATE TABLE public.selections (
 );
 
 
-ALTER TABLE public.selections OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.selections OWNER TO postgres;
 
 --
--- TOC entry 282 (class 1259 OID 17025)
--- Name: selections_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 277 (class 1259 OID 16556)
+-- Name: selections_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.selections_id_seq
@@ -1306,20 +1347,20 @@ CREATE SEQUENCE public.selections_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.selections_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.selections_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3735 (class 0 OID 0)
--- Dependencies: 282
--- Name: selections_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3930 (class 0 OID 0)
+-- Dependencies: 277
+-- Name: selections_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.selections_id_seq OWNED BY public.selections.id;
 
 
 --
--- TOC entry 251 (class 1259 OID 16736)
--- Name: skill_interns; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 278 (class 1259 OID 16557)
+-- Name: skill_interns; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.skill_interns (
@@ -1328,11 +1369,11 @@ CREATE TABLE public.skill_interns (
 );
 
 
-ALTER TABLE public.skill_interns OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.skill_interns OWNER TO postgres;
 
 --
--- TOC entry 258 (class 1259 OID 16839)
--- Name: skill_vacancies; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 279 (class 1259 OID 16560)
+-- Name: skill_vacancies; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.skill_vacancies (
@@ -1341,11 +1382,11 @@ CREATE TABLE public.skill_vacancies (
 );
 
 
-ALTER TABLE public.skill_vacancies OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.skill_vacancies OWNER TO postgres;
 
 --
--- TOC entry 245 (class 1259 OID 16677)
--- Name: skills; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 280 (class 1259 OID 16563)
+-- Name: skills; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.skills (
@@ -1354,11 +1395,11 @@ CREATE TABLE public.skills (
 );
 
 
-ALTER TABLE public.skills OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.skills OWNER TO postgres;
 
 --
--- TOC entry 244 (class 1259 OID 16676)
--- Name: skills_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 281 (class 1259 OID 16566)
+-- Name: skills_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.skills_id_seq
@@ -1370,20 +1411,20 @@ CREATE SEQUENCE public.skills_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.skills_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.skills_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3736 (class 0 OID 0)
--- Dependencies: 244
--- Name: skills_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3931 (class 0 OID 0)
+-- Dependencies: 281
+-- Name: skills_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.skills_id_seq OWNED BY public.skills.id;
 
 
 --
--- TOC entry 243 (class 1259 OID 16668)
--- Name: speakers; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 282 (class 1259 OID 16567)
+-- Name: speakers; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.speakers (
@@ -1397,11 +1438,11 @@ CREATE TABLE public.speakers (
 );
 
 
-ALTER TABLE public.speakers OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.speakers OWNER TO postgres;
 
 --
--- TOC entry 242 (class 1259 OID 16667)
--- Name: speakers_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 283 (class 1259 OID 16572)
+-- Name: speakers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.speakers_id_seq
@@ -1413,20 +1454,20 @@ CREATE SEQUENCE public.speakers_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.speakers_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.speakers_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3737 (class 0 OID 0)
--- Dependencies: 242
--- Name: speakers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3932 (class 0 OID 0)
+-- Dependencies: 283
+-- Name: speakers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.speakers_id_seq OWNED BY public.speakers.id;
 
 
 --
--- TOC entry 279 (class 1259 OID 17012)
--- Name: stages; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 284 (class 1259 OID 16573)
+-- Name: stages; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.stages (
@@ -1435,11 +1476,11 @@ CREATE TABLE public.stages (
 );
 
 
-ALTER TABLE public.stages OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.stages OWNER TO postgres;
 
 --
--- TOC entry 278 (class 1259 OID 17011)
--- Name: stages_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 285 (class 1259 OID 16576)
+-- Name: stages_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.stages_id_seq
@@ -1451,20 +1492,20 @@ CREATE SEQUENCE public.stages_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.stages_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.stages_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3738 (class 0 OID 0)
--- Dependencies: 278
--- Name: stages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3933 (class 0 OID 0)
+-- Dependencies: 285
+-- Name: stages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.stages_id_seq OWNED BY public.stages.id;
 
 
 --
--- TOC entry 300 (class 1259 OID 17218)
--- Name: tasks; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 286 (class 1259 OID 16577)
+-- Name: tasks; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.tasks (
@@ -1476,11 +1517,11 @@ CREATE TABLE public.tasks (
 );
 
 
-ALTER TABLE public.tasks OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.tasks OWNER TO postgres;
 
 --
--- TOC entry 299 (class 1259 OID 17217)
--- Name: tasks_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 287 (class 1259 OID 16580)
+-- Name: tasks_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.tasks_id_seq
@@ -1492,20 +1533,20 @@ CREATE SEQUENCE public.tasks_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tasks_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.tasks_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3739 (class 0 OID 0)
--- Dependencies: 299
--- Name: tasks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3934 (class 0 OID 0)
+-- Dependencies: 287
+-- Name: tasks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.tasks_id_seq OWNED BY public.tasks.id;
 
 
 --
--- TOC entry 237 (class 1259 OID 16647)
--- Name: training_directions; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 288 (class 1259 OID 16581)
+-- Name: training_directions; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.training_directions (
@@ -1514,11 +1555,11 @@ CREATE TABLE public.training_directions (
 );
 
 
-ALTER TABLE public.training_directions OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.training_directions OWNER TO postgres;
 
 --
--- TOC entry 236 (class 1259 OID 16646)
--- Name: training_directions_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 289 (class 1259 OID 16584)
+-- Name: training_directions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.training_directions_id_seq
@@ -1530,20 +1571,20 @@ CREATE SEQUENCE public.training_directions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.training_directions_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.training_directions_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3740 (class 0 OID 0)
--- Dependencies: 236
--- Name: training_directions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3935 (class 0 OID 0)
+-- Dependencies: 289
+-- Name: training_directions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.training_directions_id_seq OWNED BY public.training_directions.id;
 
 
 --
--- TOC entry 277 (class 1259 OID 17005)
--- Name: type_basic_tests; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 290 (class 1259 OID 16585)
+-- Name: type_basic_tests; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.type_basic_tests (
@@ -1552,11 +1593,11 @@ CREATE TABLE public.type_basic_tests (
 );
 
 
-ALTER TABLE public.type_basic_tests OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.type_basic_tests OWNER TO postgres;
 
 --
--- TOC entry 276 (class 1259 OID 17004)
--- Name: type_basic_tests_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 291 (class 1259 OID 16588)
+-- Name: type_basic_tests_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.type_basic_tests_id_seq
@@ -1568,20 +1609,20 @@ CREATE SEQUENCE public.type_basic_tests_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.type_basic_tests_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.type_basic_tests_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3741 (class 0 OID 0)
--- Dependencies: 276
--- Name: type_basic_tests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3936 (class 0 OID 0)
+-- Dependencies: 291
+-- Name: type_basic_tests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.type_basic_tests_id_seq OWNED BY public.type_basic_tests.id;
 
 
 --
--- TOC entry 293 (class 1259 OID 17117)
--- Name: type_interviews; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 292 (class 1259 OID 16589)
+-- Name: type_interviews; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.type_interviews (
@@ -1590,11 +1631,11 @@ CREATE TABLE public.type_interviews (
 );
 
 
-ALTER TABLE public.type_interviews OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.type_interviews OWNER TO postgres;
 
 --
--- TOC entry 292 (class 1259 OID 17116)
--- Name: type_interviews_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 293 (class 1259 OID 16592)
+-- Name: type_interviews_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.type_interviews_id_seq
@@ -1606,20 +1647,20 @@ CREATE SEQUENCE public.type_interviews_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.type_interviews_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.type_interviews_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3742 (class 0 OID 0)
--- Dependencies: 292
--- Name: type_interviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3937 (class 0 OID 0)
+-- Dependencies: 293
+-- Name: type_interviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.type_interviews_id_seq OWNED BY public.type_interviews.id;
 
 
 --
--- TOC entry 223 (class 1259 OID 16537)
--- Name: universities; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 294 (class 1259 OID 16593)
+-- Name: universities; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.universities (
@@ -1630,11 +1671,11 @@ CREATE TABLE public.universities (
 );
 
 
-ALTER TABLE public.universities OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.universities OWNER TO postgres;
 
 --
--- TOC entry 222 (class 1259 OID 16536)
--- Name: universities_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 295 (class 1259 OID 16596)
+-- Name: universities_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.universities_id_seq
@@ -1646,20 +1687,20 @@ CREATE SEQUENCE public.universities_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.universities_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.universities_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3743 (class 0 OID 0)
--- Dependencies: 222
--- Name: universities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3938 (class 0 OID 0)
+-- Dependencies: 295
+-- Name: universities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.universities_id_seq OWNED BY public.universities.id;
 
 
 --
--- TOC entry 227 (class 1259 OID 16556)
--- Name: users; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 296 (class 1259 OID 16597)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.users (
@@ -1681,11 +1722,11 @@ CREATE TABLE public.users (
 );
 
 
-ALTER TABLE public.users OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.users OWNER TO postgres;
 
 --
--- TOC entry 226 (class 1259 OID 16555)
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 297 (class 1259 OID 16603)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.users_id_seq
@@ -1697,20 +1738,20 @@ CREATE SEQUENCE public.users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.users_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.users_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3744 (class 0 OID 0)
--- Dependencies: 226
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3939 (class 0 OID 0)
+-- Dependencies: 297
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- TOC entry 257 (class 1259 OID 16801)
--- Name: vacancies; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 298 (class 1259 OID 16604)
+-- Name: vacancies; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.vacancies (
@@ -1733,11 +1774,11 @@ CREATE TABLE public.vacancies (
 );
 
 
-ALTER TABLE public.vacancies OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.vacancies OWNER TO postgres;
 
 --
--- TOC entry 256 (class 1259 OID 16800)
--- Name: vacancies_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 299 (class 1259 OID 16612)
+-- Name: vacancies_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.vacancies_id_seq
@@ -1749,20 +1790,20 @@ CREATE SEQUENCE public.vacancies_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.vacancies_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.vacancies_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3745 (class 0 OID 0)
--- Dependencies: 256
--- Name: vacancies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3940 (class 0 OID 0)
+-- Dependencies: 299
+-- Name: vacancies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.vacancies_id_seq OWNED BY public.vacancies.id;
 
 
 --
--- TOC entry 266 (class 1259 OID 16891)
--- Name: vacancy_reviews; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 300 (class 1259 OID 16613)
+-- Name: vacancy_reviews; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.vacancy_reviews (
@@ -1774,11 +1815,11 @@ CREATE TABLE public.vacancy_reviews (
 );
 
 
-ALTER TABLE public.vacancy_reviews OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.vacancy_reviews OWNER TO postgres;
 
 --
--- TOC entry 265 (class 1259 OID 16890)
--- Name: vacancy_reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 301 (class 1259 OID 16618)
+-- Name: vacancy_reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.vacancy_reviews_id_seq
@@ -1790,20 +1831,20 @@ CREATE SEQUENCE public.vacancy_reviews_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.vacancy_reviews_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.vacancy_reviews_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3746 (class 0 OID 0)
--- Dependencies: 265
--- Name: vacancy_reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3941 (class 0 OID 0)
+-- Dependencies: 301
+-- Name: vacancy_reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.vacancy_reviews_id_seq OWNED BY public.vacancy_reviews.id;
 
 
 --
--- TOC entry 302 (class 1259 OID 17240)
--- Name: vacancy_statuses; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 302 (class 1259 OID 16619)
+-- Name: vacancy_statuses; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.vacancy_statuses (
@@ -1812,11 +1853,11 @@ CREATE TABLE public.vacancy_statuses (
 );
 
 
-ALTER TABLE public.vacancy_statuses OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.vacancy_statuses OWNER TO postgres;
 
 --
--- TOC entry 301 (class 1259 OID 17239)
--- Name: vacancy_statuses_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 303 (class 1259 OID 16622)
+-- Name: vacancy_statuses_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.vacancy_statuses_id_seq
@@ -1828,20 +1869,20 @@ CREATE SEQUENCE public.vacancy_statuses_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.vacancy_statuses_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.vacancy_statuses_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3747 (class 0 OID 0)
--- Dependencies: 301
--- Name: vacancy_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3942 (class 0 OID 0)
+-- Dependencies: 303
+-- Name: vacancy_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.vacancy_statuses_id_seq OWNED BY public.vacancy_statuses.id;
 
 
 --
--- TOC entry 239 (class 1259 OID 16654)
--- Name: work_experiences; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 304 (class 1259 OID 16623)
+-- Name: work_experiences; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.work_experiences (
@@ -1850,11 +1891,11 @@ CREATE TABLE public.work_experiences (
 );
 
 
-ALTER TABLE public.work_experiences OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.work_experiences OWNER TO postgres;
 
 --
--- TOC entry 238 (class 1259 OID 16653)
--- Name: work_experiences_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 305 (class 1259 OID 16626)
+-- Name: work_experiences_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.work_experiences_id_seq
@@ -1866,20 +1907,20 @@ CREATE SEQUENCE public.work_experiences_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.work_experiences_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.work_experiences_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3748 (class 0 OID 0)
--- Dependencies: 238
--- Name: work_experiences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3943 (class 0 OID 0)
+-- Dependencies: 305
+-- Name: work_experiences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.work_experiences_id_seq OWNED BY public.work_experiences.id;
 
 
 --
--- TOC entry 241 (class 1259 OID 16661)
--- Name: work_schedules; Type: TABLE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 306 (class 1259 OID 16627)
+-- Name: work_schedules; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.work_schedules (
@@ -1888,11 +1929,11 @@ CREATE TABLE public.work_schedules (
 );
 
 
-ALTER TABLE public.work_schedules OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.work_schedules OWNER TO postgres;
 
 --
--- TOC entry 240 (class 1259 OID 16660)
--- Name: work_schedules_id_seq; Type: SEQUENCE; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 307 (class 1259 OID 16630)
+-- Name: work_schedules_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.work_schedules_id_seq
@@ -1904,365 +1945,373 @@ CREATE SEQUENCE public.work_schedules_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.work_schedules_id_seq OWNER TO hack_db_3kwr_user;
+ALTER TABLE public.work_schedules_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3749 (class 0 OID 0)
--- Dependencies: 240
--- Name: work_schedules_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3944 (class 0 OID 0)
+-- Dependencies: 307
+-- Name: work_schedules_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.work_schedules_id_seq OWNED BY public.work_schedules.id;
 
 
 --
--- TOC entry 3269 (class 2604 OID 17001)
--- Name: basic_test_statuses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3426 (class 2604 OID 16631)
+-- Name: basic_test_statuses id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.basic_test_statuses ALTER COLUMN id SET DEFAULT nextval('public.basic_test_statuses_id_seq'::regclass);
 
 
 --
--- TOC entry 3274 (class 2604 OID 17051)
--- Name: basic_tests id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3427 (class 2604 OID 16632)
+-- Name: basic_tests id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.basic_tests ALTER COLUMN id SET DEFAULT nextval('public.basic_tests_id_seq'::regclass);
 
 
 --
--- TOC entry 3247 (class 2604 OID 16629)
--- Name: branchs id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3428 (class 2604 OID 16633)
+-- Name: branchs id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.branchs ALTER COLUMN id SET DEFAULT nextval('public.branchs_id_seq'::regclass);
 
 
 --
--- TOC entry 3275 (class 2604 OID 17073)
--- Name: championships id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3429 (class 2604 OID 16634)
+-- Name: championships id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.championships ALTER COLUMN id SET DEFAULT nextval('public.championships_id_seq'::regclass);
 
 
 --
--- TOC entry 3244 (class 2604 OID 16547)
--- Name: cities id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3430 (class 2604 OID 16635)
+-- Name: cities id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cities ALTER COLUMN id SET DEFAULT nextval('public.cities_id_seq'::regclass);
 
 
 --
--- TOC entry 3238 (class 2604 OID 16505)
--- Name: citizenships id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3431 (class 2604 OID 16636)
+-- Name: citizenships id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.citizenships ALTER COLUMN id SET DEFAULT nextval('public.citizenships_id_seq'::regclass);
 
 
 --
--- TOC entry 3262 (class 2604 OID 16858)
--- Name: conditions id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3432 (class 2604 OID 16637)
+-- Name: conditions id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.conditions ALTER COLUMN id SET DEFAULT nextval('public.conditions_id_seq'::regclass);
 
 
 --
--- TOC entry 3240 (class 2604 OID 16519)
--- Name: courses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3433 (class 2604 OID 16638)
+-- Name: courses id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.courses ALTER COLUMN id SET DEFAULT nextval('public.courses_id_seq'::regclass);
 
 
 --
--- TOC entry 3241 (class 2604 OID 16526)
--- Name: directions id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3434 (class 2604 OID 16639)
+-- Name: directions id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.directions ALTER COLUMN id SET DEFAULT nextval('public.directions_id_seq'::regclass);
 
 
 --
--- TOC entry 3263 (class 2604 OID 16870)
--- Name: duties id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3435 (class 2604 OID 16640)
+-- Name: duties id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.duties ALTER COLUMN id SET DEFAULT nextval('public.duties_id_seq'::regclass);
 
 
 --
--- TOC entry 3248 (class 2604 OID 16636)
--- Name: employment_types id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3436 (class 2604 OID 16641)
+-- Name: employment_types id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.employment_types ALTER COLUMN id SET DEFAULT nextval('public.employment_types_id_seq'::regclass);
 
 
 --
--- TOC entry 3256 (class 2604 OID 16726)
--- Name: events id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3437 (class 2604 OID 16642)
+-- Name: events id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.events_id_seq'::regclass);
 
 
 --
--- TOC entry 3266 (class 2604 OID 16921)
--- Name: history_work_experiences id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3438 (class 2604 OID 16643)
+-- Name: history_work_experiences id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.history_work_experiences ALTER COLUMN id SET DEFAULT nextval('public.history_work_experiences_id_seq'::regclass);
 
 
 --
--- TOC entry 3242 (class 2604 OID 16533)
--- Name: internship_statuses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3439 (class 2604 OID 16644)
+-- Name: internship_statuses id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.internship_statuses ALTER COLUMN id SET DEFAULT nextval('public.internship_statuses_id_seq'::regclass);
 
 
 --
--- TOC entry 3280 (class 2604 OID 17127)
--- Name: interviews id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3440 (class 2604 OID 16645)
+-- Name: interviews id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interviews ALTER COLUMN id SET DEFAULT nextval('public.interviews_id_seq'::regclass);
 
 
 --
--- TOC entry 3268 (class 2604 OID 16964)
--- Name: languages id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3441 (class 2604 OID 16646)
+-- Name: languages id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.languages ALTER COLUMN id SET DEFAULT nextval('public.languages_id_seq'::regclass);
 
 
 --
--- TOC entry 3281 (class 2604 OID 17200)
--- Name: mentor_reviews id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3442 (class 2604 OID 16647)
+-- Name: mentor_reviews id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.mentor_reviews ALTER COLUMN id SET DEFAULT nextval('public.mentor_reviews_id_seq'::regclass);
 
 
 --
--- TOC entry 3267 (class 2604 OID 16935)
--- Name: metros id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3443 (class 2604 OID 16648)
+-- Name: metros id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.metros ALTER COLUMN id SET DEFAULT nextval('public.metros_id_seq'::regclass);
 
 
 --
--- TOC entry 3257 (class 2604 OID 16785)
--- Name: organization_reviews id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3444 (class 2604 OID 16649)
+-- Name: notes id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.notes ALTER COLUMN id SET DEFAULT nextval('public.notes_id_seq'::regclass);
+
+
+--
+-- TOC entry 3445 (class 2604 OID 16650)
+-- Name: organization_reviews id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_reviews ALTER COLUMN id SET DEFAULT nextval('public.organization_reviews_id_seq'::regclass);
 
 
 --
--- TOC entry 3249 (class 2604 OID 16643)
--- Name: organization_types id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3446 (class 2604 OID 16651)
+-- Name: organization_types id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_types ALTER COLUMN id SET DEFAULT nextval('public.organization_types_id_seq'::regclass);
 
 
 --
--- TOC entry 3255 (class 2604 OID 16687)
--- Name: organizations id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3447 (class 2604 OID 16652)
+-- Name: organizations id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations ALTER COLUMN id SET DEFAULT nextval('public.organizations_id_seq'::regclass);
 
 
 --
--- TOC entry 3284 (class 2604 OID 17295)
--- Name: presences id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3448 (class 2604 OID 16653)
+-- Name: presences id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.presences ALTER COLUMN id SET DEFAULT nextval('public.presences_id_seq'::regclass);
 
 
 --
--- TOC entry 3239 (class 2604 OID 16512)
--- Name: regions id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3449 (class 2604 OID 16654)
+-- Name: regions id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.regions ALTER COLUMN id SET DEFAULT nextval('public.regions_id_seq'::regclass);
 
 
 --
--- TOC entry 3264 (class 2604 OID 16882)
--- Name: requirements id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3450 (class 2604 OID 16655)
+-- Name: requirements id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.requirements ALTER COLUMN id SET DEFAULT nextval('public.requirements_id_seq'::regclass);
 
 
 --
--- TOC entry 3272 (class 2604 OID 17022)
--- Name: response_statuses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3451 (class 2604 OID 16656)
+-- Name: response_statuses id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.response_statuses ALTER COLUMN id SET DEFAULT nextval('public.response_statuses_id_seq'::regclass);
 
 
 --
--- TOC entry 3277 (class 2604 OID 17101)
--- Name: responses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3453 (class 2604 OID 16657)
+-- Name: responses id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.responses ALTER COLUMN id SET DEFAULT nextval('public.responses_id_seq'::regclass);
 
 
 --
--- TOC entry 3237 (class 2604 OID 16398)
--- Name: roles id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3454 (class 2604 OID 16658)
+-- Name: roles id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.roles ALTER COLUMN id SET DEFAULT nextval('public.roles_id_seq'::regclass);
 
 
 --
--- TOC entry 3276 (class 2604 OID 17087)
--- Name: scholls id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3455 (class 2604 OID 16659)
+-- Name: scholls id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.scholls ALTER COLUMN id SET DEFAULT nextval('public.scholls_id_seq'::regclass);
 
 
 --
--- TOC entry 3273 (class 2604 OID 17029)
--- Name: selections id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3456 (class 2604 OID 16660)
+-- Name: selections id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.selections ALTER COLUMN id SET DEFAULT nextval('public.selections_id_seq'::regclass);
 
 
 --
--- TOC entry 3254 (class 2604 OID 16680)
--- Name: skills id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3457 (class 2604 OID 16661)
+-- Name: skills id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.skills ALTER COLUMN id SET DEFAULT nextval('public.skills_id_seq'::regclass);
 
 
 --
--- TOC entry 3253 (class 2604 OID 16671)
--- Name: speakers id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3458 (class 2604 OID 16662)
+-- Name: speakers id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.speakers ALTER COLUMN id SET DEFAULT nextval('public.speakers_id_seq'::regclass);
 
 
 --
--- TOC entry 3271 (class 2604 OID 17015)
--- Name: stages id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3459 (class 2604 OID 16663)
+-- Name: stages id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.stages ALTER COLUMN id SET DEFAULT nextval('public.stages_id_seq'::regclass);
 
 
 --
--- TOC entry 3282 (class 2604 OID 17221)
--- Name: tasks id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3460 (class 2604 OID 16664)
+-- Name: tasks id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.tasks ALTER COLUMN id SET DEFAULT nextval('public.tasks_id_seq'::regclass);
 
 
 --
--- TOC entry 3250 (class 2604 OID 16650)
--- Name: training_directions id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3461 (class 2604 OID 16665)
+-- Name: training_directions id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.training_directions ALTER COLUMN id SET DEFAULT nextval('public.training_directions_id_seq'::regclass);
 
 
 --
--- TOC entry 3270 (class 2604 OID 17008)
--- Name: type_basic_tests id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3462 (class 2604 OID 16666)
+-- Name: type_basic_tests id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.type_basic_tests ALTER COLUMN id SET DEFAULT nextval('public.type_basic_tests_id_seq'::regclass);
 
 
 --
--- TOC entry 3279 (class 2604 OID 17120)
--- Name: type_interviews id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3463 (class 2604 OID 16667)
+-- Name: type_interviews id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.type_interviews ALTER COLUMN id SET DEFAULT nextval('public.type_interviews_id_seq'::regclass);
 
 
 --
--- TOC entry 3243 (class 2604 OID 16540)
--- Name: universities id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3464 (class 2604 OID 16668)
+-- Name: universities id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.universities ALTER COLUMN id SET DEFAULT nextval('public.universities_id_seq'::regclass);
 
 
 --
--- TOC entry 3245 (class 2604 OID 16559)
--- Name: users id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3466 (class 2604 OID 16669)
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
 
 
 --
--- TOC entry 3258 (class 2604 OID 16804)
--- Name: vacancies id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3470 (class 2604 OID 16670)
+-- Name: vacancies id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancies ALTER COLUMN id SET DEFAULT nextval('public.vacancies_id_seq'::regclass);
 
 
 --
--- TOC entry 3265 (class 2604 OID 16894)
--- Name: vacancy_reviews id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3471 (class 2604 OID 16671)
+-- Name: vacancy_reviews id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancy_reviews ALTER COLUMN id SET DEFAULT nextval('public.vacancy_reviews_id_seq'::regclass);
 
 
 --
--- TOC entry 3283 (class 2604 OID 17243)
--- Name: vacancy_statuses id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3472 (class 2604 OID 16672)
+-- Name: vacancy_statuses id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancy_statuses ALTER COLUMN id SET DEFAULT nextval('public.vacancy_statuses_id_seq'::regclass);
 
 
 --
--- TOC entry 3251 (class 2604 OID 16657)
--- Name: work_experiences id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3473 (class 2604 OID 16673)
+-- Name: work_experiences id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.work_experiences ALTER COLUMN id SET DEFAULT nextval('public.work_experiences_id_seq'::regclass);
 
 
 --
--- TOC entry 3252 (class 2604 OID 16664)
--- Name: work_schedules id; Type: DEFAULT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3474 (class 2604 OID 16674)
+-- Name: work_schedules id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.work_schedules ALTER COLUMN id SET DEFAULT nextval('public.work_schedules_id_seq'::regclass);
 
 
 --
--- TOC entry 3670 (class 0 OID 16998)
--- Dependencies: 275
--- Data for Name: basic_test_statuses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3797 (class 0 OID 16385)
+-- Dependencies: 209
+-- Data for Name: basic_test_statuses; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.basic_test_statuses (id, name) FROM stdin;
@@ -2273,9 +2322,9 @@ COPY public.basic_test_statuses (id, name) FROM stdin;
 
 
 --
--- TOC entry 3680 (class 0 OID 17048)
--- Dependencies: 285
--- Data for Name: basic_tests; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3799 (class 0 OID 16389)
+-- Dependencies: 211
+-- Data for Name: basic_tests; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.basic_tests (id, basic_test_status_id, type_basic_test_id, passed, value, begin, "end", intern_id) FROM stdin;
@@ -2291,13 +2340,28 @@ COPY public.basic_tests (id, basic_test_status_id, type_basic_test_id, passed, v
 31	2	1	t	71	2023-05-28 17:55:40.822649	2023-09-10 17:55:40.822649	19
 32	2	2	t	96	2023-05-28 17:55:40.822649	2023-09-10 17:55:40.822649	19
 33	2	3	t	97	2023-05-28 17:55:40.822649	2023-09-10 17:55:40.822649	19
+34	3	1	f	51	2023-06-07 22:37:42.407472	2023-09-20 22:37:42.407472	28
+35	2	2	t	93	2023-06-07 22:37:42.407472	2023-09-20 22:37:42.407472	28
+36	3	3	f	59	2023-06-07 22:37:42.407472	2023-09-20 22:37:42.407472	28
+46	1	1	\N	\N	2023-06-09 01:23:29.535457	2023-09-22 01:23:29.535457	32
+47	1	2	\N	\N	2023-06-09 01:23:29.535457	2023-09-22 01:23:29.535457	32
+48	1	3	\N	\N	2023-06-09 01:23:29.535457	2023-09-22 01:23:29.535457	32
+50	1	2	\N	\N	2023-06-09 12:06:28.395543	2023-09-22 12:06:28.395543	33
+51	1	3	\N	\N	2023-06-09 12:06:28.395543	2023-09-22 12:06:28.395543	33
+49	2	1	t	88	2023-06-09 12:06:28.395543	2023-09-22 12:06:28.395543	33
+52	1	1	\N	\N	2023-06-09 12:36:07.591824	2023-09-22 12:36:07.591824	34
+53	1	2	\N	\N	2023-06-09 12:36:07.591824	2023-09-22 12:36:07.591824	34
+54	1	3	\N	\N	2023-06-09 12:36:07.591824	2023-09-22 12:36:07.591824	34
+58	2	1	t	73	2023-06-09 15:58:30.803241	2023-09-22 15:58:30.803241	36
+59	2	2	t	94	2023-06-09 15:58:30.803241	2023-09-22 15:58:30.803241	36
+60	2	3	t	92	2023-06-09 15:58:30.803241	2023-09-22 15:58:30.803241	36
 \.
 
 
 --
--- TOC entry 3626 (class 0 OID 16626)
--- Dependencies: 231
--- Data for Name: branchs; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3801 (class 0 OID 16393)
+-- Dependencies: 213
+-- Data for Name: branchs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.branchs (id, name) FROM stdin;
@@ -2338,9 +2402,9 @@ COPY public.branchs (id, name) FROM stdin;
 
 
 --
--- TOC entry 3682 (class 0 OID 17070)
--- Dependencies: 287
--- Data for Name: championships; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3803 (class 0 OID 16397)
+-- Dependencies: 215
+-- Data for Name: championships; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.championships (id, value, comment, selection_id, passed) FROM stdin;
@@ -2348,9 +2412,9 @@ COPY public.championships (id, value, comment, selection_id, passed) FROM stdin;
 
 
 --
--- TOC entry 3620 (class 0 OID 16544)
--- Dependencies: 225
--- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3805 (class 0 OID 16403)
+-- Dependencies: 217
+-- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.cities (id, name, region_id) FROM stdin;
@@ -3672,6 +3736,7 @@ COPY public.cities (id, name, region_id) FROM stdin;
 1333	Белозерское	31
 1334	Великая Новоселка	31
 1335	Волноваха	31
+1846	Лянино	8
 1336	Володарское (Донецкая область)	31
 1337	Горловка	31
 1338	Дебальцево	31
@@ -3801,6 +3866,7 @@ COPY public.cities (id, name, region_id) FROM stdin;
 1462	Зональное	32
 1463	Зудилово	32
 1464	Зятькова Речка	32
+1974	Марьяновка	9
 1465	Ивановка (Алтайский край)	32
 1466	Кабаково (Алтайский край)	32
 1467	Кабаново	32
@@ -3925,6 +3991,7 @@ COPY public.cities (id, name, region_id) FROM stdin;
 1585	Протасово	32
 1586	Прутской	32
 1587	Прыганка	32
+1975	Марьяновский	9
 1588	Ракиты (Михайловский район)	32
 1589	Ракиты (Рубцовский район)	32
 1590	Ребриха	32
@@ -4182,7 +4249,6 @@ COPY public.cities (id, name, region_id) FROM stdin;
 1843	Ленинское (Новосибирская область)	8
 1844	Линево (Новосибирская область)	8
 1845	Листвянский	8
-1846	Лянино	8
 1847	Майское (Новосибирская область)	8
 1848	Маршанское	8
 1849	Маслянино	8
@@ -4310,8 +4376,6 @@ COPY public.cities (id, name, region_id) FROM stdin;
 1971	Любинский	9
 1972	Мангут (Омская область)	9
 1973	Маргенау	9
-1974	Марьяновка	9
-1975	Марьяновский	9
 1976	Медвежье	9
 1977	Могильно-Посельское	9
 1978	Благодаровка	9
@@ -4679,6 +4743,7 @@ COPY public.cities (id, name, region_id) FROM stdin;
 2340	Калининец	3
 2341	Кашира	3
 2342	Клёново (Московская область)	3
+2704	Дуки	42
 2343	Климовск (Московская область)	3
 2344	Кокошкино	3
 2345	Коломна	3
@@ -4798,6 +4863,7 @@ COPY public.cities (id, name, region_id) FROM stdin;
 2459	Зея	36
 2460	Ивановка (Ивановский район, Амурская область)	36
 2461	Козьмодемьяновка	36
+2836	Северодвинск	45
 2462	Константиновка (Амурская область)	36
 2463	Магдагачи	36
 2464	Невер	36
@@ -5040,7 +5106,6 @@ COPY public.cities (id, name, region_id) FROM stdin;
 2701	Джонка	42
 2702	Дормидонтовка	42
 2703	Дружба (Хабаровский край)	42
-2704	Дуки	42
 2705	Заветы Ильича (Хабаровский край)	42
 2706	Ильинка (Хабаровский край)	42
 2707	Князе-Волконское	42
@@ -5172,7 +5237,6 @@ COPY public.cities (id, name, region_id) FROM stdin;
 2833	Рочегда	45
 2834	Савинский	45
 2835	Самодед	45
-2836	Северодвинск	45
 2837	Североонежск	45
 2838	Сия	45
 2839	Соловецкий	45
@@ -5547,6 +5611,7 @@ COPY public.cities (id, name, region_id) FROM stdin;
 3208	Красный Луч (Псковская область)	51
 3209	Кунья	51
 3210	Лавры	51
+3351	Подзь	53
 3211	Локня (Псковская область)	51
 3212	Невель	51
 3213	Новоржев	51
@@ -5687,7 +5752,6 @@ COPY public.cities (id, name, region_id) FROM stdin;
 3348	Седью	53
 3349	Синдор	53
 3350	Сосногорск	53
-3351	Подзь	53
 3352	Спаспоруб	53
 3353	Сторожевск	53
 3354	Сыктывкар	53
@@ -6811,6 +6875,7 @@ COPY public.cities (id, name, region_id) FROM stdin;
 4472	Актабан	66
 4473	Альменево	66
 4474	Барино	66
+4602	Асово	18
 4475	Батурино (Курганская область)	66
 4476	Башкирское	66
 4477	Белозерское (Курганская область)	66
@@ -6938,7 +7003,6 @@ COPY public.cities (id, name, region_id) FROM stdin;
 4599	Андреево	18
 4600	Антипина	18
 4601	Архангельское (Пермский край)	18
-4602	Асово	18
 4603	Аспа	18
 4604	Ашап	18
 4605	Бабка	18
@@ -10496,9 +10560,9 @@ COPY public.cities (id, name, region_id) FROM stdin;
 
 
 --
--- TOC entry 3608 (class 0 OID 16502)
--- Dependencies: 213
--- Data for Name: citizenships; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3807 (class 0 OID 16407)
+-- Dependencies: 219
+-- Data for Name: citizenships; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.citizenships (id, name) FROM stdin;
@@ -10512,9 +10576,9 @@ COPY public.citizenships (id, name) FROM stdin;
 
 
 --
--- TOC entry 3655 (class 0 OID 16855)
--- Dependencies: 260
--- Data for Name: conditions; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3809 (class 0 OID 16411)
+-- Dependencies: 221
+-- Data for Name: conditions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.conditions (id, name, vacancy_id) FROM stdin;
@@ -10533,13 +10597,15 @@ COPY public.conditions (id, name, vacancy_id) FROM stdin;
 15	реальные задачи	8
 16	гибкий график	9
 17	реальные задачи	9
+19	Официальное трудоустройство стажера по ТК РФ	11
+20	Бесплатное обучение	11
 \.
 
 
 --
--- TOC entry 3612 (class 0 OID 16516)
--- Dependencies: 217
--- Data for Name: courses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3811 (class 0 OID 16415)
+-- Dependencies: 223
+-- Data for Name: courses; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.courses (id, name) FROM stdin;
@@ -10553,9 +10619,9 @@ COPY public.courses (id, name) FROM stdin;
 
 
 --
--- TOC entry 3643 (class 0 OID 16707)
--- Dependencies: 248
--- Data for Name: curators; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3813 (class 0 OID 16419)
+-- Dependencies: 225
+-- Data for Name: curators; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.curators (id, training_direction_id) FROM stdin;
@@ -10564,9 +10630,9 @@ COPY public.curators (id, training_direction_id) FROM stdin;
 
 
 --
--- TOC entry 3614 (class 0 OID 16523)
--- Dependencies: 219
--- Data for Name: directions; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3814 (class 0 OID 16422)
+-- Dependencies: 226
+-- Data for Name: directions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.directions (id, name) FROM stdin;
@@ -10600,9 +10666,9 @@ COPY public.directions (id, name) FROM stdin;
 
 
 --
--- TOC entry 3657 (class 0 OID 16867)
--- Dependencies: 262
--- Data for Name: duties; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3816 (class 0 OID 16426)
+-- Dependencies: 228
+-- Data for Name: duties; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.duties (id, name, vacancy_id) FROM stdin;
@@ -10613,13 +10679,15 @@ COPY public.duties (id, name, vacancy_id) FROM stdin;
 5	Разработка моделей	4
 7	Выполнение порученных задач.\nСоставление диаграмм бизнеспроцессо	8
 8	Выполнение порученных задач.\nРасчет сметы проектов	9
+10	Планирование процесса создания продукта	11
+11	Контроль сроков выполнения рабо	11
 \.
 
 
 --
--- TOC entry 3628 (class 0 OID 16633)
--- Dependencies: 233
--- Data for Name: employment_types; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3818 (class 0 OID 16430)
+-- Dependencies: 230
+-- Data for Name: employment_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.employment_types (id, name) FROM stdin;
@@ -10632,9 +10700,9 @@ COPY public.employment_types (id, name) FROM stdin;
 
 
 --
--- TOC entry 3645 (class 0 OID 16723)
--- Dependencies: 250
--- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3820 (class 0 OID 16434)
+-- Dependencies: 232
+-- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.events (id, name, description, date, speaker_id) FROM stdin;
@@ -10642,9 +10710,9 @@ COPY public.events (id, name, description, date, speaker_id) FROM stdin;
 
 
 --
--- TOC entry 3663 (class 0 OID 16918)
--- Dependencies: 268
--- Data for Name: history_work_experiences; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3822 (class 0 OID 16440)
+-- Dependencies: 234
+-- Data for Name: history_work_experiences; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.history_work_experiences (id, organization, post, year_begin, year_end, intern_id) FROM stdin;
@@ -10652,39 +10720,47 @@ COPY public.history_work_experiences (id, organization, post, year_begin, year_e
 
 
 --
--- TOC entry 3647 (class 0 OID 16751)
--- Dependencies: 252
--- Data for Name: hrs; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3824 (class 0 OID 16446)
+-- Dependencies: 236
+-- Data for Name: hrs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.hrs (id, organization_id) FROM stdin;
 3	2
+26	2
 \.
 
 
 --
--- TOC entry 3624 (class 0 OID 16589)
--- Dependencies: 229
--- Data for Name: interns; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3825 (class 0 OID 16449)
+-- Dependencies: 237
+-- Data for Name: interns; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.interns (id, university_id, course_id, direction_id, internship_status_id, training_direction_id, volunteering, about_me, branch_id, github, vk, portfolio, url_portfolio, organizations, work_experience_id, organization_id) FROM stdin;
+34	1	4	66	1	4	\N	Развиваюсь в направлении UX/UI-дизайна	2		https://vk.com/id76629339		\N	НГТУ	3	4
 5	2	2	69	1	2	t	Городской волонтер, активист в вузе.	4	\N	\N	\N	\N	\N	3	\N
-4	1	3	66	2	1	f	Люблю программировать, занимаюсь робототехникой	2	https://github.com/Vaynbaum	https://vk.com/mr.vaynbaum	\N	B/4_portfolio.pdf	НГТУ	3	2
+35	2	3	56	1	2	\N		5				\N		4	5
 13	8	3	66	1	\N	\N		\N				\N		2	\N
 14	1	4	66	1	1	\N	Занимаюсь на базе института front-end разработкой. Участвовал в конкурсах. Опыт в разработке около двух лет.	2		https://vk.com/e.lipatov		\N	Friend Lee	3	2
 15	2	3	53	1	4	\N		11				\N		2	\N
+36	1	3	66	1	1	\N		2				\N		3	2
 16	6	2	76	1	3	\N		4				\N	АНО "Моспром"	3	5
 17	1	3	74	1	1	\N		31				\N	АНО "Цифровая трансформация"	3	\N
 18	8	4	66	1	1	\N		5				\N	АНО "Агентство креативных индустрий"	3	3
-19	1	3	66	1	1	\N	Я макс	31	g	g	d	c/19_portfolio.pdf	Политех	3	2
+28	1	3	66	3	1	\N	Ну здесь нужно применить CI/CD подход\nНу, на этом мои полномочия все	2				\N	НГТУ	3	2
+32	2	4	55	1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+4	1	3	66	2	1	f	Люблю программировать, занимаюсь робототехникой	32	https://github.com/Vaynbaum	https://vk.com/mr.vaynbaum		4_portfolio.pdf	НГТУ	3	2
+19	1	3	66	2	1	\N	Я макс	31	g	g	d	19_portfolio.pdf	Политех	3	2
+27	1	3	69	1	\N	\N	\N	\N	\N	\N	\N	27_portfolio.drawio	\N	\N	\N
+33	1	4	66	1	1	\N	Руководитель студенческой инновационной команды 	2		https://vk.com/ekaterinavakhutina		33_portfolio.pdf	НГТУ	3	2
 \.
 
 
 --
--- TOC entry 3616 (class 0 OID 16530)
--- Dependencies: 221
--- Data for Name: internship_statuses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3826 (class 0 OID 16454)
+-- Dependencies: 238
+-- Data for Name: internship_statuses; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.internship_statuses (id, name) FROM stdin;
@@ -10695,31 +10771,40 @@ COPY public.internship_statuses (id, name) FROM stdin;
 
 
 --
--- TOC entry 3690 (class 0 OID 17124)
--- Dependencies: 295
--- Data for Name: interviews; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3828 (class 0 OID 16458)
+-- Dependencies: 240
+-- Data for Name: interviews; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.interviews (id, comment, name, answer, value, type_interview_id, selection_id, mentor_id, passed, date) FROM stdin;
+2	\N	Тестирование по профилю	\N	50	1	69	\N	t	2023-06-10 00:00:00.740345
+3	\N	Тестирование по профилю	\N	50	1	80	\N	t	2023-06-12 00:00:00.740345
+4	\N	Тестирование по профилю	\N	50	1	83	\N	t	2023-06-02 00:00:00.740345
+5	\N	Тестирование по профилю	\N	0	1	\N	\N	f	2023-06-14 01:19:49.996753
+6	\N	Тестирование по профилю	\N	0	1	78	\N	f	2023-06-14 01:20:46.667413
+7	\N	Тестирование по профилю	\N	0	1	97	\N	f	2023-06-14 12:19:27.89155
+8	\N	Тестирование по профилю	\N	0	1	101	\N	t	2023-06-14 15:59:18.857482
 \.
 
 
 --
--- TOC entry 3700 (class 0 OID 17328)
--- Dependencies: 305
--- Data for Name: invations; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3830 (class 0 OID 16464)
+-- Dependencies: 242
+-- Data for Name: invations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.invations (code, email, role_id, created) FROM stdin;
 KpOQyeewlTmeVmED36jmXjpet4zehIfAhZh0xP7fvVE	maksim228775@gmail.com	2	2023-05-28 22:03:44.625175
 zQRnGU8RjBnQg5HB04tNNaY-kGSsWSNxoWuu1EA66DI	katsumiproo@gmail.com	3	2023-05-28 23:20:12.279153
+sD8VYa2QLHxyg2Wkuwo94t1lYXIfHC1D0WMTy6YZaVk	ryab1ninaryabinina@yandex.ru	3	2023-05-28 20:46:10.337357
+DN6bS1H248ouZ1r68QFIMlWLMnWhBD79mR98SbYQcrY	vasilenkops@edu.mos.ru	1	2023-06-01 12:42:56.010847
 \.
 
 
 --
--- TOC entry 3668 (class 0 OID 16967)
--- Dependencies: 273
--- Data for Name: language_interns; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3831 (class 0 OID 16469)
+-- Dependencies: 243
+-- Data for Name: language_interns; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.language_interns (language_id, intern_id) FROM stdin;
@@ -10727,9 +10812,9 @@ COPY public.language_interns (language_id, intern_id) FROM stdin;
 
 
 --
--- TOC entry 3667 (class 0 OID 16961)
--- Dependencies: 272
--- Data for Name: languages; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3832 (class 0 OID 16472)
+-- Dependencies: 244
+-- Data for Name: languages; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.languages (id, name) FROM stdin;
@@ -10737,19 +10822,23 @@ COPY public.languages (id, name) FROM stdin;
 
 
 --
--- TOC entry 3693 (class 0 OID 17197)
--- Dependencies: 298
--- Data for Name: mentor_reviews; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3834 (class 0 OID 16476)
+-- Dependencies: 246
+-- Data for Name: mentor_reviews; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.mentor_reviews (id, text, value, mentor_id, intern_id) FROM stdin;
+7	Всё отлично!	5	2	28
+8	Ну компания хорошая!	4	2	28
+9	Ну здесь нужен подход CI/CD	4	2	28
+10	Все хорошо!	5	2	28
 \.
 
 
 --
--- TOC entry 3648 (class 0 OID 16766)
--- Dependencies: 253
--- Data for Name: mentors; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3836 (class 0 OID 16482)
+-- Dependencies: 248
+-- Data for Name: mentors; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.mentors (id, organization_id) FROM stdin;
@@ -10758,9 +10847,9 @@ COPY public.mentors (id, organization_id) FROM stdin;
 
 
 --
--- TOC entry 3665 (class 0 OID 16932)
--- Dependencies: 270
--- Data for Name: metros; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3837 (class 0 OID 16485)
+-- Dependencies: 249
+-- Data for Name: metros; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.metros (id, name) FROM stdin;
@@ -10789,9 +10878,29 @@ COPY public.metros (id, name) FROM stdin;
 
 
 --
--- TOC entry 3650 (class 0 OID 16782)
--- Dependencies: 255
--- Data for Name: organization_reviews; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3839 (class 0 OID 16489)
+-- Dependencies: 251
+-- Data for Name: notes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.notes (id, text, created, user_id, is_readed) FROM stdin;
+8	Заявка на вакансию Стажер-разработчик по frotend-разработке подтверждена. Вам открыт доступ к модулям 'Базовое тестирование' и 'Карьерная школа'	2023-06-09 00:54:14.415621	14	f
+9	Заявка на вакансию Стажер-разработчик по backend-разработке подтверждена. Вам открыт доступ к модулям 'Базовое тестирование' и 'Карьерная школа'	2023-06-09 00:54:23.697443	19	f
+7	Заявка на вакансию Стажер-разработчик по frotend-разработке подтверждена. Вам открыт доступ к модулям 'Базовое тестирование' и 'Карьерная школа'	2023-06-09 00:54:07.963335	13	t
+11	Заявка на вакансию Стажер-разработчик по backend-разработке подтверждена. Вам открыт доступ к модулям 'Базовое тестирование' и 'Карьерная школа'	2023-06-09 01:23:35.059243	32	f
+5	Заявка на вакансию UX/UI-дизайнер отклонена	2023-06-09 00:53:18.77988	28	t
+6	Заявка на вакансию Стажер-разработчик по frotend-разработке отклонена	2023-06-09 00:53:41.306158	28	t
+10	Заявка на вакансию Стажер по ml-разработке подтверждена. Вам открыт доступ к модулям 'Базовое тестирование' и 'Карьерная школа'	2023-06-09 00:55:15.837574	28	t
+13	Заявка на вакансию Project-manager подтверждена. Вам открыт доступ к модулям 'Базовое тестирование' и 'Карьерная школа'	2023-06-09 12:18:09.982557	33	t
+14	Заявка на вакансию UX/UI-дизайнер подтверждена. Вам открыт доступ к модулям 'Базовое тестирование' и 'Карьерная школа'	2023-06-09 12:36:07.514178	34	f
+16	Заявка на вакансию Стажер-разработчик по backend-разработке подтверждена. Вам открыт доступ к модулям 'Базовое тестирование' и 'Карьерная школа'	2023-06-09 15:58:30.792027	36	f
+\.
+
+
+--
+-- TOC entry 3841 (class 0 OID 16495)
+-- Dependencies: 253
+-- Data for Name: organization_reviews; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.organization_reviews (id, text, value, organization_id, intern_id) FROM stdin;
@@ -10801,13 +10910,17 @@ COPY public.organization_reviews (id, text, value, organization_id, intern_id) F
 3	Не плохая организация	3	2	4
 4	Плохая организация	2	2	5
 6	Отличная организация!	5	3	5
+7	Всё отлично!	5	2	28
+8	Ну компания хорошая!	4	2	28
+9	Ну здесь нужен подход CI/CD	4	2	28
+10	Все хорошо!	5	2	28
 \.
 
 
 --
--- TOC entry 3630 (class 0 OID 16640)
--- Dependencies: 235
--- Data for Name: organization_types; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3843 (class 0 OID 16501)
+-- Dependencies: 255
+-- Data for Name: organization_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.organization_types (id, name) FROM stdin;
@@ -10826,9 +10939,9 @@ COPY public.organization_types (id, name) FROM stdin;
 
 
 --
--- TOC entry 3642 (class 0 OID 16684)
--- Dependencies: 247
--- Data for Name: organizations; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3845 (class 0 OID 16505)
+-- Dependencies: 257
+-- Data for Name: organizations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.organizations (id, name, description, img, address, latitude, longitude, email, phone, training_direction_id, branch_id, type_id) FROM stdin;
@@ -10842,9 +10955,9 @@ COPY public.organizations (id, name, description, img, address, latitude, longit
 
 
 --
--- TOC entry 3606 (class 0 OID 16469)
--- Dependencies: 211
--- Data for Name: permissions; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3847 (class 0 OID 16511)
+-- Dependencies: 259
+-- Data for Name: permissions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.permissions (role_id, url, type) FROM stdin;
@@ -10852,22 +10965,24 @@ COPY public.permissions (role_id, url, type) FROM stdin;
 
 
 --
--- TOC entry 3699 (class 0 OID 17292)
--- Dependencies: 304
--- Data for Name: presences; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3848 (class 0 OID 16514)
+-- Dependencies: 260
+-- Data for Name: presences; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.presences (id, intern_id, vacancy_id, mentor_id, status, date, hour) FROM stdin;
 2	4	1	2	Был	2023-05-27 00:00:00	5
 1	4	1	2	Не был	2023-05-28 00:00:00	0
-3	4	1	2	Отпуск	2023-05-26 00:00:00	0
+4	19	1	2	Был	2023-06-07 00:00:00	4
+5	28	1	2	Был	2023-06-08 00:00:00	2
+3	4	1	2	Учебный отпуск	2023-05-26 00:00:00	0
 \.
 
 
 --
--- TOC entry 3623 (class 0 OID 16579)
--- Dependencies: 228
--- Data for Name: recoveries; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3850 (class 0 OID 16518)
+-- Dependencies: 262
+-- Data for Name: recoveries; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.recoveries (code, user_id, created) FROM stdin;
@@ -10875,9 +10990,9 @@ COPY public.recoveries (code, user_id, created) FROM stdin;
 
 
 --
--- TOC entry 3610 (class 0 OID 16509)
--- Dependencies: 215
--- Data for Name: regions; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3851 (class 0 OID 16521)
+-- Dependencies: 263
+-- Data for Name: regions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.regions (id, name) FROM stdin;
@@ -10974,9 +11089,9 @@ COPY public.regions (id, name) FROM stdin;
 
 
 --
--- TOC entry 3659 (class 0 OID 16879)
--- Dependencies: 264
--- Data for Name: requirements; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3853 (class 0 OID 16525)
+-- Dependencies: 265
+-- Data for Name: requirements; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.requirements (id, name, vacancy_id) FROM stdin;
@@ -10998,13 +11113,15 @@ COPY public.requirements (id, name, vacancy_id) FROM stdin;
 21	умение составлять диаграммы бизнеспроцессов	8
 22	Основы порядка разработки бизнеспланов	9
 23	Основ экономики и организации производства	9
+25	Опыт ведения IT проектов	11
+26	Умение работать в режиме многозадачности	11
 \.
 
 
 --
--- TOC entry 3676 (class 0 OID 17019)
--- Dependencies: 281
--- Data for Name: response_statuses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3855 (class 0 OID 16529)
+-- Dependencies: 267
+-- Data for Name: response_statuses; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.response_statuses (id, name) FROM stdin;
@@ -11015,9 +11132,9 @@ COPY public.response_statuses (id, name) FROM stdin;
 
 
 --
--- TOC entry 3686 (class 0 OID 17098)
--- Dependencies: 291
--- Data for Name: responses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3857 (class 0 OID 16533)
+-- Dependencies: 269
+-- Data for Name: responses; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.responses (id, comment, response_status_id, selection_id, passed) FROM stdin;
@@ -11026,22 +11143,30 @@ COPY public.responses (id, comment, response_status_id, selection_id, passed) FR
 73	\N	3	73	f
 74	\N	3	74	f
 78	\N	2	78	t
-75	\N	3	75	t
 76	\N	3	76	t
 77	\N	3	77	t
 79	\N	2	79	t
 80	\N	2	80	t
+81	\N	3	81	t
+84	\N	3	84	t
+82	\N	2	82	t
+83	\N	3	83	t
+94	\N	2	94	t
+97	\N	2	97	f
+98	\N	2	98	f
 69	\N	2	69	t
 67	\N	3	67	t
 68	\N	3	68	t
 70	\N	3	70	t
+100	\N	1	100	f
+101	\N	2	101	f
 \.
 
 
 --
--- TOC entry 3605 (class 0 OID 16395)
--- Dependencies: 210
--- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3859 (class 0 OID 16540)
+-- Dependencies: 271
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.roles (id, name) FROM stdin;
@@ -11053,9 +11178,9 @@ COPY public.roles (id, name) FROM stdin;
 
 
 --
--- TOC entry 3684 (class 0 OID 17084)
--- Dependencies: 289
--- Data for Name: scholls; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3861 (class 0 OID 16544)
+-- Dependencies: 273
+-- Data for Name: scholls; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.scholls (id, value, comment, passed, intern_id) FROM stdin;
@@ -11063,16 +11188,36 @@ COPY public.scholls (id, value, comment, passed, intern_id) FROM stdin;
 5	50	\N	t	13
 6	\N	\N	f	14
 7	50	\N	t	19
+8	50	\N	t	28
+12	\N	\N	f	32
+13	50	\N	t	33
+14	\N	\N	f	34
+16	50	\N	t	36
 \.
 
 
 --
--- TOC entry 3691 (class 0 OID 17168)
--- Dependencies: 296
--- Data for Name: selection_basic_tests; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3863 (class 0 OID 16550)
+-- Dependencies: 275
+-- Data for Name: selection_basic_tests; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.selection_basic_tests (basic_test_id, selection_id) FROM stdin;
+34	82
+35	82
+36	82
+46	94
+47	94
+48	94
+49	97
+50	97
+51	97
+52	98
+53	98
+54	98
+58	101
+59	101
+60	101
 22	69
 23	69
 24	69
@@ -11085,37 +11230,48 @@ COPY public.selection_basic_tests (basic_test_id, selection_id) FROM stdin;
 31	80
 32	80
 33	80
+34	83
+35	83
+36	83
 \.
 
 
 --
--- TOC entry 3678 (class 0 OID 17026)
--- Dependencies: 283
--- Data for Name: selections; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3864 (class 0 OID 16553)
+-- Dependencies: 276
+-- Data for Name: selections; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.selections (id, vacancy_id, stage_id, intern_id, school_id) FROM stdin;
 67	2	1	4	\N
 68	4	1	4	\N
 70	3	1	4	\N
+82	4	2	28	8
 69	1	3	4	4
 71	2	1	5	\N
 72	4	1	5	\N
 73	1	1	5	\N
 74	3	1	5	\N
-75	2	1	13	\N
 76	4	1	13	\N
 77	1	1	13	\N
-78	3	5	13	5
 79	3	2	14	6
-80	1	5	19	7
+80	1	3	19	7
+81	2	1	28	\N
+78	3	5	13	5
+94	1	2	32	12
+97	11	5	33	13
+98	2	2	34	14
+84	3	1	28	\N
+100	4	1	35	\N
+101	1	5	36	16
+83	1	7	28	8
 \.
 
 
 --
--- TOC entry 3646 (class 0 OID 16736)
--- Dependencies: 251
--- Data for Name: skill_interns; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3866 (class 0 OID 16557)
+-- Dependencies: 278
+-- Data for Name: skill_interns; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.skill_interns (skill_id, intern_id) FROM stdin;
@@ -11123,40 +11279,52 @@ COPY public.skill_interns (skill_id, intern_id) FROM stdin;
 40	5
 1	4
 2	4
-3	4
 9	4
 8	4
 1	13
 11	4
 59	19
+8	28
+7	28
+12	28
+49	28
+10	4
+24	33
+22	33
+46	34
+48	34
+21	34
+52	36
+53	36
+14	36
 \.
 
 
 --
--- TOC entry 3653 (class 0 OID 16839)
--- Dependencies: 258
--- Data for Name: skill_vacancies; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3867 (class 0 OID 16560)
+-- Dependencies: 279
+-- Data for Name: skill_vacancies; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.skill_vacancies (skill_id, vacancy_id) FROM stdin;
-39	1
-40	1
-34	8
-15	8
-18	8
-50	8
 17	9
-10	9
-2	9
-60	9
-61	9
+22	9
+22	11
+21	2
+2	4
+2	1
+52	1
+1	3
+25	8
+11	4
+50	3
 \.
 
 
 --
--- TOC entry 3640 (class 0 OID 16677)
--- Dependencies: 245
--- Data for Name: skills; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3868 (class 0 OID 16563)
+-- Dependencies: 280
+-- Data for Name: skills; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.skills (id, name) FROM stdin;
@@ -11170,7 +11338,6 @@ COPY public.skills (id, name) FROM stdin;
 8	Docker
 9	JavaScript
 10	C++
-11	DataScients
 12	ML
 13	Kotlin
 14	PostgreSQL
@@ -11178,7 +11345,6 @@ COPY public.skills (id, name) FROM stdin;
 16	Photoshop
 17	MatLab
 18	PHP
-19	android
 20	Баг-трекингы
 21	UX/UI
 22	Техническая документация
@@ -11217,16 +11383,17 @@ COPY public.skills (id, name) FROM stdin;
 57	SMM
 58	Пользователь ПК
 59	AutoCad
-60	Техническая
-61	документация
-62	null
+63	Adobe
+64	Microsoft
+19	Android
+11	DataScience
 \.
 
 
 --
--- TOC entry 3638 (class 0 OID 16668)
--- Dependencies: 243
--- Data for Name: speakers; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3870 (class 0 OID 16567)
+-- Dependencies: 282
+-- Data for Name: speakers; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.speakers (id, email, password, firstname, lastname, patronymic, img) FROM stdin;
@@ -11234,9 +11401,9 @@ COPY public.speakers (id, email, password, firstname, lastname, patronymic, img)
 
 
 --
--- TOC entry 3674 (class 0 OID 17012)
--- Dependencies: 279
--- Data for Name: stages; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3872 (class 0 OID 16573)
+-- Dependencies: 284
+-- Data for Name: stages; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.stages (id, name) FROM stdin;
@@ -11246,25 +11413,25 @@ COPY public.stages (id, name) FROM stdin;
 2	Тестирование/Карьерная школа
 3	Подтверждено
 6	Отказано
+7	Окончил стажировку
 \.
 
 
 --
--- TOC entry 3695 (class 0 OID 17218)
--- Dependencies: 300
--- Data for Name: tasks; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3874 (class 0 OID 16577)
+-- Dependencies: 286
+-- Data for Name: tasks; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.tasks (id, vacancy_id, training_direction_id, url_portfolio, mentor_id) FROM stdin;
-3	1	1	r_2_interview.docx	2
-4	1	2	q_2_interview.docx	2
+5	1	1	k_2_interview.docx	2
 \.
 
 
 --
--- TOC entry 3632 (class 0 OID 16647)
--- Dependencies: 237
--- Data for Name: training_directions; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3876 (class 0 OID 16581)
+-- Dependencies: 288
+-- Data for Name: training_directions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.training_directions (id, name) FROM stdin;
@@ -11279,9 +11446,9 @@ COPY public.training_directions (id, name) FROM stdin;
 
 
 --
--- TOC entry 3672 (class 0 OID 17005)
--- Dependencies: 277
--- Data for Name: type_basic_tests; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3878 (class 0 OID 16585)
+-- Dependencies: 290
+-- Data for Name: type_basic_tests; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.type_basic_tests (id, name) FROM stdin;
@@ -11292,9 +11459,9 @@ COPY public.type_basic_tests (id, name) FROM stdin;
 
 
 --
--- TOC entry 3688 (class 0 OID 17117)
--- Dependencies: 293
--- Data for Name: type_interviews; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3880 (class 0 OID 16589)
+-- Dependencies: 292
+-- Data for Name: type_interviews; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.type_interviews (id, name) FROM stdin;
@@ -11305,9 +11472,9 @@ COPY public.type_interviews (id, name) FROM stdin;
 
 
 --
--- TOC entry 3618 (class 0 OID 16537)
--- Dependencies: 223
--- Data for Name: universities; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3882 (class 0 OID 16593)
+-- Dependencies: 294
+-- Data for Name: universities; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.universities (id, name, city_id, sub) FROM stdin;
@@ -11326,47 +11493,56 @@ COPY public.universities (id, name, city_id, sub) FROM stdin;
 
 
 --
--- TOC entry 3622 (class 0 OID 16556)
--- Dependencies: 227
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3884 (class 0 OID 16597)
+-- Dependencies: 296
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.users (id, email, phone, password, firstname, lastname, patronymic, birthdate, img, role_id, city_id, citizenship_id, nickname, gender, is_verified) FROM stdin;
-15	marina.2000@yandex.ru	+74565875164	$2b$12$hxA7GR.sew2UJdWuDaOANe7AQV0tVjgY483YHMYMNJN1e/J.99/cq	Марина	Фёдорова	Викторовна	2002-07-25 00:00:00	F/15.jpg	4	2	1	marina.2000_tornado	\N	f
+27	andrey.savateeff2015@yandex.ru	+79625108659	$2b$12$uk9LMsCC.zAsHAM/Cf92V.BKHbcWV6iq/YcvYFTvidS2BYi4IzD0K	Андрей	Саватеев	Игоревич	2001-11-12 00:00:00	\N	4	144	1	andrey.savateeff2015_flame_host	\N	t
 5	romanova@mail.ru	+7 (990) 454-15-16	$2b$12$KGnsjv.UIgRq5qHUr8jb/.zkYGGq13hAzFx5zctZthhyrO4PhuFlW	Ольга	Романова	Ивановна	2000-11-06 00:00:00	\N	4	2	1	Romanova_o	f	f
-17	Sokol.02@mail.ru	+79614752296	$2b$12$8j3BlSu5q2jpUeSeWxNscePTNoddtb/W.3pSXmAhfM4gZR1nzlU/2	Евгений	Соколов	Игоревич	2002-12-12 00:00:00	e/17.jpg	4	1	1	sokol.02_tapir	\N	f
 2	volkov@mail.ru	+7 (959) 653-80-21	$2b$12$KGnsjv.UIgRq5qHUr8jb/.zkYGGq13hAzFx5zctZthhyrO4PhuFlW	Андрей	Волков	Андреевич	1988-11-11 00:00:00	\N	1	2	1	volk	t	t
-1	kurskaya@mail.ru	+7 (948) 818-80-46	$2b$12$KGnsjv.UIgRq5qHUr8jb/.zkYGGq13hAzFx5zctZthhyrO4PhuFlW	Анна	Курская	Васильевна	1998-04-11 00:00:00	\N	2	2	1	A_kursk	f	t
-18	Leo.Var@yandex.ru	+79157462359	$2b$12$LP07JEe1666XolJe94MrQOWIsyvoy6t2lrdDG3nKEoXG9CBKKP.zy	Варвара	Леонтьева	Сергеевна	2001-02-01 00:00:00	W/18.jpg	4	1	1	leo.var_situation	f	f
-14	e.lipatov@mail.ru	+79568475123	$2b$12$lWue23FCzXHntEjqDe8JhOWXszzhpwLiPB1fNpeoT/p0q4xrh7/E2	Евгений	Липатов	Дмитриевич	2001-05-12 00:00:00	m/14.jpg	4	1	1	e.lipatov_dumpling	t	f
-16	vas.lena@gmail.com	+79637518569	$2b$12$.LuL/CvlTlL9U7CsT69Yq.DVEPVermGnXaLkzIv5z00o7pHl2k6wS	Елена	Васнецова	Петровна	2003-08-15 00:00:00	b/16.jpg	4	2	1	vas.lena_politics	\N	f
 3	burova@mail.ru	+7 (916) 802-68-43	$2b$12$KGnsjv.UIgRq5qHUr8jb/.zkYGGq13hAzFx5zctZthhyrO4PhuFlW	Анастасия	Бурова	Андреевна	1995-01-10 00:00:00	\N	3	2	1	burova	f	t
-19	maksim228775@gmail.com	+79290513941	$2b$12$s335G4fZKg8zkzF5fqtHQ.Nb7/JkjkVCPI9OS4CqwJV04dTu0n1Ly	Максим	Исаев	Александрович	2002-02-20 00:00:00	j/19.jpg	4	2	1	maksim228775_family	t	t
-4	mr.vaynbaum@mail.ru	+7 (952) 462-16-55	$2b$12$p2FI4cK4J.2bqi/W2oONEO2M1CQk8CWaJMb1ShkJSpjocIbxUpqbe	Денис	Вайнбаум	Алексеевич	2003-01-16 00:00:00	i/4.jpg	4	144	1	mr.vaynbaum_rabbit	t	t
 13	vaynbaum50@gmail.com	89308165479	$2b$12$PXtX9V7nKNUFxDz2WFb0meJjrbpl2RWobQjmFHN2WcUyF8cRRdTm2	Иван	Иванов	Иванович	1999-07-16 00:00:00	\N	4	144	1	vaynbaum50_dangerous	t	f
+26	ryab1ninaryabinina@yandex.ru	8976565650	$2b$12$cfYchjH3tC/sQHNSasuIQOrR8XUeqzRzT.vqJ7ak5TuVrqk6HiR6a	Анна	Волчкова	Андреевна	2005-01-07 00:00:00	\N	3	2063	1	ryab1ninaryabinina_rhea	\N	f
+35	ltc-biruzov.iv@mail.ru	89338165479	$2b$12$de0gNsGpeEEvtT4IzY6fE.nL9v1y7UzlCRuubrNh0Ay.oFN/dwmj6	Иван	Бирюзов	Андреевич	2001-06-15 00:00:00	\N	4	2	1	ltc-biruzov.iv_shark	t	f
+1	kurskaya@mail.ru	+7 (948) 818-80-46	$2b$12$KGnsjv.UIgRq5qHUr8jb/.zkYGGq13hAzFx5zctZthhyrO4PhuFlW	Анна	Курская	Васильевна	1998-04-11 00:00:00	\N	2	2	1	A_kursk	f	t
+36	lct-borisova@yandex.ru	89308165474	$2b$12$imMSlYJZIys60JBhUJ73Yuy4BDFuDupO6..2fiYEh6DPJ0tkRgAYi	Алина	Борисова	Алексеевна	2002-05-16 00:00:00	\N	4	123	1	lct-borisova_the_man	f	f
+32	katsumiproo@gmail.com	89308165479	$2b$12$171vh5sgoH7VHjWlvb3CBeFWIWQny.5WI4oAwjayp3H8sheKgvCs2	Петр	Петров	Петрович	2001-02-01 00:00:00	\N	4	1376	1	katsumiproo_name	\N	f
+28	s.rindow@yandex.ru	89308165479	$2b$12$8geihmWMq77n6UpKjuGSjOP7mqyQRDJME7pF.KDJE8ulHiasP7Y9O	Сергей	Рындов	Николаевич	2002-10-11 00:00:00	28.jpg	4	1	1	s.rindow_stardust	t	t
+4	mr.vaynbaum@mail.ru	+7 (952) 462-16-55	$2b$12$p2FI4cK4J.2bqi/W2oONEO2M1CQk8CWaJMb1ShkJSpjocIbxUpqbe	Денис	Вайнбаум	Алексеевич	2003-01-16 00:00:00	4.jpg	4	144	6	mr.vaynbaum_rabbit	t	t
+14	e.lipatov@mail.ru	+79568475123	$2b$12$lWue23FCzXHntEjqDe8JhOWXszzhpwLiPB1fNpeoT/p0q4xrh7/E2	Евгений	Липатов	Дмитриевич	2001-05-12 00:00:00	14.jpg	4	1	1	e.lipatov_dumpling	t	f
+15	marina.2000@yandex.ru	+74565875164	$2b$12$hxA7GR.sew2UJdWuDaOANe7AQV0tVjgY483YHMYMNJN1e/J.99/cq	Марина	Фёдорова	Викторовна	2002-07-25 00:00:00	15.jpg	4	2	1	marina.2000_tornado	\N	f
+16	vas.lena@gmail.com	+79637518569	$2b$12$.LuL/CvlTlL9U7CsT69Yq.DVEPVermGnXaLkzIv5z00o7pHl2k6wS	Елена	Васнецова	Петровна	2003-08-15 00:00:00	16.jpg	4	2	1	vas.lena_politics	\N	f
+17	Sokol.02@mail.ru	+79614752296	$2b$12$8j3BlSu5q2jpUeSeWxNscePTNoddtb/W.3pSXmAhfM4gZR1nzlU/2	Евгений	Соколов	Игоревич	2002-12-12 00:00:00	17.jpg	4	1	1	sokol.02_tapir	\N	f
+18	Leo.Var@yandex.ru	+79157462359	$2b$12$LP07JEe1666XolJe94MrQOWIsyvoy6t2lrdDG3nKEoXG9CBKKP.zy	Варвара	Леонтьева	Сергеевна	2001-02-01 00:00:00	18.jpg	4	1	1	leo.var_situation	f	f
+19	maksim228775@gmail.com	+79290513941	$2b$12$s335G4fZKg8zkzF5fqtHQ.Nb7/JkjkVCPI9OS4CqwJV04dTu0n1Ly	Максим	Исаев	Александрович	2002-02-20 00:00:00	19.jpg	4	2	1	maksim228775_family	t	t
+33	erbium_nn@mail.ru	89308165479	$2b$12$S5LhoquD2OeKWASWxW24aulQ8ezdjSe244w534QLnA8d5CuyqjV9O	Екатерина	Вахутина	Николаевна	2001-06-07 00:00:00	33.jpg	4	1	1	erbium_nn_situation	f	t
+34	kate.den.2002@mail.ru	89308185479	$2b$12$G5ZWQHmFWMrLgQP1f5xmcu/jJLaOzhpFeBKxE5KdSeM8gdnfAnDIO	Екатерина	Денисова	Андреевна	2002-03-10 00:00:00	34.jpg	4	1	1	kate.den.2002_monitor_lizard	f	f
 \.
 
 
 --
--- TOC entry 3652 (class 0 OID 16801)
--- Dependencies: 257
--- Data for Name: vacancies; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3886 (class 0 OID 16604)
+-- Dependencies: 298
+-- Data for Name: vacancies; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.vacancies (id, name, description, min_salary, max_salary, date_begin, date_end, published, work_schedule_id, organization_id, employment_type_id, hr_creater_id, mentor_id, work_experience_id, status_id, cnt_intern) FROM stdin;
-8	Стажер-аналитик	Необходим стажер-аналитик. При положительных результатах стажировки мы предложим должность младшего аналитика и подготовим план индивидуального развития.	10000	30000	2023-09-06 00:00:00	2023-07-17 00:00:00	f	3	2	5	3	\N	3	2	2
+9	Стажер-экономист	Если вам интересна экономика и вы хотите развиваться в этой сфере, то мы Вас ждем!	12000	30000	2023-05-27 00:00:00	2023-08-25 00:00:00	f	3	2	5	3	\N	2	2	1
 1	Стажер-разработчик по backend-разработке	Если вам интересно заниматься решениями для масштабных проектов, приходите к нам. Здесь вам предстоит работать с высоконагруженными отказоустойчивыми системами и сталкиваться с действительно интересными инженерными задачами.	0	0	2023-06-01 00:00:00	2023-09-13 00:00:00	t	3	2	5	3	2	3	3	1
 2	UX/UI-дизайнер	Необходим дизайнер для разработки макетов сложных веб-приложений. Опыт работы приветствуется.	0	0	2023-06-01 00:00:00	2023-09-13 00:00:00	t	3	1	5	\N	\N	2	3	2
-3	Стажер-разработчик по frotend-разработке	Ищем фротенд-разработчика. Опыт работы и портфолио приветствуются.	0	0	2023-06-01 00:00:00	2023-09-13 00:00:00	t	3	1	5	\N	\N	3	3	2
 4	Стажер по ml-разработке	Ищем ml-разработчика. Предлагаем обучение и карьерный рост.	0	0	2023-06-01 00:00:00	2023-09-13 00:00:00	t	3	3	5	\N	\N	2	3	3
-9	Стажер-экономист	Если вам интересна экономика и вы хотите развиваться в этой сфере, то мы Вас ждем!	12000	30000	2023-05-27 00:00:00	2023-08-25 00:00:00	f	3	2	5	3	\N	2	1	1
+11	Project-manager	Необходим project-manager в проектную команду по разработке it-решений	20000	55000	2023-07-03 00:00:00	2023-07-30 00:00:00	t	3	2	5	3	\N	3	3	1
+8	Стажер-аналитик	Необходим стажер-аналитик. При положительных результатах стажировки мы предложим должность младшего аналитика и подготовим план индивидуального развития.	10000	30000	2023-09-06 00:00:00	2023-07-17 00:00:00	f	3	2	5	3	\N	3	2	2
+3	Стажер-разработчик по frontend-разработке	Ищем фронтенд-разработчика. Опыт работы и портфолио приветствуются.	0	0	2023-06-01 00:00:00	2023-09-13 00:00:00	t	3	1	5	\N	\N	3	3	2
 \.
 
 
 --
--- TOC entry 3661 (class 0 OID 16891)
--- Dependencies: 266
--- Data for Name: vacancy_reviews; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3888 (class 0 OID 16613)
+-- Dependencies: 300
+-- Data for Name: vacancy_reviews; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.vacancy_reviews (id, text, value, vacancy_id, intern_id) FROM stdin;
@@ -11374,9 +11550,9 @@ COPY public.vacancy_reviews (id, text, value, vacancy_id, intern_id) FROM stdin;
 
 
 --
--- TOC entry 3697 (class 0 OID 17240)
+-- TOC entry 3890 (class 0 OID 16619)
 -- Dependencies: 302
--- Data for Name: vacancy_statuses; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- Data for Name: vacancy_statuses; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.vacancy_statuses (id, name) FROM stdin;
@@ -11388,9 +11564,9 @@ COPY public.vacancy_statuses (id, name) FROM stdin;
 
 
 --
--- TOC entry 3634 (class 0 OID 16654)
--- Dependencies: 239
--- Data for Name: work_experiences; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3892 (class 0 OID 16623)
+-- Dependencies: 304
+-- Data for Name: work_experiences; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.work_experiences (id, name) FROM stdin;
@@ -11402,9 +11578,9 @@ COPY public.work_experiences (id, name) FROM stdin;
 
 
 --
--- TOC entry 3636 (class 0 OID 16661)
--- Dependencies: 241
--- Data for Name: work_schedules; Type: TABLE DATA; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3894 (class 0 OID 16627)
+-- Dependencies: 306
+-- Data for Name: work_schedules; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.work_schedules (id, name) FROM stdin;
@@ -11417,395 +11593,404 @@ COPY public.work_schedules (id, name) FROM stdin;
 
 
 --
--- TOC entry 3750 (class 0 OID 0)
--- Dependencies: 274
--- Name: basic_test_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3945 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: basic_test_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.basic_test_statuses_id_seq', 1, false);
 
 
 --
--- TOC entry 3751 (class 0 OID 0)
--- Dependencies: 284
--- Name: basic_tests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3946 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: basic_tests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.basic_tests_id_seq', 33, true);
+SELECT pg_catalog.setval('public.basic_tests_id_seq', 60, true);
 
 
 --
--- TOC entry 3752 (class 0 OID 0)
--- Dependencies: 230
--- Name: branchs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3947 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: branchs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.branchs_id_seq', 31, true);
 
 
 --
--- TOC entry 3753 (class 0 OID 0)
--- Dependencies: 286
--- Name: championships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3948 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: championships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.championships_id_seq', 1, false);
 
 
 --
--- TOC entry 3754 (class 0 OID 0)
--- Dependencies: 224
--- Name: cities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3949 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: cities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.cities_id_seq', 8155, true);
 
 
 --
--- TOC entry 3755 (class 0 OID 0)
--- Dependencies: 212
--- Name: citizenships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3950 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: citizenships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.citizenships_id_seq', 8, true);
 
 
 --
--- TOC entry 3756 (class 0 OID 0)
--- Dependencies: 259
--- Name: conditions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3951 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: conditions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.conditions_id_seq', 17, true);
+SELECT pg_catalog.setval('public.conditions_id_seq', 20, true);
 
 
 --
--- TOC entry 3757 (class 0 OID 0)
--- Dependencies: 216
--- Name: courses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3952 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: courses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.courses_id_seq', 1, false);
 
 
 --
--- TOC entry 3758 (class 0 OID 0)
--- Dependencies: 218
--- Name: directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3953 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.directions_id_seq', 81, true);
 
 
 --
--- TOC entry 3759 (class 0 OID 0)
--- Dependencies: 261
--- Name: duties_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3954 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: duties_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.duties_id_seq', 8, true);
+SELECT pg_catalog.setval('public.duties_id_seq', 11, true);
 
 
 --
--- TOC entry 3760 (class 0 OID 0)
--- Dependencies: 232
--- Name: employment_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3955 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: employment_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.employment_types_id_seq', 5, true);
 
 
 --
--- TOC entry 3761 (class 0 OID 0)
--- Dependencies: 249
--- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3956 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.events_id_seq', 1, false);
 
 
 --
--- TOC entry 3762 (class 0 OID 0)
--- Dependencies: 267
--- Name: history_work_experiences_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3957 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: history_work_experiences_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.history_work_experiences_id_seq', 1, false);
 
 
 --
--- TOC entry 3763 (class 0 OID 0)
--- Dependencies: 220
--- Name: internship_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3958 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: internship_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.internship_statuses_id_seq', 1, false);
 
 
 --
--- TOC entry 3764 (class 0 OID 0)
--- Dependencies: 294
--- Name: interviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3959 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: interviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.interviews_id_seq', 1, false);
+SELECT pg_catalog.setval('public.interviews_id_seq', 8, true);
 
 
 --
--- TOC entry 3765 (class 0 OID 0)
--- Dependencies: 271
--- Name: languages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3960 (class 0 OID 0)
+-- Dependencies: 245
+-- Name: languages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.languages_id_seq', 1, false);
 
 
 --
--- TOC entry 3766 (class 0 OID 0)
--- Dependencies: 297
--- Name: mentor_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3961 (class 0 OID 0)
+-- Dependencies: 247
+-- Name: mentor_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.mentor_reviews_id_seq', 1, false);
+SELECT pg_catalog.setval('public.mentor_reviews_id_seq', 10, true);
 
 
 --
--- TOC entry 3767 (class 0 OID 0)
--- Dependencies: 269
--- Name: metros_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3962 (class 0 OID 0)
+-- Dependencies: 250
+-- Name: metros_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.metros_id_seq', 21, true);
 
 
 --
--- TOC entry 3768 (class 0 OID 0)
+-- TOC entry 3963 (class 0 OID 0)
+-- Dependencies: 252
+-- Name: notes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.notes_id_seq', 16, true);
+
+
+--
+-- TOC entry 3964 (class 0 OID 0)
 -- Dependencies: 254
--- Name: organization_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- Name: organization_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.organization_reviews_id_seq', 1, false);
+SELECT pg_catalog.setval('public.organization_reviews_id_seq', 10, true);
 
 
 --
--- TOC entry 3769 (class 0 OID 0)
--- Dependencies: 234
--- Name: organization_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3965 (class 0 OID 0)
+-- Dependencies: 256
+-- Name: organization_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.organization_types_id_seq', 1, false);
 
 
 --
--- TOC entry 3770 (class 0 OID 0)
--- Dependencies: 246
--- Name: organizations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3966 (class 0 OID 0)
+-- Dependencies: 258
+-- Name: organizations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.organizations_id_seq', 6, true);
 
 
 --
--- TOC entry 3771 (class 0 OID 0)
--- Dependencies: 303
--- Name: presences_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3967 (class 0 OID 0)
+-- Dependencies: 261
+-- Name: presences_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.presences_id_seq', 3, true);
+SELECT pg_catalog.setval('public.presences_id_seq', 5, true);
 
 
 --
--- TOC entry 3772 (class 0 OID 0)
--- Dependencies: 214
--- Name: regions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3968 (class 0 OID 0)
+-- Dependencies: 264
+-- Name: regions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.regions_id_seq', 89, true);
 
 
 --
--- TOC entry 3773 (class 0 OID 0)
--- Dependencies: 263
--- Name: requirements_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3969 (class 0 OID 0)
+-- Dependencies: 266
+-- Name: requirements_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.requirements_id_seq', 23, true);
+SELECT pg_catalog.setval('public.requirements_id_seq', 26, true);
 
 
 --
--- TOC entry 3774 (class 0 OID 0)
--- Dependencies: 280
--- Name: response_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3970 (class 0 OID 0)
+-- Dependencies: 268
+-- Name: response_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.response_statuses_id_seq', 1, false);
 
 
 --
--- TOC entry 3775 (class 0 OID 0)
--- Dependencies: 290
--- Name: responses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3971 (class 0 OID 0)
+-- Dependencies: 270
+-- Name: responses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.responses_id_seq', 80, true);
+SELECT pg_catalog.setval('public.responses_id_seq', 101, true);
 
 
 --
--- TOC entry 3776 (class 0 OID 0)
--- Dependencies: 209
--- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3972 (class 0 OID 0)
+-- Dependencies: 272
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.roles_id_seq', 1, false);
 
 
 --
--- TOC entry 3777 (class 0 OID 0)
--- Dependencies: 288
--- Name: scholls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3973 (class 0 OID 0)
+-- Dependencies: 274
+-- Name: scholls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.scholls_id_seq', 7, true);
-
-
---
--- TOC entry 3778 (class 0 OID 0)
--- Dependencies: 282
--- Name: selections_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
---
-
-SELECT pg_catalog.setval('public.selections_id_seq', 80, true);
+SELECT pg_catalog.setval('public.scholls_id_seq', 16, true);
 
 
 --
--- TOC entry 3779 (class 0 OID 0)
--- Dependencies: 244
--- Name: skills_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3974 (class 0 OID 0)
+-- Dependencies: 277
+-- Name: selections_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.skills_id_seq', 62, true);
+SELECT pg_catalog.setval('public.selections_id_seq', 101, true);
 
 
 --
--- TOC entry 3780 (class 0 OID 0)
--- Dependencies: 242
--- Name: speakers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3975 (class 0 OID 0)
+-- Dependencies: 281
+-- Name: skills_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.skills_id_seq', 64, true);
+
+
+--
+-- TOC entry 3976 (class 0 OID 0)
+-- Dependencies: 283
+-- Name: speakers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.speakers_id_seq', 1, false);
 
 
 --
--- TOC entry 3781 (class 0 OID 0)
--- Dependencies: 278
--- Name: stages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3977 (class 0 OID 0)
+-- Dependencies: 285
+-- Name: stages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.stages_id_seq', 1, false);
 
 
 --
--- TOC entry 3782 (class 0 OID 0)
--- Dependencies: 299
--- Name: tasks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3978 (class 0 OID 0)
+-- Dependencies: 287
+-- Name: tasks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tasks_id_seq', 4, true);
+SELECT pg_catalog.setval('public.tasks_id_seq', 5, true);
 
 
 --
--- TOC entry 3783 (class 0 OID 0)
--- Dependencies: 236
--- Name: training_directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3979 (class 0 OID 0)
+-- Dependencies: 289
+-- Name: training_directions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.training_directions_id_seq', 1, false);
 
 
 --
--- TOC entry 3784 (class 0 OID 0)
--- Dependencies: 276
--- Name: type_basic_tests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3980 (class 0 OID 0)
+-- Dependencies: 291
+-- Name: type_basic_tests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.type_basic_tests_id_seq', 1, false);
 
 
 --
--- TOC entry 3785 (class 0 OID 0)
--- Dependencies: 292
--- Name: type_interviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3981 (class 0 OID 0)
+-- Dependencies: 293
+-- Name: type_interviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.type_interviews_id_seq', 1, false);
 
 
 --
--- TOC entry 3786 (class 0 OID 0)
--- Dependencies: 222
--- Name: universities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3982 (class 0 OID 0)
+-- Dependencies: 295
+-- Name: universities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.universities_id_seq', 12, true);
 
 
 --
--- TOC entry 3787 (class 0 OID 0)
--- Dependencies: 226
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3983 (class 0 OID 0)
+-- Dependencies: 297
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 25, true);
-
-
---
--- TOC entry 3788 (class 0 OID 0)
--- Dependencies: 256
--- Name: vacancies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
---
-
-SELECT pg_catalog.setval('public.vacancies_id_seq', 9, true);
+SELECT pg_catalog.setval('public.users_id_seq', 36, true);
 
 
 --
--- TOC entry 3789 (class 0 OID 0)
--- Dependencies: 265
--- Name: vacancy_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3984 (class 0 OID 0)
+-- Dependencies: 299
+-- Name: vacancies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.vacancies_id_seq', 11, true);
+
+
+--
+-- TOC entry 3985 (class 0 OID 0)
+-- Dependencies: 301
+-- Name: vacancy_reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.vacancy_reviews_id_seq', 1, false);
 
 
 --
--- TOC entry 3790 (class 0 OID 0)
--- Dependencies: 301
--- Name: vacancy_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3986 (class 0 OID 0)
+-- Dependencies: 303
+-- Name: vacancy_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.vacancy_statuses_id_seq', 1, false);
 
 
 --
--- TOC entry 3791 (class 0 OID 0)
--- Dependencies: 238
--- Name: work_experiences_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3987 (class 0 OID 0)
+-- Dependencies: 305
+-- Name: work_experiences_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.work_experiences_id_seq', 5, true);
 
 
 --
--- TOC entry 3792 (class 0 OID 0)
--- Dependencies: 240
--- Name: work_schedules_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3988 (class 0 OID 0)
+-- Dependencies: 307
+-- Name: work_schedules_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.work_schedules_id_seq', 5, true);
 
 
 --
--- TOC entry 3360 (class 2606 OID 17003)
--- Name: basic_test_statuses basic_test_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3476 (class 2606 OID 16678)
+-- Name: basic_test_statuses basic_test_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.basic_test_statuses
@@ -11813,8 +11998,8 @@ ALTER TABLE ONLY public.basic_test_statuses
 
 
 --
--- TOC entry 3370 (class 2606 OID 17053)
--- Name: basic_tests basic_tests_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3478 (class 2606 OID 16680)
+-- Name: basic_tests basic_tests_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.basic_tests
@@ -11822,8 +12007,8 @@ ALTER TABLE ONLY public.basic_tests
 
 
 --
--- TOC entry 3310 (class 2606 OID 16631)
--- Name: branchs branchs_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3480 (class 2606 OID 16682)
+-- Name: branchs branchs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.branchs
@@ -11831,8 +12016,8 @@ ALTER TABLE ONLY public.branchs
 
 
 --
--- TOC entry 3372 (class 2606 OID 17077)
--- Name: championships championships_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3482 (class 2606 OID 16684)
+-- Name: championships championships_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.championships
@@ -11840,8 +12025,8 @@ ALTER TABLE ONLY public.championships
 
 
 --
--- TOC entry 3302 (class 2606 OID 16549)
--- Name: cities cities_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3484 (class 2606 OID 16686)
+-- Name: cities cities_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cities
@@ -11849,8 +12034,8 @@ ALTER TABLE ONLY public.cities
 
 
 --
--- TOC entry 3290 (class 2606 OID 16507)
--- Name: citizenships citizenships_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3486 (class 2606 OID 16688)
+-- Name: citizenships citizenships_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.citizenships
@@ -11858,8 +12043,8 @@ ALTER TABLE ONLY public.citizenships
 
 
 --
--- TOC entry 3344 (class 2606 OID 16860)
--- Name: conditions conditions_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3488 (class 2606 OID 16690)
+-- Name: conditions conditions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.conditions
@@ -11867,8 +12052,8 @@ ALTER TABLE ONLY public.conditions
 
 
 --
--- TOC entry 3294 (class 2606 OID 16521)
--- Name: courses courses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3490 (class 2606 OID 16692)
+-- Name: courses courses_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.courses
@@ -11876,8 +12061,8 @@ ALTER TABLE ONLY public.courses
 
 
 --
--- TOC entry 3328 (class 2606 OID 16711)
--- Name: curators curators_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3492 (class 2606 OID 16694)
+-- Name: curators curators_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.curators
@@ -11885,8 +12070,8 @@ ALTER TABLE ONLY public.curators
 
 
 --
--- TOC entry 3296 (class 2606 OID 16528)
--- Name: directions directions_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3494 (class 2606 OID 16696)
+-- Name: directions directions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.directions
@@ -11894,8 +12079,8 @@ ALTER TABLE ONLY public.directions
 
 
 --
--- TOC entry 3346 (class 2606 OID 16872)
--- Name: duties duties_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3496 (class 2606 OID 16698)
+-- Name: duties duties_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.duties
@@ -11903,8 +12088,8 @@ ALTER TABLE ONLY public.duties
 
 
 --
--- TOC entry 3312 (class 2606 OID 16638)
--- Name: employment_types employment_types_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3498 (class 2606 OID 16700)
+-- Name: employment_types employment_types_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.employment_types
@@ -11912,8 +12097,8 @@ ALTER TABLE ONLY public.employment_types
 
 
 --
--- TOC entry 3330 (class 2606 OID 16730)
--- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3500 (class 2606 OID 16702)
+-- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.events
@@ -11921,8 +12106,8 @@ ALTER TABLE ONLY public.events
 
 
 --
--- TOC entry 3352 (class 2606 OID 16925)
--- Name: history_work_experiences history_work_experiences_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3502 (class 2606 OID 16704)
+-- Name: history_work_experiences history_work_experiences_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.history_work_experiences
@@ -11930,8 +12115,8 @@ ALTER TABLE ONLY public.history_work_experiences
 
 
 --
--- TOC entry 3334 (class 2606 OID 16755)
--- Name: hrs hrs_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3504 (class 2606 OID 16706)
+-- Name: hrs hrs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.hrs
@@ -11939,8 +12124,8 @@ ALTER TABLE ONLY public.hrs
 
 
 --
--- TOC entry 3308 (class 2606 OID 16593)
--- Name: interns interns_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3506 (class 2606 OID 16708)
+-- Name: interns interns_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interns
@@ -11948,8 +12133,8 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3298 (class 2606 OID 16535)
--- Name: internship_statuses internship_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3508 (class 2606 OID 16710)
+-- Name: internship_statuses internship_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.internship_statuses
@@ -11957,8 +12142,8 @@ ALTER TABLE ONLY public.internship_statuses
 
 
 --
--- TOC entry 3380 (class 2606 OID 17131)
--- Name: interviews interviews_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3510 (class 2606 OID 16712)
+-- Name: interviews interviews_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interviews
@@ -11966,8 +12151,8 @@ ALTER TABLE ONLY public.interviews
 
 
 --
--- TOC entry 3392 (class 2606 OID 17334)
--- Name: invations invations_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3512 (class 2606 OID 16714)
+-- Name: invations invations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.invations
@@ -11975,8 +12160,8 @@ ALTER TABLE ONLY public.invations
 
 
 --
--- TOC entry 3358 (class 2606 OID 16971)
--- Name: language_interns language_interns_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3514 (class 2606 OID 16716)
+-- Name: language_interns language_interns_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.language_interns
@@ -11984,8 +12169,8 @@ ALTER TABLE ONLY public.language_interns
 
 
 --
--- TOC entry 3356 (class 2606 OID 16966)
--- Name: languages languages_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3516 (class 2606 OID 16718)
+-- Name: languages languages_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.languages
@@ -11993,8 +12178,8 @@ ALTER TABLE ONLY public.languages
 
 
 --
--- TOC entry 3384 (class 2606 OID 17204)
--- Name: mentor_reviews mentor_reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3518 (class 2606 OID 16720)
+-- Name: mentor_reviews mentor_reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.mentor_reviews
@@ -12002,8 +12187,8 @@ ALTER TABLE ONLY public.mentor_reviews
 
 
 --
--- TOC entry 3336 (class 2606 OID 16770)
--- Name: mentors mentors_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3520 (class 2606 OID 16722)
+-- Name: mentors mentors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.mentors
@@ -12011,8 +12196,8 @@ ALTER TABLE ONLY public.mentors
 
 
 --
--- TOC entry 3354 (class 2606 OID 16937)
--- Name: metros metros_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3522 (class 2606 OID 16724)
+-- Name: metros metros_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.metros
@@ -12020,8 +12205,17 @@ ALTER TABLE ONLY public.metros
 
 
 --
--- TOC entry 3338 (class 2606 OID 16789)
--- Name: organization_reviews organization_reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3524 (class 2606 OID 16726)
+-- Name: notes notes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.notes
+    ADD CONSTRAINT notes_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3526 (class 2606 OID 16728)
+-- Name: organization_reviews organization_reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_reviews
@@ -12029,8 +12223,8 @@ ALTER TABLE ONLY public.organization_reviews
 
 
 --
--- TOC entry 3314 (class 2606 OID 16645)
--- Name: organization_types organization_types_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3528 (class 2606 OID 16730)
+-- Name: organization_types organization_types_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_types
@@ -12038,8 +12232,8 @@ ALTER TABLE ONLY public.organization_types
 
 
 --
--- TOC entry 3326 (class 2606 OID 16691)
--- Name: organizations organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3530 (class 2606 OID 16732)
+-- Name: organizations organizations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
@@ -12047,8 +12241,8 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- TOC entry 3288 (class 2606 OID 16473)
--- Name: permissions permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3532 (class 2606 OID 16734)
+-- Name: permissions permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.permissions
@@ -12056,8 +12250,8 @@ ALTER TABLE ONLY public.permissions
 
 
 --
--- TOC entry 3390 (class 2606 OID 17297)
--- Name: presences presences_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3534 (class 2606 OID 16736)
+-- Name: presences presences_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.presences
@@ -12065,8 +12259,8 @@ ALTER TABLE ONLY public.presences
 
 
 --
--- TOC entry 3306 (class 2606 OID 16583)
--- Name: recoveries recoveries_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3536 (class 2606 OID 16738)
+-- Name: recoveries recoveries_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.recoveries
@@ -12074,8 +12268,8 @@ ALTER TABLE ONLY public.recoveries
 
 
 --
--- TOC entry 3292 (class 2606 OID 16514)
--- Name: regions regions_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3538 (class 2606 OID 16740)
+-- Name: regions regions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.regions
@@ -12083,8 +12277,8 @@ ALTER TABLE ONLY public.regions
 
 
 --
--- TOC entry 3348 (class 2606 OID 16884)
--- Name: requirements requirements_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3540 (class 2606 OID 16742)
+-- Name: requirements requirements_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.requirements
@@ -12092,8 +12286,8 @@ ALTER TABLE ONLY public.requirements
 
 
 --
--- TOC entry 3366 (class 2606 OID 17024)
--- Name: response_statuses response_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3542 (class 2606 OID 16744)
+-- Name: response_statuses response_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.response_statuses
@@ -12101,8 +12295,8 @@ ALTER TABLE ONLY public.response_statuses
 
 
 --
--- TOC entry 3376 (class 2606 OID 17105)
--- Name: responses responses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3544 (class 2606 OID 16746)
+-- Name: responses responses_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.responses
@@ -12110,8 +12304,8 @@ ALTER TABLE ONLY public.responses
 
 
 --
--- TOC entry 3286 (class 2606 OID 16400)
--- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3546 (class 2606 OID 16748)
+-- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.roles
@@ -12119,8 +12313,8 @@ ALTER TABLE ONLY public.roles
 
 
 --
--- TOC entry 3374 (class 2606 OID 17091)
--- Name: scholls scholls_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3548 (class 2606 OID 16750)
+-- Name: scholls scholls_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.scholls
@@ -12128,8 +12322,8 @@ ALTER TABLE ONLY public.scholls
 
 
 --
--- TOC entry 3382 (class 2606 OID 17172)
--- Name: selection_basic_tests selection_basic_tests_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3550 (class 2606 OID 16752)
+-- Name: selection_basic_tests selection_basic_tests_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.selection_basic_tests
@@ -12137,8 +12331,8 @@ ALTER TABLE ONLY public.selection_basic_tests
 
 
 --
--- TOC entry 3368 (class 2606 OID 17031)
--- Name: selections selections_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3552 (class 2606 OID 16754)
+-- Name: selections selections_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.selections
@@ -12146,8 +12340,8 @@ ALTER TABLE ONLY public.selections
 
 
 --
--- TOC entry 3332 (class 2606 OID 16740)
--- Name: skill_interns skill_interns_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3554 (class 2606 OID 16756)
+-- Name: skill_interns skill_interns_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.skill_interns
@@ -12155,8 +12349,8 @@ ALTER TABLE ONLY public.skill_interns
 
 
 --
--- TOC entry 3342 (class 2606 OID 16843)
--- Name: skill_vacancies skill_vacancies_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3556 (class 2606 OID 16758)
+-- Name: skill_vacancies skill_vacancies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.skill_vacancies
@@ -12164,8 +12358,8 @@ ALTER TABLE ONLY public.skill_vacancies
 
 
 --
--- TOC entry 3324 (class 2606 OID 16682)
--- Name: skills skills_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3558 (class 2606 OID 16760)
+-- Name: skills skills_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.skills
@@ -12173,8 +12367,8 @@ ALTER TABLE ONLY public.skills
 
 
 --
--- TOC entry 3322 (class 2606 OID 16675)
--- Name: speakers speakers_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3560 (class 2606 OID 16762)
+-- Name: speakers speakers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.speakers
@@ -12182,8 +12376,8 @@ ALTER TABLE ONLY public.speakers
 
 
 --
--- TOC entry 3364 (class 2606 OID 17017)
--- Name: stages stages_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3562 (class 2606 OID 16764)
+-- Name: stages stages_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.stages
@@ -12191,8 +12385,8 @@ ALTER TABLE ONLY public.stages
 
 
 --
--- TOC entry 3386 (class 2606 OID 17223)
--- Name: tasks tasks_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3564 (class 2606 OID 16766)
+-- Name: tasks tasks_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.tasks
@@ -12200,8 +12394,8 @@ ALTER TABLE ONLY public.tasks
 
 
 --
--- TOC entry 3316 (class 2606 OID 16652)
--- Name: training_directions training_directions_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3566 (class 2606 OID 16768)
+-- Name: training_directions training_directions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.training_directions
@@ -12209,8 +12403,8 @@ ALTER TABLE ONLY public.training_directions
 
 
 --
--- TOC entry 3362 (class 2606 OID 17010)
--- Name: type_basic_tests type_basic_tests_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3568 (class 2606 OID 16770)
+-- Name: type_basic_tests type_basic_tests_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.type_basic_tests
@@ -12218,8 +12412,8 @@ ALTER TABLE ONLY public.type_basic_tests
 
 
 --
--- TOC entry 3378 (class 2606 OID 17122)
--- Name: type_interviews type_interviews_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3570 (class 2606 OID 16772)
+-- Name: type_interviews type_interviews_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.type_interviews
@@ -12227,8 +12421,8 @@ ALTER TABLE ONLY public.type_interviews
 
 
 --
--- TOC entry 3300 (class 2606 OID 16542)
--- Name: universities universities_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3572 (class 2606 OID 16774)
+-- Name: universities universities_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.universities
@@ -12236,8 +12430,8 @@ ALTER TABLE ONLY public.universities
 
 
 --
--- TOC entry 3304 (class 2606 OID 16563)
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3574 (class 2606 OID 16776)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -12245,8 +12439,8 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3340 (class 2606 OID 16808)
--- Name: vacancies vacancies_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3576 (class 2606 OID 16778)
+-- Name: vacancies vacancies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancies
@@ -12254,8 +12448,8 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3350 (class 2606 OID 16898)
--- Name: vacancy_reviews vacancy_reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3578 (class 2606 OID 16780)
+-- Name: vacancy_reviews vacancy_reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancy_reviews
@@ -12263,8 +12457,8 @@ ALTER TABLE ONLY public.vacancy_reviews
 
 
 --
--- TOC entry 3388 (class 2606 OID 17245)
--- Name: vacancy_statuses vacancy_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3580 (class 2606 OID 16782)
+-- Name: vacancy_statuses vacancy_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancy_statuses
@@ -12272,8 +12466,8 @@ ALTER TABLE ONLY public.vacancy_statuses
 
 
 --
--- TOC entry 3318 (class 2606 OID 16659)
--- Name: work_experiences work_experiences_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3582 (class 2606 OID 16784)
+-- Name: work_experiences work_experiences_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.work_experiences
@@ -12281,8 +12475,8 @@ ALTER TABLE ONLY public.work_experiences
 
 
 --
--- TOC entry 3320 (class 2606 OID 16666)
--- Name: work_schedules work_schedules_pkey; Type: CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3584 (class 2606 OID 16786)
+-- Name: work_schedules work_schedules_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.work_schedules
@@ -12290,8 +12484,8 @@ ALTER TABLE ONLY public.work_schedules
 
 
 --
--- TOC entry 3444 (class 2606 OID 17054)
--- Name: basic_tests basic_tests_basic_test_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3585 (class 2606 OID 16787)
+-- Name: basic_tests basic_tests_basic_test_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.basic_tests
@@ -12299,8 +12493,8 @@ ALTER TABLE ONLY public.basic_tests
 
 
 --
--- TOC entry 3445 (class 2606 OID 17163)
--- Name: basic_tests basic_tests_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3586 (class 2606 OID 16792)
+-- Name: basic_tests basic_tests_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.basic_tests
@@ -12308,8 +12502,8 @@ ALTER TABLE ONLY public.basic_tests
 
 
 --
--- TOC entry 3446 (class 2606 OID 17059)
--- Name: basic_tests basic_tests_type_basic_test_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3587 (class 2606 OID 16797)
+-- Name: basic_tests basic_tests_type_basic_test_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.basic_tests
@@ -12317,8 +12511,8 @@ ALTER TABLE ONLY public.basic_tests
 
 
 --
--- TOC entry 3447 (class 2606 OID 17078)
--- Name: championships championships_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3588 (class 2606 OID 16802)
+-- Name: championships championships_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.championships
@@ -12326,8 +12520,8 @@ ALTER TABLE ONLY public.championships
 
 
 --
--- TOC entry 3395 (class 2606 OID 16550)
--- Name: cities cities_region_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3589 (class 2606 OID 16807)
+-- Name: cities cities_region_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.cities
@@ -12335,8 +12529,8 @@ ALTER TABLE ONLY public.cities
 
 
 --
--- TOC entry 3432 (class 2606 OID 16861)
--- Name: conditions conditions_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3590 (class 2606 OID 16812)
+-- Name: conditions conditions_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.conditions
@@ -12344,8 +12538,8 @@ ALTER TABLE ONLY public.conditions
 
 
 --
--- TOC entry 3412 (class 2606 OID 16712)
--- Name: curators curators_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3591 (class 2606 OID 16817)
+-- Name: curators curators_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.curators
@@ -12353,8 +12547,8 @@ ALTER TABLE ONLY public.curators
 
 
 --
--- TOC entry 3413 (class 2606 OID 16717)
--- Name: curators curators_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3592 (class 2606 OID 16822)
+-- Name: curators curators_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.curators
@@ -12362,8 +12556,8 @@ ALTER TABLE ONLY public.curators
 
 
 --
--- TOC entry 3433 (class 2606 OID 16873)
--- Name: duties duties_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3593 (class 2606 OID 16827)
+-- Name: duties duties_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.duties
@@ -12371,8 +12565,8 @@ ALTER TABLE ONLY public.duties
 
 
 --
--- TOC entry 3414 (class 2606 OID 16731)
--- Name: events events_speaker_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3594 (class 2606 OID 16832)
+-- Name: events events_speaker_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.events
@@ -12380,8 +12574,8 @@ ALTER TABLE ONLY public.events
 
 
 --
--- TOC entry 3437 (class 2606 OID 16926)
--- Name: history_work_experiences history_work_experiences_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3595 (class 2606 OID 16837)
+-- Name: history_work_experiences history_work_experiences_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.history_work_experiences
@@ -12389,8 +12583,8 @@ ALTER TABLE ONLY public.history_work_experiences
 
 
 --
--- TOC entry 3417 (class 2606 OID 16756)
--- Name: hrs hrs_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3596 (class 2606 OID 16842)
+-- Name: hrs hrs_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.hrs
@@ -12398,8 +12592,8 @@ ALTER TABLE ONLY public.hrs
 
 
 --
--- TOC entry 3418 (class 2606 OID 16761)
--- Name: hrs hrs_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3597 (class 2606 OID 16847)
+-- Name: hrs hrs_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.hrs
@@ -12407,8 +12601,8 @@ ALTER TABLE ONLY public.hrs
 
 
 --
--- TOC entry 3400 (class 2606 OID 16949)
--- Name: interns interns_branch_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3598 (class 2606 OID 16852)
+-- Name: interns interns_branch_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interns
@@ -12416,8 +12610,8 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3401 (class 2606 OID 16604)
--- Name: interns interns_course_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3599 (class 2606 OID 16857)
+-- Name: interns interns_course_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interns
@@ -12425,8 +12619,8 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3402 (class 2606 OID 16609)
--- Name: interns interns_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3600 (class 2606 OID 16862)
+-- Name: interns interns_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interns
@@ -12434,8 +12628,8 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3403 (class 2606 OID 16594)
--- Name: interns interns_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3601 (class 2606 OID 16867)
+-- Name: interns interns_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interns
@@ -12443,8 +12637,8 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3404 (class 2606 OID 16614)
--- Name: interns interns_internship_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3602 (class 2606 OID 16872)
+-- Name: interns interns_internship_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interns
@@ -12452,8 +12646,8 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3405 (class 2606 OID 16992)
--- Name: interns interns_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3603 (class 2606 OID 16877)
+-- Name: interns interns_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interns
@@ -12461,8 +12655,8 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3406 (class 2606 OID 16910)
--- Name: interns interns_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3604 (class 2606 OID 16882)
+-- Name: interns interns_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interns
@@ -12470,8 +12664,8 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3407 (class 2606 OID 16599)
--- Name: interns interns_university_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3605 (class 2606 OID 16887)
+-- Name: interns interns_university_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interns
@@ -12479,8 +12673,8 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3408 (class 2606 OID 16987)
--- Name: interns interns_work_experience_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3606 (class 2606 OID 16892)
+-- Name: interns interns_work_experience_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interns
@@ -12488,8 +12682,8 @@ ALTER TABLE ONLY public.interns
 
 
 --
--- TOC entry 3451 (class 2606 OID 17142)
--- Name: interviews interviews_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3607 (class 2606 OID 16897)
+-- Name: interviews interviews_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interviews
@@ -12497,8 +12691,8 @@ ALTER TABLE ONLY public.interviews
 
 
 --
--- TOC entry 3452 (class 2606 OID 17137)
--- Name: interviews interviews_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3608 (class 2606 OID 16902)
+-- Name: interviews interviews_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interviews
@@ -12506,8 +12700,8 @@ ALTER TABLE ONLY public.interviews
 
 
 --
--- TOC entry 3453 (class 2606 OID 17132)
--- Name: interviews interviews_type_interview_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3609 (class 2606 OID 16907)
+-- Name: interviews interviews_type_interview_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.interviews
@@ -12515,8 +12709,8 @@ ALTER TABLE ONLY public.interviews
 
 
 --
--- TOC entry 3464 (class 2606 OID 17335)
--- Name: invations invations_role_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3610 (class 2606 OID 16912)
+-- Name: invations invations_role_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.invations
@@ -12524,8 +12718,8 @@ ALTER TABLE ONLY public.invations
 
 
 --
--- TOC entry 3438 (class 2606 OID 16977)
--- Name: language_interns language_interns_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3611 (class 2606 OID 16917)
+-- Name: language_interns language_interns_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.language_interns
@@ -12533,8 +12727,8 @@ ALTER TABLE ONLY public.language_interns
 
 
 --
--- TOC entry 3439 (class 2606 OID 16972)
--- Name: language_interns language_interns_language_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3612 (class 2606 OID 16922)
+-- Name: language_interns language_interns_language_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.language_interns
@@ -12542,8 +12736,8 @@ ALTER TABLE ONLY public.language_interns
 
 
 --
--- TOC entry 3456 (class 2606 OID 17210)
--- Name: mentor_reviews mentor_reviews_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3613 (class 2606 OID 16927)
+-- Name: mentor_reviews mentor_reviews_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.mentor_reviews
@@ -12551,8 +12745,8 @@ ALTER TABLE ONLY public.mentor_reviews
 
 
 --
--- TOC entry 3457 (class 2606 OID 17205)
--- Name: mentor_reviews mentor_reviews_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3614 (class 2606 OID 16932)
+-- Name: mentor_reviews mentor_reviews_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.mentor_reviews
@@ -12560,8 +12754,8 @@ ALTER TABLE ONLY public.mentor_reviews
 
 
 --
--- TOC entry 3419 (class 2606 OID 16771)
--- Name: mentors mentors_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3615 (class 2606 OID 16937)
+-- Name: mentors mentors_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.mentors
@@ -12569,8 +12763,8 @@ ALTER TABLE ONLY public.mentors
 
 
 --
--- TOC entry 3420 (class 2606 OID 16776)
--- Name: mentors mentors_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3616 (class 2606 OID 16942)
+-- Name: mentors mentors_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.mentors
@@ -12578,8 +12772,17 @@ ALTER TABLE ONLY public.mentors
 
 
 --
--- TOC entry 3421 (class 2606 OID 16795)
--- Name: organization_reviews organization_reviews_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3617 (class 2606 OID 16947)
+-- Name: notes notes_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.notes
+    ADD CONSTRAINT notes_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- TOC entry 3618 (class 2606 OID 16952)
+-- Name: organization_reviews organization_reviews_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_reviews
@@ -12587,8 +12790,8 @@ ALTER TABLE ONLY public.organization_reviews
 
 
 --
--- TOC entry 3422 (class 2606 OID 16790)
--- Name: organization_reviews organization_reviews_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3619 (class 2606 OID 16957)
+-- Name: organization_reviews organization_reviews_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organization_reviews
@@ -12596,8 +12799,8 @@ ALTER TABLE ONLY public.organization_reviews
 
 
 --
--- TOC entry 3409 (class 2606 OID 16697)
--- Name: organizations organizations_branch_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3620 (class 2606 OID 16962)
+-- Name: organizations organizations_branch_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
@@ -12605,8 +12808,8 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- TOC entry 3410 (class 2606 OID 16692)
--- Name: organizations organizations_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3621 (class 2606 OID 16967)
+-- Name: organizations organizations_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
@@ -12614,8 +12817,8 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- TOC entry 3411 (class 2606 OID 16702)
--- Name: organizations organizations_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3622 (class 2606 OID 16972)
+-- Name: organizations organizations_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.organizations
@@ -12623,8 +12826,8 @@ ALTER TABLE ONLY public.organizations
 
 
 --
--- TOC entry 3393 (class 2606 OID 16474)
--- Name: permissions permissions_role_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3623 (class 2606 OID 16977)
+-- Name: permissions permissions_role_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.permissions
@@ -12632,8 +12835,8 @@ ALTER TABLE ONLY public.permissions
 
 
 --
--- TOC entry 3461 (class 2606 OID 17298)
--- Name: presences presences_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3624 (class 2606 OID 16982)
+-- Name: presences presences_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.presences
@@ -12641,8 +12844,8 @@ ALTER TABLE ONLY public.presences
 
 
 --
--- TOC entry 3462 (class 2606 OID 17308)
--- Name: presences presences_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3625 (class 2606 OID 16987)
+-- Name: presences presences_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.presences
@@ -12650,8 +12853,8 @@ ALTER TABLE ONLY public.presences
 
 
 --
--- TOC entry 3463 (class 2606 OID 17303)
--- Name: presences presences_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3626 (class 2606 OID 16992)
+-- Name: presences presences_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.presences
@@ -12659,8 +12862,8 @@ ALTER TABLE ONLY public.presences
 
 
 --
--- TOC entry 3399 (class 2606 OID 16584)
--- Name: recoveries recoveries_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3627 (class 2606 OID 16997)
+-- Name: recoveries recoveries_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.recoveries
@@ -12668,8 +12871,8 @@ ALTER TABLE ONLY public.recoveries
 
 
 --
--- TOC entry 3434 (class 2606 OID 16885)
--- Name: requirements requirements_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3628 (class 2606 OID 17002)
+-- Name: requirements requirements_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.requirements
@@ -12677,8 +12880,8 @@ ALTER TABLE ONLY public.requirements
 
 
 --
--- TOC entry 3449 (class 2606 OID 17106)
--- Name: responses responses_response_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3629 (class 2606 OID 17007)
+-- Name: responses responses_response_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.responses
@@ -12686,8 +12889,8 @@ ALTER TABLE ONLY public.responses
 
 
 --
--- TOC entry 3450 (class 2606 OID 17111)
--- Name: responses responses_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3630 (class 2606 OID 17012)
+-- Name: responses responses_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.responses
@@ -12695,8 +12898,8 @@ ALTER TABLE ONLY public.responses
 
 
 --
--- TOC entry 3448 (class 2606 OID 17191)
--- Name: scholls scholls_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3631 (class 2606 OID 17017)
+-- Name: scholls scholls_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.scholls
@@ -12704,8 +12907,8 @@ ALTER TABLE ONLY public.scholls
 
 
 --
--- TOC entry 3454 (class 2606 OID 17173)
--- Name: selection_basic_tests selection_basic_tests_basic_test_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3632 (class 2606 OID 17022)
+-- Name: selection_basic_tests selection_basic_tests_basic_test_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.selection_basic_tests
@@ -12713,8 +12916,8 @@ ALTER TABLE ONLY public.selection_basic_tests
 
 
 --
--- TOC entry 3455 (class 2606 OID 17178)
--- Name: selection_basic_tests selection_basic_tests_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3633 (class 2606 OID 17027)
+-- Name: selection_basic_tests selection_basic_tests_selection_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.selection_basic_tests
@@ -12722,8 +12925,8 @@ ALTER TABLE ONLY public.selection_basic_tests
 
 
 --
--- TOC entry 3440 (class 2606 OID 17042)
--- Name: selections selections_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3634 (class 2606 OID 17032)
+-- Name: selections selections_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.selections
@@ -12731,8 +12934,8 @@ ALTER TABLE ONLY public.selections
 
 
 --
--- TOC entry 3441 (class 2606 OID 17186)
--- Name: selections selections_school_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3635 (class 2606 OID 17037)
+-- Name: selections selections_school_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.selections
@@ -12740,8 +12943,8 @@ ALTER TABLE ONLY public.selections
 
 
 --
--- TOC entry 3442 (class 2606 OID 17037)
--- Name: selections selections_stage_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3636 (class 2606 OID 17042)
+-- Name: selections selections_stage_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.selections
@@ -12749,8 +12952,8 @@ ALTER TABLE ONLY public.selections
 
 
 --
--- TOC entry 3443 (class 2606 OID 17032)
--- Name: selections selections_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3637 (class 2606 OID 17047)
+-- Name: selections selections_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.selections
@@ -12758,8 +12961,8 @@ ALTER TABLE ONLY public.selections
 
 
 --
--- TOC entry 3415 (class 2606 OID 16746)
--- Name: skill_interns skill_interns_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3638 (class 2606 OID 17052)
+-- Name: skill_interns skill_interns_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.skill_interns
@@ -12767,8 +12970,8 @@ ALTER TABLE ONLY public.skill_interns
 
 
 --
--- TOC entry 3416 (class 2606 OID 16741)
--- Name: skill_interns skill_interns_skill_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3639 (class 2606 OID 17057)
+-- Name: skill_interns skill_interns_skill_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.skill_interns
@@ -12776,8 +12979,8 @@ ALTER TABLE ONLY public.skill_interns
 
 
 --
--- TOC entry 3430 (class 2606 OID 16844)
--- Name: skill_vacancies skill_vacancies_skill_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3640 (class 2606 OID 17062)
+-- Name: skill_vacancies skill_vacancies_skill_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.skill_vacancies
@@ -12785,8 +12988,8 @@ ALTER TABLE ONLY public.skill_vacancies
 
 
 --
--- TOC entry 3431 (class 2606 OID 16849)
--- Name: skill_vacancies skill_vacancies_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3641 (class 2606 OID 17067)
+-- Name: skill_vacancies skill_vacancies_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.skill_vacancies
@@ -12794,8 +12997,8 @@ ALTER TABLE ONLY public.skill_vacancies
 
 
 --
--- TOC entry 3458 (class 2606 OID 17234)
--- Name: tasks tasks_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3642 (class 2606 OID 17072)
+-- Name: tasks tasks_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.tasks
@@ -12803,8 +13006,8 @@ ALTER TABLE ONLY public.tasks
 
 
 --
--- TOC entry 3459 (class 2606 OID 17229)
--- Name: tasks tasks_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3643 (class 2606 OID 17077)
+-- Name: tasks tasks_training_direction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.tasks
@@ -12812,8 +13015,8 @@ ALTER TABLE ONLY public.tasks
 
 
 --
--- TOC entry 3460 (class 2606 OID 17224)
--- Name: tasks tasks_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3644 (class 2606 OID 17082)
+-- Name: tasks tasks_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.tasks
@@ -12821,8 +13024,8 @@ ALTER TABLE ONLY public.tasks
 
 
 --
--- TOC entry 3394 (class 2606 OID 16620)
--- Name: universities universities_city_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3645 (class 2606 OID 17087)
+-- Name: universities universities_city_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.universities
@@ -12830,8 +13033,8 @@ ALTER TABLE ONLY public.universities
 
 
 --
--- TOC entry 3396 (class 2606 OID 16574)
--- Name: users users_citizenship_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3646 (class 2606 OID 17092)
+-- Name: users users_citizenship_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -12839,8 +13042,8 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3397 (class 2606 OID 16569)
--- Name: users users_city_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3647 (class 2606 OID 17097)
+-- Name: users users_city_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -12848,8 +13051,8 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3398 (class 2606 OID 16564)
--- Name: users users_role_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3648 (class 2606 OID 17102)
+-- Name: users users_role_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.users
@@ -12857,8 +13060,8 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 3423 (class 2606 OID 16819)
--- Name: vacancies vacancies_employment_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3649 (class 2606 OID 17107)
+-- Name: vacancies vacancies_employment_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancies
@@ -12866,8 +13069,8 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3424 (class 2606 OID 16824)
--- Name: vacancies vacancies_hr_creater_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3650 (class 2606 OID 17112)
+-- Name: vacancies vacancies_hr_creater_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancies
@@ -12875,8 +13078,8 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3425 (class 2606 OID 16829)
--- Name: vacancies vacancies_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3651 (class 2606 OID 17117)
+-- Name: vacancies vacancies_mentor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancies
@@ -12884,8 +13087,8 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3426 (class 2606 OID 16814)
--- Name: vacancies vacancies_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3652 (class 2606 OID 17122)
+-- Name: vacancies vacancies_organization_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancies
@@ -12893,8 +13096,8 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3427 (class 2606 OID 17246)
--- Name: vacancies vacancies_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3653 (class 2606 OID 17127)
+-- Name: vacancies vacancies_status_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancies
@@ -12902,8 +13105,8 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3428 (class 2606 OID 16834)
--- Name: vacancies vacancies_work_experience_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3654 (class 2606 OID 17132)
+-- Name: vacancies vacancies_work_experience_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancies
@@ -12911,8 +13114,8 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3429 (class 2606 OID 16809)
--- Name: vacancies vacancies_work_schedule_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3655 (class 2606 OID 17137)
+-- Name: vacancies vacancies_work_schedule_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancies
@@ -12920,8 +13123,8 @@ ALTER TABLE ONLY public.vacancies
 
 
 --
--- TOC entry 3435 (class 2606 OID 16904)
--- Name: vacancy_reviews vacancy_reviews_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3656 (class 2606 OID 17142)
+-- Name: vacancy_reviews vacancy_reviews_intern_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancy_reviews
@@ -12929,59 +13132,15 @@ ALTER TABLE ONLY public.vacancy_reviews
 
 
 --
--- TOC entry 3436 (class 2606 OID 16899)
--- Name: vacancy_reviews vacancy_reviews_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hack_db_3kwr_user
+-- TOC entry 3657 (class 2606 OID 17147)
+-- Name: vacancy_reviews vacancy_reviews_vacancy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.vacancy_reviews
     ADD CONSTRAINT vacancy_reviews_vacancy_id_fkey FOREIGN KEY (vacancy_id) REFERENCES public.vacancies(id);
 
 
---
--- TOC entry 3706 (class 0 OID 0)
--- Dependencies: 3
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: hack_db_3kwr_user
---
-
-REVOKE ALL ON SCHEMA public FROM postgres;
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-GRANT ALL ON SCHEMA public TO hack_db_3kwr_user;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
--- TOC entry 2280 (class 826 OID 16391)
--- Name: DEFAULT PRIVILEGES FOR SEQUENCES; Type: DEFAULT ACL; Schema: -; Owner: postgres
---
-
-ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON SEQUENCES  TO hack_db_3kwr_user;
-
-
---
--- TOC entry 2282 (class 826 OID 16393)
--- Name: DEFAULT PRIVILEGES FOR TYPES; Type: DEFAULT ACL; Schema: -; Owner: postgres
---
-
-ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON TYPES  TO hack_db_3kwr_user;
-
-
---
--- TOC entry 2281 (class 826 OID 16392)
--- Name: DEFAULT PRIVILEGES FOR FUNCTIONS; Type: DEFAULT ACL; Schema: -; Owner: postgres
---
-
-ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON FUNCTIONS  TO hack_db_3kwr_user;
-
-
---
--- TOC entry 2279 (class 826 OID 16390)
--- Name: DEFAULT PRIVILEGES FOR TABLES; Type: DEFAULT ACL; Schema: -; Owner: postgres
---
-
-ALTER DEFAULT PRIVILEGES FOR ROLE postgres GRANT ALL ON TABLES  TO hack_db_3kwr_user;
-
-
--- Completed on 2023-05-28 23:36:16
+-- Completed on 2023-06-09 22:36:22
 
 --
 -- PostgreSQL database dump complete

@@ -20,7 +20,7 @@ class NLPrecom:
         self.model = load_model(f"{self.model_name}.h5")
         self.lemmatizer = WordNetLemmatizer()
         self.taglist = []
-        with open("./class.txt", encoding="cp1251") as file:
+        with open("./class.txt", encoding="utf8") as file:
             self.taglist += file.readlines()
 
     def bag_of_words(self, sentence, words):
@@ -42,5 +42,5 @@ class NLPrecom:
         resai = self.model.predict(np.array([p]))[0]
         resault = []
         tagstr = self.taglist[np.argmax(resai)][:-1]
-        resault += tagstr.replace(",", "").split(" ")
+        resault += tagstr.split(",")
         return resault

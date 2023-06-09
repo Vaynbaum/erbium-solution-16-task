@@ -1,10 +1,19 @@
 <div class="container">
-    <mat-card class="message" *ngFor="let not of nots">
+  <mat-progress-spinner *ngIf="!loaded" mode="indeterminate">
+  </mat-progress-spinner>
+  <div *ngIf="loaded && empty">Здесь ничего нет...</div>
+    <mat-card class="message" *ngFor="let not of nots| groupByDate">
+      <span [ngStyle]="{'background-color': color}">{{not.key| date:'dd/MM/yyyy'}}</span>
+        <mat-divider></mat-divider>
+        <ng-container *ngFor="let n of not.value">
         <mat-card-header>
-          <mat-card-subtitle>{{not.message}}</mat-card-subtitle>
+          <mat-card-subtitle>{{n.text}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
-          {{not.date| date: 'dd.MM.yyyy'}}
+          {{n.date_copy| date: 'hh:mm:ss'}}
+          <div *ngIf="n.is_readed">, прочитано</div>
         </mat-card-actions>
+        <mat-divider></mat-divider>
+      </ng-container>
       </mat-card>
 </div>

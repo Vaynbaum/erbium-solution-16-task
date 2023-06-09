@@ -6,7 +6,7 @@ from config import settings
 
 
 def init():
-    db_url = f"postgresql://{settings.DB_USER}:{settings.DB_PASSWORD}@{settings.DB_HOST}/{settings.DB_NAME}"
+    db_url = f"postgresql://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}@{settings.HOST}/{settings.POSTGRES_DB}"
     engine = create_engine(db_url)
     session_local = sessionmaker(autoflush=False, bind=engine)
     return engine, session_local

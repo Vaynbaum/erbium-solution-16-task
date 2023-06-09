@@ -3,7 +3,7 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-
+const URL='local'
 @Injectable({
   providedIn: 'root',
 })
@@ -18,7 +18,7 @@ export class ImageService {
       if (url.includes('http')) {
         return url;
       } else {
-        return `${environment.BACKEND_URL_FILE}/${url}`;
+        return `${URL}/${url}`;
       }
     } else {
       return `${environment.IMAGES_URL}/no-camera.png`;
@@ -32,7 +32,7 @@ export class ImageService {
     portfolio?: boolean,
     name_type?: string
   ) {
-    let url = `${environment.BACKEND_URL_FILE}`;
+    let url = `${URL}/`;
     let f = false;
     if (filename) {
       if (!f) {
@@ -72,8 +72,12 @@ export class ImageService {
     return null;
   }
 
+  compileUrlTask(url: string) {
+    return `${URL}/${url}`;
+  }
+
   compileUrl(url: string) {
-    return `${environment.BACKEND_URL_FILE}/${url}?type=appliction/pdf`;
+    return `${URL}/${url}`;
   }
   UnloadFile(
     fileImg: any,
@@ -83,7 +87,6 @@ export class ImageService {
   ) {
     let formData = new FormData();
     formData.append('file', fileImg);
-    console.log(formData);
 
     let s = this.unloadFile(
       this.authService.GetAccessToken(),

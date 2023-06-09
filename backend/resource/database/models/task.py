@@ -3,7 +3,6 @@ from sqlalchemy.orm import relationship
 
 from database.base import Base
 from database.models.training_direction import TrainingDirection
-from database.models.vacancy import Vacancy
 
 
 class Task(Base):
@@ -14,5 +13,4 @@ class Task(Base):
     mentor_id = Column(Integer, ForeignKey("mentors.id"))
     url_portfolio = Column(String(255), nullable=False)
 
-    vacancy = relationship(Vacancy)
     training_direction = relationship(TrainingDirection)

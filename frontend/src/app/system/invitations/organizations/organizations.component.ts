@@ -79,8 +79,7 @@ export class OrganizationsComponent implements OnInit {
     this.isMobile = event.target.innerWidth < 768;
   }
 
-  ngOnInit(): void {
-    this.isMobile = window.innerWidth < 768;
+  loadOrgs() {
     this.vacancyService
       .GetAllOganizationWithFilters()
       .subscribe((items: any) => {
@@ -89,6 +88,11 @@ export class OrganizationsComponent implements OnInit {
         if (this.organization_cards.length == 0) this.empty = true;
         else this.empty = false;
       });
+  }
+
+  ngOnInit(): void {
+    this.isMobile = window.innerWidth < 768;
+    this.loadOrgs();
     this.vacancyService
       .GetAllTrainingDirections()
       .subscribe((directions: any) => {
@@ -139,6 +143,8 @@ export class OrganizationsComponent implements OnInit {
     this.dr(this.metros);
     this.dr(this.branchs);
     this.dr(this.directions);
+    this.empty = false;
+    this.loadOrgs();
   }
 
   onKeyup() {

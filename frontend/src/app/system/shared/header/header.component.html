@@ -13,15 +13,21 @@
         <mat-icon [matBadge]="value_badge" matBadgeColor="warn">notifications_none</mat-icon>
       </button>
       <mat-menu #menu2="matMenu">
-        <ng-container *ngIf="role == 'Стажер'">
+        <ng-container>
           <ng-container *ngFor="let not of nots">
-            <button [disabled]="isDisabled()" mat-menu-item>{{not.message}}<br> <span
-                class="notification_date">{{not.date| date: 'dd.MM.yyyy'}}</span></button>
+            <button [disabled]="not.is_readed" mat-menu-item>{{not.text}}<br> <span
+                class="notification_date">{{not.created| date: 'dd.MM.yyyy'}}</span></button>
             <mat-divider></mat-divider>
           </ng-container>
         </ng-container>
-        <button [ngClass]="{'disabled': role != 'Стажер'}" mat-menu-item class="button_notification_all"><a [routerLink]="['/system/all_nots']">Посмотреть все
-            сообщения</a></button>
+        <button mat-menu-item class="button_notification_all">
+          <a [routerLink]="['/system/all_nots']">
+            Посмотреть все сообщения
+          </a>
+        </button>
+        <button (click)="readNotes()" mat-menu-item>
+          Отметить все как прочитанные
+        </button>
       </mat-menu>
       <img [src]="getIcon()" class="avatar cover">
       <div class="name_role">

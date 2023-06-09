@@ -8,6 +8,7 @@ from database.models.curator import Curator
 from database.models.hr import HR
 from database.models.intern import Intern
 from database.models.mentor import Mentor
+from database.models.note import Note
 from database.models.role import Role
 
 
@@ -34,6 +35,8 @@ class User(Base):
     hr = relationship(HR, backref="user", uselist=False, cascade="all,delete")
     curator = relationship(Curator, backref="user", uselist=False, cascade="all,delete")
     mentor = relationship(Mentor, backref="user", uselist=False, cascade="all,delete")
+    
+    notes = relationship(Note, backref="user", cascade="all,delete")
 
     role = relationship(Role)
     city = relationship(City)

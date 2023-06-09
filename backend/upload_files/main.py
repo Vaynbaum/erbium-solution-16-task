@@ -1,32 +1,21 @@
-import json
-import random
-import string
-from fastapi import FastAPI, File, HTTPException, Response, Security, UploadFile, status
-from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-
-
+import datetime
+from io import BytesIO
+from fastapi import FastAPI, Query
+from fastapi.security import HTTPBearer
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from deta import Deta
-import requests
+import xlsxwriter
 
 from config import settings
+from routers import deta_router, local_router
 from controllers.auth_controller import AuthController
-from exceptions.token_exception import TokenException
+
 
 app = FastAPI()
 deta = Deta(settings.DETA_PROJECT_KEY)
-drive = deta.Drive(settings.DETA_NAME_DRIVE)
 security = HTTPBearer()
 auth_controller = AuthController()
-
-
-def generate_img_name_by_key(id: int):
-    return f"{id}.jpg"
-
-
-def generate_file_name_by_key(id: int, filename: str, filtype: str = "portfolio"):
-    return f"{id}_{filtype}.{filename.split('.')[-1]}"
 
 
 app.add_middleware(
@@ -38,65 +27,40 @@ app.add_middleware(
 )
 
 
-@app.delete("/")
-def delete_img(
-    credentials: HTTPAuthorizationCredentials = Security(security),
+@app.get("/excel_stats")
+def upload_excel(
+    vacancy: list[str] = Query(),
+    intern: list[str] = Query(),
+    date: list = Query(),
+    hour: list = Query(),
+    status: list[str] = Query(),
 ):
-    try:
-        id, role_id = auth_controller.decode_token(credentials.credentials)
-    except TokenException as e:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=e.message)
-    return drive.delete(generate_img_name_by_key(id))
-
-
-@app.post("/")
-def upload_img(
-    portfolio: bool = False,
-    file: UploadFile = File(...),
-    filename: str | None = None,
-    name_type: str | None = None,
-    credentials: HTTPAuthorizationCredentials = Security(security),
-):
-    try:
-        id, role_id = auth_controller.decode_token(credentials.credentials)
-    except TokenException as e:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=e.message)
-    if portfolio:
-        res = drive.put(generate_file_name_by_key(id, filename), file.file)
-        return f"{random.choice(string.ascii_letters)}/{res}"
-    elif name_type:
-        let = random.choice(string.ascii_letters)
-        long = generate_file_name_by_key(id, filename, name_type)
-        res = drive.put(f"{let}_{long}", file.file)
-        return res
-    else:
-        res = drive.put(
-            filename if filename else generate_img_name_by_key(id), file.file
+    output = BytesIO()
+    workbook = xlsxwriter.Workbook(output)
+    worksheet = workbook.add_worksheet()
+    worksheet.write(0, 0, "Вакансия")
+    worksheet.write(0, 1, "Стажер")
+    worksheet.write(0, 2, "Кол-во часов")
+    worksheet.write(0, 3, "Дата")
+    worksheet.write(0, 4, "Статус")
+    format2 = workbook.add_format({"num_format": "dd/mm/yyyy"})
+    for i in range(len(vacancy)):
+        worksheet.write(i + 1, 0, vacancy[i])
+        worksheet.write(i + 1, 1, intern[i])
+        worksheet.write(i + 1, 2, int(hour[i]))
+        worksheet.write(
+            i + 1, 3, datetime.datetime.strptime(date[i], "%Y-%m-%dT%H:%M:%S"), format2
         )
-        return f"{random.choice(string.ascii_letters)}/{res}"
+        worksheet.write(i + 1, 4, status[i])
+    workbook.close()
+    output.seek(0)
 
-
-@app.get("/{symbol}/{name}")
-def download_img(symbol: str, name: str, type: str | None = None):
-    data = drive.get(name)
-    if data:
-        if type:
-            return Response(content=data.read(), media_type=type)
-        return StreamingResponse(data.iter_chunks(2048), media_type="image/jpg")
-    return None
-
-
-@app.get("/pdf_resume")
-def upload_pdf():
-    api_key = "df68MTI4ODE6OTkzNzpST2pxdEVmZlgyTFlOZHN"
-    template_id = "e9877b238ce65474"
-    data = {
-        "message": "The greatest glory in living lies not in never falling",
-        "author": "Nelson Mandela",
+    headers = {
+        "Content-Disposition": 'attachment; filename="statistic.xlsx"',
+        "Access-Control-Expose-Headers": "Content-Disposition",
     }
-    response = requests.post(
-        f"https://api.apitemplate.io/v1/create?template_id={template_id}",
-        headers={"X-API-KEY": f"{api_key}"},
-        json=data,
-    )
-    return json.loads(response.text)
+    return StreamingResponse(output, headers=headers, media_type="application/xls")
+
+
+app.include_router(local_router.router, prefix="/local")
+app.include_router(deta_router.router)

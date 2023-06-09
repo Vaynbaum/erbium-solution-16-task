@@ -20,3 +20,4 @@ class FullSelection(PydanticSelectionInDB):
     intern: InternSelection | None
     school_val: int | None = None
     basic_val: int | None = None
+    interview_val: int | None = None

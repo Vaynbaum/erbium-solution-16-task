@@ -8,7 +8,6 @@ import {
 import { CookieService } from './cookie.service';
 import { TokensModel } from '../models/tokens.model';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 
 const KEY_ACCESS_TOKEN = 'access_token';
 const KEY_REFRESH_TOKEN = 'refresh_token';
@@ -29,7 +28,7 @@ export class AuthService {
 
   Signin(signinModel: SigninModel) {
     this.httpClient
-      .post(`${environment.BACKEND_URL}/signin`, signinModel)
+      .post(`/signin`, signinModel)
       .subscribe(
         (res: any) => {
           this.SaveTokens(res as TokensModel);
@@ -46,7 +45,7 @@ export class AuthService {
   }
 
   RecoverPassword(email: any) {
-    return this.httpClient.get(`${environment.BACKEND_URL}/recover_password`, {
+    return this.httpClient.get(`/recover_password`, {
       params: {
         email: email,
       },
@@ -54,7 +53,7 @@ export class AuthService {
   }
 
   ResetPassword(code: string, password: string) {
-    return this.httpClient.get(`${environment.BACKEND_URL}/reset`, {
+    return this.httpClient.get(`/reset`, {
       params: {
         code: code,
         new_password: password,
@@ -64,7 +63,7 @@ export class AuthService {
 
   Signup(signupModel: SignupModel) {
     this.httpClient
-      .post(`${environment.BACKEND_URL}/signup_to_intern`, signupModel)
+      .post(`/signup_to_intern`, signupModel)
       .subscribe(
         (res: any) => {
           this.SaveTokens(res as TokensModel);
@@ -78,7 +77,7 @@ export class AuthService {
 
   SignupHidden(signupModel: SignupHiddenModel) {
     this.httpClient
-      .post(`${environment.BACKEND_URL}/signup_to_not_intern`, signupModel)
+      .post(`/signup_to_not_intern`, signupModel)
       .subscribe(
         (res: any) => {
           this.SaveTokens(res as TokensModel);
@@ -94,7 +93,7 @@ export class AuthService {
     let token = this.cookieService.GetCookie(KEY_REFRESH_TOKEN);
     if (token) {
       this.httpClient
-        .get(`${environment.BACKEND_URL}/refresh_token`, {
+        .get(`/refresh_token`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .subscribe(

@@ -8,3 +8,5 @@ flower
 python-multipart
 Jinja2
 requests
+xlsxwriter
+Pillow

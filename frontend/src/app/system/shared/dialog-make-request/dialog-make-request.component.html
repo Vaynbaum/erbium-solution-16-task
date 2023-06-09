@@ -1,0 +1,40 @@
+<div class="header_block">
+    <h2 mat-dialog-title>Добавить запрос</h2>
+  </div>
+<mat-dialog-content class="mat-typography">
+    <div class="short_block">
+        <form [formGroup]="form">
+            <div class="class_with_label">
+                <div class="one_2_one">
+                    <input class="input_option_type" [type]="markInput.type" [placeholder]="markInput.label" matInput
+                        [formControl]="markInput.formControl" [matAutocomplete]="automark">
+                    <mat-autocomplete autoActiveFirstOption #automark="matAutocomplete">
+                        <ng-container *ngFor="let option of markInput.values | async">
+                        <mat-option [value]="option.name">
+                            {{option.name}}
+                        </mat-option>
+                        <mat-divider></mat-divider>
+                        </ng-container>
+                    </mat-autocomplete>
+                    <mat-icon class="option_icon">{{markInput.icon}}</mat-icon>
+                    </div>
+            </div>
+            <app-form-field class="date_type" [type]="date.type" [placeholder]="date.placeholder"
+          [formConrol]="date.formControl" [icon]="date.icon" [messageErorFunc]="date.messageError" borderRadius="5px"></app-form-field>
+          <app-form-field [colorBorder]="color" [type]="aboutme_inp.type"
+          [label]="aboutme_inp.label" [placeholder]="aboutme_inp.placeholder" [formConrol]="aboutme_inp.formControl"
+          [icon]="aboutme_inp.icon" [messageErorFunc]="aboutme_inp.messageError" borderRadius="5px">
+        </app-form-field>
+        <div class="wrapper_for_file">
+                <button
+            mat-stroked-button
+            [ngStyle]="{'color':'white', 'background-color': '#079368', 'border': 'none', 'border-radius':'5px'}">Выбрать файл...</button>
+        </div>
+        </form>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="start">
+    <button mat-dialog-close (click)="add()"
+    mat-stroked-button cdkFocusInitial
+    [ngStyle]="{'color':'white', 'background-color': '#079368', 'border': 'none', 'border-radius':'10px', 'box-shadow': '0px 4px 4px rgba(0, 0, 0, 0.25)'}">Отправить</button>
+  </mat-dialog-actions>

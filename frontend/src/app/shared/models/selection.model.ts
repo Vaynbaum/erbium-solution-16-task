@@ -12,6 +12,7 @@ export class Selection {
     public stage?: Stage,
     public intern?: InternSelection,
     public school_val?: number,
-    public basic_val?: number
+    public basic_val?: number,
+    public interview_val?: number
   ) {}
 }

@@ -47,6 +47,10 @@ import { filterSelections } from '../../app/shared/pipes/filterSelections.pipe';
 import { filterMentors } from '../../app/shared/pipes/filterMentors.pipe';
 import { DialogMailerAddComponent } from './shared/dialog-mailer-add/dialog-mailer-add.component';
 import { AllNotificationsComponent } from './all-notifications/all-notifications.component'
+import { filterInvitations } from '../shared/pipes/filterInvitations.pipe';
+import { GroupByPipe } from '../shared/pipes/notsGroupByDate.pipe';
+import { RequestComponent } from './schedule/request/request.component';
+import { DialogMakeRequestComponent } from './shared/dialog-make-request/dialog-make-request.component';
 const mapConfig: YaConfig = {
   apikey: environment.API_KEY,
   lang: 'ru_RU',
@@ -94,6 +98,10 @@ const mapConfig: YaConfig = {
     filterMentors,
     DialogMailerAddComponent,
     AllNotificationsComponent,
+    filterInvitations,
+    GroupByPipe,
+    RequestComponent,
+    DialogMakeRequestComponent,
   ],
   imports: [
     CommonModule,

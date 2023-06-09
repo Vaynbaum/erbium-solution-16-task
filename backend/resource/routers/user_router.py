@@ -4,17 +4,16 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
 from common.dependencies import get_db
-from config import settings
 from controllers.user_controller import UserController
 from exceptions.token_exception import TokenException
 from exceptions.user_exception import UserException
 from models.intern import UpdateInternModel
+from models.interview import CreateInterview
 from models.presence import CreatePresence
 from models.school import UpdateScholl
 from models.task import CreateTask
 from models.user import FullUser, UpdateUserModel
 from models.base_test import UpdateTest
-from models.vacancy import CreateVacancy
 
 security = HTTPBearer()
 router = APIRouter(tags=["User"])
@@ -30,6 +29,17 @@ async def get_my_profile(
         return user_controller.get_my_profile(session, credentials.credentials)
     except TokenException as e:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=e.message)
+    except UserException as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=e.message)
+
+
+@router.get("/profile_by_nick", responses={200: {"model": FullUser}})
+async def get_profile_by_nick(
+    nick: str,
+    session: Session = Depends(get_db),
+):
+    try:
+        return user_controller.get_profile_by_nick(session, nick)
     except UserException as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=e.message)
 
@@ -138,12 +148,61 @@ async def change_base_test(
 @router.get("/rating")
 async def get_rating_intern(
     to_mentor: bool = False,
-    credentials: HTTPAuthorizationCredentials = Security(security),
+    credentials: HTTPAuthorizationCredentials | None = Security(security),
     session: Session = Depends(get_db),
 ):
     try:
         return user_controller.get_rating_intern(
-            session, credentials.credentials, to_mentor
+            session, credentials.credentials, to_mentor, None
+        )
+    except TokenException as e:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=e.message)
+    except UserException as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=e.message)
+
+
+@router.get("/other_rating")
+async def get_rating_intern(
+    user_id: int | None = None,
+    to_mentor: bool = False,
+    session: Session = Depends(get_db),
+):
+    try:
+        return user_controller.get_rating_intern(session, None, to_mentor, user_id)
+    except UserException as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=e.message)
+
+
+@router.get("/end_interning")
+async def get_end_interning(
+    selection_id: int,
+    session: Session = Depends(get_db),
+):
+    try:
+        return user_controller.get_end_interning(session, selection_id)
+    except TokenException as e:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=e.message)
+    except UserException as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=e.message)
+
+
+@router.get("/internings")
+async def get_internings(
+    user_id: int,
+    session: Session = Depends(get_db),
+):
+    return user_controller.get_internings(session, user_id)
+
+
+@router.post("/add_interview")
+async def post_add_interview(
+    interview: CreateInterview,
+    credentials: HTTPAuthorizationCredentials = Security(security),
+    session: Session = Depends(get_db),
+):
+    try:
+        return user_controller.post_add_interview(
+            session, interview, credentials.credentials
         )
     except TokenException as e:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=e.message)
@@ -181,15 +240,27 @@ async def change_portfolio(
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=e.message)
 
 
+@router.get("/my_interview")
+async def get_my_interview(
+    credentials: HTTPAuthorizationCredentials = Security(security),
+    session: Session = Depends(get_db),
+):
+    try:
+        return user_controller.get_my_interview(session, credentials.credentials)
+    except TokenException as e:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=e.message)
+
+
 @router.get("/response")
 async def put_response(
     vacancy_id: int,
+    background_tasks: BackgroundTasks,
     credentials: HTTPAuthorizationCredentials = Security(security),
     session: Session = Depends(get_db),
 ):
     try:
         return user_controller.put_response(
-            session, credentials.credentials, vacancy_id
+            session, credentials.credentials, vacancy_id, background_tasks
         )
     except TokenException as e:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=e.message)
@@ -304,6 +375,18 @@ async def get_selections_to_mentor(
         )
     except TokenException as e:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=e.message)
+    except UserException as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=e.message)
+
+
+@router.get("/pass_interview")
+async def get_pass_interview(
+    interview_id: int,
+    session: Session = Depends(get_db),
+):
+    try:
+        return user_controller.get_pass_interview(session, interview_id)
+
     except UserException as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=e.message)
 

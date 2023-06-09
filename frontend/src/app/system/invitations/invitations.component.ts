@@ -41,6 +41,13 @@ export class InvitationsComponent implements OnInit {
     });
   }
   recommend() {
-    console.log('нажал!');
+    if (!this.isClicked){
+      this.router.navigate(['/system/invitations'], {
+        queryParams: {
+          vacansions: true,
+          recommend: true,
+        }
+      })
+    }
   }
 }

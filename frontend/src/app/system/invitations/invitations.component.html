@@ -7,7 +7,7 @@
         [ngClass]="{'default': !isClicked, 'active': isClicked}">{{nameOrg}}</button>
     </div>
     <div class="right-button">
-      <button mat-button color="success" (click)='recommend()' [ngClass]="{'active': true}">Рекомендовать</button>
+      <button mat-button color="success" (click)='recommend()' [ngClass]="{'active': true}" *ngIf="!isClicked">Рекомендовать</button>
     </div>
   </div>
   <div class="inner_container">

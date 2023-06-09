@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { AuthService } from './auth.service';
 import { CreateOrganization } from '../models/organization.model';
 import { CreateVacancy } from '../models/vacancy.model';
-const URL = `${environment.BACKEND_URL_RESOURCE}/vacancy`;
+import { environment } from 'src/environments/environment';
+
+const URL = `/vacancy`;
 
 @Injectable({
   providedIn: 'root',
@@ -72,7 +72,7 @@ export class VacancyService {
   }
 
   PostPredictAISkills(description: string) {
-    return this.http.post(`${environment.BACKEND_URL_AI}/tag`, {
+    return this.http.post(`/tag`, {
       text: description,
     });
   }
@@ -92,7 +92,13 @@ export class VacancyService {
     ]);
   }
   GetAllStatusesForMentors(): Observable<any> {
-    return of([{ name: 'Был' }, { name: 'Не был' }, { name: 'Отпуск' }]);
+    return of([
+      { name: 'Был' },
+      { name: 'Не был' },
+      { name: 'Учебный отпуск' },
+      { name: 'Отпуск за свой счет' },
+      { name: 'Больничный' },
+    ]);
   }
   GetAllVacanciesWithFilters(
     organization_ids?: number[],

@@ -12,6 +12,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/shared/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpResponse } from '@angular/common/http';
 export interface PeriodicElement {
   vacancy: string;
   intern: string;
@@ -23,7 +24,7 @@ const ELEMENT_DATA: PeriodicElement[] = [];
 @Component({
   selector: 'app-control',
   templateUrl: './control.component.html',
-  styleUrls: ['./control1.component.scss', './control2.component.scss'],
+  styleUrls: ['./control1.component.scss', './control2.component.scss', './control3.component.scss'],
 })
 export class ControlComponent implements OnInit {
   @ViewChild(MatSort) sort = new MatSort();
@@ -84,6 +85,7 @@ export class ControlComponent implements OnInit {
   inter: boolean = true;
   work: boolean = false;
   project: boolean = false;
+  all_selects: any = [];
   ngOnInit(): void {
     this.vacancyService.GetAllStatusesForMentors().subscribe((statuses) => {
       this.statuses = statuses as any[];
@@ -97,11 +99,11 @@ export class ControlComponent implements OnInit {
         .subscribe((vacancies) => {
           this.vacancies = vacancies as any[];
           this.vacancyInput.label = 'Вакансия';
-          this.vacancyInput.icon='keyboard_arrow_down',
-          this.vacancyInput.values = this.compile_values(
-            'vacancy',
-            this.vacancies
-          );
+          (this.vacancyInput.icon = 'keyboard_arrow_down'),
+            (this.vacancyInput.values = this.compile_values(
+              'vacancy',
+              this.vacancies
+            ));
         });
 
       this.userService
@@ -109,6 +111,7 @@ export class ControlComponent implements OnInit {
           this.profileService?.profile?.mentor?.organization_id
         )
         .subscribe((selects: any) => {
+          this.all_selects = selects;
           this.interns = selects
             .filter((select: any) => {
               return select.stage_id == 3;
@@ -120,8 +123,11 @@ export class ControlComponent implements OnInit {
               };
             });
           this.internInput.label = 'Стажер';
-          this.internInput.icon='keyboard_arrow_down',
-          this.internInput.values = this.compile_values('intern', this.interns);
+          (this.internInput.icon = 'keyboard_arrow_down'),
+            (this.internInput.values = this.compile_values(
+              'intern',
+              this.interns
+            ));
         });
       sub.unsubscribe();
       if (profile.role) this.color = MATCH_COLOR[profile.role.name];
@@ -190,9 +196,34 @@ export class ControlComponent implements OnInit {
     );
   }
 
+  endInterning() {
+    if (this.selectInt) {
+      this.userService
+        .EndInterning(
+          (this.all_selects as Array<any>).filter((select: any) => {
+            return select.intern_id == this.selectInt.id;
+          })[0].id
+        )
+        .subscribe(
+          (res: any) => {
+            showMessage(this._snackBar, res.message);
+            this.loadPrence();
+          },
+          (err) => {
+            if (Array.isArray(err.error.detail)) {
+              showMessage(this._snackBar, err.error.detail[0].msg);
+            } else if (err.error.detail) {
+              showMessage(this._snackBar, err.error.detail);
+            }
+          }
+        );
+    } else {
+      showMessage(this._snackBar, 'Выберите стажера');
+    }
+  }
+
   addPresence() {
     const { vacancy, status, date, hour } = this.form.value;
-    console.log(vacancy, status, date, hour);
     let vacancy_id = fetch_id(this.vacancies, vacancy);
     if (vacancy_id && this.selectInt?.id) {
       let presence = {
@@ -226,19 +257,18 @@ export class ControlComponent implements OnInit {
   selectIntern(user: any) {
     this.selectInt = user;
   }
-
+  precences: any;
   loadPrence() {
     this.userService.GetPresence().subscribe((presence: any) => {
-      console.log(
-        presence.map((pre: any) => {
-          return {
-            vacancy: pre.vacancy.name,
-            intern: this.fullName(pre.intern.user),
-            date: pre.date,
-            hour: pre.hour,
-          };
-        })
-      );
+      this.precences = presence.map((pre: any) => {
+        return {
+          vacancy: pre.vacancy.name,
+          intern: this.fullName(pre.intern.user),
+          date: pre.date,
+          hour: pre.hour,
+          status: pre.status,
+        };
+      });
       this.dataSource = new MatTableDataSource(
         presence.map((pre: any) => {
           return {
@@ -252,6 +282,33 @@ export class ControlComponent implements OnInit {
       );
     });
   }
-
+  checkStr(status:string){
+    return status.indexOf('тпуск') !=-1
+  }
+  downloadLink() {
+    this.userService
+      .downloadLink(this.precences)
+      .subscribe((resp: HttpResponse<Blob>) => {
+        // console.log(resp.headers.get('content-disposition'));
+        let data = resp.body;
+        const url = window.URL.createObjectURL(resp.body as any);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'statistic.xlsx';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      });
+  }
   selectInt: any = null;
+  responses: any = [1,2,3]
+  isCheckbox: boolean = false;
+  clickCheckbox(){
+    if (this.isCheckbox){
+      this.isCheckbox=false
+    }
+    else{
+      this.isCheckbox=true
+    }
+
+  }
 }

@@ -194,7 +194,7 @@
             <div class="inner_card_header">
               <mat-card-subtitle class="inner_card_header_left">{{card.name}}</mat-card-subtitle>
               <div class="inner_card_header_right">
-                <mat-card-subtitle>Рейтинг: {{card.average_score}}</mat-card-subtitle>
+                <mat-card-subtitle>Рейтинг: {{card.average_score| number:'1.1-2'}}</mat-card-subtitle>
                 <mat-card-subtitle>Отзывы: {{card.review_count}}</mat-card-subtitle>
               </div>
             </div>

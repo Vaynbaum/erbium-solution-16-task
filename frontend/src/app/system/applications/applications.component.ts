@@ -142,11 +142,19 @@ export class ApplicationsComponent implements OnInit {
   }
   loadResponsesForCurator() {
     this.userService.GetAllResponses(true).subscribe((response) => {
-      this.responses = response as Response[];
+      this.responses = (response as Response[]).filter((response) => {
+        return response.passed == false;
+      });
+
       this.loaded = true;
       if (this.responses.length == 0) this.empty = true;
       else this.empty = false;
     });
+  }
+  selectStatus(status: string) {
+    if (status == 'Подтверждено') return 'Стажируется';
+    if (status == 'Отказано') return 'Отказано на собеседование';
+    return status;
   }
   loadResponsesForHR() {
     this.userService.GetAllResponses(true).subscribe((response) => {
@@ -257,7 +265,8 @@ export class ApplicationsComponent implements OnInit {
     return (
       (selection?.school_val ? selection?.school_val : 0) +
       (selection?.basic_val ? selection?.basic_val : 0) +
-      95
+      (selection?.interview_val ? selection?.interview_val : 0) +
+      45
     );
   }
 
@@ -383,10 +392,11 @@ export class ApplicationsComponent implements OnInit {
     this.changeFlag = !this.changeFlag;
   }
 
-  greenLight(id: number) {
+  greenLight(card: any) {
     if (this.profileService.profile?.role.name == 'Куратор') {
-      this.userService.ChangeStatusResponse(id, 2).subscribe(
+      this.userService.ChangeStatusResponse(card.id, 2).subscribe(
         (res: any) => {
+          this.loadResponsesForCurator();
           showMessage(this._snackBar, res.message);
         },
         (err) => {
@@ -398,8 +408,9 @@ export class ApplicationsComponent implements OnInit {
         }
       );
     } else if (this.profileService.profile?.role.name == 'Наставник') {
-      this.userService.ChangeSelection(id, 3).subscribe(
+      this.userService.ChangeSelection(card.id, 3).subscribe(
         (res: any) => {
+          this.loadSelectionsForMentor(this.profileService?.profile?.mentor);
           showMessage(this._snackBar, res.message);
         },
         (err) => {
@@ -412,10 +423,11 @@ export class ApplicationsComponent implements OnInit {
       );
     }
   }
-  redLight(id: number) {
+  redLight(card: any) {
     if (this.profileService.profile?.role.name == 'Куратор') {
-      this.userService.ChangeStatusResponse(id, 3).subscribe(
+      this.userService.ChangeStatusResponse(card.id, 3).subscribe(
         (res: any) => {
+          this.loadResponsesForCurator();
           showMessage(this._snackBar, res.message);
         },
         (err) => {
@@ -427,8 +439,9 @@ export class ApplicationsComponent implements OnInit {
         }
       );
     } else if (this.profileService.profile?.role.name == 'Наставник') {
-      this.userService.ChangeSelection(id, 6).subscribe(
+      this.userService.ChangeSelection(card.id, 6).subscribe(
         (res: any) => {
+          this.loadSelectionsForMentor(this.profileService?.profile?.mentor);
           showMessage(this._snackBar, res.message);
         },
         (err) => {

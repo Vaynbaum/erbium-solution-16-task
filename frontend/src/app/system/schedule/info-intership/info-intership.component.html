@@ -1,29 +1,36 @@
 <div class="container">
-    <mat-stepper orientation="vertical">
-        <mat-step *ngFor="let card of vacancy_cards"> 
-          <ng-template matStepContent>
-            <mat-card class="card">
-                <div class="card_header">
-                    <mat-card-subtitle>Тестирование по профилю</mat-card-subtitle>
-                </div>
-                <div class="main_card_body">
-                    <div class="card_body">
-                        <mat-card-subtitle>Дата прохождения тестирования: <strong>01.06.23-31.08.23</strong></mat-card-subtitle>
-                        <mat-card-subtitle>Направление: <strong>IT - город</strong></mat-card-subtitle>
-                        <mat-card-subtitle>Организация: <strong>ГКУ Горфинтехсервис, Москва </strong></mat-card-subtitle>
-                    </div>
-                    <div class="card_body_nast_kur">
-                        <mat-card-subtitle>Наставник: <strong>Иванов И.И.</strong></mat-card-subtitle>
-                        <mat-card-subtitle>Куратор: <strong>Листова И.И.</strong></mat-card-subtitle>
-                    </div>
-                    <div class="card_buttons">
-                        <button mat-button [ngClass]="{'pass_the': pass_the}" class="filter_button" color="success">Продлить</button>
-                        <button mat-button [ngClass]="{'pass_the': pass_the}" class="filter_button" color="success" (click)="openDialog(id_zaglushka, name_nast_zaglushka)">Отзыв</button>
-                    </div>
-                    <div class="phone">Телефон&nbsp;<div class="spusk"> для связи</div>: +7 951 111 11 11</div>
-                </div>
-            </mat-card>
-          </ng-template>
-        </mat-step>
-      </mat-stepper>
+  <div *ngIf="!interning">Здесь ничего нет...</div>
+  <mat-stepper *ngIf="interning" orientation="vertical">
+    <mat-step *ngFor="let card of vacancy_cards">
+      <ng-template matStepContent>
+        <mat-card class="card">
+          <div class="card_header">
+            <mat-card-subtitle>{{interning.vacancy.name}}</mat-card-subtitle>
+          </div>
+          <div class="main_card_body">
+            <div class="card_body">
+              <mat-card-subtitle>Дата прохождения стажировки:
+                <strong>{{interning.vacancy.date_begin | date:"dd.MM.yyyy"}} -
+                  {{interning.vacancy.date_end | date:"dd.MM.yyyy"}}</strong></mat-card-subtitle>
+              <mat-card-subtitle>Направление:
+                <strong>{{interning.vacancy.organization.training_direction.name}}</strong></mat-card-subtitle>
+              <mat-card-subtitle>Организация: <strong>{{interning.vacancy.organization.name}},
+                  {{interning.vacancy.organization.address}} </strong></mat-card-subtitle>
+            </div>
+            <div class="card_body_nast_kur">
+              <mat-card-subtitle>Наставник: <strong>{{getFullName(interning.vacancy)}}</strong></mat-card-subtitle>
+            </div>
+            <div class="card_buttons">
+              <button matStepperNext mat-button [ngClass]="{'pass_the': pass_the}" class="filter_button"
+                color="success">Продлить</button>
+              <button *ngIf="interning.stage_id==7" mat-button [ngClass]="{'pass_the': pass_the}" class="filter_button" color="success"
+                (click)="openDialog(id_zaglushka,interning.vacancy.organization.id, name_nast_zaglushka)">Отзыв</button>
+            </div>
+            <div class="phone">Телефон&nbsp;<div class="spusk"> для связи</div>:
+              {{interning.vacancy.organization.phone}}</div>
+          </div>
+        </mat-card>
+      </ng-template>
+    </mat-step>
+  </mat-stepper>
 </div>

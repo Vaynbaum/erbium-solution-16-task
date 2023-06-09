@@ -8,10 +8,11 @@ import { MATCH_COLOR } from 'src/app/shared/consts';
 import { SelectInput } from 'src/app/shared/models/input.model';
 import { ProfileService } from 'src/app/shared/services/profile.service';
 import { FullUser } from 'src/app/shared/models/user.model';
-import { CITY, REGION, fetch_id, get_current_age } from 'src/app/auth/common';
+import { CITY, REGION, fetch_id, get_current_age, showMessage } from 'src/app/auth/common';
 import { VacancyService } from 'src/app/shared/services/vacancy.service';
-import { ConstService } from 'src/app/shared/services/const.service'
+import { ConstService } from 'src/app/shared/services/const.service';
 import { FullCity } from 'src/app/shared/models/city.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-intern',
@@ -94,8 +95,9 @@ export class InternComponent implements OnInit {
     private router: Router,
     private imageService: ImageService,
     private profileService: ProfileService,
+    private _snackBar: MatSnackBar,
     private vacancyService: VacancyService,
-    private constService: ConstService,
+    private constService: ConstService
   ) {}
   // vacancy_cards: Vacancy[] = [];
   interns: FullUser[] = [];
@@ -103,36 +105,44 @@ export class InternComponent implements OnInit {
   work: boolean = false;
   project: boolean = false;
   ngOnInit() {
-    this.vacancyService.GetAllTrainingDirections().subscribe((directions:any) =>{
-      this.directions = directions as any[];
-      this.directionInput.values = this.compile_values('direction', this.directions);
-    })
+    this.vacancyService
+      .GetAllTrainingDirections()
+      .subscribe((directions: any) => {
+        this.directions = directions as any[];
+        this.directionInput.values = this.compile_values(
+          'direction',
+          this.directions
+        );
+      });
 
     this.vacancyService.GetAllBranchs().subscribe((branchs) => {
       this.branchs = branchs as any[];
-      this.industryInput.values = this.compile_values('industry', this.branchs)
-    })
+      this.industryInput.values = this.compile_values('industry', this.branchs);
+    });
 
     this.vacancyService.GetAllOrganizations().subscribe((organizations) => {
       this.organizations = organizations as any[];
-      this.organizationInput.values = this.compile_values('organization', this.organizations)
-    })
+      this.organizationInput.values = this.compile_values(
+        'organization',
+        this.organizations
+      );
+    });
 
     this.constService.GetAllSkills().subscribe((skills) => {
       this.skills = skills as any[];
-      this.skillsInput.values = this.compile_values('skills', this.skills)
-    })
+      this.skillsInput.values = this.compile_values('skills', this.skills);
+    });
 
     this.constService.GetAllCities().subscribe((cities) => {
       this.cities = cities as any[];
-      this.cityInput.values = this.compile_values('city', this.cities)
-    })
+      this.cityInput.values = this.compile_values('city', this.cities);
+    });
 
     this.userService.GetAllInterns().subscribe((interns: any) => {
       this.interns = interns;
-      this.loaded=true
+      this.loaded = true;
       if (this.interns.length == 0) this.empty = true;
-        else this.empty = false;
+      else this.empty = false;
     });
     let sub = this.profileService.ProfileLoaded.subscribe((profile: any) => {
       sub.unsubscribe();
@@ -164,28 +174,42 @@ export class InternComponent implements OnInit {
     return this.imageService.CompileURLImg(img);
   }
 
-  directions: any[] = []
-  branchs: any[] = []
-  organizations: any[] = []
-  vacancies: any[] = []
-  skills: any[] = []
-  cities: any[] = []
+  directions: any[] = [];
+  branchs: any[] = [];
+  organizations: any[] = [];
+  vacancies: any[] = [];
+  skills: any[] = [];
+  cities: any[] = [];
 
   onKeyup(field: string, ctr: any) {
     if (field == CITY) {
       let v: any = ctr.value;
       if (v && v.length > 0) {
         let r_v = this.form.get(REGION)?.value;
-        this.constService
-          .GetAllCitiesBySub(v)
-          .subscribe((cities) => {
-            this.cities = cities as FullCity[];
-            this.cityInput.values = this.compile_values(
-              CITY,
-              this.cities,
-            );
-          });
+        this.constService.GetAllCitiesBySub(v).subscribe((cities) => {
+          this.cities = cities as FullCity[];
+          this.cityInput.values = this.compile_values(CITY, this.cities);
+        });
       }
+    }
+  }
+
+  goToProfile(user:any) {
+    console.log(user)
+    this.router.navigate(['/system/profile'], {
+      queryParams: {
+        nick: user.nickname,
+      },
+    });
+  }
+
+  downloadFile(intern: any) {
+    let url = this.imageService.validURL(intern.portfolio);
+    if (url) window.open(this.imageService.compileUrl(url), '_blank');
+    else if (intern.url_portfolio)
+      window.open(this.imageService.compileUrl(intern.url_portfolio), '_blank');
+    else {
+      showMessage(this._snackBar, 'Резюме не загружено пользователем');
     }
   }
 

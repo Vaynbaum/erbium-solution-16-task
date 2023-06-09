@@ -106,8 +106,8 @@
             <mat-card-subtitle *ngFor="let skill of user.intern?.skills">#{{skill.skill.name}}</mat-card-subtitle>
           </div>
           <div class="card_buttons">
-            <button mat-button [ngClass]="{'default': true}" class="filter_button" color="success">Резюме</button>
-            <button mat-button [ngClass]="{'default': true}" class="filter_button" color="success">Профиль</button>
+            <button (click)="downloadFile(user?.intern)" mat-button [ngClass]="{'default': true}" class="filter_button" color="success">Резюме</button>
+            <button (click)="goToProfile(user)" mat-button [ngClass]="{'default': true}" class="filter_button" color="success">Профиль</button>
           </div>
         </div>
       </mat-card>

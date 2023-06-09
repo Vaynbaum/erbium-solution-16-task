@@ -1,14 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 import { FullUser, UpdateUserModel } from '../models/user.model';
-import { environment } from 'src/environments/environment';
 import { UpdateInternModel } from '../models/intern.model';
 import { BasicTest, UpdateBasicTest } from '../models/base_test.model';
-import { School, UpdateSchool } from '../models/school.model';
+import { UpdateSchool } from '../models/school.model';
 import { CreateTask } from '../models/task.model';
-const URL = `${environment.BACKEND_URL_RESOURCE}/user`;
+const URL = `/user`;
+const URL_NOTE = `/msg`;
 @Injectable({
   providedIn: 'root',
 })
@@ -21,6 +21,14 @@ export class UserService {
   private getProfile(token: string) {
     return this.httpClient.get(`${URL}/my`, {
       headers: { Authorization: `Bearer ${token}` },
+    });
+  }
+
+  getProfileByNick(nick: string) {
+    return this.httpClient.get(`${URL}/profile_by_nick`, {
+      params: {
+        nick: nick,
+      },
     });
   }
 
@@ -290,6 +298,41 @@ export class UserService {
     });
   }
 
+  private addReview(review: any, token: string) {
+    return this.httpClient.post(`${URL}/add_interview`, review, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
+
+  AddReview(review: any) {
+    return new Observable((observer) => {
+      this.addReview(review, this.authService.GetAccessToken()).subscribe(
+        (response) => {
+          observer.next(response);
+        },
+        (err) => {
+          if (err.status === 401 || err.status === 403) {
+            let sub = this.authService.TokenRefreshed.subscribe(() => {
+              sub.unsubscribe();
+              this.addReview(
+                review,
+                this.authService.GetAccessToken()
+              ).subscribe(
+                (response) => {
+                  observer.next(response);
+                },
+                (err) => {
+                  observer.next(null);
+                }
+              );
+            });
+            this.authService.RefreshToken();
+          }
+        }
+      );
+    });
+  }
+
   saveTest(token: string, test: UpdateBasicTest) {
     return this.httpClient.put(`${URL}/change_base_test`, test, {
       headers: { Authorization: `Bearer ${token}` },
@@ -328,6 +371,21 @@ export class UserService {
     });
   }
 
+  EndInterning(selection_id: number) {
+    return this.httpClient.get(`${URL}/end_interning`, {
+      params: {
+        selection_id: selection_id,
+      },
+    });
+  }
+  MyInterning(user_id: number) {
+    return this.httpClient.get(`${URL}/internings`, {
+      params: {
+        user_id: user_id,
+      },
+    });
+  }
+
   postPresence(token: string, presence: any) {
     return this.httpClient.post(`${URL}/add_presence`, presence, {
       headers: { Authorization: `Bearer ${token}` },
@@ -362,6 +420,21 @@ export class UserService {
           }
         }
       );
+    });
+  }
+
+  downloadLink(presence: any): Observable<HttpResponse<Blob>> {
+    let url = `/excel_stats?`;
+    presence.forEach((p: any) => {
+      url += `vacancy=${p.vacancy}&`;
+      url += `intern=${p.intern}&`;
+      url += `date=${p.date}&`;
+      url += `hour=${p.hour}&`;
+      url += `status=${p.status}&`;
+    });
+    return this.httpClient.get<Blob>(url, {
+      observe: 'response',
+      responseType: 'blob' as 'json',
     });
   }
 
@@ -426,14 +499,55 @@ export class UserService {
   // private commonFunc() {
 
   // }
+  getOtherRating(to_mentor: boolean, user_id: number) {
+    let url = `${URL}/other_rating`;
+    if (to_mentor) url += `?to_mentor=${to_mentor}`;
+    return this.httpClient.get(url, {
+      params: { user_id: user_id },
+    });
+  }
+
   private getRating(token: string, to_mentor?: boolean) {
     let url = `${URL}/rating`;
-    if (to_mentor) url += `to_mentor=${to_mentor}`;
+    if (to_mentor) url += `?to_mentor=${to_mentor}`;
 
     return this.httpClient.get(url, {
       headers: { Authorization: `Bearer ${token}` },
     });
   }
+
+  private getMyInterview(token: string) {
+    return this.httpClient.get(`${URL}/my_interview`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
+
+  GetMyInterview() {
+    return new Observable((observer) => {
+      this.getMyInterview(this.authService.GetAccessToken()).subscribe(
+        (response) => {
+          observer.next(response);
+        },
+        (err) => {
+          if (err.status === 401 || err.status === 403) {
+            let sub = this.authService.TokenRefreshed.subscribe(() => {
+              sub.unsubscribe();
+              this.getMyInterview(this.authService.GetAccessToken()).subscribe(
+                (response) => {
+                  observer.next(response);
+                },
+                (err) => {
+                  observer.next(null);
+                }
+              );
+            });
+            this.authService.RefreshToken();
+          }
+        }
+      );
+    });
+  }
+
   private changeStatusResponse(id: number, status_id: number, token: string) {
     return this.httpClient.get(`${URL}/change_response`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -447,6 +561,30 @@ export class UserService {
       params: { selection_id: id, stage_id: stage_id },
     });
   }
+
+  GetMyNotes(id: number, limit?: number) {
+    let url = `${URL_NOTE}/my_notes`;
+    if (limit) url += `?limit=${limit}`;
+
+    return this.httpClient.get(url, {
+      params: { id: id },
+    });
+  }
+
+  CntNotRead(id: number) {
+    return this.httpClient.get(`${URL_NOTE}/cnt_not_read`, {
+      params: { id: id },
+    });
+  }
+
+  ReadNotes(id: number, limit?: number) {
+    let url = `${URL_NOTE}/read_notes`;
+    if (limit) url += `?limit=${limit}`;
+    return this.httpClient.get(url, {
+      params: { id: id },
+    });
+  }
+
   ChangeSelection(id: number, status_id: number) {
     return new Observable((observer) => {
       this.changeSelection(
@@ -489,6 +627,13 @@ export class UserService {
       params: { email: email, role_id: role_id },
     });
   }
+
+  PassInterview(interview_id: number) {
+    return this.httpClient.get(`${URL}/pass_interview`, {
+      params: { interview_id: interview_id },
+    });
+  }
+
   ChangeStatusResponse(id: number, status_id: number) {
     return new Observable((observer) => {
       this.changeStatusResponse(
@@ -551,6 +696,7 @@ export class UserService {
       );
     });
   }
+
   SaveTest(test: UpdateBasicTest) {
     return new Observable((observer) => {
       this.saveTest(this.authService.GetAccessToken(), test).subscribe(
@@ -613,11 +759,11 @@ export class UserService {
   }
 
   GotoSchool() {
-    return this.httpClient.get(`${environment.FAKE_API_URL}/fake_scholl`);
+    return this.httpClient.get(`/fake_scholl`);
   }
 
   GotoTest(test: BasicTest) {
-    return this.httpClient.get(`${environment.FAKE_API_URL}/fake_test`, {
+    return this.httpClient.get(`/fake_test`, {
       params: {
         test_name: test.type_basic_test.name,
         test_id: test.type_basic_test_id,

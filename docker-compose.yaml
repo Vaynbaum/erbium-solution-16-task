@@ -6,6 +6,7 @@ services:
 ###################################
   postgres:
       image: postgres:14
+      container_name: postgres
       env_file: .env
       volumes:
         - .:/docker-entrypoint-initdb.d
@@ -20,9 +21,12 @@ services:
 ###################################
 #  set up backend container
 ###################################  
-  backend:
-    build: .
+  auth:
+    build: ./backend/auth
+    image: serg228/hack23:auth
+    container_name: auth
     restart: always
+    env_file: .env
     ports:
       - 8000:8000
     expose:
@@ -32,20 +36,111 @@ services:
     networks:
       - microservices
 
-###################################
+  mailer:
+    build: ./backend/mailer
+    image: serg228/hack23:mailer
+    container_name: mailer
+    restart: always
+    env_file: .env
+    ports:
+      - 8001:8000
+    expose:
+      - 8001
+    networks:
+      - microservices
+
+  resource:
+    build: ./backend/resource
+    image: serg228/hack23:resource
+    container_name: resource
+    restart: always
+    env_file: .env
+    ports:
+      - 8002:8000
+    expose:
+      - 8002
+    networks:
+      - microservices
+
+  upload_files:
+    build: ./backend/upload_files
+    image: serg228/hack23:upload_files
+    container_name: upload_files
+    restart: always
+    env_file: .env
+    ports:
+      - 8003:8000
+    expose:
+      - 8003
+    networks:
+      - microservices
+
+  fake_api:
+    build: ./backend/fake_api
+    image: serg228/hack23:fake_api
+    container_name: fake_api
+    restart: always
+    env_file: .env
+    ports:
+      - 8004:8000
+    expose:
+      - 8004
+    networks:
+      - microservices
+
+  ai:
+    build: ./backend/ai
+    image: serg228/hack23:ai
+    container_name: ai
+    restart: always
+    env_file: .env
+    ports:
+      - 8005:8000
+    expose:
+      - 8005
+    networks:
+      - microservices
+
+  ng:
+    build: ./ng
+    image: serg228/hack23:ng
+    container_name: ng
+    restart: always
+    depends_on:
+      - ai
+      - auth
+      - fake_api
+      - resource
+      - upload_files
+    volumes:
+      - ./ng/nginx.conf:/etc/nginx.conf
+    ports:
+      - 80:80
+    networks:
+      - microservices
+
+##################################
 #  set up frontend container
-###################################  
+##################################  
   frontend:
     build: ./frontend
+    image: serg228/hack23:frontend
+    container_name: frontend
     restart: always
     ports:
       - 4200:4200
     expose:
       - 4200
     depends_on:
-      - backend
+      - ng
+      - ai
+      - auth
+      - fake_api
+      - resource
+      - upload_files
     networks:
       - microservices
 
 networks:
     microservices:
+      driver: bridge

@@ -47,3 +47,4 @@ class Vacancy(Base):
     conditions = relationship(Condition, backref="vacancy", cascade="all,delete")
     duties = relationship(Duty, backref="vacancy", cascade="all,delete")
     selections = relationship(Selection, backref="vacancy", cascade="all,delete")
+    tasks = relationship("Task", backref="vacancy", cascade="all,delete")

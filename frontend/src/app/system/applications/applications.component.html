@@ -180,9 +180,6 @@
             </ng-container>
           </div>
         </div>
-        <mat-progress-spinner *ngIf="!loaded" mode="indeterminate">
-        </mat-progress-spinner>
-        <div *ngIf="loaded && empty">Здесь ничего нет...</div>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -197,6 +194,9 @@
             </section>
           </ng-container>
         </mat-expansion-panel>
+        <mat-progress-spinner *ngIf="!loaded" mode="indeterminate">
+        </mat-progress-spinner>
+        <div *ngIf="loaded && empty">Здесь ничего нет...</div>
         <div class="cards cards_curator">
           <mat-card
             *ngFor="let card of responses| filterResponsesByFileds:statusInput.formControl.value:organizationInput.formControl.value:directionInput.formControl.value:vacancyInput.formControl.value:reqs:changeFlag:all_timeInput.formControl.value"
@@ -257,10 +257,10 @@
                 </div>
               </div>
               <div class="card_buttons">
-                <button mat-button [ngClass]="{'default': true}" class="filter_button" (click)="greenLight(card.id)"
+                <button mat-button [ngClass]="{'default': true}" class="filter_button" (click)="greenLight(card)"
                   color="success">Одобрить</button>
                 <button *ngIf="card.response_status.id!=3" mat-button [ngClass]="{'red': true}" class="filter_button"
-                  color="success" (click)="redLight(card.id)">Отказать</button>
+                  color="success" (click)="redLight(card)">Отказать</button>
                 <button mat-button [ngClass]="{'neutral': true}" class="filter_button" color="success">Этап:
                   {{card.selection.stage.name}}</button>
               </div>
@@ -395,18 +395,19 @@
                       {{calcBall(selection)}}</strong></div>
                   <div class="text_under_image">Тестирование: {{selection?.basic_val ? selection?.basic_val : 0}}</div>
                   <div class="text_under_image">Кейс-чемпионат: 45</div>
-                  <div class="text_under_image">Собеседовани: 50</div>
+                  <div class="text_under_image">Собеседовани:
+                    {{selection?.interview_val ? selection?.interview_val : 0}}</div>
                   <div class="text_under_image">Карьерная школа: {{selection?.school_val ? selection?.school_val : 0}}
                   </div>
                 </div>
               </div>
               <div class="card_buttons">
-                <button (click)="greenLight(selection.id)" mat-button [ngClass]="{'default': true}"
-                  class="filter_button" color="success">Подтвердить</button>
-                <button (click)="redLight(selection.id)" mat-button [ngClass]="{'red': true}" class="filter_button"
+                <button (click)="greenLight(selection)" mat-button [ngClass]="{'default': true}" class="filter_button"
+                  color="success">Подтвердить</button>
+                <button (click)="redLight(selection)" mat-button [ngClass]="{'red': true}" class="filter_button"
                   color="success">Отказать</button>
                 <button mat-button [ngClass]="{'neutral': true}" class="filter_button" color="success">Этап:
-                  собеседование</button>
+                  Собеседование</button>
               </div>
             </div>
           </mat-card>
@@ -480,6 +481,9 @@
             </ng-container>
           </div>
         </div>
+        <mat-progress-spinner *ngIf="!loaded" mode="indeterminate">
+        </mat-progress-spinner>
+        <div *ngIf="loaded && empty">Здесь ничего нет...</div>
         <div class="cards cards_hr">
           <mat-card
             *ngFor="let card of responses| filterResponsesByFileds:statusInput.formControl.value:null:directionInput.formControl.value:vacancyInput.formControl.value:[]:false:all_timeInput.formControl.value"
@@ -520,8 +524,8 @@
                   </div>
                   <div class="inner_card_label">
                     <img [src]="getImg(card.selection.intern?.user?.img)" height="100" width="100">
-                    <button mat-button [ngClass]="{'resume_button': true}" class="filter_button"
-                      color="success">Резюме</button>
+                    <button (click)="downloadFile(card.selection?.intern)" mat-button
+                      [ngClass]="{'resume_button': true}" class="filter_button" color="success">Резюме</button>
                   </div>
                 </div>
                 <div class="second_block">
@@ -538,8 +542,9 @@
                     <div class="text_under_image"><strong>Общий рейтинг: {{calcBall(card.selection)}}</strong></div>
                     <div class="text_under_image">Тестирование:
                       {{card.selection?.basic_val ? card.selection?.basic_val : 0}}</div>
-                    <div class="text_under_image">Кейс-чемпионат: 50</div>
-                    <div class="text_under_image">Собеседование: 17</div>
+                    <div class="text_under_image">Кейс-чемпионат: 45</div>
+                    <div class="text_under_image">Собеседование:
+                      {{card.selection?.interview_val ? card.selection?.interview_val : 0}}</div>
                     <div class="text_under_image">Карьерная школа:
                       {{card.selection?.school_val ? card.selection?.school_val : 0}}
                     </div>
@@ -551,7 +556,7 @@
                   color="success">Подтвердить</button>
                 <button mat-button [ngClass]="{'red': true}" class="filter_button" color="success">Отказать</button>
                 <button mat-button [ngClass]="{'neutral': true}" class="filter_button" color="success">Этап:
-                  {{card.selection.stage.name=='Подтверждено'|| card.selection.stage.name=='Отказано'?'Собеседование':card.selection.stage.name}}</button>
+                  {{selectStatus(card.selection.stage.name)}}</button>
               </div>
             </div>
           </mat-card>
