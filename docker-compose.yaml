@@ -23,7 +23,6 @@ services:
 ###################################  
   auth:
     build: ./backend/auth
-    image: serg228/hack23:auth
     container_name: auth
     restart: always
     env_file: .env
@@ -38,7 +37,6 @@ services:
 
   mailer:
     build: ./backend/mailer
-    image: serg228/hack23:mailer
     container_name: mailer
     restart: always
     env_file: .env
@@ -51,7 +49,6 @@ services:
 
   resource:
     build: ./backend/resource
-    image: serg228/hack23:resource
     container_name: resource
     restart: always
     env_file: .env
@@ -64,7 +61,6 @@ services:
 
   upload_files:
     build: ./backend/upload_files
-    image: serg228/hack23:upload_files
     container_name: upload_files
     restart: always
     env_file: .env
@@ -77,7 +73,6 @@ services:
 
   fake_api:
     build: ./backend/fake_api
-    image: serg228/hack23:fake_api
     container_name: fake_api
     restart: always
     env_file: .env
@@ -90,7 +85,6 @@ services:
 
   ai:
     build: ./backend/ai
-    image: serg228/hack23:ai
     container_name: ai
     restart: always
     env_file: .env
@@ -103,7 +97,6 @@ services:
 
   ng:
     build: ./ng
-    image: serg228/hack23:ng
     container_name: ng
     restart: always
     depends_on:
@@ -124,7 +117,6 @@ services:
 ##################################  
   frontend:
     build: ./frontend
-    image: serg228/hack23:frontend
     container_name: frontend
     restart: always
     ports:
