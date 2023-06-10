@@ -144,15 +144,7 @@ export class HiddenPasswordComponent implements OnInit {
     type: 'text',
     label: 'Загрузка списка городов...',
     formControl: this.form.get(CITY),
-    onClick: (value: any) => {
-      this.constService.GetAllUniversities(value.id).subscribe((institutes) => {
-        this.institutes = institutes as University[];
-        this.instituteInput.values = this.compile_values(
-          INSTITUTE,
-          this.institutes
-        );
-      });
-    },
+    onClick: (value: any) => {},
   };
   instituteInput: SelectInput = {
     field: INSTITUTE,
@@ -171,8 +163,8 @@ export class HiddenPasswordComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe((params: Params) => {
       this.role_id = params['role_id'] ? params['role_id'] : 0;
-      if (this.isCurator())this.instituteInput.formControl.setValue('t')
-      if (this.isMentorHR())this.directionInput.formControl.setValue('t')
+      if (this.isCurator()) this.instituteInput.formControl.setValue('t');
+      if (this.isMentorHR()) this.directionInput.formControl.setValue('t');
       this.code = params['code'] ? params['code'] : '';
     });
     this.constService.GetAllRegions().subscribe((regions) => {
