@@ -12,9 +12,9 @@
           </mat-card-subtitle>
         </div>
         <div class="card_body">
-          <mat-card-subtitle> Организация: {{interview.selection.vacancy.organization.name}}</mat-card-subtitle>
-          <mat-card-subtitle>Вакансия: {{interview.selection.vacancy.name}}</mat-card-subtitle>
-          <mat-card-subtitle> Наставник: {{getFullName(interview.selection.vacancy)}}</mat-card-subtitle>
+          <mat-card-subtitle> Организация: {{interview?.selection?.vacancy?.organization?.name}}</mat-card-subtitle>
+          <mat-card-subtitle>Вакансия: {{interview?.selection?.vacancy?.name}}</mat-card-subtitle>
+          <mat-card-subtitle> Наставник: {{getFullName(interview?.selection?.vacancy)}}</mat-card-subtitle>
         </div>
         <div *ngIf="!interview.passed" class="card_buttons">
           <button (click)="passInterview()" mat-button [ngClass]="{'default': true}" class="filter_button" color="success">Пройти</button>
