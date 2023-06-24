@@ -33,6 +33,21 @@
         </mat-autocomplete>
         <mat-icon class="option_icon">{{employmentTypeInput.icon}}</mat-icon>
       </div>
+
+      <div class="one_2_one">
+        <input class="input_option_type" [type]="mentorInput.type" [placeholder]="mentorInput.label"
+          matInput [formControl]="mentorInput.formControl" [matAutocomplete]="automent">
+        <mat-autocomplete autoActiveFirstOption #automent="matAutocomplete">
+          <ng-container *ngFor="let option of mentorInput.values | async">
+            <mat-option [value]="option.name">
+              {{option.name}}
+            </mat-option>
+            <mat-divider></mat-divider>
+          </ng-container>
+        </mat-autocomplete>
+        <mat-icon class="option_icon">{{mentorInput.icon}}</mat-icon>
+      </div>
+
       <div class="one_2_one">
         <input class="input_option_type" [type]="workExpInput.type" [placeholder]="workExpInput.label" matInput
           [formControl]="workExpInput.formControl" [matAutocomplete]="autowe">

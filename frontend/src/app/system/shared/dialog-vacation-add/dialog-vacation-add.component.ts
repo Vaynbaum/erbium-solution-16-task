@@ -1,3 +1,4 @@
+import { Organization } from './../../../shared/models/organization.model';
 import { ProfileService } from './../../../shared/services/profile.service';
 import { CreateVacancy } from './../../../shared/models/vacancy.model';
 import { Component, OnInit, Inject } from '@angular/core';
@@ -12,11 +13,11 @@ import {
 import { Input, SelectInput } from 'src/app/shared/models/input.model';
 import { map, startWith } from 'rxjs';
 import { VacancyService } from 'src/app/shared/services/vacancy.service';
-import { Organization } from 'src/app/shared/models/organization.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { WorkSchedule } from 'src/app/shared/models/work_schedule.model';
 import { EmploymentType } from 'src/app/shared/models/employment_type.model';
 import { WorkExperience } from 'src/app/shared/models/work_experience.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-dialog-vacation-add',
@@ -25,6 +26,7 @@ import { WorkExperience } from 'src/app/shared/models/work_experience.model';
 })
 export class DialogVacationAddComponent implements OnInit {
   constructor(
+    private userService: UserService,
     private profileService: ProfileService,
     private _snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<DialogVacationAddComponent>,
@@ -34,9 +36,30 @@ export class DialogVacationAddComponent implements OnInit {
   work_schedules: WorkSchedule[] = [];
   employment_types: EmploymentType[] = [];
   work_experiences: WorkExperience[] = [];
+  mentors: any[] = [];
   skills: string[] = ['Adobe', 'Python', 'Microsoft'];
   empty = true;
   ngOnInit(): void {
+    this.profileService.ProfileLoaded.subscribe((profile) => {
+      this.userService.GetAllInterns(true).subscribe((mentors) => {
+        this.mentors = mentors as any[];
+        this.mentors = this.mentors
+          .filter((mentor: any) => {
+            return mentor.organization_id == profile.organization_id;
+          })
+          .map((mentor: any) => {
+            return {
+              name: `${mentor.lastname} ${mentor.firstname} ${mentor.patronymic}`,
+              id: mentor.id,
+            };
+          });
+        this.mentorInput.label = 'Наставник';
+        this.mentorInput.icon = 'keyboard_arrow_down';
+        this.mentorInput.values = this.compile_values('mentor', this.mentors);
+      });
+    });
+    this.profileService.GetProfile();
+
     this.vacancyService.GetAllWorkSchedules().subscribe((work_schedules) => {
       this.work_schedules = work_schedules as WorkSchedule[];
       this.workScheduleInput.label = 'График работы';
@@ -98,6 +121,7 @@ export class DialogVacationAddComponent implements OnInit {
       work_schedule,
       employment_type,
       work_experience,
+      mentor,
       min_salary,
       max_salary,
       date_begin,
@@ -115,6 +139,8 @@ export class DialogVacationAddComponent implements OnInit {
     let work_experience_id = fetch_id(this.work_experiences, work_experience);
     let work_schedule_id = fetch_id(this.work_schedules, work_schedule);
     let employment_type_id = fetch_id(this.employment_types, employment_type);
+    let mentor_id = fetch_id(this.mentors, mentor);
+
     let vac = new CreateVacancy(
       name,
       aboutmeControl,
@@ -131,7 +157,8 @@ export class DialogVacationAddComponent implements OnInit {
       conditions,
       requirements,
       duties,
-      this.skills
+      this.skills,
+      mentor_id
     );
     let s = this.vacancyService.PostVac(vac).subscribe(
       (res: any) => {
@@ -162,6 +189,7 @@ export class DialogVacationAddComponent implements OnInit {
     date_begin: new FormControl(null, [Validators.required]),
     cnt_intern: new FormControl(null, [Validators.required]),
     aboutmeControl: new FormControl(''),
+    mentor: new FormControl(''),
     condControl: new FormControl(''),
     reqControl: new FormControl(''),
     dutyControl: new FormControl(''),
@@ -245,7 +273,12 @@ export class DialogVacationAddComponent implements OnInit {
     label: 'Загрузка графиков работы...',
     formControl: this.form.get('work_schedule'),
   };
-
+  mentorInput: SelectInput = {
+    field: 'mentor',
+    type: 'text',
+    label: 'Загрузка наставников...',
+    formControl: this.form.get('mentor'),
+  };
   employmentTypeInput: SelectInput = {
     field: 'employment_type',
     type: 'text',

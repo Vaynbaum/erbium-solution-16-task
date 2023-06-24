@@ -8,14 +8,9 @@ import { Vacancy } from 'src/app/shared/models/vacancy.model';
 import { ProfileService } from 'src/app/shared/services/profile.service';
 import { VacancyService } from 'src/app/shared/services/vacancy.service';
 import { DialogVacationAddComponent } from '../shared/dialog-vacation-add/dialog-vacation-add.component';
-import { UserService } from 'src/app/shared/services/user.service';
 import { MATCH_COLOR } from 'src/app/shared/consts';
 import { showMessage } from 'src/app/auth/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-
-
-
 
 let MATCH_COLOR_CARD: any = {
   'На рассмотрении': 'yellow',
@@ -43,6 +38,7 @@ export class NeedForInternsComponent implements OnInit {
       this.loadVacancyForHR(this.profileService.profile);
     });
   }
+
   //проверка на нарушение критерия, в дальнейшем заменить в html переменной из бэка булевской
   isFailed = true;
   //ЛОГИКА ИНПУТОВ----------------------------------------------------------
@@ -74,6 +70,7 @@ export class NeedForInternsComponent implements OnInit {
     icon: 'keyboard_arrow_down',
     formControl: this.form.get('status'),
   };
+
   industryInput: SelectInput = {
     field: 'industry',
     type: 'text',
@@ -113,6 +110,7 @@ export class NeedForInternsComponent implements OnInit {
   constructor(
     private vacancyService: VacancyService,
     private route: ActivatedRoute,
+
     private _snackBar: MatSnackBar,
     private router: Router,
     private profileService: ProfileService,
@@ -149,7 +147,7 @@ export class NeedForInternsComponent implements OnInit {
 
     this.vacancyService.GetAllVacanciesNotForIntern().subscribe((vacancies) => {
       this.vacancies = vacancies as any[];
-      this.vacancyInput.values = this.compile_values('vacancy', this.vacancies)
+      this.vacancyInput.values = this.compile_values('vacancy', this.vacancies);
     });
 
     this.vacancyService.GetAllBranchs().subscribe((industries) => {
@@ -159,6 +157,8 @@ export class NeedForInternsComponent implements OnInit {
         this.industries
       );
     });
+
+
 
     this.vacancyService.GetAllOrganizations().subscribe((organizations) => {
       this.organizations = organizations as any[];
